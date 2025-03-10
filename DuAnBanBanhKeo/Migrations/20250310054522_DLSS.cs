@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DuAnBanBanhKeo.Migrations
 {
     /// <inheritdoc />
-    public partial class DLLM : Migration
+    public partial class DLSS : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -65,16 +65,42 @@ namespace DuAnBanBanhKeo.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "NhaCungCaps",
+                name: "NhaCungCapBanhs",
                 columns: table => new
                 {
-                    MaNhaCungCap = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    TenNhaCungCap = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TrangThai = table.Column<int>(type: "int", nullable: true)
+                    MaNhaCungCapBanh = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TenNhaCungCap = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_NhaCungCaps", x => x.MaNhaCungCap);
+                    table.PrimaryKey("PK_NhaCungCapBanhs", x => x.MaNhaCungCapBanh);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "NhaCungCapKeos",
+                columns: table => new
+                {
+                    MaNhaCungCapKeo = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TenNhaCungCap = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_NhaCungCapKeos", x => x.MaNhaCungCapKeo);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "NhaCungCapNuocNgots",
+                columns: table => new
+                {
+                    MaNhaCungCapNuocNgot = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TenNhaCungCap = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_NhaCungCapNuocNgots", x => x.MaNhaCungCapNuocNgot);
                 });
 
             migrationBuilder.CreateTable(
@@ -193,22 +219,34 @@ namespace DuAnBanBanhKeo.Migrations
                     TenSanPham = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Gia = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     MoTa = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MaNhaCungCap = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     SoLuong = table.Column<int>(type: "int", nullable: false),
                     NgayThem = table.Column<DateOnly>(type: "date", nullable: true),
                     DonVi = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Nsx = table.Column<DateOnly>(type: "date", nullable: true),
                     Hsd = table.Column<DateOnly>(type: "date", nullable: true),
-                    TrangThai = table.Column<int>(type: "int", nullable: true)
+                    TrangThai = table.Column<int>(type: "int", nullable: true),
+                    MaNhaCungCapBanh = table.Column<int>(type: "int", nullable: true),
+                    MaNhaCungCapKeo = table.Column<int>(type: "int", nullable: true),
+                    MaNhaCungCapNuocNgot = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SanPhams", x => x.MaSanPham);
                     table.ForeignKey(
-                        name: "FK_SanPhams_NhaCungCaps_MaNhaCungCap",
-                        column: x => x.MaNhaCungCap,
-                        principalTable: "NhaCungCaps",
-                        principalColumn: "MaNhaCungCap");
+                        name: "FK_SanPhams_NhaCungCapBanhs_MaNhaCungCapBanh",
+                        column: x => x.MaNhaCungCapBanh,
+                        principalTable: "NhaCungCapBanhs",
+                        principalColumn: "MaNhaCungCapBanh");
+                    table.ForeignKey(
+                        name: "FK_SanPhams_NhaCungCapKeos_MaNhaCungCapKeo",
+                        column: x => x.MaNhaCungCapKeo,
+                        principalTable: "NhaCungCapKeos",
+                        principalColumn: "MaNhaCungCapKeo");
+                    table.ForeignKey(
+                        name: "FK_SanPhams_NhaCungCapNuocNgots_MaNhaCungCapNuocNgot",
+                        column: x => x.MaNhaCungCapNuocNgot,
+                        principalTable: "NhaCungCapNuocNgots",
+                        principalColumn: "MaNhaCungCapNuocNgot");
                 });
 
             migrationBuilder.CreateTable(
@@ -471,9 +509,19 @@ namespace DuAnBanBanhKeo.Migrations
                 column: "MaGiamGia");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SanPhams_MaNhaCungCap",
+                name: "IX_SanPhams_MaNhaCungCapBanh",
                 table: "SanPhams",
-                column: "MaNhaCungCap");
+                column: "MaNhaCungCapBanh");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SanPhams_MaNhaCungCapKeo",
+                table: "SanPhams",
+                column: "MaNhaCungCapKeo");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SanPhams_MaNhaCungCapNuocNgot",
+                table: "SanPhams",
+                column: "MaNhaCungCapNuocNgot");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TaiKhoans_MaKhachHang",
@@ -535,7 +583,13 @@ namespace DuAnBanBanhKeo.Migrations
                 name: "KhachHangs");
 
             migrationBuilder.DropTable(
-                name: "NhaCungCaps");
+                name: "NhaCungCapBanhs");
+
+            migrationBuilder.DropTable(
+                name: "NhaCungCapKeos");
+
+            migrationBuilder.DropTable(
+                name: "NhaCungCapNuocNgots");
         }
     }
 }

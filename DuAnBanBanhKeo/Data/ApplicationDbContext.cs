@@ -19,7 +19,9 @@ namespace DuAnBanBanhKeo.Data
         public virtual DbSet<HoaDon> HoaDons { get; set; }
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
         public virtual DbSet<MaNhapGiamGia> MaNhapGiamGias { get; set; }
-        public virtual DbSet<NhaCungCap> NhaCungCaps { get; set; }
+        public virtual DbSet<NhaCungCapBanh> NhaCungCapBanhs { get; set; }
+        public virtual DbSet<NhaCungCapKeo> NhaCungCapKeos { get; set; }
+        public virtual DbSet<NhaCungCapNuocNgot> NhaCungCapNuocNgots { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
@@ -37,11 +39,20 @@ namespace DuAnBanBanhKeo.Data
                 .WithMany(dh => dh.ChiTietDonHangs)
                 .HasForeignKey(ctdh => ctdh.MaDonHang)
                 .OnDelete(DeleteBehavior.Cascade);
-            // Cấu hình quan hệ giữa SanPham và NhaCungCap
+
             modelBuilder.Entity<SanPham>()
-                .HasOne(s => s.MaNhaCungCapNavigation)
+                .HasOne(s => s.MaNhaCungCapBanhNavigation)
                 .WithMany(d => d.SanPhams)
-                .HasForeignKey(s => s.MaNhaCungCap);
+                .HasForeignKey(s => s.MaNhaCungCapBanh);
+            modelBuilder.Entity<SanPham>()
+                .HasOne(s => s.MaNhaCungCapKeoNavigation)
+                .WithMany(d => d.SanPhams)
+                .HasForeignKey(s => s.MaNhaCungCapKeo);
+            modelBuilder.Entity<SanPham>()
+                .HasOne(s => s.MaNhaCungCapNuocNgotNavigation)
+                .WithMany(d => d.SanPhams)
+                .HasForeignKey(s => s.MaNhaCungCapNuocNgot);
+
             modelBuilder.Entity<TaiKhoan>()
                .HasOne(tk => tk.MaKhachHangNavigation)
                .WithMany(kh => kh.TaiKhoans)
@@ -52,30 +63,29 @@ namespace DuAnBanBanhKeo.Data
                 .HasOne(cc => cc.MaComboNavigation)
                 .WithMany(c => c.ChiTietCombos)
                 .HasForeignKey(cc => cc.MaCombo)
-                .OnDelete(DeleteBehavior.Cascade); // Xóa Cascade nếu cần
+                .OnDelete(DeleteBehavior.Cascade);
 
             // Cấu hình quan hệ giữa ChiTietComBo và SanPham
             modelBuilder.Entity<ChiTietCombo>()
                 .HasOne(cc => cc.MaSanPhamNavigation)
                 .WithMany(sp => sp.ChiTietCombos)
                 .HasForeignKey(cc => cc.MaSanPham)
-                .OnDelete(DeleteBehavior.Cascade); // Xóa Cascade nếu cần
+                .OnDelete(DeleteBehavior.Cascade);
 
             // Cấu hình quan hệ giữa GiamGia và HoaDon
             modelBuilder.Entity<HoaDon>()
-                .HasOne(h => h.MaGiamGiaNavigation) // Thiết lập mối quan hệ từ HoaDon đến GiamGia
-                .WithMany(g => g.HoaDons)           // Một GiamGia có thể liên kết với nhiều HoaDon
-                .HasForeignKey(h => h.MaGiamGia)    // Khóa ngoại là MaGiamGia
-                .OnDelete(DeleteBehavior.SetNull);  // Xóa mềm: nếu GiamGia bị xóa, MaGiamGia sẽ được set null
+                .HasOne(h => h.MaGiamGiaNavigation)
+                .WithMany(g => g.HoaDons)
+                .HasForeignKey(h => h.MaGiamGia)
+                .OnDelete(DeleteBehavior.SetNull);
 
             // Cấu hình mối quan hệ giữa GiamGia và MaNhapGiamGia
             modelBuilder.Entity<MaNhapGiamGia>()
-                .HasOne(m => m.GiamGia) // Một MaNhapGiamGia liên kết với một GiamGia
-                .WithMany(g => g.MaNhapGiamGias) // Một GiamGia có nhiều MaNhapGiamGias
-                .HasForeignKey(m => m.MaGiamGia) // Khóa ngoại là MaGiamGia
-                .OnDelete(DeleteBehavior.Cascade); // Xóa mã giảm giá sẽ xóa cả mã nhập liên quan
+                .HasOne(m => m.GiamGia)
+                .WithMany(g => g.MaNhapGiamGias)
+                .HasForeignKey(m => m.MaGiamGia)
+                .OnDelete(DeleteBehavior.Cascade);
         }
-
-
     }
+
 }

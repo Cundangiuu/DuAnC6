@@ -406,21 +406,55 @@ namespace DuAnBanBanhKeo.Migrations
                     b.ToTable("MaNhapGiamGias");
                 });
 
-            modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.NhaCungCap", b =>
+            modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.NhaCungCapBanh", b =>
                 {
-                    b.Property<string>("MaNhaCungCap")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("MaNhaCungCapBanh")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaNhaCungCapBanh"));
 
                     b.Property<string>("TenNhaCungCap")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("TrangThai")
+                    b.HasKey("MaNhaCungCapBanh");
+
+                    b.ToTable("NhaCungCapBanhs");
+                });
+
+            modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.NhaCungCapKeo", b =>
+                {
+                    b.Property<int>("MaNhaCungCapKeo")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.HasKey("MaNhaCungCap");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaNhaCungCapKeo"));
 
-                    b.ToTable("NhaCungCaps");
+                    b.Property<string>("TenNhaCungCap")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MaNhaCungCapKeo");
+
+                    b.ToTable("NhaCungCapKeos");
+                });
+
+            modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.NhaCungCapNuocNgot", b =>
+                {
+                    b.Property<int>("MaNhaCungCapNuocNgot")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaNhaCungCapNuocNgot"));
+
+                    b.Property<string>("TenNhaCungCap")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MaNhaCungCapNuocNgot");
+
+                    b.ToTable("NhaCungCapNuocNgots");
                 });
 
             modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.NhanVien", b =>
@@ -479,8 +513,14 @@ namespace DuAnBanBanhKeo.Migrations
                     b.Property<DateOnly?>("Hsd")
                         .HasColumnType("date");
 
-                    b.Property<string>("MaNhaCungCap")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("MaNhaCungCapBanh")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MaNhaCungCapKeo")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MaNhaCungCapNuocNgot")
+                        .HasColumnType("int");
 
                     b.Property<string>("MoTa")
                         .HasColumnType("nvarchar(max)");
@@ -503,7 +543,11 @@ namespace DuAnBanBanhKeo.Migrations
 
                     b.HasKey("MaSanPham");
 
-                    b.HasIndex("MaNhaCungCap");
+                    b.HasIndex("MaNhaCungCapBanh");
+
+                    b.HasIndex("MaNhaCungCapKeo");
+
+                    b.HasIndex("MaNhaCungCapNuocNgot");
 
                     b.ToTable("SanPhams");
                 });
@@ -671,11 +715,23 @@ namespace DuAnBanBanhKeo.Migrations
 
             modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.SanPham", b =>
                 {
-                    b.HasOne("DuAnBanBanhKeo.Data.Entities.NhaCungCap", "MaNhaCungCapNavigation")
+                    b.HasOne("DuAnBanBanhKeo.Data.Entities.NhaCungCapBanh", "MaNhaCungCapBanhNavigation")
                         .WithMany("SanPhams")
-                        .HasForeignKey("MaNhaCungCap");
+                        .HasForeignKey("MaNhaCungCapBanh");
 
-                    b.Navigation("MaNhaCungCapNavigation");
+                    b.HasOne("DuAnBanBanhKeo.Data.Entities.NhaCungCapKeo", "MaNhaCungCapKeoNavigation")
+                        .WithMany("SanPhams")
+                        .HasForeignKey("MaNhaCungCapKeo");
+
+                    b.HasOne("DuAnBanBanhKeo.Data.Entities.NhaCungCapNuocNgot", "MaNhaCungCapNuocNgotNavigation")
+                        .WithMany("SanPhams")
+                        .HasForeignKey("MaNhaCungCapNuocNgot");
+
+                    b.Navigation("MaNhaCungCapBanhNavigation");
+
+                    b.Navigation("MaNhaCungCapKeoNavigation");
+
+                    b.Navigation("MaNhaCungCapNuocNgotNavigation");
                 });
 
             modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.Combo", b =>
@@ -722,7 +778,17 @@ namespace DuAnBanBanhKeo.Migrations
                     b.Navigation("TaiKhoans");
                 });
 
-            modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.NhaCungCap", b =>
+            modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.NhaCungCapBanh", b =>
+                {
+                    b.Navigation("SanPhams");
+                });
+
+            modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.NhaCungCapKeo", b =>
+                {
+                    b.Navigation("SanPhams");
+                });
+
+            modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.NhaCungCapNuocNgot", b =>
                 {
                     b.Navigation("SanPhams");
                 });
