@@ -1,4 +1,4 @@
-﻿using DuAnBanBanhKeo.Responsive;
+﻿//using DuAnBanBanhKeo.Responsive;
 using DuAnBanBanhKeo.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,8 +13,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Register your services
-builder.Services.AddScoped<IGiamGiaServices, GiamGiaResponsive>();
-builder.Services.AddScoped<IComboServices, ComboResponsive>();
 
 // Swagger setup for API documentation
 builder.Services.AddEndpointsApiExplorer();

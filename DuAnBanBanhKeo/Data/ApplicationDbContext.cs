@@ -1,5 +1,4 @@
-﻿using DuAnBanBanhKeo.Api.Data.Entities;
-using DuAnBanBanhKeo.Data.Entities;
+﻿using DuAnBanBanhKeo.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace DuAnBanBanhKeo.Data
@@ -7,172 +6,167 @@ namespace DuAnBanBanhKeo.Data
     public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
-        public virtual DbSet<AnhSanPham> AnhSanPhams { get; set; }
-        public virtual DbSet<ChiTietCombo> ChiTietCombos { get; set; }
-        public virtual DbSet<ChiTietDonHang> ChiTietDonHangs { get; set; }
-        public virtual DbSet<ChiTietGioHang> ChiTietGioHangs { get; set; }
-        public virtual DbSet<ChiTietHoaDon> ChiTietHoaDons { get; set; }
-        public virtual DbSet<Combo> Combos { get; set; }
-        public virtual DbSet<DonHang> DonHangs { get; set; }
-        public virtual DbSet<GiamGia> GiamGias { get; set; }
-        public virtual DbSet<GioHang> GioHangs { get; set; }
-        public virtual DbSet<HoaDon> HoaDons { get; set; }
-        public virtual DbSet<KhachHang> KhachHangs { get; set; }
-        public virtual DbSet<MaNhapGiamGia> MaNhapGiamGias { get; set; }
-        public virtual DbSet<NhaCungCapBanh> NhaCungCapBanhs { get; set; }
-        public virtual DbSet<NhaCungCapKeo> NhaCungCapKeos { get; set; }
-        public virtual DbSet<NhaCungCapNuocNgot> NhaCungCapNuocNgots { get; set; }
-        public virtual DbSet<NhanVien> NhanViens { get; set; }
-        public virtual DbSet<SanPham> SanPhams { get; set; }
-        public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
+
+        public DbSet<SanPham> SanPhams { get; set; }
+        public DbSet<NhaCungCap> NhaCungCaps { get; set; }
+        public DbSet<NhanVien> NhanViens { get; set; }
+        public DbSet<TaiKhoan> TaiKhoans { get; set; }
+        public DbSet<HoaDonNhap> HoaDonNhaps { get; set; }
+        public DbSet<HoaDonXuat> HoaDonXuats { get; set; }
+        public DbSet<ChiTietHoaDonNhap> ChiTietHoaDonNhaps { get; set; }
+        public DbSet<ChiTietHoaDonXuat> ChiTietHoaDonXuats { get; set; }
+        public DbSet<KiemKe> KiemKes { get; set; }
+        public DbSet<ChiTietKiemKe> ChiTietKiemKes { get; set; }
+        public DbSet<KhachHang> KhachHangs { get; set; }
+        public DbSet<PhieuNhap> PhieuNhaps { get; set; }
+        public DbSet<ChiTietPhieuNhap> ChiTietPhieuNhaps { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            //Thiết lập khóa chính cho các bảng có khóa không phải kiểu số
+            modelBuilder.Entity<SanPham>().HasKey(sp => sp.MaSP);
+            modelBuilder.Entity<NhaCungCap>().HasKey(ncc => ncc.MaNCC);
+            modelBuilder.Entity<NhanVien>().HasKey(nv => nv.MaNV);
+            modelBuilder.Entity<TaiKhoan>().HasKey(tk => tk.MaTK);
+            modelBuilder.Entity<HoaDonNhap>().HasKey(hdn => hdn.MaHoaDonNhap);
+            modelBuilder.Entity<HoaDonXuat>().HasKey(hdx => hdx.MaHoaDonXuat);
+            modelBuilder.Entity<KhachHang>().HasKey(kh => kh.MaKH);
+            modelBuilder.Entity<KiemKe>().HasKey(kk => kk.MaKiemKe);
+            modelBuilder.Entity<PhieuNhap>().HasKey(pn => pn.MaPhieuNhap);
 
-            // Cấu hình quan hệ giữa SanPham và AnhSanPham
-            modelBuilder.Entity<AnhSanPham>()
-                .HasOne(a => a.MaSanPhamNavigation)
-                .WithMany(s => s.AnhSanPhams)
-                .HasForeignKey(a => a.MaSanPham);
-            modelBuilder.Entity<ChiTietDonHang>()
-                .HasOne(ctdh => ctdh.DonHang)
-                .WithMany(dh => dh.ChiTietDonHangs)
-                .HasForeignKey(ctdh => ctdh.MaDonHang)
-                .OnDelete(DeleteBehavior.Cascade);
-
+            //Thiết lập quan hệ 1-n giữa NhaCungCap và SanPham
             modelBuilder.Entity<SanPham>()
-                .HasOne(s => s.MaNhaCungCapBanhNavigation)
-                .WithMany(d => d.SanPhams)
-                .HasForeignKey(s => s.MaNhaCungCapBanh);
-            modelBuilder.Entity<SanPham>()
-                .HasOne(s => s.MaNhaCungCapKeoNavigation)
-                .WithMany(d => d.SanPhams)
-                .HasForeignKey(s => s.MaNhaCungCapKeo);
-            modelBuilder.Entity<SanPham>()
-                .HasOne(s => s.MaNhaCungCapNuocNgotNavigation)
-                .WithMany(d => d.SanPhams)
-                .HasForeignKey(s => s.MaNhaCungCapNuocNgot);
+                .HasOne(sp => sp.NhaCungCap)
+                .WithMany(ncc => ncc.SanPhams)
+                .HasForeignKey(sp => sp.MaNCC);
 
-            modelBuilder.Entity<TaiKhoan>()
-               .HasOne(tk => tk.MaKhachHangNavigation)
-               .WithMany(kh => kh.TaiKhoans)
-               .HasForeignKey(tk => tk.MaKhachHang);
+            //Thiết lập quan hệ 1-n giữa NhanVien và HoaDonNhap
+            modelBuilder.Entity<HoaDonNhap>()
+                .HasOne(hdn => hdn.NhanVien)
+                .WithMany(nv => nv.HoaDonNhaps)
+                .HasForeignKey(hdn => hdn.MaNV);
+            //Thiết lập quan hệ 1-n giữa NhaCungCap và HoaDonNhap
+            modelBuilder.Entity<HoaDonNhap>()
+                .HasOne(hdn => hdn.NhaCungCap)
+                .WithMany(ncc => ncc.HoaDonNhaps)
+                .HasForeignKey(hdn => hdn.MaNCC);
 
-            // Cấu hình quan hệ giữa ChiTietComBo và ComBo
-            modelBuilder.Entity<ChiTietCombo>()
-                .HasOne(cc => cc.MaComboNavigation)
-                .WithMany(c => c.ChiTietCombos)
-                .HasForeignKey(cc => cc.MaCombo)
-                .OnDelete(DeleteBehavior.Cascade);
+            //Thiết lập quan hệ 1-n giữa NhanVien và HoaDonXuat
+            modelBuilder.Entity<HoaDonXuat>()
+                .HasOne(hdx => hdx.NhanVien)
+                .WithMany(nv => nv.HoaDonXuats)
+                .HasForeignKey(hdx => hdx.MaNV);
 
-            // Cấu hình quan hệ giữa ChiTietComBo và SanPham
-            modelBuilder.Entity<ChiTietCombo>()
-                .HasOne(cc => cc.MaSanPhamNavigation)
-                .WithMany(sp => sp.ChiTietCombos)
-                .HasForeignKey(cc => cc.MaSanPham)
-                .OnDelete(DeleteBehavior.Cascade);
+            //Thiết lập quan hệ 1-n giữa NhanVien và KiemKe
+            modelBuilder.Entity<KiemKe>()
+                .HasOne(kk => kk.NhanVien)
+                .WithMany(nv => nv.KiemKes)
+                .HasForeignKey(kk => kk.MaNV);
 
-            // Cấu hình quan hệ giữa GiamGia và HoaDon
-            modelBuilder.Entity<HoaDon>()
-                .HasOne(h => h.MaGiamGiaNavigation)
-                .WithMany(g => g.HoaDons)
-                .HasForeignKey(h => h.MaGiamGia)
-                .OnDelete(DeleteBehavior.SetNull);
+            //Thiết lập quan hệ 1-n giữa KhachHang và HoaDonXuat
+            modelBuilder.Entity<HoaDonXuat>()
+                .HasOne(hdx => hdx.KhachHang)
+                .WithMany(kh => kh.HoaDonXuats)
+                .HasForeignKey(hdx => hdx.MaKH);
 
-            // Cấu hình mối quan hệ giữa GiamGia và MaNhapGiamGia
-            modelBuilder.Entity<MaNhapGiamGia>()
-                .HasOne(m => m.GiamGia)
-                .WithMany(g => g.MaNhapGiamGias)
-                .HasForeignKey(m => m.MaGiamGia)
-                .OnDelete(DeleteBehavior.Cascade);
+            //Thiết lập quan hệ 1-n giữa HoaDonNhap và ChiTietHoaDonNhap
+            modelBuilder.Entity<ChiTietHoaDonNhap>()
+                .HasOne(ct => ct.HoaDonNhap)
+                .WithMany(hdn => hdn.ChiTietHoaDonNhaps)
+                .HasForeignKey(ct => ct.MaHoaDonNhap);
+
+            //Thiết lập quan hệ 1-n giữa HoaDonXuat và ChiTietHoaDonXuat
+            modelBuilder.Entity<ChiTietHoaDonXuat>()
+                .HasOne(ct => ct.HoaDonXuat)
+                .WithMany(hdx => hdx.ChiTietHoaDonXuat)
+                .HasForeignKey(ct => ct.MaHoaDonXuat);
+
+            //Thiết lập quan hệ 1-n giữa KiemKe và ChiTietKiemKe
+            modelBuilder.Entity<ChiTietKiemKe>()
+                .HasOne(ct => ct.KiemKe)
+                .WithMany(kk => kk.ChiTietKiemKes)
+                .HasForeignKey(ct => ct.MaKiemKe);
+
+            //Thiết lập quan hệ 1-n giữa PhieuNhap và ChiTietPhieuNhap
+            modelBuilder.Entity<ChiTietPhieuNhap>()
+                .HasOne(ct => ct.PhieuNhap)
+                .WithMany(pn => pn.ChiTietPhieuNhaps)
+                .HasForeignKey(ct => ct.MaPhieuNhap);
+
+            //Thiết lập quan hệ 1-n giữa SanPham và ChiTietHoaDonNhap
+            modelBuilder.Entity<ChiTietHoaDonNhap>()
+                .HasOne(ct => ct.SanPham)
+                .WithMany(sp => sp.ChiTietHoaDonNhaps)
+                .HasForeignKey(ct => ct.MaSP);
+
+            //Thiết lập quan hệ 1-n giữa SanPham và ChiTietHoaDonXuat
+            modelBuilder.Entity<ChiTietHoaDonXuat>()
+                .HasOne(ct => ct.SanPham)
+                .WithMany(sp => sp.ChiTietHoaDonXuats)
+                .HasForeignKey(ct => ct.MaSP);
+
+            //Thiết lập quan hệ 1-n giữa SanPham và ChiTietKiemKe
+            modelBuilder.Entity<ChiTietKiemKe>()
+                .HasOne(ct => ct.SanPham)
+                .WithMany(sp => sp.ChiTietKiemKes)
+                .HasForeignKey(ct => ct.MaSP);
+
+            //Thiết lập quan hệ 1-n giữa SanPham và ChiTietPhieuNhap
+            modelBuilder.Entity<ChiTietPhieuNhap>()
+                .HasOne(ct => ct.SanPham)
+                .WithMany(sp => sp.ChiTietPhieuNhaps)
+                .HasForeignKey(ct => ct.MaSP);
+
+            //Thiết lập quan hệ 1-1 giữa NhanVien và TaiKhoan
+            modelBuilder.Entity<NhanVien>()
+                .HasOne(nv => nv.TaiKhoan)
+                .WithOne(tk => tk.NhanVien)
+                .HasForeignKey<TaiKhoan>(tk => tk.MaNV);
+
+
+            //Seed Nhà Cung Cấp
+            modelBuilder.Entity<NhaCungCap>().HasData(
+                new NhaCungCap { MaNCC = "NCC001", TenNCC = "Coca-Cola VN", DiaChi = "Hà Nội", SoDienThoai = "0901123456" },
+                new NhaCungCap { MaNCC = "NCC002", TenNCC = "PepsiCo VN", DiaChi = "TP. Hồ Chí Minh", SoDienThoai = "0902234567" },
+                new NhaCungCap { MaNCC = "NCC003", TenNCC = "Mondelez VN", DiaChi = "Đà Nẵng", SoDienThoai = "0903345678" }
+            );
+            //Seed Sản Phẩm
             modelBuilder.Entity<SanPham>().HasData(
-            new SanPham
-            {
-                MaSanPham = "SP001",
-                TenSanPham = "Bánh Kem Sôcôla",
-                Gia = 150000m,
-                MoTa = "Bánh kem sôcôla tươi ngon",
-                SoLuong = 100,
-                NgayThem = DateOnly.FromDateTime(DateTime.Now),
-                DonVi = "Cái",
-                Nsx = DateOnly.FromDateTime(DateTime.Now.AddMonths(-3)),
-                Hsd = DateOnly.FromDateTime(DateTime.Now.AddMonths(6)),
-                TrangThai = 1
-            },
-            new SanPham
-            {
-                MaSanPham = "SP002",
-                TenSanPham = "Kẹo Dẻo",
-                Gia = 50000m,
-                MoTa = "Kẹo dẻo ngon miệng cho mọi lứa tuổi",
-                SoLuong = 200,
-                NgayThem = DateOnly.FromDateTime(DateTime.Now),
-                DonVi = "Hộp",
-                Nsx = DateOnly.FromDateTime(DateTime.Now.AddMonths(-2)),
-                Hsd = DateOnly.FromDateTime(DateTime.Now.AddMonths(12)),
-                TrangThai = 1
-            },
-            new SanPham
-            {
-                MaSanPham = "SP003",
-                TenSanPham = "Nước Ngọt Cola",
-                Gia = 10000m,
-                MoTa = "Nước ngọt cola cho mùa hè mát lạnh",
-                SoLuong = 300,
-                NgayThem = DateOnly.FromDateTime(DateTime.Now),
-                DonVi = "Lít",
-                Nsx = DateOnly.FromDateTime(DateTime.Now.AddMonths(-1)),
-                Hsd = DateOnly.FromDateTime(DateTime.Now.AddMonths(8)),
-                TrangThai = 1
-            });
-            modelBuilder.Entity<Combo>().HasData(
-            new Combo
-            {
-                MaCombo = "C001",
-                TenCombo = "Combo Bánh & Kẹo",
-                MoTa = "Combo gồm 1 bánh kem sôcôla và 2 hộp kẹo dẻo",
-                Gia = 200000m,
-                TrangThai = 1,
-                Anh = "combo-banh-keo.jpg", // Example image path
-                SoLuongCombo = 50
-            },
-            new Combo
-            {
-                MaCombo = "C002",
-                TenCombo = "Combo Nước Ngọt & Bánh",
-                MoTa = "Combo gồm 1 bánh kem sôcôla và 1 nước ngọt Cola",
-                Gia = 180000m,
-                TrangThai = 1,
-                Anh = "combo-nuoc-ngot.jpg", // Example image path
-                SoLuongCombo = 80
-            });
+                new SanPham { MaSP = "SP001", TenSP = "Coca-Cola 330ml", GiaNhap = 5000, GiaBan = 10000, SoLuongTon = 100, DonViTinh = "Lon", MaNCC = "NCC001" },
+                new SanPham { MaSP = "SP002", TenSP = "Pepsi 330ml", GiaNhap = 4800, GiaBan = 9500, SoLuongTon = 120, DonViTinh = "Lon", MaNCC = "NCC002" },
+                new SanPham { MaSP = "SP003", TenSP = "Bánh Oreo", GiaNhap = 7000, GiaBan = 15000, SoLuongTon = 50, DonViTinh = "Gói", MaNCC = "NCC003" },
+                new SanPham { MaSP = "SP004", TenSP = "Snack Lay's", GiaNhap = 9000, GiaBan = 18000, SoLuongTon = 75, DonViTinh = "Gói", MaNCC = "NCC001" }
+            );
+            //Seed Nhân Viên
+            modelBuilder.Entity<NhanVien>().HasData(
+                new NhanVien { MaNV = "NV001", HoTen = "Nguyễn Văn A", VaiTro = "Nhân viên", SoDienThoai = "0911123456", Email = "a.nguyen@example.com", TrangThai = true },
+                new NhanVien { MaNV = "NV002", HoTen = "Trần Thị B", VaiTro = "Quản lý kho", SoDienThoai = "0912234567", Email = "b.tran@example.com", TrangThai = true },
+                new NhanVien { MaNV = "NV003", HoTen = "Lê Văn C", VaiTro = "Nhân viên", SoDienThoai = "0913345678", Email = "c.le@example.com", TrangThai = false } // Nghỉ việc
+            );
+            //Seed Khách Hàng
+            modelBuilder.Entity<KhachHang>().HasData(
+                new KhachHang { MaKH = "KH001", TenKH = "Nguyễn An", SoDienThoai = "0987654321", DiaChi = "Hà Nội" },
+                new KhachHang { MaKH = "KH002", TenKH = "Lê Bình", SoDienThoai = "0976543210", DiaChi = "Đà Nẵng" },
+                new KhachHang { MaKH = "KH003", TenKH = "Trần Cường", SoDienThoai = "0965432109", DiaChi = "TP. HCM" }
+            );
+            //Seed Hóa Đơn Nhập
+            modelBuilder.Entity<HoaDonNhap>().HasData(
+                new HoaDonNhap { MaHoaDonNhap = "HDN001", MaNCC = "NCC001", MaNV = "NV001", NgayNhap = new DateTime(2024, 6, 1), TongTien = 2000000 },
+                new HoaDonNhap { MaHoaDonNhap = "HDN002", MaNCC = "NCC002", MaNV = "NV001", NgayNhap = new DateTime(2024, 6, 5), TongTien = 3500000 }
+            );
 
-            modelBuilder.Entity<ChiTietCombo>().HasData(
-                new ChiTietCombo
-                {
-                    Id = 1,
-                    MaCombo = "C001",
-                    MaSanPham = "SP001" 
-                },
-                new ChiTietCombo
-                {
-                    Id = 2,
-                    MaCombo = "C001",
-                    MaSanPham = "SP002" 
-                },
-                new ChiTietCombo
-                {
-                    Id = 3,
-                    MaCombo = "C002",
-                    MaSanPham = "SP001" 
-                },
-                new ChiTietCombo
-                {
-                    Id = 4,
-                    MaCombo = "C002",
-                    MaSanPham = "SP002"
-                });
+            //Seed Hóa Đơn Xuất
+            modelBuilder.Entity<HoaDonXuat>().HasData(
+                new HoaDonXuat { MaHoaDonXuat = "HDX001", MaKH = "KH001", MaNV = "NV002", NgayXuat = new DateTime(2024, 6, 10), TongTien = 500000 },
+                new HoaDonXuat { MaHoaDonXuat = "HDX002", MaKH = "KH002", MaNV = "NV002", NgayXuat = new DateTime(2024, 6, 15), TongTien = 750000 }
+            );
+
+            //Seed Kiểm Kê
+            modelBuilder.Entity<KiemKe>().HasData(
+                new KiemKe { MaKiemKe = "KK001", MaNV = "NV003", NgayKiemKe = new DateTime(2024, 6, 20), GhiChu = "Kiểm kê định kỳ" },
+                new KiemKe { MaKiemKe = "KK002", MaNV = "NV003", NgayKiemKe = new DateTime(2024, 6, 30), GhiChu = "Sai lệch số lượng" }
+            );
         }
-    }
 
+    }
 }

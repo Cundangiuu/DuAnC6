@@ -1,32 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using DuAnBanBanhKeo.Data.Entities;
-using Microsoft.AspNetCore.Http;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace DuAnBanBanhKeo.Api.Data.Entities
+namespace DuAnBanBanhKeo.Data.Entities
 {
-    public partial class TaiKhoan
+    public class TaiKhoan
     {
         [Key]
-        public string MaTaiKhoan { get; set; } = null!;
-
-        public string? TenTaiKhoan { get; set; }
-
-        public string MatKhau { get; set; } = null!;
-
-        public string VaiTro { get; set; } = null!;
-
-        public string? MaKhachHang { get; set; }
-
-        public string? MaNhanVien { get; set; }
-
-        public string? Email { get; set; }
-        public int TinhTrang { get; set; }
-
-        public virtual KhachHang? MaKhachHangNavigation { get; set; }
-
-        public virtual NhanVien? MaNhanVienNavigation { get; set; }
+        public string MaTK { get; set; }
+        public string TenDangNhap { get; set; }
+        public string MatKhau { get; set; } // Mã hóa mật khẩu khi lưu
+        public string MaNV { get; set; }
+        public NhanVien NhanVien { get; set; }
     }
+
 }

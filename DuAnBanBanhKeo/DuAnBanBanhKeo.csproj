@@ -36,6 +36,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Helper\" />
+    <Folder Include="Modal\" />
+    <Folder Include="Responsive\" />
+    <Folder Include="Services\" />
     <Folder Include="Utilities\" />
   </ItemGroup>
 

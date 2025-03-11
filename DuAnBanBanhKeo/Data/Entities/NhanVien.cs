@@ -1,36 +1,20 @@
-﻿using DuAnBanBanhKeo.Api.Data.Entities;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace DuAnBanBanhKeo.Data.Entities
 {
     public class NhanVien
     {
         [Key]
-        public string MaNhanVien { get; set; } = null!;
-
-        public string TenNhanVien { get; set; } = null!;
-
-        public string VaiTro { get; set; } = null!;
-
-        public string? SoDienThoai { get; set; }
-
-        public DateOnly? NgayBatDau { get; set; }
-
-        public string? HinhAnh { get; set; }
-
-        public DateOnly? NgaySinh { get; set; }
-
-        public string? DiaChi { get; set; }
-
-        [NotMapped]
-        public IFormFile Anh { get; set; }
-        public int? TrangThai { get; set; }
-
-        public string? Cccd { get; set; }
-
-        public bool? GioiTinh { get; set; }
-
-        public virtual ICollection<TaiKhoan> TaiKhoans { get; set; } = new List<TaiKhoan>();
+        public string MaNV { get; set; }
+        public string HoTen { get; set; }
+        public string VaiTro { get; set; } // Ví dụ: "Nhân viên kho", "Quản lý kho"
+        public string SoDienThoai { get; set; }
+        public string Email { get; set; }
+        public ICollection<KiemKe> KiemKes { get; set; } = new List<KiemKe>();
+        public bool TrangThai { get; set; } = true; // true = Đang hoạt động, false = Không hoạt động
+        public TaiKhoan TaiKhoan { get; set; }
+        public ICollection<HoaDonXuat> HoaDonXuats { get; set; } = new List<HoaDonXuat>();
+        public ICollection<HoaDonNhap> HoaDonNhaps { get; set; } = new List<HoaDonNhap>();
     }
+
 }
