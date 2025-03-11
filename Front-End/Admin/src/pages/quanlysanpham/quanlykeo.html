@@ -120,7 +120,7 @@
     <!-- End custom js for this page -->
     <script>
       // Sử dụng Fetch API để nạp _navbar.html vào trang
-      fetch("/src/partials/_navbar.html")
+      fetch("/Admin/src/partials/_navbar.html")
           .then(response => response.text())
           .then(data => {
               document.getElementById("navbar-placeholder").innerHTML = data;
@@ -128,7 +128,7 @@
           .catch(error => console.error("Lỗi khi tải navbar:", error));
     </script>
     <script>
-      fetch("/src/partials/_sidebar.html")
+      fetch("/Admin/src/partials/_sidebar.html")
           .then(response => response.text())
           .then(data => {
               document.getElementById("sidebar").innerHTML = data;
@@ -136,7 +136,7 @@
           .catch(error => console.error("Lỗi khi tải navbar:", error));
     </script>
     <script>
-      fetch("/src/partials/_footer.html")
+      fetch("/Admin/src/partials/_footer.html")
           .then(response => response.text())
           .then(data => {
               document.getElementById("footer").innerHTML = data;
