@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace DuAnBanBanhKeo.Areas.Admin.Models
+namespace DuAnBanBanhKeo.Controllers
 {
     [ApiController]
     [Route("[controller]")]

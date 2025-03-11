@@ -1,4 +1,4 @@
-﻿namespace DuAnBanBanhKeo.Areas.Admin.Models
+﻿namespace DuAnBanBanhKeo.Modal
 {
     public class JwtSettings
     {

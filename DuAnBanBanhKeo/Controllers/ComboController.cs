@@ -1,6 +1,6 @@
 ﻿using DuAnBanBanhKeo.Data.Entities;
+using DuAnBanBanhKeo.Helper;
 using DuAnBanBanhKeo.Responsive;
-using DuAnBanBanhKeo.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -39,30 +39,30 @@ namespace DuAnBanBanhKeo.Controllers
 
         // POST: api/Combo
         [HttpPost]
-        public async Task<IActionResult> CreateCombo([FromBody] Combo combo, [FromBody] List<ChiTietCombo> chiTietCombos)
+        public async Task<IActionResult> CreateCombo([FromBody] ComboCreateRequest request)
         {
-            if (combo == null || chiTietCombos == null)
+            if (request.Combo == null || request.ChiTietCombos == null)
             {
                 return BadRequest("Combo hoặc ChiTietCombo không được để trống");
             }
 
-            await _comboServices.Add(combo, chiTietCombos);
-            return CreatedAtAction(nameof(GetComboById), new { id = combo.MaCombo }, combo);
+            await _comboServices.Add(request.Combo, request.ChiTietCombos);
+            return CreatedAtAction(nameof(GetComboById), new { id = request.Combo.MaCombo }, request.Combo);
         }
 
-
-        // PUT: api/Combo/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateCombo(string id, [FromBody] Combo combo, [FromBody] List<ChiTietCombo> chiTietCombos)
+        public async Task<IActionResult> UpdateCombo(string id, [FromBody] ComboCreateRequest request)
         {
-            if (combo == null || combo.MaCombo != id)
+            if (request.Combo == null || request.Combo.MaCombo != id)
             {
                 return BadRequest("Dữ liệu không hợp lệ");
             }
 
-            await _comboServices.Update(combo, chiTietCombos);
+            await _comboServices.Update(request.Combo, request.ChiTietCombos);
             return NoContent();
         }
+
+
 
 
         // DELETE: api/Combo/{id}

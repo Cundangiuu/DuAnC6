@@ -1,7 +1,7 @@
 ﻿using DuAnBanBanhKeo.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DuAnBanBanhKeo.Services
+namespace DuAnBanBanhKeo.Responsive
 {
     public interface IComboServices
     {

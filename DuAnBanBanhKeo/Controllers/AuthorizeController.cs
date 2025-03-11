@@ -5,10 +5,9 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using DuAnBanBanhKeo.Data;
-using DuAnBanBanhKeo.Areas.Admin.Models;
-using DuAnBanBanhKeo.Areas.Admin.Models;
+using DuAnBanBanhKeo.Modal;
 
-namespace DuAnBanBanhKeo.Areas.Admin.Controllers
+namespace DuAnBanBanhKeo.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

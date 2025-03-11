@@ -1,6 +1,6 @@
 ﻿using DuAnBanBanhKeo.Data;
 using DuAnBanBanhKeo.Data.Entities;
-using DuAnBanBanhKeo.Services;
+using DuAnBanBanhKeo.Responsive;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -30,22 +30,35 @@ namespace DuAnBanBanhKeo.Responsive
             if (combo == null)
                 throw new ArgumentNullException(nameof(combo));
 
+            // Tạo mã combo tự động với tiền tố "MCB" và 8 ký tự ngẫu nhiên
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            Random random = new Random();
+            string randomCode = new string(Enumerable.Repeat(chars, 8)
+                .Select(s => s[random.Next(s.Length)])
+                .ToArray());
+            combo.MaCombo = "MCB" + randomCode; // Kết hợp tiền tố "MCB" và mã ngẫu nhiên
+
+            // Thêm combo vào cơ sở dữ liệu
             await _context.Combos.AddAsync(combo);
             await _context.SaveChangesAsync();
 
+            // Thêm các chi tiết sản phẩm vào ChiTietCombo
             foreach (var chiTiet in chiTietCombos)
             {
+                // Lấy sản phẩm từ MaSanPham trong ChiTietCombo
                 var sanPham = await _context.SanPhams.FirstOrDefaultAsync(sp => sp.MaSanPham == chiTiet.MaSanPham);
                 if (sanPham == null)
                     throw new Exception($"Sản phẩm với ID {chiTiet.MaSanPham} không tồn tại.");
 
+                // Cập nhật lại thông tin ChiTietCombo
                 chiTiet.MaCombo = combo.MaCombo;
-                chiTiet.SoLuongCombo = chiTiet.SoLuongCombo; 
+                chiTiet.SoLuongCombo = chiTiet.SoLuongCombo; // Lưu số lượng sản phẩm trong combo
                 await _context.ChiTietCombos.AddAsync(chiTiet);
             }
 
             await _context.SaveChangesAsync();
         }
+
 
 
         public async Task Update(Combo combo, List<ChiTietCombo> chiTietCombos)
@@ -63,9 +76,11 @@ namespace DuAnBanBanhKeo.Responsive
                 existingCombo.TrangThai = combo.TrangThai;
                 existingCombo.SoLuongCombo = combo.SoLuongCombo;
 
+                // Xóa các sản phẩm hiện tại trong combo
                 var existingDetails = await _context.ChiTietCombos.Where(c => c.MaCombo == combo.MaCombo).ToListAsync();
                 _context.ChiTietCombos.RemoveRange(existingDetails);
 
+                // Thêm lại các sản phẩm mới vào Combo
                 foreach (var chiTiet in chiTietCombos)
                 {
                     var sanPham = await _context.SanPhams.FirstOrDefaultAsync(sp => sp.MaSanPham == chiTiet.MaSanPham);
