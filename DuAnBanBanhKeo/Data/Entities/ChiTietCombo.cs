@@ -11,7 +11,7 @@ namespace DuAnBanBanhKeo.Data.Entities
 
         public string MaSanPham { get; set; } = null!;
 
-        public int SoLuong { get; set; }
+        public int SoLuongCombo { get; set; }
 
         public virtual Combo MaComboNavigation { get; set; } = null!;
 

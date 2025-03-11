@@ -20,7 +20,8 @@ namespace DuAnBanBanhKeo.Migrations
                     MoTa = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Gia = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     TrangThai = table.Column<int>(type: "int", nullable: false),
-                    Anh = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Anh = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SoLuongCombo = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -306,7 +307,7 @@ namespace DuAnBanBanhKeo.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MaCombo = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     MaSanPham = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    SoLuong = table.Column<int>(type: "int", nullable: false)
+                    SoLuongCombo = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

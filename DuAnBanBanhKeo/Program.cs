@@ -1,5 +1,7 @@
 ﻿using DuAnBanBanhKeo.Api.Modal;
 using DuAnBanBanhKeo.Data;
+using DuAnBanBanhKeo.Responsive;
+using DuAnBanBanhKeo.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -17,7 +19,7 @@ var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSetting
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
 
 // Đăng ký dịch vụ
-
+builder.Services.AddScoped<IComboServices, ComboResponsive>();
 // Cấu hình xác thực và phân quyền
 builder.Services.AddAuthentication(options =>
 {

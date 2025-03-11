@@ -19,7 +19,7 @@ namespace DuAnBanBanhKeo.Data.Entities
 
         [NotMapped] // Không lưu thuộc tính này vào CSDL
         public IFormFile? anhcombo { get; set; } // Thuộc tính để upload ảnh
-
+        public int SoLuongCombo { get; set; } 
         public virtual ICollection<ChiTietCombo> ChiTietCombos { get; set; } = new List<ChiTietCombo>();
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; } = new List<ChiTietDonHang>();
         public virtual ICollection<ChiTietGioHang> ChiTietGioHangs { get; set; } = new List<ChiTietGioHang>();

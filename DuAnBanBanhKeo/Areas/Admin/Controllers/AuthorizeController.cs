@@ -8,7 +8,7 @@ using DuAnBanBanhKeo.Data;
 using DuAnBanBanhKeo.Modal;
 using DuAnBanBanhKeo.Api.Modal;
 
-namespace TestLab1_PK03529.Controllers
+namespace DuAnBanBanhKeo.Areas.Admin.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -19,7 +19,7 @@ namespace TestLab1_PK03529.Controllers
         public AuthorizeController(ApplicationDbContext context, IOptions<JwtSettings> options)
         {
             _context = context;
-            this.jwtSettings = options.Value;
+            jwtSettings = options.Value;
         }
         [HttpPost("GenerateToken")]
         public async Task<IActionResult> GenerateToken([FromBody] TaiKhoanCredential taiKhoanCredential)

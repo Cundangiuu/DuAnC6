@@ -101,7 +101,7 @@ namespace DuAnBanBanhKeo.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("SoLuong")
+                    b.Property<int>("SoLuongCombo")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -228,6 +228,9 @@ namespace DuAnBanBanhKeo.Migrations
 
                     b.Property<string>("MoTa")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SoLuongCombo")
+                        .HasColumnType("int");
 
                     b.Property<string>("TenCombo")
                         .IsRequired()
