@@ -111,6 +111,36 @@ namespace DuAnBanBanhKeo.Migrations
                     b.HasIndex("MaSanPham");
 
                     b.ToTable("ChiTietCombos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            MaCombo = "C001",
+                            MaSanPham = "SP001",
+                            SoLuongCombo = 0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            MaCombo = "C001",
+                            MaSanPham = "SP002",
+                            SoLuongCombo = 0
+                        },
+                        new
+                        {
+                            Id = 3,
+                            MaCombo = "C002",
+                            MaSanPham = "SP001",
+                            SoLuongCombo = 0
+                        },
+                        new
+                        {
+                            Id = 4,
+                            MaCombo = "C002",
+                            MaSanPham = "SP002",
+                            SoLuongCombo = 0
+                        });
                 });
 
             modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.ChiTietDonHang", b =>
@@ -242,6 +272,28 @@ namespace DuAnBanBanhKeo.Migrations
                     b.HasKey("MaCombo");
 
                     b.ToTable("Combos");
+
+                    b.HasData(
+                        new
+                        {
+                            MaCombo = "C001",
+                            Anh = "combo-banh-keo.jpg",
+                            Gia = 200000m,
+                            MoTa = "Combo gồm 1 bánh kem sôcôla và 2 hộp kẹo dẻo",
+                            SoLuongCombo = 50,
+                            TenCombo = "Combo Bánh & Kẹo",
+                            TrangThai = 1
+                        },
+                        new
+                        {
+                            MaCombo = "C002",
+                            Anh = "combo-nuoc-ngot.jpg",
+                            Gia = 180000m,
+                            MoTa = "Combo gồm 1 bánh kem sôcôla và 1 nước ngọt Cola",
+                            SoLuongCombo = 80,
+                            TenCombo = "Combo Nước Ngọt & Bánh",
+                            TrangThai = 1
+                        });
                 });
 
             modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.DonHang", b =>
@@ -553,6 +605,47 @@ namespace DuAnBanBanhKeo.Migrations
                     b.HasIndex("MaNhaCungCapNuocNgot");
 
                     b.ToTable("SanPhams");
+
+                    b.HasData(
+                        new
+                        {
+                            MaSanPham = "SP001",
+                            DonVi = "Cái",
+                            Gia = 150000m,
+                            Hsd = new DateOnly(2025, 9, 11),
+                            MoTa = "Bánh kem sôcôla tươi ngon",
+                            NgayThem = new DateOnly(2025, 3, 11),
+                            Nsx = new DateOnly(2024, 12, 11),
+                            SoLuong = 100,
+                            TenSanPham = "Bánh Kem Sôcôla",
+                            TrangThai = 1
+                        },
+                        new
+                        {
+                            MaSanPham = "SP002",
+                            DonVi = "Hộp",
+                            Gia = 50000m,
+                            Hsd = new DateOnly(2026, 3, 11),
+                            MoTa = "Kẹo dẻo ngon miệng cho mọi lứa tuổi",
+                            NgayThem = new DateOnly(2025, 3, 11),
+                            Nsx = new DateOnly(2025, 1, 11),
+                            SoLuong = 200,
+                            TenSanPham = "Kẹo Dẻo",
+                            TrangThai = 1
+                        },
+                        new
+                        {
+                            MaSanPham = "SP003",
+                            DonVi = "Lít",
+                            Gia = 10000m,
+                            Hsd = new DateOnly(2025, 11, 11),
+                            MoTa = "Nước ngọt cola cho mùa hè mát lạnh",
+                            NgayThem = new DateOnly(2025, 3, 11),
+                            Nsx = new DateOnly(2025, 2, 11),
+                            SoLuong = 300,
+                            TenSanPham = "Nước Ngọt Cola",
+                            TrangThai = 1
+                        });
                 });
 
             modelBuilder.Entity("DuAnBanBanhKeo.Api.Data.Entities.TaiKhoan", b =>

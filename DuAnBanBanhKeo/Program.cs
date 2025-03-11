@@ -1,4 +1,4 @@
-﻿using DuAnBanBanhKeo.Api.Modal;
+﻿using DuAnBanBanhKeo.Areas.Admin.Models;
 using DuAnBanBanhKeo.Data;
 using DuAnBanBanhKeo.Responsive;
 using DuAnBanBanhKeo.Services;

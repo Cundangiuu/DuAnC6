@@ -85,6 +85,93 @@ namespace DuAnBanBanhKeo.Data
                 .WithMany(g => g.MaNhapGiamGias)
                 .HasForeignKey(m => m.MaGiamGia)
                 .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<SanPham>().HasData(
+            new SanPham
+            {
+                MaSanPham = "SP001",
+                TenSanPham = "Bánh Kem Sôcôla",
+                Gia = 150000m,
+                MoTa = "Bánh kem sôcôla tươi ngon",
+                SoLuong = 100,
+                NgayThem = DateOnly.FromDateTime(DateTime.Now),
+                DonVi = "Cái",
+                Nsx = DateOnly.FromDateTime(DateTime.Now.AddMonths(-3)),
+                Hsd = DateOnly.FromDateTime(DateTime.Now.AddMonths(6)),
+                TrangThai = 1
+            },
+            new SanPham
+            {
+                MaSanPham = "SP002",
+                TenSanPham = "Kẹo Dẻo",
+                Gia = 50000m,
+                MoTa = "Kẹo dẻo ngon miệng cho mọi lứa tuổi",
+                SoLuong = 200,
+                NgayThem = DateOnly.FromDateTime(DateTime.Now),
+                DonVi = "Hộp",
+                Nsx = DateOnly.FromDateTime(DateTime.Now.AddMonths(-2)),
+                Hsd = DateOnly.FromDateTime(DateTime.Now.AddMonths(12)),
+                TrangThai = 1
+            },
+            new SanPham
+            {
+                MaSanPham = "SP003",
+                TenSanPham = "Nước Ngọt Cola",
+                Gia = 10000m,
+                MoTa = "Nước ngọt cola cho mùa hè mát lạnh",
+                SoLuong = 300,
+                NgayThem = DateOnly.FromDateTime(DateTime.Now),
+                DonVi = "Lít",
+                Nsx = DateOnly.FromDateTime(DateTime.Now.AddMonths(-1)),
+                Hsd = DateOnly.FromDateTime(DateTime.Now.AddMonths(8)),
+                TrangThai = 1
+            });
+            modelBuilder.Entity<Combo>().HasData(
+            new Combo
+            {
+                MaCombo = "C001",
+                TenCombo = "Combo Bánh & Kẹo",
+                MoTa = "Combo gồm 1 bánh kem sôcôla và 2 hộp kẹo dẻo",
+                Gia = 200000m,
+                TrangThai = 1,
+                Anh = "combo-banh-keo.jpg", // Example image path
+                SoLuongCombo = 50
+            },
+            new Combo
+            {
+                MaCombo = "C002",
+                TenCombo = "Combo Nước Ngọt & Bánh",
+                MoTa = "Combo gồm 1 bánh kem sôcôla và 1 nước ngọt Cola",
+                Gia = 180000m,
+                TrangThai = 1,
+                Anh = "combo-nuoc-ngot.jpg", // Example image path
+                SoLuongCombo = 80
+            });
+
+            modelBuilder.Entity<ChiTietCombo>().HasData(
+                new ChiTietCombo
+                {
+                    Id = 1,
+                    MaCombo = "C001",
+                    MaSanPham = "SP001" 
+                },
+                new ChiTietCombo
+                {
+                    Id = 2,
+                    MaCombo = "C001",
+                    MaSanPham = "SP002" 
+                },
+                new ChiTietCombo
+                {
+                    Id = 3,
+                    MaCombo = "C002",
+                    MaSanPham = "SP001" 
+                },
+                new ChiTietCombo
+                {
+                    Id = 4,
+                    MaCombo = "C002",
+                    MaSanPham = "SP002"
+                });
         }
     }
 

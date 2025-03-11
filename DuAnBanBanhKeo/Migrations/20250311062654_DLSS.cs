@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace DuAnBanBanhKeo.Migrations
 {
     /// <inheritdoc />
@@ -422,6 +424,36 @@ namespace DuAnBanBanhKeo.Migrations
                         column: x => x.MaSanPham,
                         principalTable: "SanPhams",
                         principalColumn: "MaSanPham");
+                });
+
+            migrationBuilder.InsertData(
+                table: "Combos",
+                columns: new[] { "MaCombo", "Anh", "Gia", "MoTa", "SoLuongCombo", "TenCombo", "TrangThai" },
+                values: new object[,]
+                {
+                    { "C001", "combo-banh-keo.jpg", 200000m, "Combo gồm 1 bánh kem sôcôla và 2 hộp kẹo dẻo", 50, "Combo Bánh & Kẹo", 1 },
+                    { "C002", "combo-nuoc-ngot.jpg", 180000m, "Combo gồm 1 bánh kem sôcôla và 1 nước ngọt Cola", 80, "Combo Nước Ngọt & Bánh", 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "SanPhams",
+                columns: new[] { "MaSanPham", "DonVi", "Gia", "Hsd", "MaNhaCungCapBanh", "MaNhaCungCapKeo", "MaNhaCungCapNuocNgot", "MoTa", "NgayThem", "Nsx", "SoLuong", "TenSanPham", "TrangThai" },
+                values: new object[,]
+                {
+                    { "SP001", "Cái", 150000m, new DateOnly(2025, 9, 11), null, null, null, "Bánh kem sôcôla tươi ngon", new DateOnly(2025, 3, 11), new DateOnly(2024, 12, 11), 100, "Bánh Kem Sôcôla", 1 },
+                    { "SP002", "Hộp", 50000m, new DateOnly(2026, 3, 11), null, null, null, "Kẹo dẻo ngon miệng cho mọi lứa tuổi", new DateOnly(2025, 3, 11), new DateOnly(2025, 1, 11), 200, "Kẹo Dẻo", 1 },
+                    { "SP003", "Lít", 10000m, new DateOnly(2025, 11, 11), null, null, null, "Nước ngọt cola cho mùa hè mát lạnh", new DateOnly(2025, 3, 11), new DateOnly(2025, 2, 11), 300, "Nước Ngọt Cola", 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ChiTietCombos",
+                columns: new[] { "Id", "MaCombo", "MaSanPham", "SoLuongCombo" },
+                values: new object[,]
+                {
+                    { 1, "C001", "SP001", 0 },
+                    { 2, "C001", "SP002", 0 },
+                    { 3, "C002", "SP001", 0 },
+                    { 4, "C002", "SP002", 0 }
                 });
 
             migrationBuilder.CreateIndex(

@@ -5,8 +5,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using DuAnBanBanhKeo.Data;
-using DuAnBanBanhKeo.Modal;
-using DuAnBanBanhKeo.Api.Modal;
+using DuAnBanBanhKeo.Areas.Admin.Models;
+using DuAnBanBanhKeo.Areas.Admin.Models;
 
 namespace DuAnBanBanhKeo.Areas.Admin.Controllers
 {
