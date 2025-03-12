@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DuAnBanBanhKeo.Migrations
 {
     /// <inheritdoc />
-    public partial class ss : Migration
+    public partial class DLSS : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -375,6 +375,15 @@ namespace DuAnBanBanhKeo.Migrations
                     { "SP002", "Lon", 9500m, 4800m, null, "NCC002", 120, "Pepsi 330ml", true },
                     { "SP003", "Gói", 15000m, 7000m, null, "NCC003", 50, "Bánh Oreo", true },
                     { "SP004", "Gói", 18000m, 9000m, null, "NCC001", 75, "Snack Lay's", true }
+                });
+
+            migrationBuilder.InsertData(
+                table: "TaiKhoans",
+                columns: new[] { "MaTK", "MaNV", "MatKhau", "TenDangNhap" },
+                values: new object[,]
+                {
+                    { "TK001", "NV001", "123", "user" },
+                    { "TK002", "NV002", "hashed_password_2", "admin" }
                 });
 
             migrationBuilder.CreateIndex(

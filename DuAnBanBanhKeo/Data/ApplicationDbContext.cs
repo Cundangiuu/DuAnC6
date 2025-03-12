@@ -166,6 +166,12 @@ namespace DuAnBanBanhKeo.Data
                 new KiemKe { MaKiemKe = "KK001", MaNV = "NV003", NgayKiemKe = new DateTime(2024, 6, 20), GhiChu = "Kiểm kê định kỳ" },
                 new KiemKe { MaKiemKe = "KK002", MaNV = "NV003", NgayKiemKe = new DateTime(2024, 6, 30), GhiChu = "Sai lệch số lượng" }
             );
+            modelBuilder.Entity<TaiKhoan>().HasData(
+                new TaiKhoan { MaTK = "TK001", TenDangNhap = "user", MatKhau = "123", MaNV = "NV001" },
+                new TaiKhoan { MaTK = "TK002", TenDangNhap = "admin", MatKhau = "123", MaNV = "NV002" }
+                // Không seed tài khoản cho NV003 vì nhân viên này đã nghỉ việc (TrangThai = false)
+            );
+
         }
 
     }

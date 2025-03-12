@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DuAnBanBanhKeo.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250312011544_ss")]
-    partial class ss
+    [Migration("20250312072347_DLSS")]
+    partial class DLSS
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -562,6 +562,22 @@ namespace DuAnBanBanhKeo.Migrations
                         .IsUnique();
 
                     b.ToTable("TaiKhoans");
+
+                    b.HasData(
+                        new
+                        {
+                            MaTK = "TK001",
+                            MaNV = "NV001",
+                            MatKhau = "123",
+                            TenDangNhap = "user"
+                        },
+                        new
+                        {
+                            MaTK = "TK002",
+                            MaNV = "NV002",
+                            MatKhau = "hashed_password_2",
+                            TenDangNhap = "admin"
+                        });
                 });
 
             modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.ChiTietHoaDonNhap", b =>

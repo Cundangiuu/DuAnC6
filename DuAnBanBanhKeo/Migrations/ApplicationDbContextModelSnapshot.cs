@@ -559,6 +559,22 @@ namespace DuAnBanBanhKeo.Migrations
                         .IsUnique();
 
                     b.ToTable("TaiKhoans");
+
+                    b.HasData(
+                        new
+                        {
+                            MaTK = "TK001",
+                            MaNV = "NV001",
+                            MatKhau = "123",
+                            TenDangNhap = "user"
+                        },
+                        new
+                        {
+                            MaTK = "TK002",
+                            MaNV = "NV002",
+                            MatKhau = "hashed_password_2",
+                            TenDangNhap = "admin"
+                        });
                 });
 
             modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.ChiTietHoaDonNhap", b =>
