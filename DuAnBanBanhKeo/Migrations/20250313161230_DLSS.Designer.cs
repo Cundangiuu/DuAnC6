@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DuAnBanBanhKeo.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250312072347_DLSS")]
+    [Migration("20250313161230_DLSS")]
     partial class DLSS
     {
         /// <inheritdoc />
@@ -406,7 +406,7 @@ namespace DuAnBanBanhKeo.Migrations
                         {
                             MaNV = "NV001",
                             Email = "a.nguyen@example.com",
-                            HoTen = "Nguyễn Văn A",
+                            HoTen = "Nguyễn Văn An",
                             SoDienThoai = "0911123456",
                             TrangThai = true,
                             VaiTro = "Nhân viên"
@@ -415,7 +415,7 @@ namespace DuAnBanBanhKeo.Migrations
                         {
                             MaNV = "NV002",
                             Email = "b.tran@example.com",
-                            HoTen = "Trần Thị B",
+                            HoTen = "Trần Thị Bông",
                             SoDienThoai = "0912234567",
                             TrangThai = true,
                             VaiTro = "Quản lý kho"
@@ -424,7 +424,7 @@ namespace DuAnBanBanhKeo.Migrations
                         {
                             MaNV = "NV003",
                             Email = "c.le@example.com",
-                            HoTen = "Lê Văn C",
+                            HoTen = "Lê Văn Thuận",
                             SoDienThoai = "0913345678",
                             TrangThai = false,
                             VaiTro = "Nhân viên"
@@ -556,6 +556,9 @@ namespace DuAnBanBanhKeo.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("TrangThai")
+                        .HasColumnType("bit");
+
                     b.HasKey("MaTK");
 
                     b.HasIndex("MaNV")
@@ -569,14 +572,16 @@ namespace DuAnBanBanhKeo.Migrations
                             MaTK = "TK001",
                             MaNV = "NV001",
                             MatKhau = "123",
-                            TenDangNhap = "user"
+                            TenDangNhap = "user",
+                            TrangThai = true
                         },
                         new
                         {
                             MaTK = "TK002",
                             MaNV = "NV002",
-                            MatKhau = "hashed_password_2",
-                            TenDangNhap = "admin"
+                            MatKhau = "123",
+                            TenDangNhap = "admin",
+                            TrangThai = true
                         });
                 });
 

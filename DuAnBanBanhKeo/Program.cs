@@ -43,6 +43,8 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("Quản lý kho", policy => policy.RequireRole("quản lý kho"));
     options.AddPolicy("Nhân viên", policy => policy.RequireRole("nhân viên"));
 });
+builder.Services.AddAutoMapper(typeof(Program));
+
 // Swagger setup for API documentation
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

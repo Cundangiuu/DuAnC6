@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Trang chủ Admin</title>
+    <title>Quản lý Hóa Đơn Nhập</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../assets/vendors/ti-icons/css/themify-icons.css">
@@ -14,94 +15,278 @@
     <!-- Plugin css for this page -->
     <!-- End plugin css for this page -->
     <!-- inject:css -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="../../assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="../../assets/images/favicon.png" />
-  </head>
-  <body>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.4/dist/sweetalert2.min.css">
+    <style>
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        #hoaDonNhapTable th,
+        #hoaDonNhapTable td {
+            white-space: nowrap;
+        }
+
+        .btn-edit {
+            background-color: #ffc107;
+            border-color: #ffc107;
+            color: #212529;
+        }
+
+        .btn-edit:hover {
+            background-color: #e0a800;
+            border-color: #d39e00;
+            color: #212529;
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: #fff;
+        }
+
+        .btn-delete:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
     <div class="container-scroller">
-      <!-- partial:partials/_navbar.html -->
-      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row" id="navbar-placeholder"></nav>
-      <!-- partial -->
-      <div class="container-fluid page-body-wrapper">
-        <!-- partial:partials/_sidebar.html -->
-        <nav class="sidebar sidebar-offcanvas" id="sidebar"></nav>
+        <!-- partial:partials/_navbar.html -->
+        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+            id="navbar-placeholder"></nav>
         <!-- partial -->
-        <div class="main-panel">
-          <div class="content-wrapper">
-            <div class="page-header">
-              <h3 class="page-title"> Basic Tables </h3>
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Basic tables</li>
-                </ol>
-              </nav>
-            </div>
-            <div class="row">
-              <div class="col-lg-6 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Basic Table</h4>
-                    <p class="card-description"> Add class <code>.table</code>
-                    </p>
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>Profile</th>
-                          <th>VatNo.</th>
-                          <th>Created</th>
-                          <th>Status</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Jacob</td>
-                          <td>53275531</td>
-                          <td>12 May 2017</td>
-                          <td><label class="badge badge-danger">Pending</label></td>
-                        </tr>
-                        <tr>
-                          <td>Messsy</td>
-                          <td>53275532</td>
-                          <td>15 May 2017</td>
-                          <td><label class="badge badge-warning">In progress</label></td>
-                        </tr>
-                        <tr>
-                          <td>John</td>
-                          <td>53275533</td>
-                          <td>14 May 2017</td>
-                          <td><label class="badge badge-info">Fixed</label></td>
-                        </tr>
-                        <tr>
-                          <td>Peter</td>
-                          <td>53275534</td>
-                          <td>16 May 2017</td>
-                          <td><label class="badge badge-success">Completed</label></td>
-                        </tr>
-                        <tr>
-                          <td>Dave</td>
-                          <td>53275535</td>
-                          <td>20 May 2017</td>
-                          <td><label class="badge badge-warning">In progress</label></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:partials/_sidebar.html -->
+            <nav class="sidebar sidebar-offcanvas" id="sidebar"></nav>
+            <!-- partial -->
+            <div class="main-panel" style="font-family: 'Times New Roman', Times, serif;">
+                <div class="content-wrapper" style="font-family: 'Times New Roman', Times, serif;">
+                    <div class="page-header">
+                        <h3 class="page-title" style="font-family: 'Times New Roman', Times, serif;">Quản lý Hóa Đơn
+                            Nhập</h3>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#"
+                                        style="font-family: 'Times New Roman', Times, serif;">Quản lý</a></li>
+                                <li class="breadcrumb-item active" aria-current="page"
+                                    style="font-family: 'Times New Roman', Times, serif;">Hóa Đơn Nhập</li>
+                            </ol>
+                        </nav>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title" style="font-family: 'Times New Roman', Times, serif;">Danh
+                                        sách Hóa Đơn Nhập</h4>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#addHoaDonNhapModal"
+                                        style="font-family: 'Times New Roman', Times, serif;">
+                                        Thêm Hóa Đơn Nhập
+                                    </button>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped" id="hoaDonNhapTable">
+                                            <thead>
+                                                <tr>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Mã Hóa Đơn
+                                                    </th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Ngày Nhập
+                                                    </th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Nhân
+                                                        Viên Tạo Hóa Đơn</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Tên Nhà
+                                                        Cung Cấp</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Tổng Tiền
+                                                    </th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Chi Tiết
+                                                    </th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Hành Động
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- Data will be loaded here -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <!-- Modal for adding a new HoaDonNhap -->
+                                    <div class="modal fade" id="addHoaDonNhapModal" tabindex="-1" role="dialog"
+                                        aria-labelledby="addHoaDonNhapModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="addHoaDonNhapModalLabel"
+                                                        style="font-family: 'Times New Roman', Times, serif;">Thêm Hóa Đơn
+                                                        Nhập</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form id="addHoaDonNhapForm">
+                                                        <div class="form-group">
+                                                            <label for="tenNCC">Tên Nhà Cung Cấp</label>
+                                                            <select class="form-control" id="tenNCC" name="tenNCC"
+                                                                required>
+                                                                <!-- Options will be loaded here -->
+                                                            </select>
+                                                            <input type="hidden" id="maNCC" name="maNCC">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="tongTien">Tổng Tiền</label>
+                                                            <input type="number" class="form-control" id="tongTien"
+                                                                name="tongTien" readonly>
+                                                        </div>
+
+                                                        <!-- Product List (Scrollable Table) -->
+                                                        <div class="table-responsive" style="max-height: 300px; overflow-y: scroll;">
+                                                            <table class="table table-bordered" id="productListTable">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th style="font-family: 'Times New Roman', Times, serif;">Tên Sản
+                                                                            Phẩm</th>
+                                                                        <th style="font-family: 'Times New Roman', Times, serif;">Số
+                                                                            Lượng</th>
+                                                                        <th style="font-family: 'Times New Roman', Times, serif;">Đơn
+                                                                            Giá</th>
+                                                                        <th style="font-family: 'Times New Roman', Times, serif;">Tổng
+                                                                            Tiền</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <!-- Product data will be loaded here -->
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                                        style="font-family: 'Times New Roman', Times, serif;">Hủy</button>
+                                                    <button type="button" class="btn btn-primary" id="saveHoaDonNhap"
+                                                        style="font-family: 'Times New Roman', Times, serif;">Lưu</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Modal for viewing details -->
+                                    <div class="modal fade" id="hoaDonNhapDetailsModal" tabindex="-1" role="dialog"
+                                        aria-labelledby="hoaDonNhapDetailsModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="hoaDonNhapDetailsModalLabel" style="font-family: 'Times New Roman', Times, serif;">Chi tiết hóa
+                                                        đơn nhập</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <!-- Details content here -->
+                                                    <div id="hoaDonNhapDetailsContent"></div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Đóng</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Modal for editing -->
+                                    <div class="modal fade" id="editHoaDonNhapModal" tabindex="-1" role="dialog"
+                                        aria-labelledby="editHoaDonNhapModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="editHoaDonNhapModalLabel"
+                                                        style="font-family: 'Times New Roman', Times, serif;">Chỉnh sửa hóa
+                                                        đơn nhập</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <!-- Edit form here -->
+                                                    <form id="editHoaDonNhapForm">
+                                                        <input type="hidden" id="editMaHoaDonNhap"
+                                                            name="maHoaDonNhap">
+                                                        <div class="form-group">
+                                                            <label for="editTenNCC">Tên Nhà Cung Cấp</label>
+                                                            <select class="form-control" id="editTenNCC" name="maNCC"
+                                                                required>
+                                                                <!-- Options will be loaded here -->
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="editTongTien">Tổng Tiền</label>
+                                                            <input type="number" class="form-control"
+                                                                id="editTongTien" name="tongTien" readonly>
+                                                        </div>
+
+                                                        <!-- Product List (Scrollable Table) -->
+                                                        <div class="table-responsive" style="max-height: 300px; overflow-y: scroll;">
+                                                            <table class="table table-bordered" id="editProductListTable">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th style="font-family: 'Times New Roman', Times, serif;">Tên Sản
+                                                                            Phẩm</th>
+                                                                        <th style="font-family: 'Times New Roman', Times, serif;">Số
+                                                                            Lượng</th>
+                                                                        <th style="font-family: 'Times New Roman', Times, serif;">Đơn
+                                                                            Giá</th>
+                                                                        <th style="font-family: 'Times New Roman', Times, serif;">Tổng
+                                                                            Tiền</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <!-- Product data will be loaded here -->
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal"
+                                                        style="font-family: 'Times New Roman', Times, serif;">Hủy</button>
+                                                    <button type="button" class="btn btn-primary" id="updateHoaDonNhap"
+                                                        style="font-family: 'Times New Roman', Times, serif;">Lưu Thay
+                                                        Đổi</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+                <!-- content-wrapper ends -->
+                <!-- partial:partials/_footer.html -->
+                <footer class="footer" id="footer"></footer>
+                <!-- partial -->
             </div>
-          </div>
-          <!-- content-wrapper ends -->
-          <!-- partial:partials/_footer.html -->
-          <footer class="footer" id="footer"></footer>
-          <!-- partial -->
+            <!-- main-panel ends -->
         </div>
-        <!-- main-panel ends -->
-      </div>
-      <!-- page-body-wrapper ends -->
+        <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
@@ -118,30 +303,340 @@
     <!-- endinject -->
     <!-- Custom js for this page -->
     <!-- End custom js for this page -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.4/dist/sweetalert2.all.min.js"></script>
     <script>
-      // Sử dụng Fetch API để nạp _navbar.html vào trang
-      fetch("/Admin/src/partials/_navbar.html")
-          .then(response => response.text())
-          .then(data => {
-              document.getElementById("navbar-placeholder").innerHTML = data;
-          })
-          .catch(error => console.error("Lỗi khi tải navbar:", error));
+        $(document).ready(function () {
+            // Load navbar, sidebar, and footer
+            $("#navbar-placeholder").load("/Admin/src/partials/_navbar.html");
+            $("#sidebar").load("/Admin/src/partials/_sidebar.html");
+            $("#footer").load("/Admin/src/partials/_footer.html");
+
+            // Function to format currency to VND
+            function formatCurrency(amount) {
+                return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
+            }
+
+            // Function to fetch and display HoaDonNhap data
+            function loadHoaDonNhaps() {
+                $.ajax({
+                    url: 'https://localhost:7203/api/HoaDonNhap',
+                    type: 'GET',
+                    success: function (data) {
+                        var tableBody = $('#hoaDonNhapTable tbody');
+                        tableBody.empty(); // Clear existing data
+
+                        $.each(data, function (i, hoaDonNhap) {
+                            var row = $('<tr>');
+                            row.append($('<td>').text(hoaDonNhap.maHoaDonNhap));
+                            row.append($('<td>').text(new Date(hoaDonNhap.ngayNhap).toLocaleDateString()));
+                            row.append($('<td>').text(hoaDonNhap.hoTen)); // Display TenNhanVien
+                            row.append($('<td>').text(hoaDonNhap.tenNCC)); // Display TenNhaCungCap
+                            row.append($('<td>').text(formatCurrency(hoaDonNhap.tongTien)));
+
+                            // Details button
+                            var detailsButton = $('<button>')
+                                .addClass('btn btn-info btn-sm')
+                                .text('Chi Tiết')
+                                .css('font-family', "'Times New Roman', Times, serif")
+                                .click(function () {
+                                    showDetails(hoaDonNhap.maHoaDonNhap);
+                                });
+                            row.append($('<td>').append(detailsButton));
+
+                            // Edit and Delete buttons
+                            var actions = $('<td>');
+                            var editButton = $('<button>')
+                                .addClass('btn btn-warning btn-sm mr-1 btn-edit')
+                                .text('Sửa')
+                                .css('font-family', "'Times New Roman', Times, serif")
+                                .click(function () {
+                                    showEditModal(hoaDonNhap);
+                                });
+                            actions.append(editButton);
+
+
+                            row.append(actions);
+                            tableBody.append(row);
+                        });
+                    },
+                    error: function (error) {
+                        console.error('Error fetching HoaDonNhaps:', error);
+                    }
+                });
+            }
+
+            // Load data on page load
+            loadHoaDonNhaps();
+
+            // Function to display details in the modal
+            function showDetails(maHoaDonNhap) {
+                $.ajax({
+                    url: `https://localhost:7203/api/HoaDonNhap/${maHoaDonNhap}`,
+                    type: 'GET',
+                    success: function (hoaDonNhap) {
+                        var detailsContent = `
+                            <p><strong>Mã Hóa Đơn:</strong> ${hoaDonNhap.maHoaDonNhap}</p>
+                            <p><strong>Ngày Nhập:</strong> ${new Date(hoaDonNhap.ngayNhap).toLocaleDateString()}</p>
+                            <p><strong>Tên Nhân Viên:</strong> ${hoaDonNhap.hoTen}</p>
+                            <p><strong>Tên Nhà Cung Cấp:</strong> ${hoaDonNhap.tenNCC}</p>
+                            <p><strong>Tổng Tiền:</strong> ${formatCurrency(hoaDonNhap.tongTien)}</p>
+                            <h5 style="font-family: 'Times New Roman', Times, serif;">Chi Tiết Hóa Đơn</h5>
+                            <ul>`;
+
+                        // Assuming the API now returns a "products" array inside chiTietHoaDonNhaps
+                        if (hoaDonNhap.chiTietHoaDonNhaps && hoaDonNhap.chiTietHoaDonNhaps.length > 0) {
+                            $.each(hoaDonNhap.chiTietHoaDonNhaps, function (i, chiTiet) {
+                                detailsContent += `<li>Sản phẩm: ${chiTiet.sanPham.tenSP}, Số lượng: ${chiTiet.soLuong}, Đơn giá: ${formatCurrency(chiTiet.donGia)}</li>`;
+                            });
+                        } else {
+                            detailsContent += `<li>Không có sản phẩm nào.</li>`;
+                        }
+                        detailsContent += `</ul>`;
+                        $('#hoaDonNhapDetailsContent').html(detailsContent);
+                        $('#hoaDonNhapDetailsModal').modal('show');
+
+                    },
+                    error: function (error) {
+                        console.error('Error fetching HoaDonNhap details:', error);
+                    }
+                });
+            }
+
+            // Function to populate the edit modal
+            function showEditModal(hoaDonNhap) {
+                $('#editMaHoaDonNhap').val(hoaDonNhap.maHoaDonNhap);
+                $('#editTongTien').val(hoaDonNhap.tongTien);
+                loadSuppliers('#editTenNCC', hoaDonNhap.maNCC);
+                loadEditProductList('#editProductListTable', hoaDonNhap.chiTietHoaDonNhaps);
+                $('#editHoaDonNhapModal').modal('show');
+            }
+
+            // Load list of product in the product selection table.
+            function loadProductList(tableId) {
+                $.ajax({
+                    url: 'https://localhost:7203/api/HoaDonNhap/Products', // Lấy danh sách sản phẩm
+                    type: 'GET',
+                    success: function (data) {
+                        var tableBody = $(tableId + ' tbody');
+                        tableBody.empty();
+
+                        $.each(data, function (i, product) {
+                            var row = `
+                                <tr>
+                                    <td>${product.tenSP}</td>
+                                    <td><input type="number" class="form-control quantity" value="0" data-masp="${product.maSP}" data-gianhap="${product.giaNhap}"></td>
+                                    <td><input type="number" class="form-control unitPrice" value="${product.giaNhap}" readonly data-masp="${product.maSP}"></td>
+                                    <td class="total">0</td>
+                                </tr>
+                            `;
+                            tableBody.append(row);
+                        });
+
+                        // Calculate totals on load
+                        calculateTotals(tableId);
+                    },
+                    error: function (error) {
+                        console.error('Error fetching product list:', error);
+                    }
+                });
+            }
+
+            function loadEditProductList(tableId, chiTietHoaDonNhaps) {
+                $.ajax({
+                    url: 'https://localhost:7203/api/HoaDonNhap/Products',
+                    type: 'GET',
+                    success: function (data) {
+                        var tableBody = $(tableId + ' tbody');
+                        tableBody.empty();
+
+                        $.each(data, function (i, product) {
+                            // Find the corresponding chiTietHoaDonNhap for the product
+                            var chiTiet = chiTietHoaDonNhaps.find(ct => ct.maSP === product.maSP);
+                            var quantity = chiTiet ? chiTiet.soLuong : 0;
+                            var unitPrice = chiTiet ? chiTiet.donGia : 0;
+
+                            var row = `
+                                <tr>
+                                    <td>${product.tenSP}</td>
+                                    <td><input type="number" class="form-control quantity" value="${quantity}" data-masp="${product.maSP}"></td>
+                                    <td><input type="number" class="form-control unitPrice" value="${unitPrice}" data-masp="${product.maSP}"></td>
+                                    <td class="total">0</td>
+                                </tr>
+                            `;
+                            tableBody.append(row);
+                        });
+                        calculateTotals(tableId);
+                    },
+                    error: function (error) {
+                        console.error('Error fetching product list:', error);
+                    }
+                });
+            }
+
+            // Calculate totals on quantity/unit price change
+            $(document).on('input', '.quantity, .unitPrice', function () {
+                var tableId = $(this).closest('table').attr('id');
+                calculateTotals('#' + tableId);
+            });
+
+            function calculateTotals(tableId) {
+                var totalAmount = 0;
+                $(tableId + ' tbody tr').each(function () {
+                    var quantity = parseFloat($(this).find('.quantity').val()) || 0;
+                    var unitPrice = parseFloat($(this).find('.unitPrice').val()) || 0;
+                    var total = quantity * unitPrice;
+                    $(this).find('.total').text(formatCurrency(total));
+                    totalAmount += total;
+                });
+
+                // Update total amount in the modal form
+                var modalId = '#' + $(tableId).closest('.modal').attr('id');
+                $(modalId + ' #tongTien').val(totalAmount);
+            }
+
+            // Load suppliers function
+            function loadSuppliers(selectElementId, selectedMaNCC) {
+                $.ajax({
+                    url: 'https://localhost:7203/api/HoaDonNhap/Suppliers', // Replace with your API endpoint to get supplier list.
+                    type: 'GET',
+                    success: function (data) {
+                        var selectElement = $(selectElementId);
+                        selectElement.empty(); // Clear existing options
+                        $.each(data, function (i, nhaCungCap) {
+                            var option = `<option value="${nhaCungCap.maNCC}" ${nhaCungCap.maNCC === selectedMaNCC ? 'selected' : ''}>${nhaCungCap.tenNCC}</option>`;
+                            selectElement.append(option);
+                        });
+                    },
+                    error: function (error) {
+                        console.error('Error fetching supplier list:', error);
+                    }
+                });
+            }
+
+            // Load product list when the modal is shown.
+            $('#addHoaDonNhapModal').on('shown.bs.modal', function (e) {
+                loadSuppliers('#tenNCC');
+                loadProductList('#productListTable');
+            });
+
+            //On Supplier selection, update hidden MaNCC
+            $('#tenNCC').change(function () {
+                $('#maNCC').val($(this).val());
+            });
+
+            // Save Hoa Don Nhap
+            $('#saveHoaDonNhap').click(function () {
+                var maNCC = $('#tenNCC').val();
+                var tongTien = parseFloat($('#tongTien').val());
+
+                var chiTietHoaDonNhaps = [];
+                $('#productListTable tbody tr').each(function () {
+                    var maSP = $(this).find('.quantity').data('masp');
+                    var soLuong = parseFloat($(this).find('.quantity').val()) || 0;
+                    var donGia = parseFloat($(this).find('.unitPrice').val()) || 0;
+
+                    if (soLuong > 0 && donGia > 0) {
+                        chiTietHoaDonNhaps.push({
+                            maSP: maSP,
+                            soLuong: soLuong,
+                            donGia: donGia
+                        });
+                    }
+                });
+
+                var data = {
+                    maNCC: maNCC,
+                    tongTien: tongTien,
+                    chiTietHoaDonNhaps: chiTietHoaDonNhaps
+                };
+
+                $.ajax({
+                    url: 'https://localhost:7203/api/HoaDonNhap',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    headers: {
+                        'MaNV': 'your_employee_id' // Replace with actual employee ID
+                    },
+                    success: function (response) {
+                        Swal.fire(
+                            'Thành công!',
+                            'Thêm mới thành công!',
+                            'success'
+                        ).then(() => {
+                            $('#addHoaDonNhapModal').modal('hide');
+                            loadHoaDonNhaps(); // Reload the table
+                        });
+                    },
+                    error: function (error) {
+                        console.error('Error adding HoaDonNhap:', error);
+                        Swal.fire(
+                            'Lỗi!',
+                            'Thêm mới thất bại!',
+                            'error'
+                        );
+                    }
+                });
+            });
+
+            // Update Hoa Don Nhap
+            $('#updateHoaDonNhap').click(function () {
+                var maHoaDonNhap = $('#editMaHoaDonNhap').val();
+                var maNCC = $('#editTenNCC').val();
+                var tongTien = parseFloat($('#editTongTien').val());
+
+                var chiTietHoaDonNhaps = [];
+                $('#editProductListTable tbody tr').each(function () {
+                    var maSP = $(this).find('.quantity').data('masp');
+                    var soLuong = parseFloat($(this).find('.quantity').val()) || 0;
+                    var donGia = parseFloat($(this).find('.unitPrice').val()) || 0;
+
+                    if (soLuong > 0 && donGia > 0) {
+                        chiTietHoaDonNhaps.push({
+                            maSP: maSP,
+                            soLuong: soLuong,
+                            donGia: donGia
+                        });
+                    }
+                });
+
+                var data = {
+                    maHoaDonNhap: maHoaDonNhap,
+                    maNCC: maNCC,
+                    tongTien: tongTien,
+                    chiTietHoaDonNhaps: chiTietHoaDonNhaps
+                };
+
+                $.ajax({
+                    url: `https://localhost:7203/api/HoaDonNhap/${maHoaDonNhap}`,
+                    type: 'PUT',
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    success: function (response) {
+                        Swal.fire(
+                            'Thành công!',
+                            'Cập nhật thành công!',
+                            'success'
+                        ).then(() => {
+                            $('#editHoaDonNhapModal').modal('hide');
+                            loadHoaDonNhaps(); // Reload the table
+                        });
+                    },
+                    error: function (error) {
+                        console.error('Error updating HoaDonNhap:', error);
+                        Swal.fire(
+                            'Lỗi!',
+                            'Cập nhật thất bại!',
+                            'error'
+                        );
+                    }
+                });
+            });
+        });
     </script>
-    <script>
-      fetch("/Admin/src/partials/_sidebar.html")
-          .then(response => response.text())
-          .then(data => {
-              document.getElementById("sidebar").innerHTML = data;
-          })
-          .catch(error => console.error("Lỗi khi tải navbar:", error));
-    </script>
-    <script>
-      fetch("/Admin/src/partials/_footer.html")
-          .then(response => response.text())
-          .then(data => {
-              document.getElementById("footer").innerHTML = data;
-          })
-          .catch(error => console.error("Lỗi khi tải navbar:", error));
-    </script>
-  </body>
+</body>
+
 </html>

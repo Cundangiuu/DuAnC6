@@ -46,7 +46,8 @@ namespace DuAnBanBanhKeo.Controllers
             var authClaims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, user.TenDangNhap),
-                new Claim(ClaimTypes.Role, user.NhanVien.VaiTro),  // Lấy role từ user
+                new Claim(ClaimTypes.Role, user.NhanVien.VaiTro), 
+                new Claim("MaNV", user.MaNV),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 

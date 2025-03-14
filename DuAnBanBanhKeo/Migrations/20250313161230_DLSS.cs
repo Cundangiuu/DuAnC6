@@ -184,7 +184,8 @@ namespace DuAnBanBanhKeo.Migrations
                     MaTK = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     TenDangNhap = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MatKhau = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MaNV = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    MaNV = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    TrangThai = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -334,9 +335,9 @@ namespace DuAnBanBanhKeo.Migrations
                 columns: new[] { "MaNV", "Email", "HoTen", "SoDienThoai", "TrangThai", "VaiTro" },
                 values: new object[,]
                 {
-                    { "NV001", "a.nguyen@example.com", "Nguyễn Văn A", "0911123456", true, "Nhân viên" },
-                    { "NV002", "b.tran@example.com", "Trần Thị B", "0912234567", true, "Quản lý kho" },
-                    { "NV003", "c.le@example.com", "Lê Văn C", "0913345678", false, "Nhân viên" }
+                    { "NV001", "a.nguyen@example.com", "Nguyễn Văn An", "0911123456", true, "Nhân viên" },
+                    { "NV002", "b.tran@example.com", "Trần Thị Bông", "0912234567", true, "Quản lý kho" },
+                    { "NV003", "c.le@example.com", "Lê Văn Thuận", "0913345678", false, "Nhân viên" }
                 });
 
             migrationBuilder.InsertData(
@@ -379,11 +380,11 @@ namespace DuAnBanBanhKeo.Migrations
 
             migrationBuilder.InsertData(
                 table: "TaiKhoans",
-                columns: new[] { "MaTK", "MaNV", "MatKhau", "TenDangNhap" },
+                columns: new[] { "MaTK", "MaNV", "MatKhau", "TenDangNhap", "TrangThai" },
                 values: new object[,]
                 {
-                    { "TK001", "NV001", "123", "user" },
-                    { "TK002", "NV002", "hashed_password_2", "admin" }
+                    { "TK001", "NV001", "123", "user", true },
+                    { "TK002", "NV002", "123", "admin", true }
                 });
 
             migrationBuilder.CreateIndex(

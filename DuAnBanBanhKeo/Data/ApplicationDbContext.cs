@@ -139,9 +139,9 @@ namespace DuAnBanBanhKeo.Data
             );
             //Seed Nhân Viên
             modelBuilder.Entity<NhanVien>().HasData(
-                new NhanVien { MaNV = "NV001", HoTen = "Nguyễn Văn A", VaiTro = "Nhân viên", SoDienThoai = "0911123456", Email = "a.nguyen@example.com", TrangThai = true },
-                new NhanVien { MaNV = "NV002", HoTen = "Trần Thị B", VaiTro = "Quản lý kho", SoDienThoai = "0912234567", Email = "b.tran@example.com", TrangThai = true },
-                new NhanVien { MaNV = "NV003", HoTen = "Lê Văn C", VaiTro = "Nhân viên", SoDienThoai = "0913345678", Email = "c.le@example.com", TrangThai = false } // Nghỉ việc
+                new NhanVien { MaNV = "NV001", HoTen = "Nguyễn Văn An", VaiTro = "Nhân viên", SoDienThoai = "0911123456", Email = "a.nguyen@example.com", TrangThai = true },
+                new NhanVien { MaNV = "NV002", HoTen = "Trần Thị Bông", VaiTro = "Quản lý kho", SoDienThoai = "0912234567", Email = "b.tran@example.com", TrangThai = true },
+                new NhanVien { MaNV = "NV003", HoTen = "Lê Văn Thuận", VaiTro = "Nhân viên", SoDienThoai = "0913345678", Email = "c.le@example.com", TrangThai = false } 
             );
             //Seed Khách Hàng
             modelBuilder.Entity<KhachHang>().HasData(
@@ -167,9 +167,8 @@ namespace DuAnBanBanhKeo.Data
                 new KiemKe { MaKiemKe = "KK002", MaNV = "NV003", NgayKiemKe = new DateTime(2024, 6, 30), GhiChu = "Sai lệch số lượng" }
             );
             modelBuilder.Entity<TaiKhoan>().HasData(
-                new TaiKhoan { MaTK = "TK001", TenDangNhap = "user", MatKhau = "123", MaNV = "NV001" },
-                new TaiKhoan { MaTK = "TK002", TenDangNhap = "admin", MatKhau = "123", MaNV = "NV002" }
-                // Không seed tài khoản cho NV003 vì nhân viên này đã nghỉ việc (TrangThai = false)
+                new TaiKhoan { MaTK = "TK001", TenDangNhap = "user", MatKhau = "123", MaNV = "NV001", TrangThai = true},
+                new TaiKhoan { MaTK = "TK002", TenDangNhap = "admin", MatKhau = "123", MaNV = "NV002", TrangThai = true }
             );
 
         }
