@@ -806,3 +806,4 @@ D:\DuAnC6\DuAnBanBanhKeo\obj\Debug\net8.0\refint\DuAnBanBanhKeo.dll
 D:\DuAnC6\DuAnBanBanhKeo\obj\Debug\net8.0\DuAnBanBanhKeo.pdb
 D:\DuAnC6\DuAnBanBanhKeo\obj\Debug\net8.0\DuAnBanBanhKeo.genruntimeconfig.cache
 D:\DuAnC6\DuAnBanBanhKeo\obj\Debug\net8.0\ref\DuAnBanBanhKeo.dll
+D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\DuAnBanBanhKeo.staticwebassets.runtime.json

@@ -1,12 +1,20 @@
 {
   "Version": 1,
-  "Hash": "bWCJMnzG0BNVejLCwXNdOnaxOKvHuRUitnn/kaCHzhA=",
+  "Hash": "MnKx8itnkBa7DGfQEtw5TDO0Jic2LYP7AMnXxqhYiPE=",
   "Source": "DuAnBanBanhKeo",
   "BasePath": "_content/DuAnBanBanhKeo",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "DuAnBanBanhKeo\\wwwroot",
+      "Source": "DuAnBanBanhKeo",
+      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "BasePath": "_content/DuAnBanBanhKeo",
+      "Pattern": "**"
+    }
+  ],
   "Assets": [],
   "Endpoints": []
 }

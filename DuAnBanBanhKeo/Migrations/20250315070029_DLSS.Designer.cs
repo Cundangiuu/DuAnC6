@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DuAnBanBanhKeo.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250315055643_DLSS")]
+    [Migration("20250315070029_DLSS")]
     partial class DLSS
     {
         /// <inheritdoc />
@@ -390,6 +390,9 @@ namespace DuAnBanBanhKeo.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HinhAnh")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("HoTen")
@@ -784,8 +787,7 @@ namespace DuAnBanBanhKeo.Migrations
 
                     b.Navigation("KiemKes");
 
-                    b.Navigation("TaiKhoan")
-                        .IsRequired();
+                    b.Navigation("TaiKhoan");
                 });
 
             modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.PhieuNhap", b =>

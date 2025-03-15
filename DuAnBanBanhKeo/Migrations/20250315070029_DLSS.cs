@@ -48,6 +48,7 @@ namespace DuAnBanBanhKeo.Migrations
                 columns: table => new
                 {
                     MaNV = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    HinhAnh = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     HoTen = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     VaiTro = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SoDienThoai = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -334,12 +335,12 @@ namespace DuAnBanBanhKeo.Migrations
 
             migrationBuilder.InsertData(
                 table: "NhanViens",
-                columns: new[] { "MaNV", "Email", "HoTen", "SoDienThoai", "TrangThai", "VaiTro" },
+                columns: new[] { "MaNV", "Email", "HinhAnh", "HoTen", "SoDienThoai", "TrangThai", "VaiTro" },
                 values: new object[,]
                 {
-                    { "NV001", "a.nguyen@example.com", "Nguyễn Văn An", "0911123456", true, "Nhân viên" },
-                    { "NV002", "b.tran@example.com", "Trần Thị Bông", "0912234567", true, "Quản lý kho" },
-                    { "NV003", "c.le@example.com", "Lê Văn Thuận", "0913345678", false, "Nhân viên" }
+                    { "NV001", "a.nguyen@example.com", null, "Nguyễn Văn An", "0911123456", true, "Nhân viên" },
+                    { "NV002", "b.tran@example.com", null, "Trần Thị Bông", "0912234567", true, "Quản lý kho" },
+                    { "NV003", "c.le@example.com", null, "Lê Văn Thuận", "0913345678", false, "Nhân viên" }
                 });
 
             migrationBuilder.InsertData(

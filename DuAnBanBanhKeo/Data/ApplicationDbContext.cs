@@ -124,6 +124,7 @@ namespace DuAnBanBanhKeo.Data
                 .HasForeignKey<TaiKhoan>(tk => tk.MaNV);
 
 
+
             //Seed Nhà Cung Cấp
             modelBuilder.Entity<NhaCungCap>().HasData(
                 new NhaCungCap { MaNCC = "NCC001", TenNCC = "Coca-Cola VN", DiaChi = "Hà Nội", SoDienThoai = "0901123456" },

@@ -389,6 +389,9 @@ namespace DuAnBanBanhKeo.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("HinhAnh")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("HoTen")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -781,8 +784,7 @@ namespace DuAnBanBanhKeo.Migrations
 
                     b.Navigation("KiemKes");
 
-                    b.Navigation("TaiKhoan")
-                        .IsRequired();
+                    b.Navigation("TaiKhoan");
                 });
 
             modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.PhieuNhap", b =>
