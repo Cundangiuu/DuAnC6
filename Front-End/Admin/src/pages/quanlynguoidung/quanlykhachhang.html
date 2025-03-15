@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="vi">
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -91,17 +92,100 @@
                           <!-- Dữ liệu khách hàng sẽ được thêm vào đây bằng JavaScript -->
                         </tbody>
                       </table>
+</head>
+
+<body>
+    <div class="container-scroller">
+        <!-- partial:partials/_navbar.html -->
+        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+            id="navbar-placeholder"></nav>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:partials/_sidebar.html -->
+            <nav class="sidebar sidebar-offcanvas" id="sidebar"></nav>
+            <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="page-header">
+                        <h3 class="page-title">Quản lý Khách hàng</h3>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Quản lý</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Khách hàng</li>
+                            </ol>
+                        </nav>
                     </div>
-                     <!-- Phân trang -->
-                     <nav aria-label="Page navigation">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item"><a class="page-link" href="#" id="prevPage">Trước</a></li>
-                            <li class="page-item"><a class="page-link" href="#" id="nextPage">Sau</a></li>
-                        </ul>
-                    </nav>
-                  </div>
+                    <!-- Tìm kiếm và sắp xếp -->
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="searchInput" class="form-label">Tìm kiếm:</label>
+                            <input type="text" class="form-control" id="searchInput"
+                                placeholder="Nhập tên, email, địa chỉ...">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="sortSelect" class="form-label">Sắp xếp theo:</label>
+                            <select class="form-select" id="sortSelect">
+                                <option value="">Mặc định</option>
+                                <option value="makh">Mã Khách hàng</option>
+                                <option value="tenkh">Tên Khách hàng</option>
+                                <option value="email">Email</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="sortOrderSelect" class="form-label">Thứ tự:</label>
+                            <select class="form-select" id="sortOrderSelect">
+                                <option value="asc">Tăng dần</option>
+                                <option value="desc">Giảm dần</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Danh sách Khách hàng</h4>
+                                    <p class="card-description">
+                                        Quản lý thông tin khách hàng
+                                    </p>
+                                    <!-- Nút thêm khách hàng -->
+                                    <button class="btn btn-primary mb-3" id="btnAddKhachHang">Thêm Khách hàng</button>
+
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Mã khách hàng</th>
+                                                    <th>Tên KH</th>
+                                                    <th>Số Điện Thoại</th>
+                                                    <th>Email</th>
+                                                    <th>Địa Chỉ</th>
+                                                    <th>Hành động</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tableBody">
+                                                <!-- Dữ liệu khách hàng sẽ được thêm vào đây bằng JavaScript -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- Phân trang -->
+                                    <nav aria-label="Page navigation" style="margin-top: 15px;">
+                                        <ul class="pagination justify-content-center" id="pagination">
+                                            <!-- Các nút phân trang sẽ được thêm vào đây bằng JavaScript -->
+                                        </ul>
+                                        <div id="paginationInfo" class="text-center mt-2">
+                                            <!-- Thông tin phân trang sẽ được hiển thị ở đây -->
+                                        </div>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+                <!-- content-wrapper ends -->
+                <!-- partial:partials/_footer.html -->
+                <footer class="footer" id="footer"></footer>
+                <!-- partial -->
             </div>
           </div>
           <!-- content-wrapper ends -->
@@ -147,10 +231,59 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="font-family: 'Times New Roman', Times, serif;">Đóng</button>
                 <button type="button" class="btn btn-primary" id="btnSaveKhachHang" style="font-family: 'Times New Roman', Times, serif;">Lưu</button>
               </div>
+
+            <!-- Modal để thêm/sửa khách hàng -->
+            <div class="modal fade" id="khachHangModal" tabindex="-1" aria-labelledby="khachHangModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="khachHangModalLabel">Thêm/Sửa Khách hàng</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="khachHangForm">
+                                <div class="mb-3" style="display: none;">
+                                    <!-- Ẩn cột MaKH -->
+                                    <label for="maKH" class="form-label">Mã khách hàng</label>
+                                    <input type="text" class="form-control" id="maKH" name="maKH" required readonly>
+                                    <!-- Mã KH sẽ tự động tạo và không cho phép sửa -->
+                                    <div class="invalid-feedback" id="maKH-error"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="tenKH" class="form-label">Tên khách hàng</label>
+                                    <input type="text" class="form-control" id="tenKH" name="tenKH" required>
+                                    <div class="invalid-feedback" id="tenKH-error"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="soDienThoai" class="form-label">Số Điện Thoại</label>
+                                    <input type="text" class="form-control" id="soDienThoai" name="soDienThoai"
+                                        required>
+                                    <div class="invalid-feedback" id="soDienThoai-error"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email">
+                                    <div class="invalid-feedback" id="email-error"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="diaChi" class="form-label">Địa Chỉ</label>
+                                    <input type="text" class="form-control" id="diaChi" name="diaChi">
+                                    <div class="invalid-feedback" id="diaChi-error"></div>
+                                </div>
+                                <input type="hidden" id="isEdit" name="isEdit" value="false">
+                                <!-- Ẩn trường này để biết đang ở chế độ thêm hay sửa -->
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                            <button type="button" class="btn btn-primary" id="btnSaveKhachHang">Lưu</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
     <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
     <script src="../../assets/js/off-canvas.js"></script>
@@ -159,28 +292,29 @@
     <script src="../../assets/js/todolist.js"></script>
     <script src="../../assets/js/jquery.cookie.js"></script>
     <script>
-      fetch("/Admin/src/partials/_navbar.html")
-          .then(response => response.text())
-          .then(data => {
-              document.getElementById("navbar-placeholder").innerHTML = data;
-          })
-          .catch(error => console.error("Lỗi khi tải navbar:", error));
+        // Các hàm để tải navbar, sidebar và footer từ các file HTML
+        fetch("/Admin/src/partials/_navbar.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("navbar-placeholder").innerHTML = data;
+            })
+            .catch(error => console.error("Lỗi khi tải navbar:", error));
     </script>
     <script>
-      fetch("/Admin/src/partials/_sidebar.html")
-          .then(response => response.text())
-          .then(data => {
-              document.getElementById("sidebar").innerHTML = data;
-          })
-          .catch(error => console.error("Lỗi khi tải navbar:", error));
+        fetch("/Admin/src/partials/_sidebar.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("sidebar").innerHTML = data;
+            })
+            .catch(error => console.error("Lỗi khi tải sidebar:", error));
     </script>
     <script>
-      fetch("/Admin/src/partials/_footer.html")
-          .then(response => response.text())
-          .then(data => {
-              document.getElementById("footer").innerHTML = data;
-          })
-          .catch(error => console.error("Lỗi khi tải navbar:", error));
+        fetch("/Admin/src/partials/_footer.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("footer").innerHTML = data;
+            })
+            .catch(error => console.error("Lỗi khi tải footer:", error));
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js"></script>
@@ -468,5 +602,6 @@
           }
       });
     </script>
-  </body>
+</body>
+
 </html>
