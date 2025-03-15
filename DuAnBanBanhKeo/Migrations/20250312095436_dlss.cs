@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DuAnBanBanhKeo.Migrations
 {
     /// <inheritdoc />
-    public partial class DLSS : Migration
+    public partial class dlss : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -383,7 +383,7 @@ namespace DuAnBanBanhKeo.Migrations
                 values: new object[,]
                 {
                     { "TK001", "NV001", "123", "user" },
-                    { "TK002", "NV002", "hashed_password_2", "admin" }
+                    { "TK002", "NV002", "123", "admin" }
                 });
 
             migrationBuilder.CreateIndex(

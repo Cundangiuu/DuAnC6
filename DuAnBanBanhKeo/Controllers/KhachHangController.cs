@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using DuAnBanBanhKeo.Data;
 using DuAnBanBanhKeo.Data.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -33,9 +34,9 @@ namespace DuAnBanBanhKeo.Controllers
                 searchTerm = searchTerm.ToLower();
                 query = query.Where(kh =>
                     kh.TenKH.ToLower().Contains(searchTerm) ||
-                    kh.Email.ToLower().Contains(searchTerm) ||
-                    kh.DiaChi.ToLower().Contains(searchTerm) ||
-                    kh.SoDienThoai != null && kh.SoDienThoai.Contains(searchTerm));
+                    (kh.Email != null && kh.Email.ToLower().Contains(searchTerm)) ||
+                    (kh.DiaChi != null && kh.DiaChi.ToLower().Contains(searchTerm)) ||
+                    (kh.SoDienThoai != null && kh.SoDienThoai.Contains(searchTerm)));
             }
 
             // Sắp xếp
@@ -52,17 +53,14 @@ namespace DuAnBanBanhKeo.Controllers
                     case "email":
                         query = sortOrder.ToLower() == "desc" ? query.OrderByDescending(kh => kh.Email) : query.OrderBy(kh => kh.Email);
                         break;
-                    // Thêm các trường sắp xếp khác nếu cần
                     default:
-                        // Sắp xếp mặc định nếu không có trường nào được chỉ định
-                        query = query.OrderBy(kh => kh.MaKH); // Sắp xếp mặc định theo MaKH
+                        query = query.OrderBy(kh => kh.MaKH);
                         break;
                 }
             }
             else
             {
-                // Sắp xếp mặc định nếu không có sortBy được cung cấp
-                query = query.OrderBy(kh => kh.MaKH); // Sắp xếp mặc định theo MaKH
+                query = query.OrderBy(kh => kh.MaKH);
             }
 
             return await query.ToListAsync();
@@ -75,7 +73,7 @@ namespace DuAnBanBanhKeo.Controllers
 
             if (khachHang == null)
             {
-                return NotFound();
+                return NotFound($"Không tìm thấy khách hàng có mã '{id}'.");
             }
             return khachHang;
         }
@@ -85,8 +83,14 @@ namespace DuAnBanBanhKeo.Controllers
         {
             if (id != khachHang.MaKH)
             {
-                return BadRequest();
+                return BadRequest("Mã khách hàng trong URL không khớp với mã khách hàng trong dữ liệu.");
             }
+
+            if (!ModelState.IsValid)  // Kiểm tra ModelState.IsValid
+            {
+                return BadRequest(ModelState);  // Trả về lỗi validation
+            }
+
             _context.Entry(khachHang).State = EntityState.Modified;
 
             try
@@ -97,12 +101,14 @@ namespace DuAnBanBanhKeo.Controllers
             {
                 if (!KhachHangExists(id))
                 {
-                    return NotFound();
+                    return NotFound($"Không tìm thấy khách hàng có mã '{id}'.");
                 }
-                else
-                {
-                    throw;
-                }
+                return Conflict("Dữ liệu đã bị thay đổi bởi người khác. Vui lòng thử lại.");
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Lỗi khi cập nhật khách hàng: {ex}");
+                return StatusCode(500, "Lỗi khi lưu thông tin khách hàng vào database.");
             }
 
             return NoContent();
@@ -111,22 +117,32 @@ namespace DuAnBanBanhKeo.Controllers
         [HttpPost]
         public async Task<ActionResult<KhachHang>> PostKhachHang(KhachHang khachHang)
         {
+            if (!ModelState.IsValid)  // Kiểm tra ModelState.IsValid
+            {
+                return BadRequest(ModelState);  // Trả về lỗi validation
+            }
+
             _context.KhachHangs.Add(khachHang);
+
             try
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateException)
+            catch (DbUpdateException ex)
             {
                 if (KhachHangExists(khachHang.MaKH))
                 {
-                    return Conflict();
+                    return Conflict("Mã khách hàng đã tồn tại.");
                 }
-                else
-                {
-                    throw;
-                }
+                Console.Error.WriteLine($"Lỗi khi tạo khách hàng (DbUpdateException): {ex.Message}");
+                return StatusCode(500, "Lỗi khi lưu thông tin khách hàng vào database.");
             }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Lỗi không xác định khi tạo khách hàng: {ex}");
+                return StatusCode(500, "Lỗi server. Vui lòng liên hệ quản trị viên.");
+            }
+
             return CreatedAtAction("GetKhachHang", new { id = khachHang.MaKH }, khachHang);
         }
 
@@ -134,12 +150,28 @@ namespace DuAnBanBanhKeo.Controllers
         public async Task<IActionResult> DeleteKhachHang(string id)
         {
             var khachHang = await _context.KhachHangs.FindAsync(id);
+
             if (khachHang == null)
             {
-                return NotFound();
+                return NotFound($"Không tìm thấy khách hàng có mã '{id}'.");
             }
-            _context.KhachHangs.Remove(khachHang);
-            await _context.SaveChangesAsync();
+
+            try
+            {
+                _context.KhachHangs.Remove(khachHang);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                Console.Error.WriteLine($"Lỗi khi xóa khách hàng (DbUpdateException): {ex.Message}");
+                return StatusCode(500, "Lỗi khi xóa khách hàng khỏi database. Vui lòng thử lại sau.");
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Lỗi không xác định khi xóa khách hàng: {ex}");
+                return StatusCode(500, "Lỗi server. Vui lòng liên hệ quản trị viên.");
+            }
+
             return NoContent();
         }
 

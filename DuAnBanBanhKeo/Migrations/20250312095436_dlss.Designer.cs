@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DuAnBanBanhKeo.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250312072347_DLSS")]
-    partial class DLSS
+    [Migration("20250312095436_dlss")]
+    partial class dlss
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -575,7 +575,7 @@ namespace DuAnBanBanhKeo.Migrations
                         {
                             MaTK = "TK002",
                             MaNV = "NV002",
-                            MatKhau = "hashed_password_2",
+                            MatKhau = "123",
                             TenDangNhap = "admin"
                         });
                 });

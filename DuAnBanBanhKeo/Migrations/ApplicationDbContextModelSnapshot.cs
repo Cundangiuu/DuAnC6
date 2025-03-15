@@ -572,7 +572,7 @@ namespace DuAnBanBanhKeo.Migrations
                         {
                             MaTK = "TK002",
                             MaNV = "NV002",
-                            MatKhau = "hashed_password_2",
+                            MatKhau = "123",
                             TenDangNhap = "admin"
                         });
                 });
