@@ -56,10 +56,6 @@ namespace DuAnBanBanhKeo.Controllers
                 return NotFound();
             }
 
-            // Load related entities for the DTO (Nếu chưa include ở trên)
-            //await _context.Entry(hoaDonNhap).Reference(h => h.NhaCungCap).LoadAsync();
-            //await _context.Entry(hoaDonNhap).Reference(h => h.NhanVien).LoadAsync();
-
             return _mapper.Map<HoaDonNhapDto>(hoaDonNhap);
         }
 
@@ -82,6 +78,14 @@ namespace DuAnBanBanhKeo.Controllers
             }
 
             _mapper.Map(hoaDonNhapUpdateDto, hoaDonNhap);
+
+            // Validate trạng thái
+            if (!IsValidTrangThai(hoaDonNhapUpdateDto.TrangThai))
+            {
+                return BadRequest("Trạng thái không hợp lệ. Chỉ chấp nhận: 0, 1, 2, 3.");
+            }
+
+            hoaDonNhap.TrangThai = hoaDonNhapUpdateDto.TrangThai; // Cập nhật trạng thái
 
             try
             {
@@ -134,7 +138,8 @@ namespace DuAnBanBanhKeo.Controllers
                 NgayNhap = DateTime.Now,
                 MaNV = maNV,
                 MaNCC = hoaDonNhapCreateDto.MaNCC,
-                TongTien = hoaDonNhapCreateDto.TongTien
+                TongTien = hoaDonNhapCreateDto.TongTien,
+                TrangThai = 0 // Đặt trạng thái mặc định
             };
 
             _context.HoaDonNhaps.Add(hoaDonNhap);
@@ -160,8 +165,8 @@ namespace DuAnBanBanhKeo.Controllers
             await _context.SaveChangesAsync();
 
             // Load related entities for the DTO
-            await _context.Entry(hoaDonNhap).Reference(h => h.NhaCungCap).LoadAsync(); // Load NhaCungCap
-            await _context.Entry(hoaDonNhap).Reference(h => h.NhanVien).LoadAsync();   // Load NhanVien
+            await _context.Entry(hoaDonNhap).Reference(h => h.NhaCungCap).LoadAsync();
+            await _context.Entry(hoaDonNhap).Reference(h => h.NhanVien).LoadAsync();
             foreach (var ct in hoaDonNhap.ChiTietHoaDonNhaps)
             {
                 await _context.Entry(ct).Reference(c => c.SanPham).LoadAsync();
@@ -169,8 +174,6 @@ namespace DuAnBanBanhKeo.Controllers
 
             return CreatedAtAction("GetHoaDonNhap", new { maHoaDonNhap = hoaDonNhap.MaHoaDonNhap }, _mapper.Map<HoaDonNhapDto>(hoaDonNhap));
         }
-
-        
 
         private string GenerateMaHoaDonNhap()
         {
@@ -205,6 +208,12 @@ namespace DuAnBanBanhKeo.Controllers
         {
             var nhaCungCaps = await _context.NhaCungCaps.ToListAsync();
             return _mapper.Map<List<NhaCungCapDto>>(nhaCungCaps);
+        }
+
+        // Hàm kiểm tra trạng thái hợp lệ
+        private bool IsValidTrangThai(int trangThai)
+        {
+            return trangThai == 0 || trangThai == 1 || trangThai == 2 || trangThai == 3;
         }
     }
 }

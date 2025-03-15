@@ -111,7 +111,8 @@ namespace DuAnBanBanhKeo.Migrations
                     NgayNhap = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MaNV = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     MaNCC = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    TongTien = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    TongTien = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    TrangThai = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -138,7 +139,8 @@ namespace DuAnBanBanhKeo.Migrations
                     NgayXuat = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MaNV = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     MaKH = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    TongTien = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    TongTien = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    TrangThai = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -342,20 +344,20 @@ namespace DuAnBanBanhKeo.Migrations
 
             migrationBuilder.InsertData(
                 table: "HoaDonNhaps",
-                columns: new[] { "MaHoaDonNhap", "MaNCC", "MaNV", "NgayNhap", "TongTien" },
+                columns: new[] { "MaHoaDonNhap", "MaNCC", "MaNV", "NgayNhap", "TongTien", "TrangThai" },
                 values: new object[,]
                 {
-                    { "HDN001", "NCC001", "NV001", new DateTime(2024, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2000000m },
-                    { "HDN002", "NCC002", "NV001", new DateTime(2024, 6, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), 3500000m }
+                    { "HDN001", "NCC001", "NV001", new DateTime(2024, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2000000m, 0 },
+                    { "HDN002", "NCC002", "NV002", new DateTime(2024, 6, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), 3500000m, 0 }
                 });
 
             migrationBuilder.InsertData(
                 table: "HoaDonXuats",
-                columns: new[] { "MaHoaDonXuat", "MaKH", "MaNV", "NgayXuat", "TongTien" },
+                columns: new[] { "MaHoaDonXuat", "MaKH", "MaNV", "NgayXuat", "TongTien", "TrangThai" },
                 values: new object[,]
                 {
-                    { "HDX001", "KH001", "NV002", new DateTime(2024, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 500000m },
-                    { "HDX002", "KH002", "NV002", new DateTime(2024, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 750000m }
+                    { "HDX001", "KH001", "NV002", new DateTime(2024, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 500000m, 0 },
+                    { "HDX002", "KH002", "NV001", new DateTime(2024, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 750000m, 0 }
                 });
 
             migrationBuilder.InsertData(

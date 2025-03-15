@@ -166,6 +166,9 @@ namespace DuAnBanBanhKeo.Migrations
                     b.Property<decimal>("TongTien")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int>("TrangThai")
+                        .HasColumnType("int");
+
                     b.HasKey("MaHoaDonNhap");
 
                     b.HasIndex("MaNCC");
@@ -181,15 +184,17 @@ namespace DuAnBanBanhKeo.Migrations
                             MaNCC = "NCC001",
                             MaNV = "NV001",
                             NgayNhap = new DateTime(2024, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TongTien = 2000000m
+                            TongTien = 2000000m,
+                            TrangThai = 0
                         },
                         new
                         {
                             MaHoaDonNhap = "HDN002",
                             MaNCC = "NCC002",
-                            MaNV = "NV001",
+                            MaNV = "NV002",
                             NgayNhap = new DateTime(2024, 6, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TongTien = 3500000m
+                            TongTien = 3500000m,
+                            TrangThai = 0
                         });
                 });
 
@@ -212,6 +217,9 @@ namespace DuAnBanBanhKeo.Migrations
                     b.Property<decimal>("TongTien")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int>("TrangThai")
+                        .HasColumnType("int");
+
                     b.HasKey("MaHoaDonXuat");
 
                     b.HasIndex("MaKH");
@@ -227,15 +235,17 @@ namespace DuAnBanBanhKeo.Migrations
                             MaKH = "KH001",
                             MaNV = "NV002",
                             NgayXuat = new DateTime(2024, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TongTien = 500000m
+                            TongTien = 500000m,
+                            TrangThai = 0
                         },
                         new
                         {
                             MaHoaDonXuat = "HDX002",
                             MaKH = "KH002",
-                            MaNV = "NV002",
+                            MaNV = "NV001",
                             NgayXuat = new DateTime(2024, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TongTien = 750000m
+                            TongTien = 750000m,
+                            TrangThai = 0
                         });
                 });
 

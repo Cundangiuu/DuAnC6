@@ -151,14 +151,14 @@ namespace DuAnBanBanhKeo.Data
             );
             //Seed Hóa Đơn Nhập
             modelBuilder.Entity<HoaDonNhap>().HasData(
-                new HoaDonNhap { MaHoaDonNhap = "HDN001", MaNCC = "NCC001", MaNV = "NV001", NgayNhap = new DateTime(2024, 6, 1), TongTien = 2000000 },
-                new HoaDonNhap { MaHoaDonNhap = "HDN002", MaNCC = "NCC002", MaNV = "NV001", NgayNhap = new DateTime(2024, 6, 5), TongTien = 3500000 }
+                new HoaDonNhap { MaHoaDonNhap = "HDN001", MaNCC = "NCC001", MaNV = "NV001", NgayNhap = new DateTime(2024, 6, 1), TongTien = 2000000, TrangThai = 0 },
+                new HoaDonNhap { MaHoaDonNhap = "HDN002", MaNCC = "NCC002", MaNV = "NV002", NgayNhap = new DateTime(2024, 6, 5), TongTien = 3500000, TrangThai = 0 }
             );
 
             //Seed Hóa Đơn Xuất
             modelBuilder.Entity<HoaDonXuat>().HasData(
-                new HoaDonXuat { MaHoaDonXuat = "HDX001", MaKH = "KH001", MaNV = "NV002", NgayXuat = new DateTime(2024, 6, 10), TongTien = 500000 },
-                new HoaDonXuat { MaHoaDonXuat = "HDX002", MaKH = "KH002", MaNV = "NV002", NgayXuat = new DateTime(2024, 6, 15), TongTien = 750000 }
+                new HoaDonXuat { MaHoaDonXuat = "HDX001", MaKH = "KH001", MaNV = "NV002", NgayXuat = new DateTime(2024, 6, 10), TongTien = 500000, TrangThai = 0 },
+                new HoaDonXuat { MaHoaDonXuat = "HDX002", MaKH = "KH002", MaNV = "NV001", NgayXuat = new DateTime(2024, 6, 15), TongTien = 750000, TrangThai = 0 }
             );
 
             //Seed Kiểm Kê

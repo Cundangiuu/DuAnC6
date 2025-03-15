@@ -22,6 +22,7 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="../../assets/images/favicon.png" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.4/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
     <style>
         .table-responsive {
             overflow-x: auto;
@@ -82,7 +83,21 @@
                             </ol>
                         </nav>
                     </div>
-
+                    <div class="row mt-3">
+                        
+                        <div class="col-md-4">
+                            <label for="statusFilter" style="font-family: 'Times New Roman', Times, serif;">Lọc theo trạng thái:</label>
+                            <select id="statusFilter" class="form-control">
+                                <option value="">Tất cả</option>
+                                <option value="0">Đang tạo</option>
+                                <option value="1">Đã nhập kho</option>
+                                <option value="2">Đã thanh toán</option>
+                                <option value="3">Đã hủy</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+                    <br>
                     <div class="row">
                         <div class="col-lg-12 grid-margin stretch-card">
                             <div class="card">
@@ -92,8 +107,12 @@
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
                                         data-target="#addHoaDonNhapModal"
                                         style="font-family: 'Times New Roman', Times, serif;">
-                                        Thêm Hóa Đơn Nhập
+                                        Tạo Hóa Đơn Nhập
                                     </button>
+                                    <br>
+                                    <!-- Search, Filter, and Sort Controls -->
+                                    <br>
+
                                     <div class="table-responsive">
                                         <table class="table table-striped" id="hoaDonNhapTable">
                                             <thead>
@@ -106,6 +125,8 @@
                                                         Viên Tạo Hóa Đơn</th>
                                                     <th style="font-family: 'Times New Roman', Times, serif;">Tên Nhà
                                                         Cung Cấp</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Trạng
+                                                        Thái</th>
                                                     <th style="font-family: 'Times New Roman', Times, serif;">Tổng Tiền
                                                     </th>
                                                     <th style="font-family: 'Times New Roman', Times, serif;">Chi Tiết
@@ -127,7 +148,7 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="addHoaDonNhapModalLabel"
-                                                        style="font-family: 'Times New Roman', Times, serif;">Thêm Hóa Đơn
+                                                        style="font-family: 'Times New Roman', Times, serif;">Tạo Hóa Đơn
                                                         Nhập</h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
@@ -151,17 +172,26 @@
                                                         </div>
 
                                                         <!-- Product List (Scrollable Table) -->
-                                                        <div class="table-responsive" style="max-height: 300px; overflow-y: scroll;">
+                                                        <div class="table-responsive"
+                                                            style="max-height: 300px; overflow-y: scroll;">
                                                             <table class="table table-bordered" id="productListTable">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th style="font-family: 'Times New Roman', Times, serif;">Tên Sản
+                                                                        <th
+                                                                            style="font-family: 'Times New Roman', Times, serif;">
+                                                                            Tên Sản
                                                                             Phẩm</th>
-                                                                        <th style="font-family: 'Times New Roman', Times, serif;">Số
+                                                                        <th
+                                                                            style="font-family: 'Times New Roman', Times, serif;">
+                                                                            Số
                                                                             Lượng</th>
-                                                                        <th style="font-family: 'Times New Roman', Times, serif;">Đơn
+                                                                        <th
+                                                                            style="font-family: 'Times New Roman', Times, serif;">
+                                                                            Đơn
                                                                             Giá</th>
-                                                                        <th style="font-family: 'Times New Roman', Times, serif;">Tổng
+                                                                        <th
+                                                                            style="font-family: 'Times New Roman', Times, serif;">
+                                                                            Tổng
                                                                             Tiền</th>
                                                                     </tr>
                                                                 </thead>
@@ -173,7 +203,8 @@
                                                     </form>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal"
                                                         style="font-family: 'Times New Roman', Times, serif;">Hủy</button>
                                                     <button type="button" class="btn btn-primary" id="saveHoaDonNhap"
                                                         style="font-family: 'Times New Roman', Times, serif;">Lưu</button>
@@ -188,7 +219,8 @@
                                         <div class="modal-dialog modal-lg" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="hoaDonNhapDetailsModalLabel" style="font-family: 'Times New Roman', Times, serif;">Chi tiết hóa
+                                                    <h5 class="modal-title" id="hoaDonNhapDetailsModalLabel"
+                                                        style="font-family: 'Times New Roman', Times, serif;">Chi tiết hóa
                                                         đơn nhập</h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
@@ -233,6 +265,17 @@
                                                                 <!-- Options will be loaded here -->
                                                             </select>
                                                         </div>
+                                                        <!-- Thêm dropdown chọn trạng thái -->
+                                                        <div class="form-group">
+                                                            <label for="editTrangThai">Trạng Thái</label>
+                                                            <select class="form-control" id="editTrangThai"
+                                                                name="trangThai">
+                                                                <option value="0">Đang tạo</option>
+                                                                <option value="1">Đã nhập kho</option>
+                                                                <option value="2">Đã thanh toán</option>
+                                                                <option value="3">Đã hủy</option>
+                                                            </select>
+                                                        </div>
                                                         <div class="form-group">
                                                             <label for="editTongTien">Tổng Tiền</label>
                                                             <input type="number" class="form-control"
@@ -240,17 +283,27 @@
                                                         </div>
 
                                                         <!-- Product List (Scrollable Table) -->
-                                                        <div class="table-responsive" style="max-height: 300px; overflow-y: scroll;">
-                                                            <table class="table table-bordered" id="editProductListTable">
+                                                        <div class="table-responsive"
+                                                            style="max-height: 300px; overflow-y: scroll;">
+                                                            <table class="table table-bordered"
+                                                                id="editProductListTable">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th style="font-family: 'Times New Roman', Times, serif;">Tên Sản
+                                                                        <th
+                                                                            style="font-family: 'Times New Roman', Times, serif;">
+                                                                            Tên Sản
                                                                             Phẩm</th>
-                                                                        <th style="font-family: 'Times New Roman', Times, serif;">Số
+                                                                        <th
+                                                                            style="font-family: 'Times New Roman', Times, serif;">
+                                                                            Số
                                                                             Lượng</th>
-                                                                        <th style="font-family: 'Times New Roman', Times, serif;">Đơn
+                                                                        <th
+                                                                            style="font-family: 'Times New Roman', Times, serif;">
+                                                                            Đơn
                                                                             Giá</th>
-                                                                        <th style="font-family: 'Times New Roman', Times, serif;">Tổng
+                                                                        <th
+                                                                            style="font-family: 'Times New Roman', Times, serif;">
+                                                                            Tổng
                                                                             Tiền</th>
                                                                     </tr>
                                                                 </thead>
@@ -265,7 +318,8 @@
                                                     <button type="button" class="btn btn-secondary"
                                                         data-dismiss="modal"
                                                         style="font-family: 'Times New Roman', Times, serif;">Hủy</button>
-                                                    <button type="button" class="btn btn-primary" id="updateHoaDonNhap"
+                                                    <button type="button" class="btn btn-primary"
+                                                        id="updateHoaDonNhap"
                                                         style="font-family: 'Times New Roman', Times, serif;">Lưu Thay
                                                         Đổi</button>
                                                 </div>
@@ -307,6 +361,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.4/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function () {
             // Load navbar, sidebar, and footer
@@ -334,6 +389,7 @@
                             row.append($('<td>').text(new Date(hoaDonNhap.ngayNhap).toLocaleDateString()));
                             row.append($('<td>').text(hoaDonNhap.hoTen)); // Display TenNhanVien
                             row.append($('<td>').text(hoaDonNhap.tenNCC)); // Display TenNhaCungCap
+                            row.append($('<td>').text(getTrangThaiLabel(hoaDonNhap.trangThai))); // Display TrangThai
                             row.append($('<td>').text(formatCurrency(hoaDonNhap.tongTien)));
 
                             // Details button
@@ -361,12 +417,27 @@
                             row.append(actions);
                             tableBody.append(row);
                         });
+
+                        // Initialize or refresh DataTable after data is loaded
+                        if ($.fn.DataTable.isDataTable('#hoaDonNhapTable')) {
+                            $('#hoaDonNhapTable').DataTable().destroy();
+                        }
+                        $('#hoaDonNhapTable').DataTable({
+                            "paging": true,
+                            "ordering": true,
+                            "info": true,
+                            "searching": true,
+                            "language": {
+                                "url": "//cdn.datatables.net/plug-ins/1.13.7/i18n/vi.json"
+                            }
+                        });
                     },
                     error: function (error) {
                         console.error('Error fetching HoaDonNhaps:', error);
                     }
                 });
             }
+
 
             // Load data on page load
             loadHoaDonNhaps();
@@ -382,6 +453,7 @@
                             <p><strong>Ngày Nhập:</strong> ${new Date(hoaDonNhap.ngayNhap).toLocaleDateString()}</p>
                             <p><strong>Tên Nhân Viên:</strong> ${hoaDonNhap.hoTen}</p>
                             <p><strong>Tên Nhà Cung Cấp:</strong> ${hoaDonNhap.tenNCC}</p>
+                             <p><strong>Trạng Thái:</strong> ${getTrangThaiLabel(hoaDonNhap.trangThai)}</p>
                             <p><strong>Tổng Tiền:</strong> ${formatCurrency(hoaDonNhap.tongTien)}</p>
                             <h5 style="font-family: 'Times New Roman', Times, serif;">Chi Tiết Hóa Đơn</h5>
                             <ul>`;
@@ -408,7 +480,10 @@
             // Function to populate the edit modal
             function showEditModal(hoaDonNhap) {
                 $('#editMaHoaDonNhap').val(hoaDonNhap.maHoaDonNhap);
+                $('#editTenNCC').val(hoaDonNhap.maNCC); // Corrected this line
                 $('#editTongTien').val(hoaDonNhap.tongTien);
+                // Set selected value for the "Trạng Thái" dropdown
+                $('#editTrangThai').val(hoaDonNhap.trangThai);  // Thêm dòng này
                 loadSuppliers('#editTenNCC', hoaDonNhap.maNCC);
                 loadEditProductList('#editProductListTable', hoaDonNhap.chiTietHoaDonNhaps);
                 $('#editHoaDonNhapModal').modal('show');
@@ -427,7 +502,7 @@
                             var row = `
                                 <tr>
                                     <td>${product.tenSP}</td>
-                                    <td><input type="number" class="form-control quantity" value="0" data-masp="${product.maSP}" data-gianhap="${product.giaNhap}"></td>
+                                    <td><input type="number" class="form-control quantity" value="0" min="0" data-masp="${product.maSP}" data-gianhap="${product.giaNhap}"></td>
                                     <td><input type="number" class="form-control unitPrice" value="${product.giaNhap}" readonly data-masp="${product.maSP}"></td>
                                     <td class="total">0</td>
                                 </tr>
@@ -461,7 +536,7 @@
                             var row = `
                                 <tr>
                                     <td>${product.tenSP}</td>
-                                    <td><input type="number" class="form-control quantity" value="${quantity}" data-masp="${product.maSP}"></td>
+                                    <td><input type="number" class="form-control quantity" value="${quantity}" min="0" data-masp="${product.maSP}"></td>
                                     <td><input type="number" class="form-control unitPrice" value="${unitPrice}" data-masp="${product.maSP}"></td>
                                     <td class="total">0</td>
                                 </tr>
@@ -486,6 +561,17 @@
                 var totalAmount = 0;
                 $(tableId + ' tbody tr').each(function () {
                     var quantity = parseFloat($(this).find('.quantity').val()) || 0;
+                    // Check if quantity is negative
+                    if (quantity < 0) {
+                        Swal.fire(
+                            'Cảnh báo!',
+                            'Số lượng không được âm.',
+                            'warning'
+                        );
+                        $(this).find('.quantity').val(0); // Reset to 0 or a valid value
+                        quantity = 0; // Ensure total calculation uses valid value
+                    }
+
                     var unitPrice = parseFloat($(this).find('.unitPrice').val()) || 0;
                     var total = quantity * unitPrice;
                     $(this).find('.total').text(formatCurrency(total));
@@ -496,6 +582,7 @@
                 var modalId = '#' + $(tableId).closest('.modal').attr('id');
                 $(modalId + ' #tongTien').val(totalAmount);
             }
+
 
             // Load suppliers function
             function loadSuppliers(selectElementId, selectedMaNCC) {
@@ -564,7 +651,7 @@
                     success: function (response) {
                         Swal.fire(
                             'Thành công!',
-                            'Thêm mới thành công!',
+                            'Tạo hóa đơn mới thành công!',
                             'success'
                         ).then(() => {
                             $('#addHoaDonNhapModal').modal('hide');
@@ -575,7 +662,7 @@
                         console.error('Error adding HoaDonNhap:', error);
                         Swal.fire(
                             'Lỗi!',
-                            'Thêm mới thất bại!',
+                            'Tạo hóa đơn mới thất bại!',
                             'error'
                         );
                     }
@@ -587,6 +674,7 @@
                 var maHoaDonNhap = $('#editMaHoaDonNhap').val();
                 var maNCC = $('#editTenNCC').val();
                 var tongTien = parseFloat($('#editTongTien').val());
+                var trangThai = parseInt($('#editTrangThai').val());
 
                 var chiTietHoaDonNhaps = [];
                 $('#editProductListTable tbody tr').each(function () {
@@ -607,6 +695,7 @@
                     maHoaDonNhap: maHoaDonNhap,
                     maNCC: maNCC,
                     tongTien: tongTien,
+                    trangThai: trangThai,
                     chiTietHoaDonNhaps: chiTietHoaDonNhaps
                 };
 
@@ -635,6 +724,138 @@
                     }
                 });
             });
+
+            function getTrangThaiLabel(trangThai) {
+                switch (trangThai) {
+                    case 0: return "Đang tạo";
+                    case 1: return "Đã nhập kho";
+                    case 2: return "Đã thanh toán";
+                    case 3: return "Đã hủy";
+                    default: return "Không xác định";
+                }
+            }
+
+            // Event listeners for search, filter, and sort
+            $('#searchInput').on('keyup', function () {
+                applyFilters();
+            });
+
+            $('#statusFilter').on('change', function () {
+                applyFilters();
+            });
+
+            $('#sortOrder').on('change', function () {
+                applyFilters();
+            });
+
+            // Apply filters and sorting to the DataTable
+            function applyFilters() {
+                var searchText = $('#searchInput').val().toLowerCase();
+                var statusValue = $('#statusFilter').val();
+                var sortOrder = $('#sortOrder').val();
+
+                // Destroy the DataTable instance
+                if ($.fn.DataTable.isDataTable('#hoaDonNhapTable')) {
+                    $('#hoaDonNhapTable').DataTable().destroy();
+                }
+
+                // Reinitialize DataTable with filtering and sorting
+                $('#hoaDonNhapTable').DataTable({
+                    "paging": true,
+                    "ordering": true,
+                    "info": true,
+                    "searching": false, // Disable the built-in search
+                    "language": {
+                        "url": "//cdn.datatables.net/plug-ins/1.13.7/i18n/vi.json"
+                    },
+                    "data": [], // Provide an empty dataset initially
+
+                    "columns": [
+                        { "data": "maHoaDonNhap" },
+                        {
+                            "data": "ngayNhap",
+                            "render": function (data) {
+                                return new Date(data).toLocaleDateString();
+                            }
+                        },
+                        { "data": "hoTen" },
+                        { "data": "tenNCC" },
+                        {
+                            "data": "trangThai",
+                            "render": function (data) {
+                                return getTrangThaiLabel(data);
+                            }
+                        },
+                        {
+                            "data": "tongTien",
+                            "render": function (data) {
+                                return formatCurrency(data);
+                            }
+                        },
+                        {
+                            "data": "maHoaDonNhap",
+                            "render": function (data) {
+                                return `<button class="btn btn-info btn-sm details-button" data-id="${data}" style="font-family: 'Times New Roman', Times, serif">Chi Tiết</button>`;
+                            }
+                        },
+                        {
+                            "data": "maHoaDonNhap",
+                            "render": function (data) {
+                                return `<button class="btn btn-warning btn-sm mr-1 btn-edit edit-button" data-id="${data}" style="font-family: 'Times New Roman', Times, serif">Sửa</button>`;
+                            }
+                        }
+                    ],
+                    "createdRow": function (row, data, dataIndex) {
+                        $(row).find('.details-button').on('click', function () {
+                            showDetails(data.maHoaDonNhap);
+                        });
+
+                        $(row).find('.edit-button').on('click', function () {
+                            showEditModal(data);
+                        });
+                    },
+                    "initComplete": function (settings, json) {
+                        // Load data from API after DataTable is initialized
+                        $.ajax({
+                            url: 'https://localhost:7203/api/HoaDonNhap',
+                            type: 'GET',
+                            success: function (apiData) {
+                                var filteredData = apiData.filter(function (item) {
+                                    var employeeName = item.hoTen ? item.hoTen.toLowerCase() : ''; // Check if hoTen exists
+                                    var statusMatch = !statusValue || item.trangThai.toString() === statusValue;
+                                    var nameMatch = employeeName.includes(searchText);
+                                    return statusMatch && nameMatch;
+                                });
+
+                                // Sorting logic
+                                if (sortOrder === 'asc') {
+                                    filteredData.sort(function (a, b) {
+                                        return a.tongTien - b.tongTien;
+                                    });
+                                } else if (sortOrder === 'desc') {
+                                    filteredData.sort(function (a, b) {
+                                        return b.tongTien - a.tongTien;
+                                    });
+                                } else if (sortOrder === 'name_asc') {
+                                    filteredData.sort(function (a, b) {
+                                        return a.hoTen.localeCompare(b.hoTen);
+                                    });
+                                } else if (sortOrder === 'name_desc') {
+                                    filteredData.sort(function (a, b) {
+                                        return b.hoTen.localeCompare(a.hoTen);
+                                    });
+                                }
+                                var table = $('#hoaDonNhapTable').DataTable();
+                                table.clear();
+                                table.rows.add(filteredData).draw();
+                            },
+                            error: function (error) {
+                                console.error('Error fetching HoaDonNhaps:', error);
+                            }
+                        });
+                    }
+                });
+            }
         });
     </script>
 </body>

@@ -15,6 +15,7 @@ namespace DuAnBanBanhKeo.Data.Entities
         public KhachHang KhachHang { get; set; } // Khách hàng mua hàng
 
         public decimal TongTien { get; set; } // Tổng tiền bán hàng
+        public int TrangThai { get; set; } = 0;
 
         public ICollection<ChiTietHoaDonXuat> ChiTietHoaDonXuat { get; set; } = new List<ChiTietHoaDonXuat>();
     }

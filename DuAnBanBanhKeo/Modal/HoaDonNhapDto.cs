@@ -15,6 +15,7 @@ namespace DuAnBanBanhKeo.Modal
         public string TenNCC { get; set; }
 
         public decimal TongTien { get; set; } // Tổng tiền nhập hàng
+        public int TrangThai { get; set; }
         public List<ChiTietHoaDonNhapDto> ChiTietHoaDonNhaps { get; set; }
     }
 }
