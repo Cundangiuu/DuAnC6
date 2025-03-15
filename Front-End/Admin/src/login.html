@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Đăng nhập</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="assets/images/favicon.png" />
+
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="content-wrapper d-flex align-items-center auth px-0">
+            <div class="row w-100 mx-0">
+                <div class="col-lg-4 mx-auto">
+                    <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                        <div class="brand-logo">
+                            <img src="assets/images/logo.svg" alt="logo">
+                        </div>
+                        <h4>Xin chào! Hãy bắt đầu nào</h4>
+                        <h6 class="font-weight-light">Đăng nhập để tiếp tục.</h6>
+                        <form class="pt-3" id="loginForm">
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-lg" id="tenDangNhap" placeholder="Tên đăng nhập">
+                            </div>
+                            <div class="form-group position-relative">
+                                <input type="password" class="form-control form-control-lg" id="matKhau" placeholder="Mật khẩu">
+                                <i class="fas fa-eye position-absolute" id="togglePassword" style="cursor: pointer; right: 10px; top: 50%; transform: translateY(-50%);"></i>
+                            </div>
+                            <div class="mt-3">
+                                <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit">Đăng nhập</button>
+                            </div>
+                            <div class="my-2 d-flex justify-content-between align-items-center">
+                                <div class="form-check">
+                                    <label class="form-check-label text-muted">
+                                        <input type="checkbox" class="form-check-input">
+                                        Giữ tôi đăng nhập
+                                    </label>
+                                </div>
+                                <a href="#" class="auth-link text-black">Quên mật khẩu?</a>
+                            </div>
+
+                            <div class="text-center mt-4 font-weight-light">
+                                Bạn chưa có tài khoản? <a href="register.html" class="text-primary">Tạo</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+<!-- plugins:js -->
+<script src="assets/vendors/js/vendor.bundle.base.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+<script src="assets/js/off-canvas.js"></script>
+<script src="assets/js/hoverable-collapse.js"></script>
+    <script src="assets/js/misc.js"></script>
+    <!-- endinject -->
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#matKhau');
+
+        togglePassword.addEventListener('click', function (e) {
+            // toggle the type attribute
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            // toggle the eye slash icon
+            this.classList.toggle('fa-eye-slash');
+        });
+    });
+
+    document.getElementById('loginForm').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Ngăn chặn submit form mặc định
+
+    const tenDangNhap = document.getElementById('tenDangNhap').value;
+    const matKhau = document.getElementById('matKhau').value;
+
+    try {
+        const response = await axios.post('https://localhost:7203/api/DangNhap/login', { tenDangNhap, matKhau });
+
+        // Lưu token và thông tin người dùng vào localStorage
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('maNV', response.data.maNV);
+        localStorage.setItem('hoTen', response.data.hoTen);
+        localStorage.setItem('vaiTro', response.data.vaiTro);
+
+        // Chuyển hướng đến trang index.html
+        window.location.href = 'index.html';
+    } catch (error) {
+        let errorMessage = 'Đăng nhập không thành công.';
+        let alertTitle = 'Đăng nhập thất bại!';
+        let alertIcon = 'error';
+
+        if (error.response) {
+            // Xử lý các mã trạng thái HTTP khác nhau
+            switch (error.response.status) {
+                case 400:
+                    errorMessage = 'Yêu cầu không hợp lệ. Vui lòng kiểm tra lại thông tin đăng nhập.';
+                    break;
+                case 401:
+                    errorMessage = 'Tên đăng nhập hoặc mật khẩu không đúng.';
+                    break;
+                case 403: // Thêm trường hợp tài khoản bị khóa
+                    errorMessage = 'Tài khoản hiện đang bị khóa.';
+                    alertTitle = 'Tài khoản bị khóa!';
+                    alertIcon = 'warning';
+                    break;
+                case 500:
+                    errorMessage = 'Lỗi máy chủ. Vui lòng thử lại sau.';
+                    break;
+                default:
+                    errorMessage = `Lỗi không xác định: ${error.response.status}`;
+            }
+        } else if (error.request) {
+            errorMessage = 'Không thể kết nối đến máy chủ. Vui lòng kiểm tra kết nối mạng của bạn.';
+        } else {
+            errorMessage = `Lỗi: ${error.message}`;
+        }
+        Swal.fire({
+            icon: alertIcon, //Thay đổi icon
+            title: alertTitle, //Thay đổi title
+            text: errorMessage,
+        });
+    }
+});
+</script>
+</body>
+</html>

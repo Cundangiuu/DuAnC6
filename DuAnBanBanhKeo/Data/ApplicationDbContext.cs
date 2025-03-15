@@ -23,7 +23,9 @@ namespace DuAnBanBanhKeo.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //Thiết lập khóa chính cho các bảng có khóa không phải kiểu số
+            base.OnModelCreating(modelBuilder); // Gọi base trước
+
+            // Thiết lập khóa chính cho các bảng có khóa không phải kiểu số
             modelBuilder.Entity<SanPham>().HasKey(sp => sp.MaSP);
             modelBuilder.Entity<NhaCungCap>().HasKey(ncc => ncc.MaNCC);
             modelBuilder.Entity<NhanVien>().HasKey(nv => nv.MaNV);
@@ -34,34 +36,35 @@ namespace DuAnBanBanhKeo.Data
             modelBuilder.Entity<KiemKe>().HasKey(kk => kk.MaKiemKe);
             modelBuilder.Entity<PhieuNhap>().HasKey(pn => pn.MaPhieuNhap);
 
-            //Thiết lập quan hệ 1-n giữa NhaCungCap và SanPham
+            // Thiết lập quan hệ 1-n giữa NhaCungCap và SanPham
             modelBuilder.Entity<SanPham>()
                 .HasOne(sp => sp.NhaCungCap)
                 .WithMany(ncc => ncc.SanPhams)
                 .HasForeignKey(sp => sp.MaNCC);
 
-            //Thiết lập quan hệ 1-n giữa NhanVien và HoaDonNhap
+            // Thiết lập quan hệ 1-n giữa NhanVien và HoaDonNhap
             modelBuilder.Entity<HoaDonNhap>()
                 .HasOne(hdn => hdn.NhanVien)
                 .WithMany(nv => nv.HoaDonNhaps)
                 .HasForeignKey(hdn => hdn.MaNV);
-            //Thiết lập quan hệ 1-n giữa NhaCungCap và HoaDonNhap
+            // Thiết lập quan hệ 1-n giữa NhaCungCap và HoaDonNhap
             modelBuilder.Entity<HoaDonNhap>()
                 .HasOne(hdn => hdn.NhaCungCap)
                 .WithMany(ncc => ncc.HoaDonNhaps)
                 .HasForeignKey(hdn => hdn.MaNCC);
 
-            //Thiết lập quan hệ 1-n giữa NhanVien và HoaDonXuat
+            // Thiết lập quan hệ 1-n giữa NhanVien và HoaDonXuat
             modelBuilder.Entity<HoaDonXuat>()
                 .HasOne(hdx => hdx.NhanVien)
                 .WithMany(nv => nv.HoaDonXuats)
                 .HasForeignKey(hdx => hdx.MaNV);
 
-            //Thiết lập quan hệ 1-n giữa NhanVien và KiemKe
+            // Thiết lập quan hệ 1-n giữa NhanVien và KiemKe
             modelBuilder.Entity<KiemKe>()
                 .HasOne(kk => kk.NhanVien)
                 .WithMany(nv => nv.KiemKes)
-                .HasForeignKey(kk => kk.MaNV);
+                .HasForeignKey(kk => kk.MaNV)
+                .IsRequired(); // Thiết lập MaNV là required
 
             //Thiết lập quan hệ 1-n giữa KhachHang và HoaDonXuat
             modelBuilder.Entity<HoaDonXuat>()
@@ -69,49 +72,49 @@ namespace DuAnBanBanhKeo.Data
                 .WithMany(kh => kh.HoaDonXuats)
                 .HasForeignKey(hdx => hdx.MaKH);
 
-            //Thiết lập quan hệ 1-n giữa HoaDonNhap và ChiTietHoaDonNhap
+            // Thiết lập quan hệ 1-n giữa HoaDonNhap và ChiTietHoaDonNhap
             modelBuilder.Entity<ChiTietHoaDonNhap>()
                 .HasOne(ct => ct.HoaDonNhap)
                 .WithMany(hdn => hdn.ChiTietHoaDonNhaps)
                 .HasForeignKey(ct => ct.MaHoaDonNhap);
 
-            //Thiết lập quan hệ 1-n giữa HoaDonXuat và ChiTietHoaDonXuat
+            // Thiết lập quan hệ 1-n giữa HoaDonXuat và ChiTietHoaDonXuat
             modelBuilder.Entity<ChiTietHoaDonXuat>()
                 .HasOne(ct => ct.HoaDonXuat)
                 .WithMany(hdx => hdx.ChiTietHoaDonXuat)
                 .HasForeignKey(ct => ct.MaHoaDonXuat);
 
-            //Thiết lập quan hệ 1-n giữa KiemKe và ChiTietKiemKe
+            // Thiết lập quan hệ 1-n giữa KiemKe và ChiTietKiemKe
             modelBuilder.Entity<ChiTietKiemKe>()
                 .HasOne(ct => ct.KiemKe)
                 .WithMany(kk => kk.ChiTietKiemKes)
                 .HasForeignKey(ct => ct.MaKiemKe);
 
-            //Thiết lập quan hệ 1-n giữa PhieuNhap và ChiTietPhieuNhap
+            // Thiết lập quan hệ 1-n giữa PhieuNhap và ChiTietPhieuNhap
             modelBuilder.Entity<ChiTietPhieuNhap>()
                 .HasOne(ct => ct.PhieuNhap)
                 .WithMany(pn => pn.ChiTietPhieuNhaps)
                 .HasForeignKey(ct => ct.MaPhieuNhap);
 
-            //Thiết lập quan hệ 1-n giữa SanPham và ChiTietHoaDonNhap
+            // Thiết lập quan hệ 1-n giữa SanPham và ChiTietHoaDonNhap
             modelBuilder.Entity<ChiTietHoaDonNhap>()
                 .HasOne(ct => ct.SanPham)
                 .WithMany(sp => sp.ChiTietHoaDonNhaps)
                 .HasForeignKey(ct => ct.MaSP);
 
-            //Thiết lập quan hệ 1-n giữa SanPham và ChiTietHoaDonXuat
+            // Thiết lập quan hệ 1-n giữa SanPham và ChiTietHoaDonXuat
             modelBuilder.Entity<ChiTietHoaDonXuat>()
                 .HasOne(ct => ct.SanPham)
                 .WithMany(sp => sp.ChiTietHoaDonXuats)
                 .HasForeignKey(ct => ct.MaSP);
 
-            //Thiết lập quan hệ 1-n giữa SanPham và ChiTietKiemKe
+            // Thiết lập quan hệ 1-n giữa SanPham và ChiTietKiemKe
             modelBuilder.Entity<ChiTietKiemKe>()
                 .HasOne(ct => ct.SanPham)
                 .WithMany(sp => sp.ChiTietKiemKes)
                 .HasForeignKey(ct => ct.MaSP);
 
-            //Thiết lập quan hệ 1-n giữa SanPham và ChiTietPhieuNhap
+            // Thiết lập quan hệ 1-n giữa SanPham và ChiTietPhieuNhap
             modelBuilder.Entity<ChiTietPhieuNhap>()
                 .HasOne(ct => ct.SanPham)
                 .WithMany(sp => sp.ChiTietPhieuNhaps)
@@ -119,9 +122,11 @@ namespace DuAnBanBanhKeo.Data
 
             //Thiết lập quan hệ 1-1 giữa NhanVien và TaiKhoan
             modelBuilder.Entity<NhanVien>()
-                .HasOne(nv => nv.TaiKhoan)
-                .WithOne(tk => tk.NhanVien)
-                .HasForeignKey<TaiKhoan>(tk => tk.MaNV);
+             .HasOne(nv => nv.TaiKhoan)
+             .WithOne(tk => tk.NhanVien)
+             .HasForeignKey<TaiKhoan>(tk => tk.MaNV)
+             .IsRequired(false);
+
 
 
 
@@ -167,11 +172,16 @@ namespace DuAnBanBanhKeo.Data
                 new KiemKe { MaKiemKe = "KK001", MaNV = "NV003", NgayKiemKe = new DateTime(2024, 6, 20), GhiChu = "Kiểm kê định kỳ" },
                 new KiemKe { MaKiemKe = "KK002", MaNV = "NV003", NgayKiemKe = new DateTime(2024, 6, 30), GhiChu = "Sai lệch số lượng" }
             );
+<<<<<<< Updated upstream
             modelBuilder.Entity<TaiKhoan>().HasData(
                 new TaiKhoan { MaTK = "TK001", TenDangNhap = "user", MatKhau = "123", MaNV = "NV001", TrangThai = true},
                 new TaiKhoan { MaTK = "TK002", TenDangNhap = "admin", MatKhau = "123", MaNV = "NV002", TrangThai = true }
             );
 
+=======
+
+        
+>>>>>>> Stashed changes
         }
 
     }

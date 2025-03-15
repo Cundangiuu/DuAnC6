@@ -158,7 +158,7 @@ namespace DuAnBanBanhKeo.Migrations
 
                     b.Property<string>("MaNV")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<DateTime>("NgayNhap")
                         .HasColumnType("datetime2");
@@ -209,7 +209,7 @@ namespace DuAnBanBanhKeo.Migrations
 
                     b.Property<string>("MaNV")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<DateTime>("NgayXuat")
                         .HasColumnType("datetime2");
@@ -306,7 +306,7 @@ namespace DuAnBanBanhKeo.Migrations
 
                     b.Property<string>("MaNV")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<DateTime>("NgayKiemKe")
                         .HasColumnType("datetime2");
@@ -383,7 +383,8 @@ namespace DuAnBanBanhKeo.Migrations
             modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.NhanVien", b =>
                 {
                     b.Property<string>("MaNV")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -394,7 +395,8 @@ namespace DuAnBanBanhKeo.Migrations
 
                     b.Property<string>("HoTen")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("SoDienThoai")
                         .IsRequired()
@@ -556,7 +558,7 @@ namespace DuAnBanBanhKeo.Migrations
 
                     b.Property<string>("MaNV")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("MatKhau")
                         .IsRequired()
@@ -742,9 +744,7 @@ namespace DuAnBanBanhKeo.Migrations
                 {
                     b.HasOne("DuAnBanBanhKeo.Data.Entities.NhanVien", "NhanVien")
                         .WithOne("TaiKhoan")
-                        .HasForeignKey("DuAnBanBanhKeo.Data.Entities.TaiKhoan", "MaNV")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DuAnBanBanhKeo.Data.Entities.TaiKhoan", "MaNV");
 
                     b.Navigation("NhanVien");
                 });
