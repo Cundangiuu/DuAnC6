@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DuAnBanBanhKeo.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250316041423_DLSS")]
+    [Migration("20250316172401_DLSS")]
     partial class DLSS
     {
         /// <inheritdoc />
@@ -47,6 +47,10 @@ namespace DuAnBanBanhKeo.Migrations
                     b.Property<int>("SoLuong")
                         .HasColumnType("int");
 
+                    b.Property<string>("TenSP")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("MaHoaDonNhap");
@@ -77,6 +81,10 @@ namespace DuAnBanBanhKeo.Migrations
 
                     b.Property<int>("SoLuong")
                         .HasColumnType("int");
+
+                    b.Property<string>("TenSP")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

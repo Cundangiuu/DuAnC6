@@ -11,7 +11,9 @@ namespace DuAnBanBanhKeo.Data.Entities
         public HoaDonXuat HoaDonXuat { get; set; }
 
         public string MaSP { get; set; }
+        public string TenSP { get; set; }
         public SanPham SanPham { get; set; }
+
 
         public int SoLuong { get; set; } // Số lượng bán
         public decimal DonGia { get; set; } // Giá bán
