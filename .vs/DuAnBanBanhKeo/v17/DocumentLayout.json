@@ -1,6 +1,6 @@
 z{
   "Version": 1,
-  "WorkspaceRootPath": "D:\\FPT\\DuAnC6\\",
+  "WorkspaceRootPath": "D:\\CNTT\\CSharp6\\DuAnC6\\",
   "Documents": [
     {
       "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\fpt\\duanc6\\duanbanbanhkeo\\controllers\\hoadonxuatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,15 +23,15 @@ z{
       "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\data\\entities\\chitiethoadonxuat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\fpt\\duanc6\\duanbanbanhkeo\\data\\entities\\chitiethoadonnhap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\data\\entities\\chitiethoadonnhap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\cntt\\csharp6\\duanc6\\duanbanbanhkeo\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\fpt\\duanc6\\duanbanbanhkeo\\modal\\sanphamdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\modal\\sanphamdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\fpt\\duanc6\\duanbanbanhkeo\\data\\entities\\chitietkiemke.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\cntt\\csharp6\\duanc6\\duanbanbanhkeo\\data\\entities\\chitietkiemke.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\data\\entities\\chitietkiemke.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -72,6 +72,7 @@ z{
     },
     {
       "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\fpt\\duanc6\\duanbanbanhkeo\\data\\entities\\khachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\cntt\\csharp6\\duanc6\\duanbanbanhkeo\\data\\entities\\khachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\data\\entities\\khachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -236,10 +237,20 @@ z{
             {
               "$type": "Document",
               "DocumentIndex": 1,
+          "DockedWidth": 1689,
+          "SelectedChildIndex": 10,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\ApplicationDbContext.cs",
-              "ToolTip": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\ApplicationDbContext.cs",
               "RelativeToolTip": "DuAnBanBanhKeo\\Data\\ApplicationDbContext.cs",
               "ViewState": "AgIAAGYAAAAAAAAAAAAowIIAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -250,9 +261,9 @@ z{
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "ChiTietHoaDonXuat.cs",
-              "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\ChiTietHoaDonXuat.cs",
+              "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\ChiTietHoaDonXuat.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\ChiTietHoaDonXuat.cs",
-              "ToolTip": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\ChiTietHoaDonXuat.cs",
+              "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\ChiTietHoaDonXuat.cs",
               "RelativeToolTip": "DuAnBanBanhKeo\\Data\\Entities\\ChiTietHoaDonXuat.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -272,9 +283,9 @@ z{
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "ChiTietHoaDonNhap.cs",
-              "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\ChiTietHoaDonNhap.cs",
+              "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\ChiTietHoaDonNhap.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\ChiTietHoaDonNhap.cs",
-              "ToolTip": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\ChiTietHoaDonNhap.cs",
+              "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\ChiTietHoaDonNhap.cs",
               "RelativeToolTip": "DuAnBanBanhKeo\\Data\\Entities\\ChiTietHoaDonNhap.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -297,10 +308,35 @@ z{
             {
               "$type": "Document",
               "DocumentIndex": 7,
+              "DocumentIndex": 24,
+              "Title": "20250312050854_DLSS.cs",
+              "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250312050854_DLSS.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250312050854_DLSS.cs",
+              "ToolTip": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250312050854_DLSS.cs",
+              "RelativeToolTip": "..\\..\\..\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250312050854_DLSS.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-12T05:08:55.007Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "ChiTietPhieuNhap.cs",
+              "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\ChiTietPhieuNhap.cs",
+              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\ChiTietPhieuNhap.cs",
+              "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\ChiTietPhieuNhap.cs",
+              "RelativeToolTip": "DuAnBanBanhKeo\\Data\\Entities\\ChiTietPhieuNhap.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-12T04:32:54.114Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
               "Title": "ChiTietKiemKe.cs",
-              "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\ChiTietKiemKe.cs",
+              "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\ChiTietKiemKe.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\ChiTietKiemKe.cs",
-              "ToolTip": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\ChiTietKiemKe.cs",
+              "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\ChiTietKiemKe.cs",
               "RelativeToolTip": "DuAnBanBanhKeo\\Data\\Entities\\ChiTietKiemKe.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -427,10 +463,11 @@ z{
             {
               "$type": "Document",
               "DocumentIndex": 17,
+              "DocumentIndex": 27,
               "Title": "KhachHang.cs",
-              "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\KhachHang.cs",
+              "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\KhachHang.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\KhachHang.cs",
-              "ToolTip": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\KhachHang.cs",
+              "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\KhachHang.cs",
               "RelativeToolTip": "DuAnBanBanhKeo\\Data\\Entities\\KhachHang.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -867,6 +904,26 @@ z{
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-12T05:08:55.007Z",
               "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 723,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 517,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             }
           ]
         }
