@@ -237,6 +237,7 @@ namespace DuAnBanBanhKeo.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MaHoaDonNhap = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     MaSP = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    TenSP = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SoLuong = table.Column<int>(type: "int", nullable: false),
                     DonGia = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
@@ -265,6 +266,7 @@ namespace DuAnBanBanhKeo.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MaHoaDonXuat = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     MaSP = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    TenSP = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SoLuong = table.Column<int>(type: "int", nullable: false),
                     DonGia = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },

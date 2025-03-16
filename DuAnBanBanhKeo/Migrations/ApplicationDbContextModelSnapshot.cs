@@ -44,6 +44,10 @@ namespace DuAnBanBanhKeo.Migrations
                     b.Property<int>("SoLuong")
                         .HasColumnType("int");
 
+                    b.Property<string>("TenSP")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("MaHoaDonNhap");
@@ -74,6 +78,10 @@ namespace DuAnBanBanhKeo.Migrations
 
                     b.Property<int>("SoLuong")
                         .HasColumnType("int");
+
+                    b.Property<string>("TenSP")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

@@ -156,7 +156,6 @@ namespace DuAnBanBanhKeo.Controllers
         }
         // POST: api/HoaDonXuat
         [HttpPost]
-        [Authorize]
         public async Task<ActionResult<HoaDonXuatDto>> PostHoaDonXuat(HoaDonXuatCreateDto hoaDonXuatCreateDto)
         {
             if (!ModelState.IsValid)
