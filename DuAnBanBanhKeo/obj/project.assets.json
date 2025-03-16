@@ -8844,8 +8844,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hoang\\.nuget\\packages\\": {},
-    "D:\\Microsoft Visual StudioShared\\NuGetPackages": {}
+    "C:\\Users\\trant\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
@@ -8853,14 +8853,14 @@
       "projectUniqueName": "D:\\DuAnC6\\DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj",
       "projectName": "DuAnBanBanhKeo",
       "projectPath": "D:\\DuAnC6\\DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj",
-      "packagesPath": "C:\\Users\\hoang\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\trant\\.nuget\\packages\\",
       "outputPath": "D:\\DuAnC6\\DuAnBanBanhKeo\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\Microsoft Visual StudioShared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\hoang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\trant\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -8887,8 +8887,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.200"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -8980,7 +8979,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

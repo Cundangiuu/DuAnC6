@@ -500,7 +500,6 @@ D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Sec
 D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
 D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\appsettings.Development.json
 D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\appsettings.json
-D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\DuAnBanBanhKeo.staticwebassets.endpoints.json
 D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\DuAnBanBanhKeo.exe
 D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\DuAnBanBanhKeo.deps.json
 D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\DuAnBanBanhKeo.runtimeconfig.json
@@ -792,14 +791,11 @@ D:\DuAnC6\DuAnBanBanhKeo\obj\Debug\net8.0\DuAnBanBanhKeo.sourcelink.json
 D:\DuAnC6\DuAnBanBanhKeo\obj\Debug\net8.0\scopedcss\bundle\DuAnBanBanhKeo.styles.css
 D:\DuAnC6\DuAnBanBanhKeo\obj\Debug\net8.0\staticwebassets.build.json
 D:\DuAnC6\DuAnBanBanhKeo\obj\Debug\net8.0\staticwebassets.development.json
-D:\DuAnC6\DuAnBanBanhKeo\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 D:\DuAnC6\DuAnBanBanhKeo\obj\Debug\net8.0\staticwebassets\msbuild.DuAnBanBanhKeo.Microsoft.AspNetCore.StaticWebAssets.props
-D:\DuAnC6\DuAnBanBanhKeo\obj\Debug\net8.0\staticwebassets\msbuild.DuAnBanBanhKeo.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
 D:\DuAnC6\DuAnBanBanhKeo\obj\Debug\net8.0\staticwebassets\msbuild.build.DuAnBanBanhKeo.props
 D:\DuAnC6\DuAnBanBanhKeo\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.DuAnBanBanhKeo.props
 D:\DuAnC6\DuAnBanBanhKeo\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.DuAnBanBanhKeo.props
 D:\DuAnC6\DuAnBanBanhKeo\obj\Debug\net8.0\staticwebassets.pack.json
-D:\DuAnC6\DuAnBanBanhKeo\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\DuAnC6\DuAnBanBanhKeo\obj\Debug\net8.0\DuAnBanB.5FD95777.Up2Date
 D:\DuAnC6\DuAnBanBanhKeo\obj\Debug\net8.0\DuAnBanBanhKeo.dll
 D:\DuAnC6\DuAnBanBanhKeo\obj\Debug\net8.0\refint\DuAnBanBanhKeo.dll
@@ -807,3 +803,4 @@ D:\DuAnC6\DuAnBanBanhKeo\obj\Debug\net8.0\DuAnBanBanhKeo.pdb
 D:\DuAnC6\DuAnBanBanhKeo\obj\Debug\net8.0\DuAnBanBanhKeo.genruntimeconfig.cache
 D:\DuAnC6\DuAnBanBanhKeo\obj\Debug\net8.0\ref\DuAnBanBanhKeo.dll
 D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\DuAnBanBanhKeo.staticwebassets.runtime.json
+D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\DuAnBanBanhKeo.staticwebassets.runtime.json

@@ -17,6 +17,11 @@
         .input-group-text {
             cursor: pointer;
         }
+
+        /* Ẩn cột thông tin tài khoản trong modal */
+        .tai-khoan-group {
+            display: none;
+        }
     </style>
 </head>
 
@@ -154,12 +159,14 @@
                                 <option value="false">Nghỉ Việc</option>
                             </select>
                         </div>
-                        <div class="form-group">
+
+                        <!-- Các trường thông tin tài khoản (ẩn khi sửa) -->
+                        <div class="tai-khoan-group form-group">
                             <label for="tenDangNhap">Tên Đăng Nhập</label>
                             <input type="text" class="form-control" id="tenDangNhap" name="tenDangNhap" required>
                             <div class="invalid-feedback" id="tenDangNhap-feedback">Tên đăng nhập là bắt buộc.</div>
                         </div>
-                        <div class="form-group">
+                        <div class="tai-khoan-group form-group">
                             <label for="matKhau">Mật Khẩu</label>
                             <div class="input-group">
                                 <input type="password" class="form-control" id="matKhau" name="matKhau" required>
@@ -171,7 +178,7 @@
                             </div>
                             <div class="invalid-feedback" id="matKhau-feedback">Mật khẩu là bắt buộc.</div>
                         </div>
-                        <div class="form-group">
+                        <div class="tai-khoan-group form-group">
                             <label for="trangThaiTK">Trạng Thái Tài Khoản</label>
                             <select class="form-control" id="trangThaiTK" name="trangThaiTK">
                                 <option value="true">Đang hoạt động</option>
@@ -189,9 +196,9 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-          var $ = jQuery.noConflict();
-        </script>
+    <script>
+        var $ = jQuery.noConflict();
+    </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         fetch("/Admin/src/partials/_navbar.html")
@@ -231,6 +238,8 @@
                 clearValidationErrors();
                 document.getElementById("tenDangNhap").readOnly = false;
                 $('#nhanVienForm').removeClass('was-validated');
+                // Ẩn lại các trường tài khoản khi đóng modal
+                $('.tai-khoan-group').hide();
             });
 
             $('#searchInput').on('input', function () {
@@ -441,6 +450,10 @@
             document.getElementById("previewHinhAnh").src = "#";
             document.getElementById("previewHinhAnh").style.display = "none";
             document.getElementById("tenDangNhap").readOnly = false;
+
+            // Hiện các trường thông tin tài khoản
+            $('.tai-khoan-group').show();
+
             $('#nhanVienModal').modal('show');
         }
 
@@ -463,22 +476,6 @@
                     document.getElementById("email").value = nv.email;
                     document.getElementById("trangThai").value = nv.trangThai.toString();
 
-                    if (nv.taiKhoan && nv.taiKhoan.tenDangNhap) {
-                        document.getElementById("tenDangNhap").value = nv.taiKhoan.tenDangNhap;
-                        document.getElementById("tenDangNhap").readOnly = true;
-                    } else {
-                        document.getElementById("tenDangNhap").value = "";
-                        document.getElementById("tenDangNhap").readOnly = false;
-                    }
-
-                    if (nv.taiKhoan && nv.taiKhoan.matKhau) {
-                        document.getElementById("matKhau").value = nv.taiKhoan.matKhau;
-                    } else {
-                        document.getElementById("matKhau").value = "";
-                    }
-
-                    document.getElementById("trangThaiTK").value = (nv.taiKhoan && nv.taiKhoan.trangThai !== null && nv.taiKhoan.trangThai !== undefined) ? nv.taiKhoan.trangThai.toString() : "true";
-
                     const preview = document.getElementById("previewHinhAnh");
                     if (nv.hinhAnh) {
                         preview.src = `${currentImagePath}${nv.hinhAnh}`;
@@ -487,6 +484,9 @@
                         preview.src = "#";
                         preview.style.display = "none";
                     }
+
+                    // Ẩn các trường thông tin tài khoản khi sửa
+                    $('.tai-khoan-group').hide();
 
                     $('#nhanVienModal').modal('show');
                 })
@@ -551,17 +551,20 @@
                 isValid = false;
             }
 
-            if (!tenDangNhap.value.trim()) {
-                showValidationMessage(tenDangNhap, "Tên đăng nhập là bắt buộc.");
-                isValid = false;
-            } else if (isDuplicateTenDangNhap(tenDangNhap.value.trim())) {
-                showValidationMessage(tenDangNhap, "Tên đăng nhập đã tồn tại.");
-                isValid = false;
-            }
+            // Kiểm tra validation cho các trường tài khoản chỉ khi đang thêm mới
+            if (!currentNhanVien) {
+                if (!tenDangNhap.value.trim()) {
+                    showValidationMessage(tenDangNhap, "Tên đăng nhập là bắt buộc.");
+                    isValid = false;
+                } else if (isDuplicateTenDangNhap(tenDangNhap.value.trim())) {
+                    showValidationMessage(tenDangNhap, "Tên đăng nhập đã tồn tại.");
+                    isValid = false;
+                }
 
-            if (!matKhau.value.trim()) {
-                showValidationMessage(matKhau, "Mật khẩu là bắt buộc.");
-                isValid = false;
+                if (!matKhau.value.trim()) {
+                    showValidationMessage(matKhau, "Mật khẩu là bắt buộc.");
+                    isValid = false;
+                }
             }
 
             return isValid;
@@ -621,6 +624,13 @@
             const method = currentNhanVien ? 'PUT' : 'POST';
             const url = currentNhanVien ? `${API_URL}/${maNV}` : API_URL;
 
+            // **Quan trọng: Loại bỏ TenDangNhap và MatKhau khi Update**
+            if (currentNhanVien) {
+                formData.delete("tenDangNhap");
+                formData.delete("matKhau");
+                formData.delete("trangThaiTK");
+            }
+
             fetch(url, {
                 method: method,
                 body: formData
@@ -632,7 +642,7 @@
                         Swal.fire({
                             icon: 'success',
                             title: 'Thành công!',
-                            text: 'Lưu thông tin nhân viên thành công.',
+                            text: currentNhanVien ? 'Cập nhật thông tin nhân viên thành công.' : 'Thêm nhân viên thành công!', //Sửa đây
                         });
                     } else {
                         response.text().then(text => console.log(text));

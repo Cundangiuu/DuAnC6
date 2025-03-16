@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using DuAnBanBanhKeo.Data;
 using DuAnBanBanhKeo.Data.Entities;
 using Microsoft.AspNetCore.Http;
-using System.ComponentModel.DataAnnotations;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
-using System.IO; // Import this
+using System.IO;
+using DuAnBanBanhKeo.Modal; // Import NhanVienDto và NhanVienUpdateDto
 
 namespace DuAnBanBanhKeo.Controllers
 {
@@ -16,7 +16,7 @@ namespace DuAnBanBanhKeo.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly ILogger<NhanVienController> _logger;
-        private readonly IWebHostEnvironment _webHostEnvironment; // Add this
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
         public NhanVienController(ApplicationDbContext context, ILogger<NhanVienController> logger, IWebHostEnvironment webHostEnvironment)
         {
@@ -42,21 +42,21 @@ namespace DuAnBanBanhKeo.Controllers
 
         // 2. Lấy thông tin nhân viên theo ID (GET by ID)
         [HttpGet("{id}")]
-        public async Task<ActionResult<NhanVienViewModel>> GetNhanVien(string id)
+        public async Task<ActionResult<NhanVienDto>> GetNhanVien(string id)
         {
             try
             {
                 var nhanVien = await _context.NhanViens
-                    .Include(nv => nv.TaiKhoan) // Load thông tin tài khoản
+                    .Include(nv => nv.TaiKhoan)
                     .FirstOrDefaultAsync(nv => nv.MaNV == id);
 
                 if (nhanVien == null)
                 {
-                    return NotFound(); // Mã 404
+                    return NotFound();
                 }
 
-                // Tạo ViewModel từ entity
-                var nhanVienViewModel = new NhanVienViewModel
+                // Tạo DTO từ entity
+                var nhanVienDto = new NhanVienDto
                 {
                     MaNV = nhanVien.MaNV,
                     HoTen = nhanVien.HoTen,
@@ -64,48 +64,42 @@ namespace DuAnBanBanhKeo.Controllers
                     SoDienThoai = nhanVien.SoDienThoai,
                     Email = nhanVien.Email,
                     TrangThai = nhanVien.TrangThai,
-                    TenDangNhap = nhanVien.TaiKhoan?.TenDangNhap, // Sử dụng null-conditional operator
+                    TenDangNhap = nhanVien.TaiKhoan?.TenDangNhap,
                     MatKhau = nhanVien.TaiKhoan?.MatKhau,
-                    TrangThaiTK = nhanVien.TaiKhoan?.TrangThai ?? false, // Cẩn thận với kiểu boolean có thể null
-                    HinhAnh = nhanVien.HinhAnh // Chỉ trả về tên tệp
+                    TrangThaiTK = nhanVien.TaiKhoan?.TrangThai ?? false,
+                    HinhAnh = nhanVien.HinhAnh
                 };
 
-                return nhanVienViewModel;
+                return nhanVienDto;
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Lỗi khi lấy thông tin nhân viên với ID: {id}", id); // Log lỗi
+                _logger.LogError(ex, "Lỗi khi lấy thông tin nhân viên với ID: {id}", id);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error");
             }
         }
 
-        //3. Thêm nhân viên mới (POST)
+        // 3. Thêm nhân viên mới (POST)
         [HttpPost]
-        public async Task<ActionResult<NhanVien>> CreateNhanVien([FromForm] NhanVienViewModel nhanVienViewModel)
+        public async Task<ActionResult<NhanVien>> CreateNhanVien([FromForm] NhanVienDto nhanVienDto)
         {
-            if (!ModelState.IsValid)
-            {
-                _logger.LogWarning("Dữ liệu không hợp lệ khi tạo nhân viên. Errors: {errors}", ModelState);
-                return BadRequest(ModelState);
-            }
-
             try
             {
                 string uniqueFileName = null;
-                if (nhanVienViewModel.HinhAnhFile != null)
+                if (nhanVienDto.HinhAnhFile != null)
                 {
                     // **Lưu vào thư mục tạm thời**
                     string tempUploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "temp_uploads", "nhanVien");
-                    _logger.LogInformation("Giá trị WebRootPath: {0}", _webHostEnvironment.WebRootPath); // Gỡ lỗi
-                    _logger.LogInformation("Giá trị ContentRootPath: {0}", _webHostEnvironment.ContentRootPath); // Gỡ lỗi
+                    _logger.LogInformation("Giá trị WebRootPath: {0}", _webHostEnvironment.WebRootPath);
+                    _logger.LogInformation("Giá trị ContentRootPath: {0}", _webHostEnvironment.ContentRootPath);
 
                     if (!Directory.Exists(tempUploadsFolder))
                     {
                         Directory.CreateDirectory(tempUploadsFolder);
-                        _logger.LogInformation("Tạo thư mục thành công: {0}", tempUploadsFolder); // Gỡ lỗi
+                        _logger.LogInformation("Tạo thư mục thành công: {0}", tempUploadsFolder);
                     }
 
-                    uniqueFileName = Guid.NewGuid().ToString() + "_" + nhanVienViewModel.HinhAnhFile.FileName;
+                    uniqueFileName = Guid.NewGuid().ToString() + "_" + nhanVienDto.HinhAnhFile.FileName;
                     string filePath = Path.Combine(tempUploadsFolder, uniqueFileName);
                     _logger.LogInformation("Đường dẫn file tạm: {filePath}", filePath);
 
@@ -113,9 +107,9 @@ namespace DuAnBanBanhKeo.Controllers
                     {
                         using (var fileStream = new FileStream(filePath, FileMode.Create))
                         {
-                            await nhanVienViewModel.HinhAnhFile.CopyToAsync(fileStream);
+                            await nhanVienDto.HinhAnhFile.CopyToAsync(fileStream);
                         }
-                        _logger.LogInformation("Lưu file thành công vào thư mục tạm: {0}", filePath); // Gỡ lỗi
+                        _logger.LogInformation("Lưu file thành công vào thư mục tạm: {0}", filePath);
                     }
                     catch (Exception ex)
                     {
@@ -124,7 +118,6 @@ namespace DuAnBanBanhKeo.Controllers
                     }
 
                     //**Sao chép sang thư mục FE**
-                    //Dựa vào cấu trúc thư mục, đường dẫn mới sẽ như sau:
                     string fePath = Path.Combine(_webHostEnvironment.ContentRootPath, "..", "FRONT-END", "Admin", "src", "assets", "images", "nhanVien", uniqueFileName);
 
                     // Đảm bảo thư mục đích tồn tại
@@ -170,12 +163,12 @@ namespace DuAnBanBanhKeo.Controllers
                 // Create nhân viên mới
                 var nhanVien = new NhanVien
                 {
-                    MaNV = nhanVienViewModel.MaNV,
-                    HoTen = nhanVienViewModel.HoTen,
-                    VaiTro = nhanVienViewModel.VaiTro,
-                    SoDienThoai = nhanVienViewModel.SoDienThoai,
-                    Email = nhanVienViewModel.Email,
-                    TrangThai = nhanVienViewModel.TrangThai,
+                    MaNV = nhanVienDto.MaNV,
+                    HoTen = nhanVienDto.HoTen,
+                    VaiTro = nhanVienDto.VaiTro,
+                    SoDienThoai = nhanVienDto.SoDienThoai,
+                    Email = nhanVienDto.Email,
+                    TrangThai = nhanVienDto.TrangThai,
                     HinhAnh = uniqueFileName  // Chỉ lưu tên tệp
                 };
 
@@ -183,10 +176,10 @@ namespace DuAnBanBanhKeo.Controllers
                 var taiKhoan = new TaiKhoan
                 {
                     MaTK = GenerateMaTK(),
-                    TenDangNhap = nhanVienViewModel.TenDangNhap,
-                    MatKhau = nhanVienViewModel.MatKhau,
+                    TenDangNhap = nhanVienDto.TenDangNhap,
+                    MatKhau = nhanVienDto.MatKhau,
                     MaNV = nhanVien.MaNV,
-                    TrangThai = nhanVienViewModel.TrangThaiTK
+                    TrangThai = nhanVienDto.TrangThaiTK
                 };
 
                 nhanVien.TaiKhoan = taiKhoan;
@@ -206,23 +199,16 @@ namespace DuAnBanBanhKeo.Controllers
 
         // 4. Cập nhật thông tin nhân viên (PUT)
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateNhanVien(string id, [FromForm] NhanVienViewModel nhanVienViewModel)
+        public async Task<IActionResult> UpdateNhanVien(string id, [FromForm] NhanVienUpdateDto nhanVienDto)
         {
-            if (id != nhanVienViewModel.MaNV)
+            if (id != nhanVienDto.MaNV)
             {
                 return BadRequest("ID in request body does not match ID in route.");
-            }
-
-            if (!ModelState.IsValid)
-            {
-                _logger.LogWarning("Dữ liệu không hợp lệ khi cập nhật nhân viên. Errors: {errors}", ModelState);
-                return BadRequest(ModelState);
             }
 
             try
             {
                 var nhanVien = await _context.NhanViens
-                    .Include(nv => nv.TaiKhoan)
                     .FirstOrDefaultAsync(nv => nv.MaNV == id);
 
                 if (nhanVien == null)
@@ -231,14 +217,14 @@ namespace DuAnBanBanhKeo.Controllers
                 }
 
                 // Cập nhật thông tin nhân viên
-                nhanVien.HoTen = nhanVienViewModel.HoTen;
-                nhanVien.VaiTro = nhanVienViewModel.VaiTro;
-                nhanVien.SoDienThoai = nhanVienViewModel.SoDienThoai;
-                nhanVien.Email = nhanVienViewModel.Email;
-                nhanVien.TrangThai = nhanVienViewModel.TrangThai;
+                nhanVien.HoTen = nhanVienDto.HoTen;
+                nhanVien.VaiTro = nhanVienDto.VaiTro;
+                nhanVien.SoDienThoai = nhanVienDto.SoDienThoai;
+                nhanVien.Email = nhanVienDto.Email;
+                nhanVien.TrangThai = nhanVienDto.TrangThai;
 
                 // Handle Image Update
-                if (nhanVienViewModel.HinhAnhFile != null)
+                if (nhanVienDto.HinhAnhFile != null)
                 {
                     // **Xóa ảnh cũ từ thư mục tạm**
                     if (nhanVien.HinhAnh != null)
@@ -273,7 +259,7 @@ namespace DuAnBanBanhKeo.Controllers
                         }
                     }
 
-                    string uniqueFileName = Guid.NewGuid().ToString() + "_" + nhanVienViewModel.HinhAnhFile.FileName;
+                    string uniqueFileName = Guid.NewGuid().ToString() + "_" + nhanVienDto.HinhAnhFile.FileName;
                     string filePath = Path.Combine(tempUploadsFolder, uniqueFileName);
                     _logger.LogInformation("Đường dẫn file tạm: {filePath}", filePath);
 
@@ -281,9 +267,9 @@ namespace DuAnBanBanhKeo.Controllers
                     {
                         using (var fileStream = new FileStream(filePath, FileMode.Create))
                         {
-                            await nhanVienViewModel.HinhAnhFile.CopyToAsync(fileStream);
+                            await nhanVienDto.HinhAnhFile.CopyToAsync(fileStream);
                         }
-                        _logger.LogInformation("Lưu file thành công vào thư mục tạm: {0}", filePath); // Gỡ lỗi
+                        _logger.LogInformation("Lưu file thành công vào thư mục tạm: {0}", filePath);
                     }
                     catch (Exception ex)
                     {
@@ -291,7 +277,6 @@ namespace DuAnBanBanhKeo.Controllers
                         return StatusCode(StatusCodes.Status500InternalServerError, "Lỗi khi lưu tệp hình ảnh.");
                     }
                     //**Sao chép sang thư mục FE**
-                    //Dựa vào cấu trúc thư mục, đường dẫn mới sẽ như sau:
                     string fePath = Path.Combine(_webHostEnvironment.ContentRootPath, "..", "FRONT-END", "Admin", "src", "assets", "images", "nhanVien", uniqueFileName);
                     // Đảm bảo thư mục đích tồn tại
                     string feDirectory = Path.GetDirectoryName(fePath);
@@ -332,26 +317,6 @@ namespace DuAnBanBanhKeo.Controllers
                         return StatusCode(StatusCodes.Status500InternalServerError, "Lỗi khi sao chép file sang thư mục FRONT-ENT");
                     }
                     nhanVien.HinhAnh = uniqueFileName;
-                }
-
-                // Cập nhật hoặc tạo thông tin tài khoản
-                if (nhanVien.TaiKhoan != null)
-                {
-                    nhanVien.TaiKhoan.TenDangNhap = nhanVienViewModel.TenDangNhap;
-                    nhanVien.TaiKhoan.MatKhau = nhanVienViewModel.MatKhau;
-                    nhanVien.TaiKhoan.TrangThai = nhanVienViewModel.TrangThaiTK;
-                }
-                else
-                {
-                    var taiKhoan = new TaiKhoan
-                    {
-                        MaTK = GenerateMaTK(),
-                        TenDangNhap = nhanVienViewModel.TenDangNhap,
-                        MatKhau = nhanVienViewModel.MatKhau,
-                        MaNV = nhanVien.MaNV,
-                        TrangThai = nhanVienViewModel.TrangThaiTK
-                    };
-                    nhanVien.TaiKhoan = taiKhoan;
                 }
 
                 await _context.SaveChangesAsync();
@@ -437,42 +402,5 @@ namespace DuAnBanBanhKeo.Controllers
                 return Guid.NewGuid().ToString(); // Trả về Guid nếu có lỗi
             }
         }
-    }
-
-    //ViewModel
-    public class NhanVienViewModel
-    {
-        [Required(ErrorMessage = "Mã nhân viên là bắt buộc.")]
-        [StringLength(10, ErrorMessage = "Mã nhân viên không được vượt quá 10 ký tự.")]
-        public string MaNV { get; set; }
-        public string? HinhAnh { get; set; } // Chỉ lưu tên tệp
-
-        [Required(ErrorMessage = "Họ tên là bắt buộc.")]
-        [StringLength(100, ErrorMessage = "Họ tên không được vượt quá 100 ký tự.")]
-        public string HoTen { get; set; }
-
-        public string VaiTro { get; set; }
-
-        [Required(ErrorMessage = "Số điện thoại là bắt buộc.")]
-        [RegularExpression(@"^0[0-9]{9}$", ErrorMessage = "Số điện thoại không hợp lệ.")]
-        public string SoDienThoai { get; set; }
-
-        [EmailAddress(ErrorMessage = "Email không hợp lệ.")]
-        public string Email { get; set; }
-        public bool TrangThai { get; set; }
-
-        //Thông tin tài khoản
-        [Required(ErrorMessage = "Tên đăng nhập là bắt buộc.")]
-        public string TenDangNhap { get; set; }
-
-        [Required(ErrorMessage = "Mật khẩu là bắt buộc.")]
-        public string MatKhau { get; set; }
-
-        public bool TrangThaiTK { get; set; }
-
-        // Image properties
-
-        [DataType(DataType.Upload)]
-        public IFormFile? HinhAnhFile { get; set; }
     }
 }
