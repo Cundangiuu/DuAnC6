@@ -22,77 +22,119 @@ namespace DuAnBanBanhKeo.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class HoaDonNhapController : ControllerBase
+    public class HoaDonXuatController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
 
-        public HoaDonNhapController(ApplicationDbContext context, IMapper mapper)
+        public HoaDonXuatController(ApplicationDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
 
-        // GET: api/HoaDonNhap
+        // GET: api/HoaDonXuat
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<HoaDonNhapDto>>> GetHoaDonNhaps()
+        public async Task<ActionResult<IEnumerable<HoaDonXuatDto>>> GetHoaDonXuats()
         {
-            var hoaDonNhaps = await _context.HoaDonNhaps
-                .Include(hdn => hdn.ChiTietHoaDonNhaps)
+            var hoaDonXuats = await _context.HoaDonXuats
+                .Include(hdx => hdx.ChiTietHoaDonXuat)
                 .ThenInclude(ct => ct.SanPham)
-                .Include(hdn => hdn.NhanVien)
-                .Include(hdn => hdn.NhaCungCap)
+                .Include(hdx => hdx.NhanVien)
+                .Include(hdx => hdx.KhachHang)
                 .ToListAsync();
 
-            return _mapper.Map<List<HoaDonNhapDto>>(hoaDonNhaps);
+            return _mapper.Map<List<HoaDonXuatDto>>(hoaDonXuats);
         }
 
-        // GET: api/HoaDonNhap/5
-        [HttpGet("{maHoaDonNhap}")]
-        public async Task<ActionResult<HoaDonNhapDto>> GetHoaDonNhap(string maHoaDonNhap)
+        // GET: api/HoaDonXuat/5
+        [HttpGet("{maHoaDonXuat}")]
+        public async Task<ActionResult<HoaDonXuatDto>> GetHoaDonXuat(string maHoaDonXuat)
         {
-            var hoaDonNhap = await _context.HoaDonNhaps
-                .Include(hdn => hdn.ChiTietHoaDonNhaps)
+            var hoaDonXuat = await _context.HoaDonXuats
+                .Include(hdx => hdx.ChiTietHoaDonXuat)
                 .ThenInclude(ct => ct.SanPham)
-                .Include(hdn => hdn.NhanVien)
-                .Include(hdn => hdn.NhaCungCap)
-                .FirstOrDefaultAsync(hdn => hdn.MaHoaDonNhap == maHoaDonNhap);
+                .Include(hdx => hdx.NhanVien)
+                .Include(hdx => hdx.KhachHang)
+                .FirstOrDefaultAsync(hdx => hdx.MaHoaDonXuat == maHoaDonXuat);
 
-            if (hoaDonNhap == null)
+            if (hoaDonXuat == null)
             {
                 return NotFound();
             }
 
-            return _mapper.Map<HoaDonNhapDto>(hoaDonNhap);
+            return _mapper.Map<HoaDonXuatDto>(hoaDonXuat);
         }
 
-        // PUT: api/HoaDonNhap/5
-        [HttpPut("{maHoaDonNhap}")]
-        public async Task<IActionResult> PutHoaDonNhap(string maHoaDonNhap, HoaDonNhapUpdateDto hoaDonNhapUpdateDto)
+        // PUT: api/HoaDonXuat/5
+        [HttpPut("{maHoaDonXuat}")]
+        public async Task<IActionResult> PutHoaDonXuat(string maHoaDonXuat, HoaDonXuatUpdateDto hoaDonXuatUpdateDto)
         {
-            if (maHoaDonNhap != hoaDonNhapUpdateDto.MaHoaDonNhap)
+            if (maHoaDonXuat != hoaDonXuatUpdateDto.MaHoaDonXuat)
             {
                 return BadRequest();
             }
 
-            var hoaDonNhap = await _context.HoaDonNhaps
-                .Include(hdn => hdn.ChiTietHoaDonNhaps)
-                .FirstOrDefaultAsync(hdn => hdn.MaHoaDonNhap == maHoaDonNhap);
+            var hoaDonXuat = await _context.HoaDonXuats
+                .Include(hdx => hdx.ChiTietHoaDonXuat)
+                .FirstOrDefaultAsync(hdx => hdx.MaHoaDonXuat == maHoaDonXuat);
 
-            if (hoaDonNhap == null)
+            if (hoaDonXuat == null)
             {
                 return NotFound();
             }
 
-            _mapper.Map(hoaDonNhapUpdateDto, hoaDonNhap);
+            _mapper.Map(hoaDonXuatUpdateDto, hoaDonXuat);
 
             // Validate trạng thái
-            if (!IsValidTrangThai(hoaDonNhapUpdateDto.TrangThai))
+            if (!IsValidTrangThai(hoaDonXuatUpdateDto.TrangThai))
             {
                 return BadRequest("Trạng thái không hợp lệ. Chỉ chấp nhận: 0, 1, 2, 3.");
             }
 
-            hoaDonNhap.TrangThai = hoaDonNhapUpdateDto.TrangThai; // Cập nhật trạng thái
+            hoaDonXuat.TrangThai = hoaDonXuatUpdateDto.TrangThai; // Cập nhật trạng thái
+
+            // Xử lý cập nhật chi tiết hóa đơn
+            if (hoaDonXuatUpdateDto.ChiTietHoaDonXuats != null)
+            {
+                // Lặp qua các chi tiết hóa đơn được gửi đến từ request
+                foreach (var chiTietDto in hoaDonXuatUpdateDto.ChiTietHoaDonXuats)
+                {
+                    var sanPham = await _context.SanPhams.FindAsync(chiTietDto.MaSP);
+                    if (sanPham == null)
+                    {
+                        return BadRequest($"Không tìm thấy sản phẩm với mã {chiTietDto.MaSP}.");
+                    }
+
+                    if (sanPham.SoLuongTon == 0)
+                    {
+                        return BadRequest($"Sản phẩm {sanPham.TenSP} đã hết hàng và không thể thêm/sửa vào hóa đơn.");
+                    }
+                    //Tìm Chi tiết hóa đơn xuất theo mã sản phẩm
+                    var existingChiTiet = hoaDonXuat.ChiTietHoaDonXuat.FirstOrDefault(ct => ct.MaSP == chiTietDto.MaSP);
+
+                    if (existingChiTiet != null)
+                    {
+                        // Cập nhật số lượng và đơn giá nếu tìm thấy
+                        existingChiTiet.SoLuong = chiTietDto.SoLuong;
+                        existingChiTiet.DonGia = chiTietDto.DonGia;
+                    }
+                    else
+                    {
+                        // Nếu không tìm thấy, tạo mới chi tiết hóa đơn
+
+                        var newChiTiet = new ChiTietHoaDonXuat
+                        {
+                            MaHoaDonXuat = hoaDonXuat.MaHoaDonXuat,
+                            MaSP = chiTietDto.MaSP,
+                            SoLuong = chiTietDto.SoLuong,
+                            DonGia = chiTietDto.DonGia // You might want to use sanPham.GiaBan here as well, depending on the scenario
+                        };
+                        _context.ChiTietHoaDonXuats.Add(newChiTiet);
+                        hoaDonXuat.ChiTietHoaDonXuat.Add(newChiTiet);
+                    }
+                }
+            }
 
             try
             {
@@ -100,7 +142,7 @@ namespace DuAnBanBanhKeo.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!HoaDonNhapExists(maHoaDonNhap))
+                if (!HoaDonXuatExists(maHoaDonXuat))
                 {
                     return NotFound();
                 }
@@ -112,11 +154,10 @@ namespace DuAnBanBanhKeo.Controllers
 
             return NoContent();
         }
-
-        // POST: api/HoaDonNhap
+        // POST: api/HoaDonXuat
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<HoaDonNhapDto>> PostHoaDonNhap(HoaDonNhapCreateDto hoaDonNhapCreateDto)
+        public async Task<ActionResult<HoaDonXuatDto>> PostHoaDonXuat(HoaDonXuatCreateDto hoaDonXuatCreateDto)
         {
             if (!ModelState.IsValid)
             {
@@ -137,71 +178,86 @@ namespace DuAnBanBanhKeo.Controllers
                 return BadRequest("Mã nhân viên không hợp lệ.");
             }
 
-            string maHoaDonNhap = GenerateMaHoaDonNhap();
+            string maHoaDonXuat = GenerateMaHoaDonXuat();
 
-            var hoaDonNhap = new HoaDonNhap
+            var hoaDonXuat = new HoaDonXuat
             {
-                MaHoaDonNhap = maHoaDonNhap,
-                NgayNhap = DateTime.Now,
+                MaHoaDonXuat = maHoaDonXuat,
+                NgayXuat = DateTime.Now,
                 MaNV = maNV,
-                MaNCC = hoaDonNhapCreateDto.MaNCC,
-                TongTien = hoaDonNhapCreateDto.TongTien,
+                MaKH = hoaDonXuatCreateDto.MaKH,
+                TongTien = hoaDonXuatCreateDto.TongTien,
                 TrangThai = 0 // Đặt trạng thái mặc định
             };
 
-            _context.HoaDonNhaps.Add(hoaDonNhap);
+            _context.HoaDonXuats.Add(hoaDonXuat);
 
-            foreach (var chiTietDto in hoaDonNhapCreateDto.ChiTietHoaDonNhaps)
+            foreach (var chiTietDto in hoaDonXuatCreateDto.ChiTietHoaDonXuats)
             {
                 var sanPham = await _context.SanPhams.FindAsync(chiTietDto.MaSP);
-                if (sanPham != null)
+                if (sanPham == null)
                 {
-                    sanPham.SoLuongTon += chiTietDto.SoLuong;
+                    return BadRequest($"Không tìm thấy sản phẩm với mã {chiTietDto.MaSP}.");
                 }
 
-                var chiTiet = new ChiTietHoaDonNhap
+                // Validate if the product is out of stock
+                if (sanPham.SoLuongTon == 0)
                 {
-                    MaHoaDonNhap = hoaDonNhap.MaHoaDonNhap,
+                    return BadRequest($"Sản phẩm {sanPham.TenSP} đã hết hàng và không thể thêm vào hóa đơn.");
+                }
+                // Lấy giá bán từ sản phẩm
+                decimal giaBan = sanPham.GiaBan;
+
+                //Giảm số lượng tồn kho khi bán sản phẩm
+                sanPham.SoLuongTon -= chiTietDto.SoLuong;
+                if (sanPham.SoLuongTon < 0)
+                {
+                    return BadRequest($"Số lượng sản phẩm {sanPham.TenSP} trong kho không đủ.");
+                }
+
+                var chiTiet = new ChiTietHoaDonXuat
+                {
+                    MaHoaDonXuat = hoaDonXuat.MaHoaDonXuat,
                     MaSP = chiTietDto.MaSP,
                     SoLuong = chiTietDto.SoLuong,
-                    DonGia = chiTietDto.DonGia
+                    DonGia = giaBan // Sử dụng giá bán
                 };
-                _context.ChiTietHoaDonNhaps.Add(chiTiet);
+                _context.ChiTietHoaDonXuats.Add(chiTiet);
             }
 
             await _context.SaveChangesAsync();
 
             // Load related entities for the DTO
-            await _context.Entry(hoaDonNhap).Reference(h => h.NhaCungCap).LoadAsync();
-            await _context.Entry(hoaDonNhap).Reference(h => h.NhanVien).LoadAsync();
-            foreach (var ct in hoaDonNhap.ChiTietHoaDonNhaps)
+            await _context.Entry(hoaDonXuat).Reference(h => h.KhachHang).LoadAsync();
+            await _context.Entry(hoaDonXuat).Reference(h => h.NhanVien).LoadAsync();
+            foreach (var ct in hoaDonXuat.ChiTietHoaDonXuat)
             {
                 await _context.Entry(ct).Reference(c => c.SanPham).LoadAsync();
             }
 
-            return CreatedAtAction("GetHoaDonNhap", new { maHoaDonNhap = hoaDonNhap.MaHoaDonNhap }, _mapper.Map<HoaDonNhapDto>(hoaDonNhap));
+            return CreatedAtAction("GetHoaDonXuat", new { maHoaDonXuat = hoaDonXuat.MaHoaDonXuat }, _mapper.Map<HoaDonXuatDto>(hoaDonXuat));
         }
 
 
-        [HttpGet("ExportToWord/{maHoaDonNhap}")]
-        public async Task<IActionResult> ExportToWord(string maHoaDonNhap)
+        [HttpGet("ExportToWord/{maHoaDonXuat}")]
+        public async Task<IActionResult> ExportToWord(string maHoaDonXuat)
         {
-            var hoaDonNhap = await _context.HoaDonNhaps
-                .Include(hdn => hdn.ChiTietHoaDonNhaps)
+            var hoaDonXuat = await _context.HoaDonXuats
+                .Include(hdx => hdx.ChiTietHoaDonXuat)
                 .ThenInclude(ct => ct.SanPham)
-                .Include(hdn => hdn.NhanVien)
-                .Include(hdn => hdn.NhaCungCap)
-                .FirstOrDefaultAsync(hdn => hdn.MaHoaDonNhap == maHoaDonNhap);
+                .Include(hdx => hdx.NhanVien)
+                .Include(hdx => hdx.KhachHang)
+                .FirstOrDefaultAsync(hdx => hdx.MaHoaDonXuat == maHoaDonXuat);
 
-            if (hoaDonNhap == null)
+            if (hoaDonXuat == null)
             {
                 return NotFound();
             }
 
             try
             {
-                byte[] byteArray = GenerateWordDocument(hoaDonNhap);
-                return File(byteArray, "application/vnd.openxmlformats-officedocument.wordprocessingml.document", $"HoaDonNhap_{maHoaDonNhap}.docx");
+                byte[] byteArray = GenerateWordDocument(hoaDonXuat);
+                return File(byteArray, "application/vnd.openxmlformats-officedocument.wordprocessingml.document", $"HoaDonXuat_{maHoaDonXuat}.docx");
             }
             catch (Exception ex)
             {
@@ -212,7 +268,7 @@ namespace DuAnBanBanhKeo.Controllers
         }
 
 
-        private byte[] GenerateWordDocument(HoaDonNhap hoaDonNhap)
+        private byte[] GenerateWordDocument(HoaDonXuat hoaDonXuat)
         {
             using (MemoryStream mem = new MemoryStream())
             {
@@ -224,12 +280,12 @@ namespace DuAnBanBanhKeo.Controllers
                     Body body = mainPart.Document.AppendChild(new Body());
 
                     // Add title
-                    body.AppendChild(CreateParagraph("HÓA ĐƠN NHẬP", bold: true, center: true));
-                    body.AppendChild(CreateParagraph($"Mã hóa đơn: {hoaDonNhap.MaHoaDonNhap}"));
-                    body.AppendChild(CreateParagraph($"Ngày nhập: {hoaDonNhap.NgayNhap}"));
-                    body.AppendChild(CreateParagraph($"Nhân viên: {hoaDonNhap.NhanVien?.HoTen}"));
-                    body.AppendChild(CreateParagraph($"Nhà cung cấp: {hoaDonNhap.NhaCungCap?.TenNCC}"));
-                    body.AppendChild(CreateParagraph($"Tổng tiền: {hoaDonNhap.TongTien:N0} VNĐ"));
+                    body.AppendChild(CreateParagraph("HÓA ĐƠN XUẤT", bold: true, center: true));
+                    body.AppendChild(CreateParagraph($"Mã hóa đơn: {hoaDonXuat.MaHoaDonXuat}"));
+                    body.AppendChild(CreateParagraph($"Ngày xuất: {hoaDonXuat.NgayXuat}"));
+                    body.AppendChild(CreateParagraph($"Nhân viên: {hoaDonXuat.NhanVien?.HoTen}"));
+                    body.AppendChild(CreateParagraph($"Khách hàng: {hoaDonXuat.KhachHang?.TenKH}"));
+                    body.AppendChild(CreateParagraph($"Tổng tiền: {hoaDonXuat.TongTien:N0} VNĐ"));
 
                     // Add table for chi tiết hóa đơn
                     Table table = new Table();
@@ -258,7 +314,7 @@ namespace DuAnBanBanhKeo.Controllers
 
 
                     // Detail rows
-                    foreach (var chiTiet in hoaDonNhap.ChiTietHoaDonNhaps)
+                    foreach (var chiTiet in hoaDonXuat.ChiTietHoaDonXuat)
                     {
                         TableRow row = new TableRow();
                         row.Append(CreateTableCell(chiTiet.MaSP));
@@ -318,25 +374,25 @@ namespace DuAnBanBanhKeo.Controllers
         }
 
 
-        private string GenerateMaHoaDonNhap()
+        private string GenerateMaHoaDonXuat()
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             var random = new Random();
-            string maHoaDonNhap;
+            string maHoaDonXuat;
 
             do
             {
-                maHoaDonNhap = "HDN" + new string(Enumerable.Repeat(chars, 6)
+                maHoaDonXuat = "HDX" + new string(Enumerable.Repeat(chars, 6)
                     .Select(s => s[random.Next(s.Length)]).ToArray());
             }
-            while (_context.HoaDonNhaps.Any(hdn => hdn.MaHoaDonNhap == maHoaDonNhap));
+            while (_context.HoaDonXuats.Any(hdx => hdx.MaHoaDonXuat == maHoaDonXuat));
 
-            return maHoaDonNhap;
+            return maHoaDonXuat;
         }
 
-        private bool HoaDonNhapExists(string maHoaDonNhap)
+        private bool HoaDonXuatExists(string maHoaDonXuat)
         {
-            return _context.HoaDonNhaps.Any(e => e.MaHoaDonNhap == maHoaDonNhap);
+            return _context.HoaDonXuats.Any(e => e.MaHoaDonXuat == maHoaDonXuat);
         }
 
         [HttpGet("Products")]
@@ -346,11 +402,11 @@ namespace DuAnBanBanhKeo.Controllers
             return _mapper.Map<List<SanPhamDto>>(sanPhams);
         }
 
-        [HttpGet("Suppliers")]
-        public async Task<ActionResult<IEnumerable<NhaCungCapDto>>> GetSuppliers()
+        [HttpGet("Customers")]
+        public async Task<ActionResult<IEnumerable<KhachHangDto>>> GetCustomers()
         {
-            var nhaCungCaps = await _context.NhaCungCaps.ToListAsync();
-            return _mapper.Map<List<NhaCungCapDto>>(nhaCungCaps);
+            var khachHangs = await _context.KhachHangs.ToListAsync();
+            return _mapper.Map<List<KhachHangDto>>(khachHangs);
         }
 
         // Hàm kiểm tra trạng thái hợp lệ

@@ -9,10 +9,10 @@ namespace DuAnBanBanhKeo.Data.Entities
         public DateTime NgayXuat { get; set; } = DateTime.Now;
 
         public string MaNV { get; set; }
-        public NhanVien NhanVien { get; set; } // Nhân viên bán hàng
+        public NhanVien NhanVien { get; set; } 
 
         public string MaKH { get; set; }
-        public KhachHang KhachHang { get; set; } // Khách hàng mua hàng
+        public KhachHang KhachHang { get; set; } 
 
         public decimal TongTien { get; set; } // Tổng tiền bán hàng
         public int TrangThai { get; set; } = 0;

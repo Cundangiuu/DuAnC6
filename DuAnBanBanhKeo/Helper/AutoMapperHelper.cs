@@ -19,14 +19,26 @@ namespace DuAnBanBanhKeo.Helpers
                 .ForMember(dest => dest.ChiTietHoaDonNhaps, opt => opt.MapFrom(src => src.ChiTietHoaDonNhaps));
             CreateMap<HoaDonNhapDto, HoaDonNhap>();
 
-            CreateMap<ChiTietHoaDonNhap, ChiTietHoaDonNhapDto>(); 
+            CreateMap<ChiTietHoaDonNhap, ChiTietHoaDonNhapDto>();
             CreateMap<ChiTietHoaDonNhapDto, ChiTietHoaDonNhap>();
 
-            CreateMap<HoaDonNhapCreateDto, HoaDonNhap>(); 
+            CreateMap<HoaDonNhapCreateDto, HoaDonNhap>();
             CreateMap<HoaDonNhapUpdateDto, HoaDonNhap>();
 
+            CreateMap<HoaDonXuat, HoaDonXuatDto>()
+                .ForMember(dest => dest.NhanVien, opt => opt.MapFrom(src => src.NhanVien))
+                .ForMember(dest => dest.KhachHang, opt => opt.MapFrom(src => src.KhachHang)); // Map KhachHang from HoaDonXuat to HoaDonXuatDto
+            CreateMap<HoaDonXuatCreateDto, HoaDonXuat>();
+            CreateMap<HoaDonXuatUpdateDto, HoaDonXuat>()
+                .ForMember(dest => dest.MaHoaDonXuat, opt => opt.Ignore());
+            CreateMap<ChiTietHoaDonXuat, ChiTietHoaDonXuatDto>();
+
+            CreateMap<NhanVien, NhanVienDto>(); // Add this mapping
             CreateMap<SanPham, SanPhamDto>();
             CreateMap<NhaCungCap, NhaCungCapDto>();
+            CreateMap<KhachHang, KhachHangDto>(); // Add this mapping
+            CreateMap<KhachHangDto, KhachHang>(); // Optional: Add this if you need to map back from DTO to entity.
+
         }
     }
 }
