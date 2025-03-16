@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DuAnBanBanhKeo.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250312072347_DLSS")]
-    partial class DLSS
+    [Migration("20250316154927_dlss")]
+    partial class dlss
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -148,6 +148,70 @@ namespace DuAnBanBanhKeo.Migrations
                     b.HasIndex("MaSP");
 
                     b.ToTable("ChiTietPhieuNhaps");
+                });
+
+            modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.DanhMuc", b =>
+                {
+                    b.Property<string>("MaDanhMuc")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("MoTa")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("TenDanhMuc")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("MaDanhMuc");
+
+                    b.ToTable("DanhMucs");
+
+                    b.HasData(
+                        new
+                        {
+                            MaDanhMuc = "DM001",
+                            MoTa = "Các loại bánh ngọt và bánh mặn",
+                            TenDanhMuc = "Bánh"
+                        },
+                        new
+                        {
+                            MaDanhMuc = "DM002",
+                            MoTa = "Các loại kẹo và snack",
+                            TenDanhMuc = "Kẹo"
+                        },
+                        new
+                        {
+                            MaDanhMuc = "DM003",
+                            MoTa = "Các loại nước ngọt và nước trái cây",
+                            TenDanhMuc = "Nước giải khát"
+                        });
+                });
+
+            modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.HinhAnh", b =>
+                {
+                    b.Property<int>("HinhAnhId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HinhAnhId"));
+
+                    b.Property<string>("MaSP")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("HinhAnhId");
+
+                    b.HasIndex("MaSP");
+
+                    b.ToTable("HinhAnhs");
                 });
 
             modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.HoaDonNhap", b =>
@@ -470,8 +534,8 @@ namespace DuAnBanBanhKeo.Migrations
                     b.Property<decimal>("GiaNhap")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("HinhAnh")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("MaDanhMuc")
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("MaNCC")
                         .HasColumnType("nvarchar(450)");
@@ -488,6 +552,8 @@ namespace DuAnBanBanhKeo.Migrations
 
                     b.HasKey("MaSP");
 
+                    b.HasIndex("MaDanhMuc");
+
                     b.HasIndex("MaNCC");
 
                     b.ToTable("SanPhams");
@@ -499,6 +565,7 @@ namespace DuAnBanBanhKeo.Migrations
                             DonViTinh = "Lon",
                             GiaBan = 10000m,
                             GiaNhap = 5000m,
+                            MaDanhMuc = "DM003",
                             MaNCC = "NCC001",
                             SoLuongTon = 100,
                             TenSP = "Coca-Cola 330ml",
@@ -510,6 +577,7 @@ namespace DuAnBanBanhKeo.Migrations
                             DonViTinh = "Lon",
                             GiaBan = 9500m,
                             GiaNhap = 4800m,
+                            MaDanhMuc = "DM003",
                             MaNCC = "NCC002",
                             SoLuongTon = 120,
                             TenSP = "Pepsi 330ml",
@@ -521,6 +589,7 @@ namespace DuAnBanBanhKeo.Migrations
                             DonViTinh = "Gói",
                             GiaBan = 15000m,
                             GiaNhap = 7000m,
+                            MaDanhMuc = "DM001",
                             MaNCC = "NCC003",
                             SoLuongTon = 50,
                             TenSP = "Bánh Oreo",
@@ -532,6 +601,7 @@ namespace DuAnBanBanhKeo.Migrations
                             DonViTinh = "Gói",
                             GiaBan = 18000m,
                             GiaNhap = 9000m,
+                            MaDanhMuc = "DM002",
                             MaNCC = "NCC001",
                             SoLuongTon = 75,
                             TenSP = "Snack Lay's",
@@ -575,7 +645,7 @@ namespace DuAnBanBanhKeo.Migrations
                         {
                             MaTK = "TK002",
                             MaNV = "NV002",
-                            MatKhau = "hashed_password_2",
+                            MatKhau = "123",
                             TenDangNhap = "admin"
                         });
                 });
@@ -656,6 +726,17 @@ namespace DuAnBanBanhKeo.Migrations
                     b.Navigation("SanPham");
                 });
 
+            modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.HinhAnh", b =>
+                {
+                    b.HasOne("DuAnBanBanhKeo.Data.Entities.SanPham", "SanPham")
+                        .WithMany("HinhAnhs")
+                        .HasForeignKey("MaSP")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SanPham");
+                });
+
             modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.HoaDonNhap", b =>
                 {
                     b.HasOne("DuAnBanBanhKeo.Data.Entities.NhaCungCap", "NhaCungCap")
@@ -716,9 +797,15 @@ namespace DuAnBanBanhKeo.Migrations
 
             modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.SanPham", b =>
                 {
+                    b.HasOne("DuAnBanBanhKeo.Data.Entities.DanhMuc", "DanhMuc")
+                        .WithMany("SanPhams")
+                        .HasForeignKey("MaDanhMuc");
+
                     b.HasOne("DuAnBanBanhKeo.Data.Entities.NhaCungCap", "NhaCungCap")
                         .WithMany("SanPhams")
                         .HasForeignKey("MaNCC");
+
+                    b.Navigation("DanhMuc");
 
                     b.Navigation("NhaCungCap");
                 });
@@ -732,6 +819,11 @@ namespace DuAnBanBanhKeo.Migrations
                         .IsRequired();
 
                     b.Navigation("NhanVien");
+                });
+
+            modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.DanhMuc", b =>
+                {
+                    b.Navigation("SanPhams");
                 });
 
             modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.HoaDonNhap", b =>
@@ -787,6 +879,8 @@ namespace DuAnBanBanhKeo.Migrations
                     b.Navigation("ChiTietKiemKes");
 
                     b.Navigation("ChiTietPhieuNhaps");
+
+                    b.Navigation("HinhAnhs");
                 });
 #pragma warning restore 612, 618
         }

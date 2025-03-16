@@ -8,6 +8,7 @@ namespace DuAnBanBanhKeo.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         public DbSet<SanPham> SanPhams { get; set; }
+        public DbSet<DanhMuc> DanhMucs { get; set; }
         public DbSet<NhaCungCap> NhaCungCaps { get; set; }
         public DbSet<NhanVien> NhanViens { get; set; }
         public DbSet<TaiKhoan> TaiKhoans { get; set; }
@@ -20,6 +21,7 @@ namespace DuAnBanBanhKeo.Data
         public DbSet<KhachHang> KhachHangs { get; set; }
         public DbSet<PhieuNhap> PhieuNhaps { get; set; }
         public DbSet<ChiTietPhieuNhap> ChiTietPhieuNhaps { get; set; }
+        public DbSet<HinhAnh> HinhAnhs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,12 +35,26 @@ namespace DuAnBanBanhKeo.Data
             modelBuilder.Entity<KhachHang>().HasKey(kh => kh.MaKH);
             modelBuilder.Entity<KiemKe>().HasKey(kk => kk.MaKiemKe);
             modelBuilder.Entity<PhieuNhap>().HasKey(pn => pn.MaPhieuNhap);
+            modelBuilder.Entity<DanhMuc>().HasKey(dm => dm.MaDanhMuc);
+            modelBuilder.Entity<HinhAnh>().HasKey(ha => ha.HinhAnhId);
 
             //Thiết lập quan hệ 1-n giữa NhaCungCap và SanPham
             modelBuilder.Entity<SanPham>()
                 .HasOne(sp => sp.NhaCungCap)
                 .WithMany(ncc => ncc.SanPhams)
                 .HasForeignKey(sp => sp.MaNCC);
+
+            //Thiết lập quan hệ 1-n giữa DanhMuc và SanPham
+            modelBuilder.Entity<SanPham>()
+                .HasOne(sp => sp.DanhMuc)
+                .WithMany(dm => dm.SanPhams)
+                .HasForeignKey(sp => sp.MaDanhMuc);
+
+            // **Thiết lập quan hệ 1-n giữa SanPham và SanPhamHinhAnh**
+            modelBuilder.Entity<SanPham>()
+                .HasMany(sp => sp.HinhAnhs) // SanPham có nhiều SanPhamHinhAnh
+                .WithOne(ha => ha.SanPham) // Mỗi SanPhamHinhAnh thuộc về một SanPham
+                .HasForeignKey(ha => ha.MaSP);
 
             //Thiết lập quan hệ 1-n giữa NhanVien và HoaDonNhap
             modelBuilder.Entity<HoaDonNhap>()
@@ -132,10 +148,10 @@ namespace DuAnBanBanhKeo.Data
             );
             //Seed Sản Phẩm
             modelBuilder.Entity<SanPham>().HasData(
-                new SanPham { MaSP = "SP001", TenSP = "Coca-Cola 330ml", GiaNhap = 5000, GiaBan = 10000, SoLuongTon = 100, DonViTinh = "Lon", MaNCC = "NCC001" },
-                new SanPham { MaSP = "SP002", TenSP = "Pepsi 330ml", GiaNhap = 4800, GiaBan = 9500, SoLuongTon = 120, DonViTinh = "Lon", MaNCC = "NCC002" },
-                new SanPham { MaSP = "SP003", TenSP = "Bánh Oreo", GiaNhap = 7000, GiaBan = 15000, SoLuongTon = 50, DonViTinh = "Gói", MaNCC = "NCC003" },
-                new SanPham { MaSP = "SP004", TenSP = "Snack Lay's", GiaNhap = 9000, GiaBan = 18000, SoLuongTon = 75, DonViTinh = "Gói", MaNCC = "NCC001" }
+                new SanPham { MaSP = "SP001", TenSP = "Coca-Cola 330ml", GiaNhap = 5000, GiaBan = 10000, SoLuongTon = 100, DonViTinh = "Lon", MaNCC = "NCC001", MaDanhMuc = "DM003" },
+                new SanPham { MaSP = "SP002", TenSP = "Pepsi 330ml", GiaNhap = 4800, GiaBan = 9500, SoLuongTon = 120, DonViTinh = "Lon", MaNCC = "NCC002", MaDanhMuc = "DM003" },
+                new SanPham { MaSP = "SP003", TenSP = "Bánh Oreo", GiaNhap = 7000, GiaBan = 15000, SoLuongTon = 50, DonViTinh = "Gói", MaNCC = "NCC003", MaDanhMuc = "DM001" },
+                new SanPham { MaSP = "SP004", TenSP = "Snack Lay's", GiaNhap = 9000, GiaBan = 18000, SoLuongTon = 75, DonViTinh = "Gói", MaNCC = "NCC001", MaDanhMuc = "DM002" }
             );
             //Seed Nhân Viên
             modelBuilder.Entity<NhanVien>().HasData(
@@ -166,12 +182,19 @@ namespace DuAnBanBanhKeo.Data
                 new KiemKe { MaKiemKe = "KK001", MaNV = "NV003", NgayKiemKe = new DateTime(2024, 6, 20), GhiChu = "Kiểm kê định kỳ" },
                 new KiemKe { MaKiemKe = "KK002", MaNV = "NV003", NgayKiemKe = new DateTime(2024, 6, 30), GhiChu = "Sai lệch số lượng" }
             );
+            //Seed Tài Khoản
             modelBuilder.Entity<TaiKhoan>().HasData(
                 new TaiKhoan { MaTK = "TK001", TenDangNhap = "user", MatKhau = "123", MaNV = "NV001" },
                 new TaiKhoan { MaTK = "TK002", TenDangNhap = "admin", MatKhau = "123", MaNV = "NV002" }
                 // Không seed tài khoản cho NV003 vì nhân viên này đã nghỉ việc (TrangThai = false)
             );
 
+            //Seed Danh Mục
+            modelBuilder.Entity<DanhMuc>().HasData(
+                new DanhMuc { MaDanhMuc = "DM001", TenDanhMuc = "Bánh", MoTa = "Các loại bánh ngọt và bánh mặn" },
+                new DanhMuc { MaDanhMuc = "DM002", TenDanhMuc = "Kẹo", MoTa = "Các loại kẹo và snack" },
+                new DanhMuc { MaDanhMuc = "DM003", TenDanhMuc = "Nước giải khát", MoTa = "Các loại nước ngọt và nước trái cây" }
+            );
         }
 
     }

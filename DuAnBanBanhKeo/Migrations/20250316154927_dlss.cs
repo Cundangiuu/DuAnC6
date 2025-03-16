@@ -8,11 +8,24 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DuAnBanBanhKeo.Migrations
 {
     /// <inheritdoc />
-    public partial class DLSS : Migration
+    public partial class dlss : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "DanhMucs",
+                columns: table => new
+                {
+                    MaDanhMuc = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    TenDanhMuc = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    MoTa = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DanhMucs", x => x.MaDanhMuc);
+                });
+
             migrationBuilder.CreateTable(
                 name: "KhachHangs",
                 columns: table => new
@@ -90,12 +103,17 @@ namespace DuAnBanBanhKeo.Migrations
                     SoLuongTon = table.Column<int>(type: "int", nullable: false),
                     DonViTinh = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TrangThai = table.Column<bool>(type: "bit", nullable: false),
-                    HinhAnh = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MaNCC = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    MaNCC = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    MaDanhMuc = table.Column<string>(type: "nvarchar(10)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SanPhams", x => x.MaSP);
+                    table.ForeignKey(
+                        name: "FK_SanPhams_DanhMucs_MaDanhMuc",
+                        column: x => x.MaDanhMuc,
+                        principalTable: "DanhMucs",
+                        principalColumn: "MaDanhMuc");
                     table.ForeignKey(
                         name: "FK_SanPhams_NhaCungCaps_MaNCC",
                         column: x => x.MaNCC,
@@ -226,6 +244,26 @@ namespace DuAnBanBanhKeo.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "HinhAnhs",
+                columns: table => new
+                {
+                    HinhAnhId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Url = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    MaSP = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HinhAnhs", x => x.HinhAnhId);
+                    table.ForeignKey(
+                        name: "FK_HinhAnhs_SanPhams_MaSP",
+                        column: x => x.MaSP,
+                        principalTable: "SanPhams",
+                        principalColumn: "MaSP",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ChiTietHoaDonNhaps",
                 columns: table => new
                 {
@@ -310,6 +348,16 @@ namespace DuAnBanBanhKeo.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "DanhMucs",
+                columns: new[] { "MaDanhMuc", "MoTa", "TenDanhMuc" },
+                values: new object[,]
+                {
+                    { "DM001", "Các loại bánh ngọt và bánh mặn", "Bánh" },
+                    { "DM002", "Các loại kẹo và snack", "Kẹo" },
+                    { "DM003", "Các loại nước ngọt và nước trái cây", "Nước giải khát" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "KhachHangs",
                 columns: new[] { "MaKH", "DiaChi", "Email", "SoDienThoai", "TenKH" },
                 values: new object[,]
@@ -368,13 +416,13 @@ namespace DuAnBanBanhKeo.Migrations
 
             migrationBuilder.InsertData(
                 table: "SanPhams",
-                columns: new[] { "MaSP", "DonViTinh", "GiaBan", "GiaNhap", "HinhAnh", "MaNCC", "SoLuongTon", "TenSP", "TrangThai" },
+                columns: new[] { "MaSP", "DonViTinh", "GiaBan", "GiaNhap", "MaDanhMuc", "MaNCC", "SoLuongTon", "TenSP", "TrangThai" },
                 values: new object[,]
                 {
-                    { "SP001", "Lon", 10000m, 5000m, null, "NCC001", 100, "Coca-Cola 330ml", true },
-                    { "SP002", "Lon", 9500m, 4800m, null, "NCC002", 120, "Pepsi 330ml", true },
-                    { "SP003", "Gói", 15000m, 7000m, null, "NCC003", 50, "Bánh Oreo", true },
-                    { "SP004", "Gói", 18000m, 9000m, null, "NCC001", 75, "Snack Lay's", true }
+                    { "SP001", "Lon", 10000m, 5000m, "DM003", "NCC001", 100, "Coca-Cola 330ml", true },
+                    { "SP002", "Lon", 9500m, 4800m, "DM003", "NCC002", 120, "Pepsi 330ml", true },
+                    { "SP003", "Gói", 15000m, 7000m, "DM001", "NCC003", 50, "Bánh Oreo", true },
+                    { "SP004", "Gói", 18000m, 9000m, "DM002", "NCC001", 75, "Snack Lay's", true }
                 });
 
             migrationBuilder.InsertData(
@@ -383,7 +431,7 @@ namespace DuAnBanBanhKeo.Migrations
                 values: new object[,]
                 {
                     { "TK001", "NV001", "123", "user" },
-                    { "TK002", "NV002", "hashed_password_2", "admin" }
+                    { "TK002", "NV002", "123", "admin" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -427,6 +475,11 @@ namespace DuAnBanBanhKeo.Migrations
                 column: "MaSP");
 
             migrationBuilder.CreateIndex(
+                name: "IX_HinhAnhs_MaSP",
+                table: "HinhAnhs",
+                column: "MaSP");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_HoaDonNhaps_MaNCC",
                 table: "HoaDonNhaps",
                 column: "MaNCC");
@@ -457,6 +510,11 @@ namespace DuAnBanBanhKeo.Migrations
                 column: "NhaCungCapMaNCC");
 
             migrationBuilder.CreateIndex(
+                name: "IX_SanPhams_MaDanhMuc",
+                table: "SanPhams",
+                column: "MaDanhMuc");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_SanPhams_MaNCC",
                 table: "SanPhams",
                 column: "MaNCC");
@@ -484,6 +542,9 @@ namespace DuAnBanBanhKeo.Migrations
                 name: "ChiTietPhieuNhaps");
 
             migrationBuilder.DropTable(
+                name: "HinhAnhs");
+
+            migrationBuilder.DropTable(
                 name: "TaiKhoans");
 
             migrationBuilder.DropTable(
@@ -506,6 +567,9 @@ namespace DuAnBanBanhKeo.Migrations
 
             migrationBuilder.DropTable(
                 name: "NhanViens");
+
+            migrationBuilder.DropTable(
+                name: "DanhMucs");
 
             migrationBuilder.DropTable(
                 name: "NhaCungCaps");
