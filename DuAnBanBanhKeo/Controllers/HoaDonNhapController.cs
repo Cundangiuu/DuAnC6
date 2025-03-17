@@ -333,7 +333,7 @@ namespace DuAnBanBanhKeo.Controllers
                         row.Append(CreateTableCell(chiTiet.MaSP, width: columnWidths[0]));
                         row.Append(CreateTableCell(chiTiet.TenSP, width: columnWidths[1])); // Sử dụng chiTiet.TenSP
                         row.Append(CreateTableCell(chiTiet.SoLuong.ToString(), width: columnWidths[2]));
-                        row.Append(CreateTableCell(chiTiet.DonGia.ToString(), width: columnWidths[3]));
+                        row.Append(CreateTableCell(string.Format("{0:N0} VNĐ", chiTiet.DonGia), width: columnWidths[3]));
                         table.Append(row);
                     }
 

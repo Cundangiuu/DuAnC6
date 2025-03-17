@@ -173,6 +173,12 @@
                                                 <div class="modal-body">
                                                     <form id="addHoaDonXuatForm">
                                                         <div class="form-group">
+                                                            <label for="hoTen">Tên nhân Viên</label>
+                                                                 <select class="form-control" id="hoTen" name="hoTen"
+                                                                      required>
+                                                                <!-- Options will be loaded here -->
+                                                               </select>
+                                                               <br>
                                                             <label for="tenKH"
                                                                 style="font-family: 'Times New Roman', Times, serif;">Tên
                                                                 Khách Hàng</label>
@@ -510,7 +516,7 @@
 
                         if (hoaDonXuat.chiTietHoaDonXuat && hoaDonXuat.chiTietHoaDonXuat.length > 0) {
                             $.each(hoaDonXuat.chiTietHoaDonXuat, function (i, chiTiet) {
-                                detailsContent += `<li>Sản phẩm: ${chiTiet.sanPham?.tenSP || 'N/A'}, Số lượng: ${chiTiet.soLuong}, Đơn giá: ${formatCurrency(chiTiet.donGia)}</li>`;
+                                detailsContent += `<li>Sản phẩm: ${chiTiet.tenSP || 'N/A'}, Số lượng: ${chiTiet.soLuong}, Đơn giá: ${formatCurrency(chiTiet.donGia)}</li>`;
                             });
                         } else {
                             detailsContent += `<li>Không có sản phẩm nào.</li>`;
@@ -658,9 +664,29 @@
                     }
                 });
             }
-
+            function loadNhanViens() {
+                console.log("Hàm loadNhanViens đang được gọi...");
+                $.ajax({
+                    url: 'https://localhost:7203/api/NhanVien', // Thay đổi URL API nếu cần
+                    type: 'GET',
+                    success: function (data) {
+                        var selectElement = $('#hoTen'); // Sử dụng ID hoTen
+                        selectElement.empty(); // Xóa các option cũ
+                        $.each(data, function (i, nhanVien) {
+                            selectElement.append($('<option>', {
+                                value: nhanVien.maNV, // Giá trị là MaNV
+                                text: nhanVien.hoTen // Hiển thị tên nhân viên
+                            }).data('manv', nhanVien.maNV)); // Lưu mã nhân viên trong thuộc tính data
+                        });
+                    },
+                    error: function (error) {
+                        console.error('Error fetching NhanViens:', error);
+                    }
+                });
+            }
             // Load product list when the modal is shown.
             $('#addHoaDonXuatModal').on('shown.bs.modal', function (e) {
+                loadNhanViens();
                 loadCustomers('#tenKH');
                 loadProductList('#productListTable');
             });
@@ -670,27 +696,33 @@
                 $('#maKH').val($(this).val());
             });
 
-            // Save Hoa Don Xuat
+                                    // Save Hoa Don Xuat
             $('#saveHoaDonXuat').click(async function () {
+                var hoTen = $('#hoTen').val();
+                var maNV = $('#hoTen option:selected').data('manv');
                 var maKH = $('#tenKH').val();
                 var tongTien = parseFloat($('#tongTien').val());
 
                 var chiTietHoaDonXuats = [];
                 $('#productListTable tbody tr').each(function () {
                     var maSP = $(this).find('.quantity').data('masp');
-                    var soLuong = parseFloat($(this).find('.quantity').val()) || 0;
                     var donGia = parseFloat($(this).find('.unitPrice').val()) || 0;
 
-                    if (soLuong > 0 && donGia > 0) {
+                    var soLuong = parseFloat($(this).find('.quantity').val()) || 0;
+                    var tenSP = $(this).find('td:first-child').text(); // **GET TENSP HERE**
+
+                    if (soLuong > 0) {
                         chiTietHoaDonXuats.push({
                             maSP: maSP,
                             soLuong: soLuong,
-                            DonGia: donGia
+                            tenSP: tenSP,
+                            donGia: donGia // **ADD TENSP TO THE DATA**
                         });
                     }
                 });
 
                 var data = {
+                    maNV: maNV,
                     maKH: maKH,
                     tongTien: tongTien,
                     chiTietHoaDonXuats: chiTietHoaDonXuats
@@ -710,18 +742,35 @@
                         'success'
                     ).then(() => {
                         $('#addHoaDonXuatModal').modal('hide');
-                        loadHoaDonXuats(); // Reload the table
+                        loadHoaDonXuats();
                     });
                 } catch (error) {
                     console.error('Error adding HoaDonXuat:', error);
-                    Swal.fire(
-                        'Lỗi!',
-                        'Tạo hóa đơn mới thất bại!',
-                        'error'
-                    );
+
+                    if (error.responseJSON && error.responseJSON.errors) {
+                        let errorMessages = Object.values(error.responseJSON.errors)
+                            .map(errorArray => errorArray.join('\n'))
+                            .join('\n');
+                        Swal.fire(
+                            'Lỗi!',
+                            `Tạo hóa đơn mới thất bại!\n${errorMessages}`,
+                            'error'
+                        );
+                    } else if (error.responseJSON) {
+                        Swal.fire(
+                            'Lỗi!',
+                            `Tạo hóa đơn mới thất bại!\n${error.responseJSON.message}`,
+                            'error'
+                        );
+                    } else {
+                        Swal.fire(
+                            'Lỗi!',
+                            'Tạo hóa đơn mới thất bại!',
+                            'error'
+                        );
+                    }
                 }
             });
-
             // Update Hoa Don Xuat
             $('#updateHoaDonXuat').click(async function () {
                 var maHoaDonXuat = $('#editMaHoaDonXuat').val();

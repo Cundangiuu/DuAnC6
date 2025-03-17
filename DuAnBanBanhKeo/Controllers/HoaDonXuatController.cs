@@ -163,21 +163,8 @@ namespace DuAnBanBanhKeo.Controllers
                 return BadRequest(ModelState);
             }
 
-            var maNVClaim = User.Claims.FirstOrDefault(c => c.Type == "MaNV");
-
-            if (maNVClaim == null)
-            {
-                return BadRequest("Không tìm thấy thông tin nhân viên trong token.");
-            }
-
-            string maNV = maNVClaim.Value;
-
-            if (string.IsNullOrEmpty(maNV))
-            {
-                return BadRequest("Mã nhân viên không hợp lệ.");
-            }
-
             string maHoaDonXuat = GenerateMaHoaDonXuat();
+            string maNV = hoaDonXuatCreateDto.MaNV;
 
             var hoaDonXuat = new HoaDonXuat
             {
@@ -186,7 +173,7 @@ namespace DuAnBanBanhKeo.Controllers
                 MaNV = maNV,
                 MaKH = hoaDonXuatCreateDto.MaKH,
                 TongTien = hoaDonXuatCreateDto.TongTien,
-                TrangThai = 0 // Đặt trạng thái mặc định
+                TrangThai = 0
             };
 
             _context.HoaDonXuats.Add(hoaDonXuat);
@@ -204,22 +191,22 @@ namespace DuAnBanBanhKeo.Controllers
                 {
                     return BadRequest($"Sản phẩm {sanPham.TenSP} đã hết hàng và không thể thêm vào hóa đơn.");
                 }
-                // Lấy giá bán từ sản phẩm
-                decimal giaBan = sanPham.GiaBan;
 
-                //Giảm số lượng tồn kho khi bán sản phẩm
+                decimal giaBan = sanPham.GiaBan;
                 sanPham.SoLuongTon -= chiTietDto.SoLuong;
+
                 if (sanPham.SoLuongTon < 0)
                 {
                     return BadRequest($"Số lượng sản phẩm {sanPham.TenSP} trong kho không đủ.");
                 }
-
+                string tenSanPham = sanPham.TenSP;
                 var chiTiet = new ChiTietHoaDonXuat
                 {
                     MaHoaDonXuat = hoaDonXuat.MaHoaDonXuat,
                     MaSP = chiTietDto.MaSP,
                     SoLuong = chiTietDto.SoLuong,
-                    DonGia = giaBan // Sử dụng giá bán
+                    DonGia = giaBan,
+                    TenSP = tenSanPham
                 };
                 _context.ChiTietHoaDonXuats.Add(chiTiet);
             }
@@ -229,14 +216,9 @@ namespace DuAnBanBanhKeo.Controllers
             // Load related entities for the DTO
             await _context.Entry(hoaDonXuat).Reference(h => h.KhachHang).LoadAsync();
             await _context.Entry(hoaDonXuat).Reference(h => h.NhanVien).LoadAsync();
-            foreach (var ct in hoaDonXuat.ChiTietHoaDonXuat)
-            {
-                await _context.Entry(ct).Reference(c => c.SanPham).LoadAsync();
-            }
-
+            
             return CreatedAtAction("GetHoaDonXuat", new { maHoaDonXuat = hoaDonXuat.MaHoaDonXuat }, _mapper.Map<HoaDonXuatDto>(hoaDonXuat));
         }
-
 
         [HttpGet("ExportToWord/{maHoaDonXuat}")]
         public async Task<IActionResult> ExportToWord(string maHoaDonXuat)
@@ -282,8 +264,20 @@ namespace DuAnBanBanhKeo.Controllers
                     body.AppendChild(CreateParagraph("HÓA ĐƠN XUẤT", bold: true, center: true));
                     body.AppendChild(CreateParagraph($"Mã hóa đơn: {hoaDonXuat.MaHoaDonXuat}"));
                     body.AppendChild(CreateParagraph($"Ngày xuất: {hoaDonXuat.NgayXuat}"));
-                    body.AppendChild(CreateParagraph($"Nhân viên: {hoaDonXuat.NhanVien?.HoTen}"));
-                    body.AppendChild(CreateParagraph($"Khách hàng: {hoaDonXuat.KhachHang?.TenKH}"));
+
+                    // Add Nhân viên details
+                    body.AppendChild(CreateParagraph("Thông tin nhân viên:", bold: true));
+                    body.AppendChild(CreateParagraph($"Tên nhân viên: {hoaDonXuat.NhanVien?.HoTen}"));
+                    body.AppendChild(CreateParagraph($"Số điện thoại nhân viên: {hoaDonXuat.NhanVien?.SoDienThoai ?? "N/A"}")); // Null-conditional operator and null-coalescing operator
+                    body.AppendChild(CreateParagraph($"Email nhân viên: {hoaDonXuat.NhanVien?.Email ?? "N/A"}"));  //Null-conditional operator and null-coalescing operator
+
+                    // Add Khách hàng details
+                    body.AppendChild(CreateParagraph("Thông tin khách hàng:", bold: true));
+                    body.AppendChild(CreateParagraph($"Tên khách hàng: {hoaDonXuat.KhachHang?.TenKH}"));
+                    body.AppendChild(CreateParagraph($"Số điện thoại khách hàng: {hoaDonXuat.KhachHang?.SoDienThoai ?? "N/A"}")); // Null-conditional operator and null-coalescing operator
+                    body.AppendChild(CreateParagraph($"Địa chỉ khách hàng: {hoaDonXuat.KhachHang?.DiaChi ?? "N/A"}"));  //Null-conditional operator and null-coalescing operator
+                    body.AppendChild(CreateParagraph($"Email khách hàng: {hoaDonXuat.KhachHang?.Email ?? "N/A"}"));  //Null-conditional operator and null-coalescing operator
+
                     body.AppendChild(CreateParagraph($"Tổng tiền: {hoaDonXuat.TongTien:N0} VNĐ"));
 
                     // Add table for chi tiết hóa đơn
@@ -302,13 +296,21 @@ namespace DuAnBanBanhKeo.Controllers
                     );
                     table.AppendChild<TableProperties>(props);
 
+                    List<int> columnWidths = new List<int> { 3000, 5000, 2000, 2000 };  //Adjust these values!
+
+                    TableGrid tg = new TableGrid();
+                    foreach (var width in columnWidths)
+                    {
+                        tg.Append(new GridColumn() { Width = width.ToString() });
+                    }
+                    table.AppendChild(tg);
 
                     // Header row
                     TableRow headerRow = new TableRow();
-                    headerRow.Append(CreateTableCell("Mã SP", bold: true));
-                    headerRow.Append(CreateTableCell("Tên SP", bold: true));
-                    headerRow.Append(CreateTableCell("Số lượng", bold: true));
-                    headerRow.Append(CreateTableCell("Đơn giá", bold: true));
+                    headerRow.Append(CreateTableCell("Mã sản phẩm", bold: true, width: columnWidths[0]));
+                    headerRow.Append(CreateTableCell("Tên sản phẩm", bold: true, width: columnWidths[1]));
+                    headerRow.Append(CreateTableCell("Số lượng", bold: true, width: columnWidths[2]));
+                    headerRow.Append(CreateTableCell("Đơn giá", bold: true, width: columnWidths[3]));
                     table.Append(headerRow);
 
 
@@ -316,10 +318,10 @@ namespace DuAnBanBanhKeo.Controllers
                     foreach (var chiTiet in hoaDonXuat.ChiTietHoaDonXuat)
                     {
                         TableRow row = new TableRow();
-                        row.Append(CreateTableCell(chiTiet.MaSP));
-                        row.Append(CreateTableCell(chiTiet.SanPham?.TenSP));
-                        row.Append(CreateTableCell(chiTiet.SoLuong.ToString()));
-                        row.Append(CreateTableCell(chiTiet.DonGia.ToString()));
+                        row.Append(CreateTableCell(chiTiet.MaSP, width: columnWidths[0]));
+                        row.Append(CreateTableCell(chiTiet.TenSP, width: columnWidths[1]));// Use TenSP directly
+                        row.Append(CreateTableCell(chiTiet.SoLuong.ToString(), width: columnWidths[2]));
+                        row.Append(CreateTableCell(string.Format("{0:N0} VNĐ", chiTiet.DonGia), width: columnWidths[3]));
                         table.Append(row);
                     }
 
@@ -334,41 +336,55 @@ namespace DuAnBanBanhKeo.Controllers
 
         private Paragraph CreateParagraph(string text, bool bold = false, bool center = false)
         {
-            Paragraph p = new Paragraph();
-            ParagraphProperties pPr = new ParagraphProperties();
+            Paragraph paragraph = new Paragraph();
+            ParagraphProperties paragraphProperties = new ParagraphProperties();
 
             if (center)
             {
-                Justification justification = new Justification() { Val = JustificationValues.Center };
-                pPr.Append(justification);
+                paragraphProperties.Append(new Justification() { Val = JustificationValues.Center });
             }
 
-            Run r = new Run();
-            Text t = new Text(text);
+            paragraph.AppendChild(paragraphProperties);
 
+            Run run = new Run();
             if (bold)
             {
-                RunProperties rPr = new RunProperties();
-                Bold boldProp = new Bold();
-                rPr.Append(boldProp);
-                r.Append(rPr);
+                run.Append(new Bold());
             }
+            run.Append(new Text(text) { Space = SpaceProcessingModeValues.Preserve });  // Preserve whitespace.  Important for formatting.
+            paragraph.AppendChild(run);
 
-            r.Append(t);
-            p.Append(pPr);
-            p.Append(r);
-
-            return p;
+            return paragraph;
         }
 
-        private TableCell CreateTableCell(string text, bool bold = false)
+        private TableCell CreateTableCell(string text, bool bold = false, int? width = null)
         {
             TableCell cell = new TableCell();
-            TableCellProperties cellProperties = new TableCellProperties(
-               new TableCellWidth { Type = TableWidthUnitValues.Auto }
-            );
-            cell.Append(cellProperties);
-            cell.Append(CreateParagraph(text, bold: bold));
+
+            if (width.HasValue)
+            {
+                TableCellProperties cellProperties = new TableCellProperties();
+                TableCellWidth tableCellWidth = new TableCellWidth() { Width = width.Value.ToString(), Type = TableWidthUnitValues.Dxa }; //Dxa means twentieths of a point
+                cellProperties.Append(tableCellWidth);
+                cell.Append(cellProperties);
+            }
+
+
+            Paragraph p = new Paragraph();
+            ParagraphProperties pp = new ParagraphProperties();
+            Justification justification = new Justification() { Val = JustificationValues.Center };
+            pp.Append(justification);
+            p.AppendChild(pp);
+
+
+            Run r = new Run();
+            if (bold)
+            {
+                r.Append(new Bold());
+            }
+            r.Append(new Text(text));
+            p.Append(r);
+            cell.Append(p);
             return cell;
         }
 
