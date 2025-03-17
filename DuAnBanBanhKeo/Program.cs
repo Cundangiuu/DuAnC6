@@ -83,13 +83,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseCors(builder =>
-{
-    builder.WithOrigins("http://127.0.0.1:5501") // Thay bằng cổng FE của bạn
-           .AllowAnyMethod()
-           .AllowAnyHeader()
-           .AllowCredentials(); // Nếu bạn cần gửi cookies hoặc thông tin xác thực
-});
+app.UseCors(x => x
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+   .SetIsOriginAllowed(origin => true)
+    .AllowCredentials());
 app.UseHttpsRedirection();
 
 app.UseAuthentication();

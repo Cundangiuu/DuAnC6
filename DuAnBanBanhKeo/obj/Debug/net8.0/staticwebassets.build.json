@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ZFvw2llFg89/9tB/86i0mfFPIvQeNEyiSnm/HNaPX7c=",
+  "Hash": "zf+TF+iGy6Je9T2KNLYjHLYIAlLrgsNStM+T12R1QmU=",
   "Source": "DuAnBanBanhKeo",
   "BasePath": "_content/DuAnBanBanhKeo",
   "Mode": "Default",
@@ -16,6 +16,27 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\0907fc23-59ec-4073-8b21-1bfc70ec05b8_Screenshot 2025-03-17 121310.png",
+      "SourceId": "DuAnBanBanhKeo",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "BasePath": "_content/DuAnBanBanhKeo",
+      "RelativePath": "temp_uploads/nhanVien/0907fc23-59ec-4073-8b21-1bfc70ec05b8_Screenshot 2025-03-17 121310#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "6xmy08frah",
+      "Integrity": "doeBIPli/XjuYazLjSuCG+oF53TGNq9KC+T1I16imMM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\temp_uploads\\nhanVien\\0907fc23-59ec-4073-8b21-1bfc70ec05b8_Screenshot 2025-03-17 121310.png"
+    },
     {
       "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\097513ee-2f91-411a-868c-2c89b069691d_473568245_699139029124934_4388227159575837485_n.jpg",
       "SourceId": "DuAnBanBanhKeo",
@@ -187,6 +208,88 @@
   ],
   "Endpoints": [
     {
+      "Route": "temp_uploads/nhanVien/0907fc23-59ec-4073-8b21-1bfc70ec05b8_Screenshot 2025-03-17 121310.6xmy08frah.png",
+      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\0907fc23-59ec-4073-8b21-1bfc70ec05b8_Screenshot 2025-03-17 121310.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "132269"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"doeBIPli/XjuYazLjSuCG+oF53TGNq9KC+T1I16imMM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 17 Mar 2025 12:55:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6xmy08frah"
+        },
+        {
+          "Name": "label",
+          "Value": "temp_uploads/nhanVien/0907fc23-59ec-4073-8b21-1bfc70ec05b8_Screenshot 2025-03-17 121310.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-doeBIPli/XjuYazLjSuCG+oF53TGNq9KC+T1I16imMM="
+        }
+      ]
+    },
+    {
+      "Route": "temp_uploads/nhanVien/0907fc23-59ec-4073-8b21-1bfc70ec05b8_Screenshot 2025-03-17 121310.png",
+      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\0907fc23-59ec-4073-8b21-1bfc70ec05b8_Screenshot 2025-03-17 121310.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "132269"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"doeBIPli/XjuYazLjSuCG+oF53TGNq9KC+T1I16imMM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 17 Mar 2025 12:55:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-doeBIPli/XjuYazLjSuCG+oF53TGNq9KC+T1I16imMM="
+        }
+      ]
+    },
+    {
       "Route": "temp_uploads/nhanVien/097513ee-2f91-411a-868c-2c89b069691d_473568245_699139029124934_4388227159575837485_n.bhrv3t2nqg.jpg",
       "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\097513ee-2f91-411a-868c-2c89b069691d_473568245_699139029124934_4388227159575837485_n.jpg",
       "Selectors": [],
@@ -209,7 +312,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 15:15:06 GMT"
+          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -254,7 +357,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 15:15:06 GMT"
+          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -291,7 +394,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 15:15:06 GMT"
+          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -336,7 +439,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 15:15:06 GMT"
+          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -373,7 +476,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 15:15:06 GMT"
+          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -418,7 +521,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 15:15:06 GMT"
+          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -455,7 +558,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 15:15:06 GMT"
+          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -500,7 +603,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 15:15:06 GMT"
+          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -537,7 +640,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 15:15:06 GMT"
+          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -582,7 +685,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 15:15:06 GMT"
+          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -619,7 +722,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 15:15:06 GMT"
+          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -656,7 +759,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 15:15:06 GMT"
+          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -701,7 +804,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 15:15:06 GMT"
+          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -746,7 +849,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 15:15:06 GMT"
+          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -783,7 +886,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 15:15:06 GMT"
+          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -828,7 +931,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 15:15:06 GMT"
+          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
         },
         {
           "Name": "Cache-Control",

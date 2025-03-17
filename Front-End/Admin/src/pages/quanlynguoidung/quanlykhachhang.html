@@ -23,75 +23,6 @@
 
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css">
-  </head>
-  <body>
-    <div class="container-scroller">
-      <!-- partial:partials/_navbar.html -->
-      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row" id="navbar-placeholder"></nav>
-      <!-- partial -->
-      <div class="container-fluid page-body-wrapper">
-        <!-- partial:partials/_sidebar.html -->
-        <nav class="sidebar sidebar-offcanvas" id="sidebar"></nav>
-        <!-- partial -->
-        <div class="main-panel"style="font-family: 'Times New Roman', Times, serif;">
-          <div class="content-wrapper">
-            <div class="page-header">
-              <h3 class="page-title" style="font-family: 'Times New Roman', Times, serif;">Quản lý Khách hàng</h3>
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Quản lý</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Khách hàng</li>
-                </ol>
-              </nav>
-            </div>
-              <!-- Tìm kiếm và sắp xếp -->
-              <div class="row mb-3">
-                  <div class="col-md-4">
-                      <label for="searchInput" class="form-label">Tìm kiếm:</label>
-                      <input type="text" class="form-control" id="searchInput" placeholder="Nhập tên, email, địa chỉ...">
-                  </div>
-                  <div class="col-md-4">
-                      <label for="sortSelect" class="form-label">Sắp xếp theo:</label>
-                      <select class="form-select" id="sortSelect">
-                          <option value="">Mặc định</option>
-                          <option value="makh">Mã Khách hàng</option>
-                          <option value="tenkh">Tên Khách hàng</option>
-                          <option value="email">Email</option>
-                      </select>
-                  </div>
-                  <div class="col-md-4">
-                      <label for="sortOrderSelect" class="form-label">Thứ tự:</label>
-                      <select class="form-select" id="sortOrderSelect">
-                          <option value="asc">Tăng dần</option>
-                          <option value="desc">Giảm dần</option>
-                      </select>
-                  </div>
-              </div>
-
-            <div class="row">
-              <div class="col-lg-12 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Danh sách Khách hàng</h4>
-                    <!-- Nút thêm khách hàng -->
-                    <button class="btn btn-primary mb-3" id="btnAddKhachHang"style="font-family: 'Times New Roman', Times, serif;">Thêm Khách hàng</button>
-        
-                    <div class="table-responsive">
-                      <table class="table table-striped">
-                        <thead>
-                          <tr>
-                            <th style="font-family: 'Times New Roman', Times, serif;">Mã KH</th>
-                            <th style="font-family: 'Times New Roman', Times, serif;">Tên KH</th>
-                            <th style="font-family: 'Times New Roman', Times, serif;">Số Điện Thoại</th>
-                            <th style="font-family: 'Times New Roman', Times, serif;">Email</th>
-                            <th style="font-family: 'Times New Roman', Times, serif;">Địa Chỉ</th>
-                            <th style="font-family: 'Times New Roman', Times, serif;">Hành động</th>
-                          </tr>
-                        </thead>
-                        <tbody id="tableBody">
-                          <!-- Dữ liệu khách hàng sẽ được thêm vào đây bằng JavaScript -->
-                        </tbody>
-                      </table>
 </head>
 
 <body>
@@ -187,50 +118,6 @@
                 <footer class="footer" id="footer"></footer>
                 <!-- partial -->
             </div>
-          </div>
-          <!-- content-wrapper ends -->
-          <!-- partial:partials/_footer.html -->
-          <footer class="footer" id="footer"></footer>
-          <!-- partial -->
-        </div>
-        
-        <!-- Modal để thêm/sửa khách hàng -->
-        <div class="modal fade" id="khachHangModal" tabindex="-1" aria-labelledby="khachHangModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content"style="font-family: 'Times New Roman', Times, serif;">
-              <div class="modal-header">
-                <h5 class="modal-title" id="khachHangModalLabel">Thêm Khách hàng</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <form id="khachHangForm">
-                  <div class="mb-3">
-                    <label for="maKH" class="form-label">Mã KH</label>
-                    <input type="text" class="form-control" id="maKH" name="maKH" required>
-                  </div>
-                  <div class="mb-3">
-                    <label for="tenKH" class="form-label">Tên KH</label>
-                    <input type="text" class="form-control" id="tenKH" name="tenKH" required>
-                  </div>
-                  <div class="mb-3">
-                    <label for="soDienThoai" class="form-label">Số Điện Thoại</label>
-                    <input type="text" class="form-control" id="soDienThoai" name="soDienThoai">
-                  </div>
-                  <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email">
-                  </div>
-                  <div class="mb-3">
-                    <label for="diaChi" class="form-label">Địa Chỉ</label>
-                    <input type="text" class="form-control" id="diaChi" name="diaChi">
-                  </div>
-                  <input type="hidden" id="isEdit" name="isEdit" value="false">
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="font-family: 'Times New Roman', Times, serif;">Đóng</button>
-                <button type="button" class="btn btn-primary" id="btnSaveKhachHang" style="font-family: 'Times New Roman', Times, serif;">Lưu</button>
-              </div>
 
             <!-- Modal để thêm/sửa khách hàng -->
             <div class="modal fade" id="khachHangModal" tabindex="-1" aria-labelledby="khachHangModalLabel"
@@ -319,288 +206,517 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js"></script>
     <script>
-      const apiUrl = 'http://localhost:5073/api/KhachHang';
-      const tableBody = document.getElementById('tableBody');
-      const btnAddKhachHang = document.getElementById('btnAddKhachHang');
-      const khachHangModal = new bootstrap.Modal(document.getElementById('khachHangModal'));
-      const khachHangForm = document.getElementById('khachHangForm');
-      const btnSaveKhachHang = document.getElementById('btnSaveKhachHang');
-      const isEdit = document.getElementById('isEdit');
+        const apiUrl = 'http://localhost:5073/api/KhachHang';
+        const tableBody = document.getElementById('tableBody');
+        const btnAddKhachHang = document.getElementById('btnAddKhachHang');
+        const khachHangModal = new bootstrap.Modal(document.getElementById('khachHangModal'));
+        const khachHangForm = document.getElementById('khachHangForm');
+        const btnSaveKhachHang = document.getElementById('btnSaveKhachHang');
+        const isEdit = document.getElementById('isEdit');
+        const maKHInput = document.getElementById('maKH'); // Lấy tham chiếu đến input MaKH
 
-      // Get references to the search and sort elements
-      const searchInput = document.getElementById('searchInput');
-      const sortSelect = document.getElementById('sortSelect');
-      const sortOrderSelect = document.getElementById('sortOrderSelect');
+        // Get references to the search and sort elements
+        const searchInput = document.getElementById('searchInput');
+        const sortSelect = document.getElementById('sortSelect');
+        const sortOrderSelect = document.getElementById('sortOrderSelect');
 
-      //Phân trang
-      const prevPageButton = document.getElementById('prevPage');
-      const nextPageButton = document.getElementById('nextPage');
-      let currentPage = 1;
-      const pageSize = 5;  //Số lượng item một trang
+        //Phân trang
+        let currentPage = 1;
+        const pageSize = 5;  //Số lượng item một trang
+        let allKhachHangs = []; // Lưu trữ tất cả khách hàng đã tải
 
-      // Function to build API URL with search, sort, and pagination parameters
-      function buildApiUrl(searchTerm = '', sortBy = '', sortOrder = 'asc', page = 1, pageSize = 5) {
-          let url = apiUrl + '?';
-
-          if (searchTerm) {
-              url += 'searchTerm=' + encodeURIComponent(searchTerm) + '&';
-          }
-
-          if (sortBy) {
-              url += 'sortBy=' + encodeURIComponent(sortBy) + '&';
-          }
-
-          if (sortOrder) {
-              url += 'sortOrder=' + encodeURIComponent(sortOrder) + '&';
-          }
-
-          //Add pagination parameters
-          url += 'page=' + encodeURIComponent(page) + '&';
-          url += 'pageSize=' + encodeURIComponent(pageSize) + '&';
+        // Elements for pagination
+        const pagination = document.getElementById("pagination");
+        const paginationInfo = document.getElementById("paginationInfo");
 
 
-          // Remove the trailing '&' if any
-          if (url.endsWith('&')) {
-              url = url.slice(0, -1);
-          }
-          return url;
-      }
+        // Function to build API URL with search, sort, and pagination parameters
+        function buildApiUrl(searchTerm = '', sortBy = '', sortOrder = 'asc', page = 1, pageSize = 5) {
+            let url = apiUrl + '?';
 
-      // Function to fetch data from API and display on the table
-      async function loadKhachHangs(url) {
-          tableBody.innerHTML = ''; // Clear old data
-          try {
-              const response = await fetch(url);
-              const khachHangs = await response.json();
+            if (searchTerm) {
+                url += 'searchTerm=' + encodeURIComponent(searchTerm) + '&';
+            }
 
-              khachHangs.forEach(khachHang => {
-                  const row = `
-                      <tr>
-                          <td>${khachHang.maKH}</td>
-                          <td>${khachHang.tenKH}</td>
-                          <td>${khachHang.soDienThoai || ''}</td>
-                          <td>${khachHang.email || ''}</td>
-                          <td>${khachHang.diaChi || ''}</td>
-                          <td>
-                              <button class="btn btn-sm btn-warning btnEdit" data-id="${khachHang.maKH}" style="font-family: 'Times New Roman', Times, serif;">Sửa</button>
-                              <button class="btn btn-sm btn-danger btnDelete" data-id="${khachHang.maKH}" style="font-family: 'Times New Roman', Times, serif;">Xóa</button>
-                          </td>
-                      </tr>
-                  `;
-                  tableBody.innerHTML += row;
-              });
+            if (sortBy) {
+                url += 'sortBy=' + encodeURIComponent(sortBy) + '&';
+            }
 
-              // Assign events for Edit and Delete buttons after adding to DOM
-              document.querySelectorAll('.btnEdit').forEach(button => {
-                  button.addEventListener('click', editKhachHang);
-              });
+            if (sortOrder) {
+                url += 'sortOrder=' + encodeURIComponent(sortOrder) + '&';
+            }
 
-              document.querySelectorAll('.btnDelete').forEach(button => {
-                  button.addEventListener('click', deleteKhachHang);
-              });
-          } catch (error) {
-              console.error('Error loading data:', error);
-              Swal.fire({
-                  icon: 'error',
-                  title: 'Lỗi',
-                  text: 'Lỗi khi tải dữ liệu. Vui lòng kiểm tra console.',
-              });
-          }
-      }
+            //Remove pagination parameters from here, we'll handle it client-side
 
-      // Event listener for search input
-      searchInput.addEventListener('input', () => {
-          const searchTerm = searchInput.value;
-          const sortBy = sortSelect.value;
-          const sortOrder = sortOrderSelect.value;
-          currentPage = 1;  //Reset về trang đầu tiên khi search
-          const apiUrl = buildApiUrl(searchTerm, sortBy, sortOrder, currentPage, pageSize);
-          loadKhachHangs(apiUrl);
-      });
+            // Remove the trailing '&' if any
+            if (url.endsWith('&')) {
+                url = url.slice(0, -1);
+            }
+            return url;
+        }
 
-      // Event listeners for sort select boxes
-      sortSelect.addEventListener('change', () => {
-          const searchTerm = searchInput.value;
-          const sortBy = sortSelect.value;
-          const sortOrder = sortOrderSelect.value;
-          currentPage = 1;   //Reset về trang đầu tiên khi sort
-          const apiUrl = buildApiUrl(searchTerm, sortBy, sortOrder, currentPage, pageSize);
-          loadKhachHangs(apiUrl);
-      });
+        // Function to fetch data from API and display on the table
+        async function loadKhachHangs() {
+            const url = buildApiUrl(searchInput.value, sortSelect.value, sortOrderSelect.value);
 
-      sortOrderSelect.addEventListener('change', () => {
-          const searchTerm = searchInput.value;
-          const sortBy = sortSelect.value;
-          const sortOrder = sortOrderSelect.value;
-          currentPage = 1;   //Reset về trang đầu tiên khi sortOrder
-          const apiUrl = buildApiUrl(searchTerm, sortBy, sortOrder, currentPage, pageSize);
-          loadKhachHangs(apiUrl);
-      });
+            try {
+                const response = await fetch(url);
+                allKhachHangs = await response.json(); // Store all the data
 
-      //Add event listeners for the pagination buttons
-      prevPageButton.addEventListener('click', () => {
-          if (currentPage > 1) {
-              currentPage--;
-              const searchTerm = searchInput.value;
-              const sortBy = sortSelect.value;
-              const sortOrder = sortOrderSelect.value;
-              const apiUrl = buildApiUrl(searchTerm, sortBy, sortOrder, currentPage, pageSize);
-              loadKhachHangs(apiUrl);
-          }
-      });
+                renderNhanVien(); // Render the data with pagination
+            } catch (error) {
+                console.error('Error loading data:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Lỗi',
+                    text: 'Lỗi khi tải dữ liệu. Vui lòng kiểm tra console.',
+                });
+            }
+        }
 
-      nextPageButton.addEventListener('click', () => {
-          currentPage++;
-          const searchTerm = searchInput.value;
-          const sortBy = sortSelect.value;
-          const sortOrder = sortOrderSelect.value;
-          const apiUrl = buildApiUrl(searchTerm, sortBy, sortOrder, currentPage, pageSize);
-          loadKhachHangs(apiUrl);
-      });
+        function renderNhanVien() {
+            tableBody.innerHTML = ''; // Clear old data
+
+            // Apply Search
+            let filteredKhachHangs = [...allKhachHangs]; // Create a copy
+
+            if (searchInput.value) {
+                const searchTerm = searchInput.value.toLowerCase();
+                filteredKhachHangs = filteredKhachHangs.filter(kh =>
+                    kh.tenKH.toLowerCase().includes(searchTerm) ||
+                    (kh.email && kh.email.toLowerCase().includes(searchTerm)) ||
+                    (kh.diaChi && kh.diaChi.toLowerCase().includes(searchTerm)) ||
+                    (kh.soDienThoai && kh.soDienThoai.includes(searchTerm))
+                );
+            }
+
+            // Apply Sort
+            const sortBy = sortSelect.value;
+            const sortOrder = sortOrderSelect.value;
+
+            if (sortBy) {
+                filteredKhachHangs.sort((a, b) => {
+                    let comparison = 0;
+
+                    if (sortBy === 'makh') {
+                        comparison = a.maKH.localeCompare(b.maKH);
+                    } else if (sortBy === 'tenkh') {
+                        comparison = a.tenKH.localeCompare(b.tenKH);
+                    } else if (sortBy === 'email') {
+                        comparison = (a.email || '').localeCompare(b.email || ''); // Ensure no null errors
+                    }
+
+                    return sortOrder === 'desc' ? -comparison : comparison;
+                });
+            }
 
 
-      // Load initial data with default values.
-      loadKhachHangs(buildApiUrl());
+            // Pagination
+            const startIndex = (currentPage - 1) * pageSize;
+            const endIndex = startIndex + pageSize;
+            const pagedKhachHangs = filteredKhachHangs.slice(startIndex, endIndex);
 
-      // Function to add customer
-      btnAddKhachHang.addEventListener('click', () => {
-          khachHangForm.reset(); // Reset form
-          isEdit.value = 'false'; // Set mode to add new
-          khachHangModal.show();
-      });
 
-      // Function to edit customer
-      async function editKhachHang(event) {
-          const id = event.target.dataset.id;
-          isEdit.value = 'true';
-          khachHangForm.reset(); // Reset form
-          try {
-              const response = await fetch(`${apiUrl}/${id}`);
-              const khachHang = await response.json();
+            pagedKhachHangs.forEach(khachHang => {
+                const row = `
+                    <tr>
+                        <td>${khachHang.maKH}</td>
+                        <td>${khachHang.tenKH}</td>
+                        <td>${khachHang.soDienThoai || ''}</td>
+                        <td>${khachHang.email || ''}</td>
+                        <td>${khachHang.diaChi || ''}</td>
+                        <td>
+                            <button class="btn btn-sm btn-warning btnEdit" data-id="${khachHang.maKH}">Sửa</button>
+                            <button class="btn btn-sm btn-danger btnDelete" data-id="${khachHang.maKH}">Xóa</button>
+                        </td>
+                    </tr>
+                `;
+                tableBody.innerHTML += row;
+            });
 
-              // Fill data into the form
-              khachHangForm.maKH.value = khachHang.maKH;
-              khachHangForm.tenKH.value = khachHang.tenKH;
-              khachHangForm.soDienThoai.value = khachHang.soDienThoai || '';
-              khachHangForm.email.value = khachHang.email || '';
-              khachHangForm.diaChi.value = khachHang.diaChi || '';
+            // Assign events for Edit and Delete buttons after adding to DOM
+            document.querySelectorAll('.btnEdit').forEach(button => {
+                button.addEventListener('click', editKhachHang);
+            });
 
-              khachHangModal.show(); // Show modal
-          } catch (error) {
-              console.error('Error loading customer data:', error);
-              Swal.fire({
-                  icon: 'error',
-                  title: 'Lỗi',
-                  text: 'Lỗi khi tải dữ liệu khách hàng.',
-              });
-          }
-      }
+            document.querySelectorAll('.btnDelete').forEach(button => {
+                button.addEventListener('click', deleteKhachHang);
+            });
 
-      // Function to delete customer
-      async function deleteKhachHang(event) {
-          const id = event.target.dataset.id;
-          Swal.fire({
-              title: 'Bạn có chắc chắn muốn xóa khách hàng này không?',
-              icon: 'warning',
-              showCancelButton: true,
-              confirmButtonColor: '#3085d6',
-              cancelButtonColor: '#d33',
-              confirmButtonText: 'Có, Xóa!',
-              cancelButtonText: 'Không, Hủy!'
-          }).then(async (result) => {
-              if (result.isConfirmed) {
-                  try {
-                      const response = await fetch(`${apiUrl}/${id}`, {
-                          method: 'DELETE',
-                      });
+            renderPagination(filteredKhachHangs.length);
+            updatePaginationInfo(filteredKhachHangs.length);
 
-                      if (response.status === 204) {
-                          Swal.fire(
-                              'Đã xóa!',
-                              'Khách hàng đã được xóa.',
-                              'success'
-                          );
-                          loadKhachHangs(buildApiUrl());  //Load lại trang hiện tại
-                      } else {
-                          Swal.fire({
-                              icon: 'error',
-                              title: 'Lỗi',
-                              text: 'Xóa không thành công. Vui lòng kiểm tra console.',
-                          });
-                          console.error('Error:', response.status);
-                      }
-                  } catch (error) {
-                      console.error('Error deleting customer:', error);
-                      Swal.fire({
-                          icon: 'error',
-                          title: 'Lỗi',
-                          text: 'Lỗi khi xóa khách hàng. Vui lòng kiểm tra console.',
-                      });
-                  }
-              }
-          });
-      }
+        }
 
-      // Function to save customer (add or edit)
-      btnSaveKhachHang.addEventListener('click', async () => {
-          const formData = new FormData(khachHangForm);
-          const khachHangData = {
-              maKH: formData.get('maKH'),
-              tenKH: formData.get('tenKH'),
-              soDienThoai: formData.get('soDienThoai'),
-              email: formData.get('email'),
-              diaChi: formData.get('diaChi')
-          };
+        function renderPagination(totalItems) {
+            const totalPages = Math.ceil(totalItems / pageSize);
+            pagination.innerHTML = "";
 
-          const isEditMode = isEdit.value === 'true';
+            let prevLi = document.createElement("li");
+            prevLi.classList.add("page-item");
+            if (currentPage === 1) {
+                prevLi.classList.add("disabled");
+            }
+            const prevLink = document.createElement("a");
+            prevLink.classList.add("page-link");
+            prevLink.href = "#";
+            prevLink.innerHTML = "«";
+            prevLink.addEventListener("click", () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderNhanVien();
+                }
+            });
+            prevLi.appendChild(prevLink);
+            pagination.appendChild(prevLi);
 
-          try {
-              let response;
-              if (isEditMode) {
-                  // Edit
-                  response = await fetch(`${apiUrl}/${khachHangData.maKH}`, {
-                      method: 'PUT',
-                      headers: {
-                          'Content-Type': 'application/json'
-                      },
-                      body: JSON.stringify(khachHangData)
-                  });
-              } else {
-                  // Add
-                  response = await fetch(apiUrl, {
-                      method: 'POST',
-                      headers: {
-                          'Content-Type': 'application/json'
-                      },
-                      body: JSON.stringify(khachHangData)
-                  });
-              }
+            for (let i = 1; i <= totalPages; i++) {
+                const pageLi = document.createElement("li");
+                pageLi.classList.add("page-item");
+                if (i === currentPage) {
+                    pageLi.classList.add("active");
+                }
+                const pageLink = document.createElement("a");
+                pageLink.classList.add("page-link");
+                pageLink.href = "#";
+                pageLink.innerText = i;
+                pageLink.addEventListener("click", () => {
+                    currentPage = i;
+                    renderNhanVien();
+                });
+                pageLi.appendChild(pageLink);
+                pagination.appendChild(pageLi);
+            }
 
-              if (response.ok || response.status === 204) { // Check response.ok or status 204
-                  Swal.fire({
-                      icon: 'success',
-                      title: isEditMode ? 'Cập nhật thành công!' : 'Thêm thành công!',
-                      text: isEditMode ? 'Khách hàng đã được cập nhật.' : 'Khách hàng đã được thêm.',
-                  });
-                  khachHangModal.hide(); // Hide modal
-                  loadKhachHangs(buildApiUrl()); //Load lại trang hiện tại
-              } else {
-                  Swal.fire({
-                      icon: 'error',
-                      title: 'Lỗi',
-                      text: 'Thêm/sửa không thành công. Vui lòng kiểm tra console.',
-                  });
-                  console.error('Error:', response.status);
-              }
-          } catch (error) {
-              console.error('Error adding/editing customer:', error);
-              Swal.fire({
-                  icon: 'error',
-                  title: 'Lỗi',
-                  text: 'Lỗi khi thêm/sửa khách hàng. Vui lòng kiểm tra console.',
-              });
-          }
-      });
+            let nextLi = document.createElement("li");
+            nextLi.classList.add("page-item");
+            if (currentPage === totalPages || totalPages === 0) {
+                nextLi.classList.add("disabled");
+            }
+            const nextLink = document.createElement("a");
+            nextLink.classList.add("page-link");
+            nextLink.href = "#";
+            nextLink.innerHTML = "»";
+            nextLink.addEventListener("click", () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderNhanVien();
+                }
+            });
+            nextLi.appendChild(nextLink);
+            pagination.appendChild(nextLi);
+        }
+
+        function updatePaginationInfo(totalItems) {
+            const startIndex = (currentPage - 1) * pageSize + 1;
+            const endIndex = Math.min(currentPage * pageSize, totalItems);
+        }
+
+
+        // Event listener for search input
+        searchInput.addEventListener('input', () => {
+            currentPage = 1; // Reset to first page on search
+            renderNhanVien();
+        });
+
+        // Event listeners for sort select boxes
+        sortSelect.addEventListener('change', () => {
+            currentPage = 1; // Reset to first page on sort
+            renderNhanVien();
+        });
+
+        sortOrderSelect.addEventListener('change', () => {
+            currentPage = 1; // Reset to first page on sortOrder
+            renderNhanVien();
+        });
+
+        // Load initial data with default values.
+        loadKhachHangs();
+
+
+        // Function to generate the next MaKH
+        function generateNextMaKH() {
+            let maxMaKH = 0;
+            const table = document.getElementById("tableBody");
+            const rows = table.querySelectorAll("tr");
+
+            rows.forEach(row => {
+                const maKH = row.querySelector("td:first-child").innerText;
+                const number = parseInt(maKH.slice(2)); // Lấy phần số sau "KH"
+                if (!isNaN(number) && number > maxMaKH) {
+                    maxMaKH = number;
+                }
+            });
+
+            const nextNumber = maxMaKH + 1;
+            const nextMaKH = "KH" + String(nextNumber).padStart(3, '0'); // Tạo mã mới với padding
+            return nextMaKH;
+        }
+
+        // Function to add customer
+        btnAddKhachHang.addEventListener('click', () => {
+            khachHangForm.reset(); // Reset form
+            isEdit.value = 'false'; // Set mode to add new
+
+            // Generate and set the next MaKH
+            const nextMaKH = generateNextMaKH();
+            maKHInput.value = nextMaKH; // Gán mã KH mới tạo vào input
+
+            // Clear any previous validation errors
+            clearValidationErrors();
+
+            khachHangModal.show();
+        });
+
+        // Function to edit customer
+        async function editKhachHang(event) {
+            const id = event.target.dataset.id;
+            isEdit.value = 'true';
+            khachHangForm.reset(); // Reset form
+
+            // Clear any previous validation errors
+            clearValidationErrors();
+
+            try {
+                const response = await fetch(`${apiUrl}/${id}`);
+                const khachHang = await response.json();
+
+                // Fill data into the form
+                khachHangForm.maKH.value = khachHang.maKH;
+                khachHangForm.tenKH.value = khachHang.tenKH;
+                khachHangForm.soDienThoai.value = khachHang.soDienThoai || '';
+                khachHangForm.email.value = khachHang.email || '';
+                khachHangForm.diaChi.value = khachHang.diaChi || '';
+
+                khachHangModal.show(); // Show modal
+            } catch (error) {
+                console.error('Error loading customer data:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Lỗi',
+                    text: 'Lỗi khi tải dữ liệu khách hàng.',
+                });
+            }
+        }
+
+        // Function to delete customer
+        async function deleteKhachHang(event) {
+            const id = event.target.dataset.id;
+            Swal.fire({
+                title: 'Bạn có chắc chắn muốn xóa khách hàng này không?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Có, Xóa!',
+                cancelButtonText: 'Không, Hủy!'
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    try {
+                        const response = await fetch(`${apiUrl}/${id}`, {
+                            method: 'DELETE',
+                        });
+
+                        if (response.status === 204) {
+                            Swal.fire(
+                                'Đã xóa!',
+                                'Khách hàng đã được xóa.',
+                                'success'
+                            );
+                            loadKhachHangs(); // Load all data again to update table
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Lỗi',
+                                text: 'Xóa không thành công. Vui lòng kiểm tra console.',
+                            });
+                            console.error('Error:', response.status);
+                        }
+                    } catch (error) {
+                        console.error('Error deleting customer:', error);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Lỗi',
+                            text: 'Lỗi khi xóa khách hàng. Vui lòng kiểm tra console.',
+                        });
+                    }
+                }
+            });
+        }
+
+        // Function to clear all validation errors
+        function clearValidationErrors() {
+            document.querySelectorAll('.invalid-feedback').forEach(element => {
+                element.textContent = ''; // Xóa nội dung của các phần tử báo lỗi
+            });
+            document.querySelectorAll('.form-control').forEach(element => {
+                element.classList.remove('is-invalid'); // Xóa class 'is-invalid' để bỏ hiệu ứng báo lỗi
+            });
+        }
+
+        // Function to display validation errors
+        function displayValidationError(fieldId, message) {
+            const errorElement = document.getElementById(fieldId + '-error');
+            const inputElement = document.getElementById(fieldId);
+            if (errorElement && inputElement) {
+                errorElement.textContent = message; // Đặt nội dung của phần tử báo lỗi
+                inputElement.classList.add('is-invalid'); // Thêm class 'is-invalid' để hiển thị lỗi (Bootstrap)
+            }
+        }
+
+        // Function to validate the form
+        async function validateForm() {
+            clearValidationErrors(); // Xóa các lỗi cũ trước khi kiểm tra
+
+            let isValid = true; // Biến để theo dõi trạng thái hợp lệ của form
+
+            // Validate TenKH (Tên Khách hàng)
+            const tenKHValue = document.getElementById('tenKH').value.trim();
+            if (tenKHValue === '') {
+                displayValidationError('tenKH', 'Tên khách hàng là bắt buộc.');
+                isValid = false;
+            } else if (tenKHValue.length > 255) {
+                displayValidationError('tenKH', 'Tên khách hàng không được vượt quá 255 ký tự.');
+                isValid = false;
+            }
+
+            // Validate SoDienThoai (Số Điện Thoại - Bắt buộc và phải là 10 hoặc 11 chữ số)
+            const soDienThoaiValue = document.getElementById('soDienThoai').value.trim();
+            if (soDienThoaiValue === '') {
+                displayValidationError('soDienThoai', 'Số điện thoại là bắt buộc.');
+                isValid = false;
+            } else if (!/^\d{10,11}$/.test(soDienThoaiValue)) {
+                displayValidationError('soDienThoai', 'Số điện thoại phải là 10 hoặc 11 chữ số.');
+                isValid = false;
+            }
+
+            //Kiểm tra số điện thoại có trùng hay không
+            const isEditMode = isEdit.value === 'true';
+            if (!isEditMode) {  //Chỉ kiểm tra trùng lặp khi thêm mới
+                const isDuplicateSDT = allKhachHangs.some(kh => kh.soDienThoai === soDienThoaiValue);
+
+                if (isDuplicateSDT) {
+                    displayValidationError('soDienThoai', 'Số điện thoại này đã được sử dụng.');
+                    isValid = false;
+                }
+            } else {  //Kiểm tra khi chỉnh sửa
+                //Lấy mã khách hàng đang chỉnh sửa
+                const maKH = document.getElementById('maKH').value;
+                //Lọc ra khách hàng đang chỉnh sửa
+                const currentKhachHang = allKhachHangs.find(kh => kh.maKH === maKH);
+
+                //Nếu số điện thoại thay đổi, kiểm tra xem có trùng với khách hàng khác không
+                if (currentKhachHang && currentKhachHang.soDienThoai !== soDienThoaiValue) {
+                    const isDuplicateSDT = allKhachHangs.some(kh => kh.soDienThoai === soDienThoaiValue && kh.maKH !== maKH);
+                    if (isDuplicateSDT) {
+                        displayValidationError('soDienThoai', 'Số điện thoại này đã được sử dụng.');
+                        isValid = false;
+                    }
+                }
+
+            }
+
+            // Validate Email (Địa chỉ Email - Không bắt buộc, nhưng nếu có thì phải đúng định dạng)
+            const emailValue = document.getElementById('email').value.trim();
+            if (emailValue !== '' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
+                displayValidationError('email', 'Địa chỉ email không hợp lệ.');
+                isValid = false;
+            }
+
+            //kiểm tra email trùng
+            if (!isEditMode) {
+                const isDuplicateEmail = allKhachHangs.some(kh => kh.email === emailValue && emailValue !== "");
+                if (isDuplicateEmail) {
+                    displayValidationError('email', 'Địa chỉ email này đã được sử dụng.');
+                    isValid = false;
+                }
+            } else {
+                const maKH = document.getElementById('maKH').value;
+                const currentKhachHang = allKhachHangs.find(kh => kh.maKH === maKH);
+                if (currentKhachHang && currentKhachHang.email !== emailValue) {
+                    const isDuplicateEmail = allKhachHangs.some(kh => kh.email === emailValue && kh.maKH !== maKH && emailValue !== "");
+                    if (isDuplicateEmail) {
+                        displayValidationError('email', 'Địa chỉ email này đã được sử dụng.');
+                        isValid = false;
+                    }
+                }
+            }
+
+            // Validate DiaChi (Địa chỉ - Không bắt buộc, nhưng nếu có thì không được quá 500 ký tự)
+            const diaChiValue = document.getElementById('diaChi').value.trim();
+            if (diaChiValue.length > 500) {
+                displayValidationError('diaChi', 'Địa chỉ không được vượt quá 500 ký tự.');
+                isValid = false;
+            }
+
+            return isValid; // Trả về trạng thái hợp lệ của form
+        }
+
+        // Function to save customer (add or edit)
+        btnSaveKhachHang.addEventListener('click', async () => {
+
+            if (!await validateForm()) {
+                return; // Dừng lại nếu form không hợp lệ
+            }
+
+            const formData = new FormData(khachHangForm);
+            const khachHangData = {
+                maKH: formData.get('maKH'),
+                tenKH: formData.get('tenKH'),
+                soDienThoai: formData.get('soDienThoai'),
+                email: formData.get('email'),
+                diaChi: formData.get('diaChi')
+            };
+
+            const isEditMode = isEdit.value === 'true'; // Kiểm tra xem có phải là chế độ sửa hay không
+
+            try {
+                let response;
+                if (isEditMode) {
+                    // Chế độ Sửa (Edit mode)
+                    response = await fetch(`${apiUrl}/${khachHangData.maKH}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(khachHangData)
+                    });
+                } else {
+                    // Chế độ Thêm (Add mode)
+                    response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(khachHangData)
+                    });
+                }
+
+                if (response.ok || response.status === 204) { // Kiểm tra xem response có thành công hay không
+                    Swal.fire({
+                        icon: 'success',
+                        title: isEditMode ? 'Cập nhật thành công!' : 'Thêm thành công!',
+                        text: isEditMode ? 'Khách hàng đã được cập nhật.' : 'Khách hàng đã được thêm.',
+                    });
+                    khachHangModal.hide(); // Ẩn modal sau khi thành công
+                    loadKhachHangs(); // Tải lại danh sách khách hàng
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Lỗi',
+                        text: 'Thêm/sửa không thành công. Vui lòng kiểm tra console.',
+                    });
+                    console.error('Error:', response.status);
+                }
+            } catch (error) {
+                console.error('Error adding/editing customer:', error);
+                Swal.fire({
+                    icon: 'error',
+                        title: 'Lỗi',
+                        text: 'Lỗi khi thêm/sửa khách hàng. Vui lòng kiểm tra console.',
+                });
+            }
+        });
     </script>
 </body>
 
