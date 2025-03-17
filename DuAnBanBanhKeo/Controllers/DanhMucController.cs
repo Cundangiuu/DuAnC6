@@ -18,14 +18,15 @@ namespace DuAnBanBanhKeo.Controllers
 
         // GET: api/DanhMucSanPham
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<DanhMuc>>> GetDanhMucSanPhams()
+        public async Task<ActionResult<List<DanhMuc>>> GetDanhMucSanPhams() // Updated return type to ActionResult<List<DanhMuc>>
         {
-            return await _context.DanhMucs.ToListAsync();
+            var danhMucs = await _context.DanhMucs.ToListAsync();
+            return Ok(danhMucs); // Directly return danhMucs list
         }
 
         // GET: api/DanhMucSanPham/MADM
         [HttpGet("{maDanhMuc}")]
-        public async Task<ActionResult<DanhMuc>> GetDanhMucSanPham(string maDanhMuc)
+        public async Task<ActionResult<DanhMuc>> GetDanhMuc(string maDanhMuc)
         {
             var danhMucSanPham = await _context.DanhMucs.FindAsync(maDanhMuc);
 
@@ -34,44 +35,13 @@ namespace DuAnBanBanhKeo.Controllers
                 return NotFound();
             }
 
-            return danhMucSanPham;
-        }
-
-        // PUT: api/DanhMucSanPham/MADM
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{maDanhMuc}")]
-        public async Task<IActionResult> PutDanhMucSanPham(string maDanhMuc, DanhMuc danhMucSanPham)
-        {
-            if (maDanhMuc != danhMucSanPham.MaDanhMuc)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(danhMucSanPham).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!DanhMucSanPhamExists(maDanhMuc))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return Ok(danhMucSanPham);
         }
 
         // POST: api/DanhMucSanPham
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<DanhMuc>> PostDanhMucSanPham(DanhMuc danhMucSanPham)
+        public async Task<ActionResult<DanhMuc>> PostDanhMuc(DanhMuc danhMucSanPham)
         {
             if (DanhMucSanPhamExists(danhMucSanPham.MaDanhMuc))
             {

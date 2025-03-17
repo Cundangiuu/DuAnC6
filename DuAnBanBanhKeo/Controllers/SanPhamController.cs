@@ -19,7 +19,7 @@ namespace DuAnBanBanhKeo.Controllers
 
         // GET: api/SanPham
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<SanPham>>> GetSanPhams(
+        public async Task<ActionResult<object>> GetSanPhams( // Thay đổi kiểu trả về thành ActionResult<object>
             string? searchTerm,
             string? maDanhMucFilter, // Filter by Category
             bool? trangThaiFilter,     // Filter by Status
@@ -47,8 +47,6 @@ namespace DuAnBanBanhKeo.Controllers
             {
                 query = query.Where(sp => sp.MaDanhMuc == maDanhMucFilter);
             }
-
-            
 
             // Filter by Status
             if (trangThaiFilter.HasValue)
@@ -79,9 +77,10 @@ namespace DuAnBanBanhKeo.Controllers
                 .Take(pageSize)
                 .ToListAsync();
 
+            // Trả về object ẩn danh chứa Items là List<SanPham>
             return Ok(new
             {
-                Items = sanPhams,
+                Items = sanPhams, // Items bây giờ là danh sách SanPham trực tiếp
                 TotalItems = totalItems,
                 TotalPages = totalPages,
                 PageSize = pageSize,
@@ -100,38 +99,7 @@ namespace DuAnBanBanhKeo.Controllers
                 return NotFound();
             }
 
-            return sanPham;
-        }
-
-        // PUT: api/SanPham/MASP
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{maSP}")]
-        public async Task<IActionResult> PutSanPham(string maSP, SanPham sanPham)
-        {
-            if (maSP != sanPham.MaSP)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(sanPham).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SanPhamExists(maSP))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return Ok(sanPham); // Trả về Ok(sanPham)
         }
 
         // POST: api/SanPham
@@ -140,8 +108,8 @@ namespace DuAnBanBanhKeo.Controllers
         public async Task<ActionResult<SanPham>> PostSanPham(SanPham sanPham)
         {
             // **Tự động tạo MaSP**
-            //string maSPMoi = await GenerateMaSP();
-            //sanPham.MaSP = maSPMoi;
+            string maSPMoi = await GenerateMaSP();
+            sanPham.MaSP = maSPMoi;
 
             if (SanPhamExists(sanPham.MaSP)) // Check if generated MaSP already exists (unlikely, but good to check)
             {
@@ -175,7 +143,7 @@ namespace DuAnBanBanhKeo.Controllers
                 }
             }
 
-            return CreatedAtAction("GetSanPham", new { maSP = sanPham.MaSP }, sanPham);
+            return CreatedAtAction("GetSanPham", new { maSP = sanPham.MaSP }, sanPham); // Trả về sanPham trực tiếp
         }
 
         // DELETE: api/SanPham/MASP

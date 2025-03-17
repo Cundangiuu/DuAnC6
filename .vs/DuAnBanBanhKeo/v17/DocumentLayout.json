@@ -3,32 +3,32 @@
   "WorkspaceRootPath": "D:\\CNTT\\CSharp6\\DuAnC6\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250316154927_dlss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DuAnBanBanhKeo\\Migrations\\20250316154927_dlss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\cntt\\csharp6\\duanc6\\duanbanbanhkeo\\data\\entities\\hinhanh.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\data\\entities\\hinhanh.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\cntt\\csharp6\\duanc6\\duanbanbanhkeo\\data\\entities\\sanpham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\data\\entities\\sanpham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250316154613_dlss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DuAnBanBanhKeo\\Migrations\\20250316154613_dlss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\cntt\\csharp6\\duanc6\\duanbanbanhkeo\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\cntt\\csharp6\\duanc6\\duanbanbanhkeo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\cntt\\csharp6\\duanc6\\duanbanbanhkeo\\controllers\\sanphamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\controllers\\sanphamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\cntt\\csharp6\\duanc6\\duanbanbanhkeo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\cntt\\csharp6\\duanc6\\duanbanbanhkeo\\controllers\\khachhangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\controllers\\khachhangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\cntt\\csharp6\\duanc6\\duanbanbanhkeo\\controllers\\danhmuccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\controllers\\danhmuccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\cntt\\csharp6\\duanc6\\duanbanbanhkeo\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\cntt\\csharp6\\duanc6\\duanbanbanhkeo\\data\\entities\\sanpham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\data\\entities\\sanpham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\cntt\\csharp6\\duanc6\\duanbanbanhkeo\\data\\entities\\hinhanh.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\data\\entities\\hinhanh.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\cntt\\csharp6\\duanc6\\duanbanbanhkeo\\data\\entities\\danhmuc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,12 +39,12 @@
       "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\data\\entities\\nhacungcap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\cntt\\csharp6\\duanc6\\duanbanbanhkeo\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250316154613_dlss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DuAnBanBanhKeo\\Migrations\\20250316154613_dlss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\cntt\\csharp6\\duanc6\\duanbanbanhkeo\\controllers\\danhmuccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\controllers\\danhmuccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\cntt\\csharp6\\duanc6\\duanbanbanhkeo\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\cntt\\csharp6\\duanc6\\duanbanbanhkeo\\duanbanbanhkeo.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
@@ -73,10 +73,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\cntt\\csharp6\\duanc6\\duanbanbanhkeo\\data\\entities\\taikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\data\\entities\\taikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\cntt\\csharp6\\duanc6\\duanbanbanhkeo\\controllers\\khachhangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\controllers\\khachhangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\cntt\\csharp6\\duanc6\\duanbanbanhkeo\\data\\entities\\hoadonnhap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -121,7 +117,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 1689,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -129,15 +125,92 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\ApplicationDbContext.cs",
-              "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "DuAnBanBanhKeo\\Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAJwAAAAAAAAAAAAAADoAAAA/AAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "SanPham.cs",
+              "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\SanPham.cs",
+              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\SanPham.cs",
+              "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\SanPham.cs",
+              "RelativeToolTip": "DuAnBanBanhKeo\\Data\\Entities\\SanPham.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T06:51:03.52Z",
+              "WhenOpened": "2025-03-12T04:53:23.357Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DanhMucController.cs",
+              "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\DanhMucController.cs",
+              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Controllers\\DanhMucController.cs",
+              "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\DanhMucController.cs",
+              "RelativeToolTip": "DuAnBanBanhKeo\\Controllers\\DanhMucController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T03:04:59.235Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "20250316154613_dlss.cs",
+              "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250316154613_dlss.cs",
+              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Migrations\\20250316154613_dlss.cs",
+              "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250316154613_dlss.cs",
+              "RelativeToolTip": "DuAnBanBanhKeo\\Migrations\\20250316154613_dlss.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T15:46:14.091Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "HinhAnh.cs",
+              "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\HinhAnh.cs",
+              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\HinhAnh.cs",
+              "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\HinhAnh.cs",
+              "RelativeToolTip": "DuAnBanBanhKeo\\Data\\Entities\\HinhAnh.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T15:40:39.992Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DanhMuc.cs",
+              "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\DanhMuc.cs",
+              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\DanhMuc.cs",
+              "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\DanhMuc.cs",
+              "RelativeToolTip": "DuAnBanBanhKeo\\Data\\Entities\\DanhMuc.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T03:04:09.018Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "KhachHangController.cs",
+              "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\KhachHangController.cs",
+              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Controllers\\KhachHangController.cs",
+              "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\KhachHangController.cs",
+              "RelativeToolTip": "DuAnBanBanhKeo\\Controllers\\KhachHangController.cs",
+              "ViewState": "AgIAAHcAAAAAAAAAAAAuwIkAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-12T01:25:19.567Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SanPhamController.cs",
+              "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\SanPhamController.cs",
+              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Controllers\\SanPhamController.cs",
+              "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\SanPhamController.cs",
+              "RelativeToolTip": "DuAnBanBanhKeo\\Controllers\\SanPhamController.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAuwBMAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T14:37:38.857Z",
               "EditorCaption": ""
             },
             {
@@ -148,58 +221,35 @@
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\NhaCungCap.cs",
               "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\NhaCungCap.cs",
               "RelativeToolTip": "DuAnBanBanhKeo\\Data\\Entities\\NhaCungCap.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-12T05:22:14.119Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Program.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Program.cs",
               "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Program.cs",
               "RelativeToolTip": "DuAnBanBanhKeo\\Program.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAAAAGQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T06:44:00.038Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SanPham.cs",
-              "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\SanPham.cs",
-              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\SanPham.cs",
-              "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\SanPham.cs",
-              "RelativeToolTip": "DuAnBanBanhKeo\\Data\\Entities\\SanPham.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T04:53:23.357Z",
+              "WhenOpened": "2025-03-12T06:44:00.038Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "DanhMucController.cs",
-              "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\DanhMucController.cs",
-              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Controllers\\DanhMucController.cs",
-              "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\DanhMucController.cs",
-              "RelativeToolTip": "DuAnBanBanhKeo\\Controllers\\DanhMucController.cs",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAQwHgAAAABAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "DuAnBanBanhKeo\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAJ0AAAAAAAAAAAAwwMgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T03:04:59.235Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "DuAnBanBanhKeo.http",
-              "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\DuAnBanBanhKeo.http",
-              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\DuAnBanBanhKeo.http",
-              "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\DuAnBanBanhKeo.http",
-              "RelativeToolTip": "DuAnBanBanhKeo\\DuAnBanBanhKeo.http",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2025-03-13T14:22:54.403Z"
+              "WhenOpened": "2025-03-12T06:51:03.52Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -215,71 +265,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "20250316154613_dlss.cs",
-              "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250316154613_dlss.cs",
-              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Migrations\\20250316154613_dlss.cs",
-              "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250316154613_dlss.cs",
-              "RelativeToolTip": "DuAnBanBanhKeo\\Migrations\\20250316154613_dlss.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T15:46:14.091Z",
-              "EditorCaption": ""
+              "DocumentIndex": 11,
+              "Title": "DuAnBanBanhKeo.http",
+              "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\DuAnBanBanhKeo.http",
+              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\DuAnBanBanhKeo.http",
+              "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\DuAnBanBanhKeo.http",
+              "RelativeToolTip": "DuAnBanBanhKeo\\DuAnBanBanhKeo.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2025-03-13T14:22:54.403Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "HinhAnh.cs",
-              "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\HinhAnh.cs",
-              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\HinhAnh.cs",
-              "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\HinhAnh.cs",
-              "RelativeToolTip": "DuAnBanBanhKeo\\Data\\Entities\\HinhAnh.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T15:40:39.992Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "20250316154927_dlss.cs",
-              "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250316154927_dlss.cs",
-              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Migrations\\20250316154927_dlss.cs",
-              "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250316154927_dlss.cs",
-              "RelativeToolTip": "DuAnBanBanhKeo\\Migrations\\20250316154927_dlss.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T15:49:27.846Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "DanhMuc.cs",
-              "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\DanhMuc.cs",
-              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\DanhMuc.cs",
-              "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\DanhMuc.cs",
-              "RelativeToolTip": "DuAnBanBanhKeo\\Data\\Entities\\DanhMuc.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T03:04:09.018Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "SanPhamController.cs",
-              "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\SanPhamController.cs",
-              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Controllers\\SanPhamController.cs",
-              "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\SanPhamController.cs",
-              "RelativeToolTip": "DuAnBanBanhKeo\\Controllers\\SanPhamController.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAADkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T14:37:38.857Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\appsettings.json",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\appsettings.json",
@@ -351,19 +349,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "KhachHangController.cs",
-              "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\KhachHangController.cs",
-              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Controllers\\KhachHangController.cs",
-              "ToolTip": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\KhachHangController.cs",
-              "RelativeToolTip": "DuAnBanBanhKeo\\Controllers\\KhachHangController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T01:25:19.567Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 20,
               "Title": "PhieuNhap.cs",
               "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\PhieuNhap.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\PhieuNhap.cs",
@@ -375,7 +361,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 19,
               "Title": "HoaDonXuat.cs",
               "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\HoaDonXuat.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\HoaDonXuat.cs",
@@ -387,7 +373,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 18,
               "Title": "HoaDonNhap.cs",
               "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\HoaDonNhap.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\HoaDonNhap.cs",
@@ -399,7 +385,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 21,
               "Title": "ChiTietHoaDonXuat.cs",
               "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\ChiTietHoaDonXuat.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\ChiTietHoaDonXuat.cs",
@@ -411,7 +397,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 22,
               "Title": "ChiTietHoaDonNhap.cs",
               "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\ChiTietHoaDonNhap.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\ChiTietHoaDonNhap.cs",
@@ -423,7 +409,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 23,
               "Title": "20250312050854_DLSS.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250312050854_DLSS.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250312050854_DLSS.cs",
@@ -435,7 +421,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 24,
               "Title": "ChiTietPhieuNhap.cs",
               "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\ChiTietPhieuNhap.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\ChiTietPhieuNhap.cs",
@@ -447,7 +433,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 25,
               "Title": "ChiTietKiemKe.cs",
               "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\ChiTietKiemKe.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\ChiTietKiemKe.cs",
@@ -459,7 +445,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 26,
               "Title": "KhachHang.cs",
               "DocumentMoniker": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\KhachHang.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\KhachHang.cs",
