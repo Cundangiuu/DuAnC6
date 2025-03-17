@@ -12,7 +12,7 @@ namespace DuAnBanBanhKeo.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthorizeController : Controller
+    public class AuthorizeController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
         private readonly JwtSettings jwtSettings;
@@ -24,37 +24,28 @@ namespace DuAnBanBanhKeo.Controllers
         [HttpPost("GenerateToken")]
         public async Task<IActionResult> GenerateToken([FromBody] TaiKhoanCredential taiKhoanCredential)
         {
-            if (taiKhoanCredential == null || string.IsNullOrWhiteSpace(taiKhoanCredential.TenDangNhap) || string.IsNullOrWhiteSpace(taiKhoanCredential.MatKhau))
-            {
-                return BadRequest("Tên người dùng hoặc mật khẩu không hợp lệ.");
-            }
-
-            var user = _context.TaiKhoans
-             .Include(t => t.NhanVien) // Include the related NhanVien entity
-             .SingleOrDefault(nv =>
-                 nv.TenDangNhap == taiKhoanCredential.TenDangNhap &&
-                 nv.MatKhau == taiKhoanCredential.MatKhau);
+            var user = await _context.TaiKhoans
+                .Include(t => t.NhanVien)
+                .SingleOrDefaultAsync(nv =>
+                    nv.TenDangNhap == taiKhoanCredential.TenDangNhap &&
+                    nv.MatKhau == taiKhoanCredential.MatKhau);
 
             if (user == null) return Unauthorized();
 
-            // Kiểm tra giá trị SecurityKey
-            if (string.IsNullOrEmpty(jwtSettings.SecurityKey))
-            {
-                return StatusCode(500, "SecurityKey chưa được cấu hình.");
-            }
-
             var authClaims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.TenDangNhap),
-                new Claim(ClaimTypes.Role, user.NhanVien.VaiTro), 
+                new Claim(ClaimTypes.Name, user.NhanVien.HoTen), // Thêm HoTen từ NhanVien
+                new Claim(ClaimTypes.Role, user.NhanVien.VaiTro), // Lấy vai trò từ NhanVien
                 new Claim("MaNV", user.MaNV),
+                new Claim("HinhAnh", user.NhanVien.HinhAnh ?? ""), // Thêm HinhAnh (có thể null)
+                 new Claim("TrangThaiTK", user.TrangThai.ToString()), // Thêm TrangThai
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
             var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.SecurityKey));
 
             var token = new JwtSecurityToken(
-                expires: DateTime.Now.AddMinutes(jwtSettings.DurationInMinutes), 
+                expires: DateTime.Now.AddMinutes(jwtSettings.DurationInMinutes),
                 claims: authClaims,
                 signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
             );

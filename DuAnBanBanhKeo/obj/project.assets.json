@@ -8970,23 +8970,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\84372\\.nuget\\packages\\": {},
+    "C:\\Users\\trant\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj",
+      "projectUniqueName": "D:\\DuAnC6\\DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj",
       "projectName": "DuAnBanBanhKeo",
-      "projectPath": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj",
-      "packagesPath": "C:\\Users\\84372\\.nuget\\packages\\",
-      "outputPath": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\obj\\",
+      "projectPath": "D:\\DuAnC6\\DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj",
+      "packagesPath": "C:\\Users\\trant\\.nuget\\packages\\",
+      "outputPath": "D:\\DuAnC6\\DuAnBanBanhKeo\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\84372\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\trant\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -9012,9 +9012,8 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "all"
-      },
-      "SdkAnalysisLevel": "9.0.200"
+        "auditMode": "direct"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -9110,8 +9109,16 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200-preview.0.24575.35/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file D:\\DuAnC6\\DuAnBanBanhKeo\\obj\\project.nuget.cache : After parsing a value an unexpected character was encountered: \". Path 'expectedPackageFiles[188]', line 196, position 4."
+    }
+  ]
 }
