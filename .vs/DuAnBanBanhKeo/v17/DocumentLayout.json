@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "D:\\FPT\\DuAnC6\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250317153303_DLSS.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DuAnBanBanhKeo\\Migrations\\20250317153303_DLSS.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\fpt\\duanc6\\duanbanbanhkeo\\controllers\\hoadonxuatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\controllers\\hoadonxuatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\fpt\\duanc6\\duanbanbanhkeo\\data\\entities\\sanpham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\data\\entities\\sanpham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\fpt\\duanc6\\duanbanbanhkeo\\controllers\\hoadonnhapcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\controllers\\hoadonnhapcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -21,10 +33,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250317140204_DLSS.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DuAnBanBanhKeo\\Migrations\\20250317140204_DLSS.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\fpt\\duanc6\\duanbanbanhkeo\\controllers\\hoadonxuatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\controllers\\hoadonxuatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\fpt\\duanc6\\duanbanbanhkeo\\modal\\sanphamdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -185,50 +193,48 @@
       "DocumentGroups": [
         {
           "DockedWidth": 250,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ChiTietHoaDonNhap.cs",
-              "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\ChiTietHoaDonNhap.cs",
-              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\ChiTietHoaDonNhap.cs",
-              "ToolTip": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\ChiTietHoaDonNhap.cs",
-              "RelativeToolTip": "DuAnBanBanhKeo\\Data\\Entities\\ChiTietHoaDonNhap.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAA+wA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T04:32:40.36Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "HoaDonNhapController.cs",
-              "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\HoaDonNhapController.cs",
-              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Controllers\\HoaDonNhapController.cs",
-              "ToolTip": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\HoaDonNhapController.cs",
-              "RelativeToolTip": "DuAnBanBanhKeo\\Controllers\\HoaDonNhapController.cs",
-              "ViewState": "AgIAAKgAAAAAAAAAAAAowEUBAAAAAAAAAAAAAA==",
+              "Title": "20250317153303_DLSS.cs",
+              "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250317153303_DLSS.cs",
+              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Migrations\\20250317153303_DLSS.cs",
+              "ToolTip": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250317153303_DLSS.cs",
+              "RelativeToolTip": "DuAnBanBanhKeo\\Migrations\\20250317153303_DLSS.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T14:14:13.892Z",
+              "WhenOpened": "2025-03-17T15:33:04.18Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "20250317142019_DLSS.cs",
-              "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250317142019_DLSS.cs",
-              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Migrations\\20250317142019_DLSS.cs",
-              "ToolTip": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250317142019_DLSS.cs",
-              "RelativeToolTip": "DuAnBanBanhKeo\\Migrations\\20250317142019_DLSS.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "SanPham.cs",
+              "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\SanPham.cs",
+              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\SanPham.cs",
+              "ToolTip": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\SanPham.cs",
+              "RelativeToolTip": "DuAnBanBanhKeo\\Data\\Entities\\SanPham.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAA1wA4AAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T14:20:20.137Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-17T15:27:36.208Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "HoaDonNhapController.cs",
+              "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\HoaDonNhapController.cs",
+              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Controllers\\HoaDonNhapController.cs",
+              "ToolTip": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\HoaDonNhapController.cs",
+              "RelativeToolTip": "DuAnBanBanhKeo\\Controllers\\HoaDonNhapController.cs",
+              "ViewState": "AgIAAKIAAAAAAAAAAAAowJwAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T14:14:13.892Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Program.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Program.cs",
@@ -236,12 +242,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T12:31:29.977Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-17T12:31:29.977Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "20250317140204_DLSS.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250317140204_DLSS.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Migrations\\20250317140204_DLSS.cs",
@@ -249,12 +254,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Migrations\\20250317140204_DLSS.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T14:02:04.924Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-17T14:02:04.924Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "SanPhamDto.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\SanPhamDto.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Modal\\SanPhamDto.cs",
@@ -262,12 +266,48 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Modal\\SanPhamDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T14:28:49.971Z",
+              "WhenOpened": "2025-03-14T14:28:49.971Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HoaDonXuatController.cs",
+              "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\HoaDonXuatController.cs",
+              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Controllers\\HoaDonXuatController.cs",
+              "ToolTip": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\HoaDonXuatController.cs",
+              "RelativeToolTip": "DuAnBanBanhKeo\\Controllers\\HoaDonXuatController.cs",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAAALEAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T04:15:14.471Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
+              "Title": "20250317142019_DLSS.cs",
+              "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250317142019_DLSS.cs",
+              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Migrations\\20250317142019_DLSS.cs",
+              "ToolTip": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250317142019_DLSS.cs",
+              "RelativeToolTip": "DuAnBanBanhKeo\\Migrations\\20250317142019_DLSS.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T14:20:20.137Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ChiTietHoaDonNhap.cs",
+              "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\ChiTietHoaDonNhap.cs",
+              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\ChiTietHoaDonNhap.cs",
+              "ToolTip": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\ChiTietHoaDonNhap.cs",
+              "RelativeToolTip": "DuAnBanBanhKeo\\Data\\Entities\\ChiTietHoaDonNhap.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAA+wA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-12T04:32:40.36Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "PhieuNhap.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\PhieuNhap.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\PhieuNhap.cs",
@@ -275,25 +315,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Data\\Entities\\PhieuNhap.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T04:32:37.426Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-12T04:32:37.426Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "HoaDonXuatController.cs",
-              "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\HoaDonXuatController.cs",
-              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Controllers\\HoaDonXuatController.cs",
-              "ToolTip": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\HoaDonXuatController.cs",
-              "RelativeToolTip": "DuAnBanBanhKeo\\Controllers\\HoaDonXuatController.cs",
-              "ViewState": "AgIAAHcAAAAAAAAAAAAAAJ4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T04:15:14.471Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "HoaDonNhapCreateDto.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\HoaDonNhapCreateDto.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Modal\\HoaDonNhapCreateDto.cs",
@@ -301,12 +327,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Modal\\HoaDonNhapCreateDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T14:14:38.855Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T14:14:38.855Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "HoaDonNhapUpdateDto.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\HoaDonNhapUpdateDto.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Modal\\HoaDonNhapUpdateDto.cs",
@@ -314,12 +339,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Modal\\HoaDonNhapUpdateDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T14:39:25.764Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T14:39:25.764Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "HoaDonXuat.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\HoaDonXuat.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\HoaDonXuat.cs",
@@ -327,12 +351,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Data\\Entities\\HoaDonXuat.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAywBYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T04:58:01.024Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-12T04:58:01.024Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "ChiTietHoaDonNhapDto.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\ChiTietHoaDonNhapDto.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Modal\\ChiTietHoaDonNhapDto.cs",
@@ -340,12 +363,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Modal\\ChiTietHoaDonNhapDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T14:15:00.079Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T14:15:00.079Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "ChiTietHoaDonXuatDto.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\ChiTietHoaDonXuatDto.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Modal\\ChiTietHoaDonXuatDto.cs",
@@ -353,12 +375,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Modal\\ChiTietHoaDonXuatDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T04:45:41.108Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-16T04:45:41.108Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "HoaDonNhapDto.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\HoaDonNhapDto.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Modal\\HoaDonNhapDto.cs",
@@ -366,12 +387,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Modal\\HoaDonNhapDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T14:23:47.471Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T14:23:47.471Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "KhachHangController.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\KhachHangController.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Controllers\\KhachHangController.cs",
@@ -379,12 +399,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Controllers\\KhachHangController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAIMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T01:25:19.567Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-12T01:25:19.567Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "ChiTietKiemKe.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\ChiTietKiemKe.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\ChiTietKiemKe.cs",
@@ -392,12 +411,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Data\\Entities\\ChiTietKiemKe.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T04:57:55.79Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-12T04:57:55.79Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "AutoMapperHelper.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Helper\\AutoMapperHelper.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Helper\\AutoMapperHelper.cs",
@@ -405,12 +423,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Helper\\AutoMapperHelper.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAIBJwB0AAABcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T03:36:09.143Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T03:36:09.143Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "NhanVienDto.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\NhanVienDto.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Modal\\NhanVienDto.cs",
@@ -418,12 +435,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Modal\\NhanVienDto.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAAiwB0AAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T03:40:32.779Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-16T03:40:32.779Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "HoaDonXuatCreateDto.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\HoaDonXuatCreateDto.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Modal\\HoaDonXuatCreateDto.cs",
@@ -431,12 +447,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Modal\\HoaDonXuatCreateDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T04:44:43.223Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-16T04:44:43.223Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "HoaDonXuatUpdateDto.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\HoaDonXuatUpdateDto.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Modal\\HoaDonXuatUpdateDto.cs",
@@ -444,12 +459,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Modal\\HoaDonXuatUpdateDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T04:45:15.06Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-16T04:45:15.06Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 22,
               "Title": "HoaDonXuatDto.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\HoaDonXuatDto.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Modal\\HoaDonXuatDto.cs",
@@ -457,12 +471,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Modal\\HoaDonXuatDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T04:31:44.966Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-16T04:31:44.966Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 23,
               "Title": "KhachHangDto.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\KhachHangDto.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Modal\\KhachHangDto.cs",
@@ -470,12 +483,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Modal\\KhachHangDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T04:46:05.005Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-16T04:46:05.005Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 24,
               "Title": "KhachHang.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\KhachHang.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\KhachHang.cs",
@@ -483,12 +495,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Data\\Entities\\KhachHang.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAIBJwAwAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T01:19:28.607Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-12T01:19:28.607Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 25,
               "Title": "HoaDonNhap.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\HoaDonNhap.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\HoaDonNhap.cs",
@@ -496,12 +507,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Data\\Entities\\HoaDonNhap.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAAwBIAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T04:32:13.895Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-12T04:32:13.895Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 31,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\appsettings.json",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\appsettings.json",
@@ -509,12 +519,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-12T06:31:16.72Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-12T06:31:16.72Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 29,
               "Title": "20250316024155_fhdfh.cs",
               "DocumentMoniker": "D:\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250316024155_fhdfh.cs",
               "RelativeDocumentMoniker": "..\\..\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250316024155_fhdfh.cs",
@@ -525,7 +534,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 26,
               "Title": "NhanVienController.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\NhanVienController.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Controllers\\NhanVienController.cs",
@@ -533,12 +542,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Controllers\\NhanVienController.cs",
               "ViewState": "AgIAAIQBAAAAAAAAAAAkwJABAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-15T06:42:25.667Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-15T06:42:25.667Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 30,
               "Title": "AuthorizeController.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\AuthorizeController.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Controllers\\AuthorizeController.cs",
@@ -546,12 +554,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Controllers\\AuthorizeController.cs",
               "ViewState": "AgIAACEAAAAAAAAAAADwvyQAAABaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T07:04:37.29Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-12T07:04:37.29Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 32,
               "Title": "NhanVien.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\NhanVien.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\NhanVien.cs",
@@ -559,12 +566,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Data\\Entities\\NhanVien.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAIBJwA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T07:16:50.967Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-12T07:16:50.967Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 33,
               "Title": "LoginRequest.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\LoginRequest.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Modal\\LoginRequest.cs",
@@ -572,12 +578,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Modal\\LoginRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T14:08:15.802Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T14:08:15.802Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 28,
               "Title": "TaiKhoan.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\TaiKhoan.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\TaiKhoan.cs",
@@ -585,12 +590,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Data\\Entities\\TaiKhoan.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T06:16:27.293Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-12T06:16:27.293Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 34,
               "Title": "20250315065352_DLSS.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250315065352_DLSS.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Migrations\\20250315065352_DLSS.cs",
@@ -601,7 +605,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 35,
               "Title": "JwtSettings.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\JwtSettings.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Modal\\JwtSettings.cs",
@@ -609,12 +613,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Modal\\JwtSettings.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T07:05:13.235Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-12T07:05:13.235Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 36,
               "Title": "KiemKe.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\KiemKe.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\KiemKe.cs",
@@ -622,12 +625,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Data\\Entities\\KiemKe.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAAwA8AAABjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-15T06:43:44.914Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-15T06:43:44.914Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 37,
               "Title": "NhaCungCapDto.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\NhaCungCapDto.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Modal\\NhaCungCapDto.cs",
@@ -635,12 +637,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Modal\\NhaCungCapDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T14:29:32.933Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T14:29:32.933Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 27,
               "Title": "TaiKhoanController.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\TaiKhoanController.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Controllers\\TaiKhoanController.cs",
@@ -648,12 +649,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Controllers\\TaiKhoanController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T03:16:46.987Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T03:16:46.987Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 38,
               "Title": "TaiKhoanDto.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\TaiKhoanDto.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Modal\\TaiKhoanDto.cs",
@@ -661,12 +661,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Modal\\TaiKhoanDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T03:18:26.548Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T03:18:26.548Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 39,
               "Title": "TaiKhoanUpdateDto.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\TaiKhoanUpdateDto.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Modal\\TaiKhoanUpdateDto.cs",
@@ -674,12 +673,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Modal\\TaiKhoanUpdateDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T03:19:22.461Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T03:19:22.461Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 40,
               "Title": "TaiKhoanCreateDto.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\TaiKhoanCreateDto.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Modal\\TaiKhoanCreateDto.cs",
@@ -687,12 +685,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Modal\\TaiKhoanCreateDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T03:18:57.35Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T03:18:57.35Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 41,
               "Title": "TaiKhoanCredential.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\TaiKhoanCredential.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Modal\\TaiKhoanCredential.cs",
@@ -700,12 +697,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Modal\\TaiKhoanCredential.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T07:14:43.815Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-12T07:14:43.815Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 42,
               "Title": "ChiTietPhieuNhap.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\ChiTietPhieuNhap.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\ChiTietPhieuNhap.cs",
@@ -713,12 +709,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Data\\Entities\\ChiTietPhieuNhap.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T04:32:54.114Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-12T04:32:54.114Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 43,
               "Title": "ScaffoldingReadMe.txt",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\ScaffoldingReadMe.txt",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\ScaffoldingReadMe.txt",
@@ -726,12 +721,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\ScaffoldingReadMe.txt",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-03-12T07:26:24.725Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-12T07:26:24.725Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 44,
               "Title": "NhaCungCap.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\NhaCungCap.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\NhaCungCap.cs",
@@ -739,12 +733,11 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Data\\Entities\\NhaCungCap.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T05:22:14.119Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-12T05:22:14.119Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 45,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Program.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Program.cs",
@@ -752,8 +745,7 @@
               "RelativeToolTip": "DuAnBanBanhKeo\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T05:08:55.007Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-12T05:08:55.007Z"
             }
           ]
         }

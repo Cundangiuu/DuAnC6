@@ -12,7 +12,7 @@ namespace DuAnBanBanhKeo.Data.Entities
         public int SoLuongTon { get; set; }
         public string DonViTinh { get; set; }
         public bool TrangThai { get; set; } = true; // true = còn hàng, false = hết hàng
-        public ICollection<HinhAnh> HinhAnhs { get; set; } = new List<HinhAnh>();
+        public ICollection<HinhAnh>? HinhAnhs { get; set; } = new List<HinhAnh>();
         public string? MaNCC { get; set; }
         public NhaCungCap? NhaCungCap { get; set; }
         public string? MaDanhMuc { get; set; } 
