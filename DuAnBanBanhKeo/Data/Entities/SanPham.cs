@@ -12,9 +12,12 @@ namespace DuAnBanBanhKeo.Data.Entities
         public int SoLuongTon { get; set; }
         public string DonViTinh { get; set; }
         public bool TrangThai { get; set; } = true; // true = còn hàng, false = hết hàng
-        public string? HinhAnh { get; set; } // Lưu đường dẫn ảnh
+        public ICollection<HinhAnh> HinhAnhs { get; set; } = new List<HinhAnh>();
         public string? MaNCC { get; set; }
         public NhaCungCap? NhaCungCap { get; set; }
+        public string? MaDanhMuc { get; set; } 
+        public DanhMuc? DanhMuc { get; set; }
+
         public ICollection<ChiTietHoaDonXuat> ChiTietHoaDonXuats { get; set; } = new List<ChiTietHoaDonXuat>();
         public ICollection<ChiTietHoaDonNhap> ChiTietHoaDonNhaps { get; set; } = new List<ChiTietHoaDonNhap>();
         public ICollection<ChiTietKiemKe> ChiTietKiemKes { get; set; } = new List<ChiTietKiemKe>();

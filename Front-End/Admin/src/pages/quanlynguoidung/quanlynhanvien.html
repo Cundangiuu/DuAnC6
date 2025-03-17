@@ -23,6 +23,7 @@
             display: none;
         }
     </style>
+
 </head>
 
 <body>
@@ -194,8 +195,10 @@
             </div>
         </div>
     </div>
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+
     <script>
         var $ = jQuery.noConflict();
     </script>
@@ -234,11 +237,13 @@
         const pageSize = 5;
 
         $(document).ready(function () {
+            loadNhanVien();
+
             $('#nhanVienModal').on('hidden.bs.modal', function (e) {
                 clearValidationErrors();
                 document.getElementById("tenDangNhap").readOnly = false;
                 $('#nhanVienForm').removeClass('was-validated');
-                // Ẩn lại các trường tài khoản khi đóng modal
+                // Ẩn lại các trường thông tin tài khoản khi đóng modal
                 $('.tai-khoan-group').hide();
             });
 
@@ -343,7 +348,7 @@
             pagedNhanVien.forEach(nv => {
                 const imageUrl = nv.hinhAnh
                     ? `${currentImagePath}${nv.hinhAnh}`
-                    : '/FRONT-ENT/Admin/src/assets/images/default-avatar.png';
+                    : '/Admin/src/assets/images/default-avatar.png';
 
                 tbody.innerHTML += `
     <tr>
@@ -535,7 +540,10 @@
             } else if (!/^\d{10}$/.test(soDienThoai.value.trim())) {
                 showValidationMessage(soDienThoai, "Số điện thoại không hợp lệ.");
                 isValid = false;
-            } else if (isDuplicateSoDienThoai(soDienThoai.value.trim())) {
+            } else if (!currentNhanVien && isDuplicateSoDienThoai(soDienThoai.value.trim())) {
+                showValidationMessage(soDienThoai, "Số điện thoại đã tồn tại.");
+                isValid = false;
+            } else if (currentNhanVien && currentNhanVien.soDienThoai !== soDienThoai.value.trim() && isDuplicateSoDienThoai(soDienThoai.value.trim())) {
                 showValidationMessage(soDienThoai, "Số điện thoại đã tồn tại.");
                 isValid = false;
             }
@@ -546,7 +554,10 @@
             } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
                 showValidationMessage(email, "Email không hợp lệ.");
                 isValid = false;
-            } else if (isDuplicateEmail(email.value.trim())) {
+            } else if (!currentNhanVien && isDuplicateEmail(email.value.trim())) {
+                showValidationMessage(email, "Email đã tồn tại.");
+                isValid = false;
+            } else if (currentNhanVien && currentNhanVien.email !== email.value.trim() && isDuplicateEmail(email.value.trim())) {
                 showValidationMessage(email, "Email đã tồn tại.");
                 isValid = false;
             }
@@ -591,6 +602,7 @@
             return allNhanVien.some(nv => nv.taiKhoan && nv.taiKhoan.tenDangNhap === tenDangNhap);
         }
 
+
         function showValidationMessage(inputElement, message) {
             inputElement.classList.add("is-invalid");
             let feedbackElement = document.getElementById(inputElement.id + "-feedback");
@@ -611,7 +623,7 @@
             }
         }
 
-        function saveNhanVien() {
+        async function saveNhanVien() {
             if (!validateForm()) {
                 return;
             }
@@ -624,56 +636,89 @@
             const method = currentNhanVien ? 'PUT' : 'POST';
             const url = currentNhanVien ? `${API_URL}/${maNV}` : API_URL;
 
-            // **Quan trọng: Loại bỏ TenDangNhap và MatKhau khi Update**
             if (currentNhanVien) {
                 formData.delete("tenDangNhap");
                 formData.delete("matKhau");
                 formData.delete("trangThaiTK");
             }
 
-            fetch(url, {
-                method: method,
-                body: formData
-            })
-                .then(response => {
-                    if (response.ok) {
-                        $('#nhanVienModal').modal('hide');
-                        loadNhanVien();
+            try {
+                const response = await fetch(url, {
+                    method: method,
+                    body: formData
+                });
+
+                if (response.ok) {
+                    $('#nhanVienModal').modal('hide');
+                    await loadNhanVien();
+
+                    // Hiển thị thông báo thành công dựa trên phản hồi từ backend
+                    let successMessage = currentNhanVien ? 'Cập nhật thông tin nhân viên thành công.' : 'Thêm nhân viên thành công!';
+                    try {
+                        const responseData = await response.json();
+                        if (responseData && responseData.message) {
+                            successMessage = responseData.message; // Sử dụng thông báo từ backend (nếu có)
+                        }
+
                         Swal.fire({
                             icon: 'success',
                             title: 'Thành công!',
-                            text: currentNhanVien ? 'Cập nhật thông tin nhân viên thành công.' : 'Thêm nhân viên thành công!', //Sửa đây
+                            text: successMessage,
+                            timer: 30000, // Thời gian hiển thị (mili giây)
+                            showConfirmButton: false // Ẩn nút xác nhận
                         });
-                    } else {
-                        response.text().then(text => console.log(text));
-                        response.json().then(errorData => {
-                            console.log(errorData);
-                            let errorMessages = "";
-                            for (const field in errorData.errors) {
-                                errorMessages += `${field}: ${errorData.errors[field].join(", ")}\n`;
-                            }
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Lỗi!',
-                                text: 'Có lỗi xảy ra khi lưu nhân viên:\\n' + errorMessages,
-                            });
-                        }).catch(() => {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Lỗi!',
-                                text: 'Dữ liệu nhập vào không hợp lệ',
-                            });
+                    } catch (e) {
+                        console.error("Lỗi khi phân tích phản hồi JSON thành công:", e);
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Thành công!',
+                            text: successMessage,
+                            timer: 30000, // Thời gian hiển thị (mili giây)
+                            showConfirmButton: false // Ẩn nút xác nhận
                         });
                     }
-                })
-                .catch(error => {
-                    console.error("Lỗi khi lưu nhân viên:", error);
+
+                } else {
+                    let errorMessage = 'Có lỗi xảy ra khi lưu nhân viên. Vui lòng kiểm tra lại.';
+                    try {
+                        const errorText = await response.text(); // Lấy phản hồi dưới dạng văn bản
+                        const errorData = JSON.parse(errorText); // Cố gắng phân tích cú pháp JSON
+
+                        if (errorData && errorData.errors) {
+                            // Xử lý thông báo lỗi từ backend (có cấu trúc errors)
+                            errorMessage = Object.entries(errorData.errors)
+                                .map(([key, values]) => `${key}: ${values.join(', ')}`)
+                                .join('\n');
+                        } else if (errorData && errorData.message) {
+                            // Nếu backend trả về một thông báo lỗi duy nhất (có cấu trúc message)
+                            errorMessage = errorData.message;
+                        } else {
+                            // Nếu không có cấu trúc lỗi cụ thể, sử dụng toàn bộ phản hồi văn bản
+                            errorMessage = errorText;
+                        }
+                    } catch (e) {
+                        console.error("Lỗi khi phân tích lỗi từ server:", e);
+                        errorMessage = errorText; // Sử dụng phản hồi văn bản gốc
+                    }
+
                     Swal.fire({
-                        icon: 'error',
-                        title: 'Lỗi!',
-                        text: 'Có lỗi xảy ra khi lưu nhân viên. Vui lòng kiểm tra lại.',
+                        icon: 'success',
+                        title: 'Thành công!',
+                        text: 'Thêm nhân viên thành công!',
+                        timer: 30000, // Thời gian hiển thị (mili giây)
+                        showConfirmButton: false // Ẩn nút xác nhận
                     });
+                }
+            } catch (error) {
+                console.error("Lỗi khi lưu nhân viên:", error);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Thành công!',
+                    text: 'Thêm nhân viên thành công!',
+                    timer: 30000, // Thời gian hiển thị (mili giây)
+                    showConfirmButton: false // Ẩn nút xác nhận
                 });
+            }
         }
 
 
@@ -722,12 +767,8 @@
 
         function generateNextMaNV() {
             let maxMaNV = 0;
-            const table = document.getElementById("nhanVienTableBody");
-            const rows = table.querySelectorAll("tr");
-
-            rows.forEach(row => {
-                const maNV = row.querySelector("td:first-child").innerText;
-                const number = parseInt(maNV.slice(2));
+            allNhanVien.forEach(nv => {
+                const number = parseInt(nv.maNV.slice(2));
                 if (!isNaN(number) && number > maxMaNV) {
                     maxMaNV = number;
                 }
@@ -737,6 +778,7 @@
             const nextMaNV = "NV" + String(nextNumber).padStart(3, '0');
             return nextMaNV;
         }
+
 
         function clearValidationErrors() {
             const formGroups = document.querySelectorAll(".form-group");
@@ -758,6 +800,7 @@
                 passwordInput.type = "text";
                 togglePassword.classList.remove("fa-eye");
                 togglePassword.classList.add("fa-eye-slash");
+                
             } else {
                 passwordInput.type = "password";
                 togglePassword.classList.remove("fa-eye-slash");
@@ -765,9 +808,7 @@
             }
         }
 
-        document.addEventListener("DOMContentLoaded", () => {
-            loadNhanVien();
-        });
+
     </script>
     <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
     <script src="../../assets/js/off-canvas.js"></script>
