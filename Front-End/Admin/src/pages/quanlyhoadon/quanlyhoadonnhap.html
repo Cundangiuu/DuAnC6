@@ -33,7 +33,7 @@
             white-space: nowrap;
         }
 
-        .btn-edit {
+        /* .btn-edit {
             background-color: #ffc107;
             border-color: #ffc107;
             color: #212529;
@@ -55,7 +55,7 @@
             background-color: #c82333;
             border-color: #bd2130;
             color: #fff;
-        }
+        } */
     </style>
 </head>
 
@@ -107,7 +107,7 @@
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
                                         data-target="#addHoaDonNhapModal"
                                         style="font-family: 'Times New Roman', Times, serif;">
-                                        Tạo Hóa Đơn Nhập
+                                        <i class="mdi mdi-plus-circle-outline"></i> Tạo Hóa Đơn Nhập
                                     </button>
                                     <br>
                                     <!-- Search, Filter, and Sort Controls -->
@@ -418,8 +418,8 @@ $(document).ready(function () {
 
                     // Details button
                     var detailsButton = $('<button>')
-                        .addClass('btn btn-info btn-sm')
-                        .text('Chi Tiết')
+                        .addClass('btn btn-sm btn-outline-info mr-2')
+                        .html('<i class="mdi mdi-eye"></i>')
                         .css('font-family', "'Times New Roman', Times, serif")
                         .click(function () {
                             showDetails(hoaDonNhap.maHoaDonNhap);
@@ -429,8 +429,8 @@ $(document).ready(function () {
                     // Edit and Delete buttons
                     var actions = $('<td>');
                     var editButton = $('<button>')
-                        .addClass('btn btn-warning btn-sm mr-1 btn-edit')
-                        .text('Sửa')
+                        .addClass('btn btn-sm btn-outline-primary mr-2 btn-edit')
+                        .html('<i class="mdi mdi-pencil"></i>')
                         .css('font-family', "'Times New Roman', Times, serif")
                         .click(function () {
                             showEditModal(hoaDonNhap);
@@ -442,8 +442,8 @@ $(document).ready(function () {
 
                     // Word Export Button
                     var exportButton = $('<button>')
-                        .addClass('btn btn-success btn-sm')
-                        .text('Xuất Word')
+                        .addClass('btn btn-sm btn-outline-success mr-2 btn-sm')
+                        .html('<i class="mdi mdi-cloud-download"></i>')
                         .css('font-family', "'Times New Roman', Times, serif")
                         .click(function () {
                             exportToWord(hoaDonNhap.maHoaDonNhap);
@@ -645,95 +645,95 @@ $(document).ready(function () {
     }
     // Calculate totals on quantity/unit price change
     $(document).on('input', '.quantity, .unitPrice', function () {
-        var tableId = $(this).closest('table').attr('id');
-        calculateTotals('#' + tableId);
+    var tableId = $(this).closest('table').attr('id');
+    calculateTotals('#' + tableId);
+});
+
+function calculateTotals(tableId) {
+    var totalAmount = 0;
+    $(tableId + ' tbody tr').each(function () {
+        var quantityInput = $(this).find('.quantity');
+        var unitPriceInput = $(this).find('.unitPrice');
+
+        var quantity = parseFloat(quantityInput.val()) || 0;
+        var unitPrice = parseFloat(unitPriceInput.val()) || 0;
+
+        // Kiểm tra nếu số lượng âm
+        if (quantity < 0) {
+            Swal.fire(
+                'Cảnh báo!',
+                'Số lượng không được âm.',
+                'warning'
+            );
+            quantityInput.val(0); // Đặt lại về 0 hoặc một giá trị hợp lệ
+            quantity = 0; // Đảm bảo tính toán tổng sử dụng giá trị hợp lệ
+        }
+        if (quantity > 1000) {
+            Swal.fire(
+                'Cảnh báo!',
+                'Số lượng không được vượt quá 1000.',
+                'warning'
+            );
+            quantityInput.val(0); // Đặt lại về 0 hoặc một giá trị hợp lệ
+            quantity = 0; // Đảm bảo tính toán tổng sử dụng giá trị hợp lệ
+        }
+        //Kiểm tra nếu đơn giá âm
+        if (unitPrice < 0) {
+            Swal.fire(
+                'Cảnh báo!',
+                'Đơn giá không được âm.',
+                'warning'
+            );
+            unitPriceInput.val(0);
+            unitPrice = 0;
+        }
+
+        var total = quantity * unitPrice;
+        $(this).find('.total').text(formatCurrency(total));
+        totalAmount += total;
     });
 
-    function calculateTotals(tableId) {
-        var totalAmount = 0;
-        $(tableId + ' tbody tr').each(function () {
-            var quantityInput = $(this).find('.quantity');
-            var unitPriceInput = $(this).find('.unitPrice');
-
-            var quantity = parseFloat(quantityInput.val()) || 0;
-            var unitPrice = parseFloat(unitPriceInput.val()) || 0;
-
-            // Check if quantity is negative
-            if (quantity < 0) {
-                Swal.fire(
-                    'Cảnh báo!',
-                    'Số lượng không được âm.',
-                    'warning'
-                );
-                quantityInput.val(0); // Reset to 0 or a valid value
-                quantity = 0; // Ensure total calculation uses valid value
-            }
-            if (quantity > 1000) {
-                Swal.fire(
-                    'Cảnh báo!',
-                    'Số lượng không được vượt quá 1000.',
-                    'warning'
-                );
-                quantityInput.val(0); // Reset to 0 or a valid value
-                quantity = 0; // Ensure total calculation uses valid value
-            }
-            //Check if unitPrice is negative
-            if (unitPrice < 0) {
-                Swal.fire(
-                    'Cảnh báo!',
-                    'Đơn giá không được âm.',
-                    'warning'
-                );
-                unitPriceInput.val(0);
-                unitPrice = 0;
-            }
-
-            var total = quantity * unitPrice;
-            $(this).find('.total').text(formatCurrency(total));
-            totalAmount += total;
-        });
-
-        // Update total amount in the modal form
-        var modalId = '#' + $(tableId).closest('.modal').attr('id');
-        $(modalId + ' #tongTien').val(totalAmount);
-        console.log("Tổng tiền trong modal:", totalAmount); // Debug log
-    }
+    // Cập nhật tổng tiền trong form modal
+    var modalId = '#' + $(tableId).closest('.modal').attr('id');
+    $(modalId + ' #tongTien').val(totalAmount);
+    console.log("Tổng tiền trong modal:", totalAmount); // Ghi log để debug
+}
 
 
-    // Load suppliers function
-    function loadSuppliers(selectElementId, selectedMaNCC) {
-        $.ajax({
-            url: 'https://localhost:7203/api/HoaDonNhap/Suppliers', // Thay đổi URL API nếu cần
-            type: 'GET',
-            success: function (data) {
-                var selectElement = $(selectElementId);
-                selectElement.empty(); // Clear existing options
-                $.each(data, function (i, nhaCungCap) {
-                    // Tạo option với value là maNCC, data-tenncc là tenNCC, và data-mancc là maNCC
-                    var option = `<option value="${nhaCungCap.maNCC}" data-tenncc="${nhaCungCap.tenNCC}" ${nhaCungCap.maNCC === selectedMaNCC ? 'selected' : ''}>${nhaCungCap.tenNCC}</option>`;
-                    selectElement.append(option);
-                });
-            },
-            error: function (error) {
-                console.error('Error fetching supplier list:', error);
-            }
-        });
-    }
-
-    // Load product list when the modal is shown.
-    $('#addHoaDonNhapModal').on('shown.bs.modal', function (e) {
-        loadNhanViens();
-        loadSuppliers('#tenNCC');
-        loadProductList('#productListTable');
+// Hàm tải danh sách nhà cung cấp
+function loadSuppliers(selectElementId, selectedMaNCC) {
+    $.ajax({
+        url: 'https://localhost:7203/api/HoaDonNhap/Suppliers', // Thay đổi URL API nếu cần
+        type: 'GET',
+        success: function (data) {
+            var selectElement = $(selectElementId);
+            selectElement.empty(); // Xóa các option hiện tại
+            $.each(data, function (i, nhaCungCap) {
+                // Tạo option với value là maNCC, data-tenncc là tenNCC, và data-mancc là maNCC
+                var option = `<option value="${nhaCungCap.maNCC}" data-tenncc="${nhaCungCap.tenNCC}" ${nhaCungCap.maNCC === selectedMaNCC ? 'selected' : ''}>${nhaCungCap.tenNCC}</option>`;
+                selectElement.append(option);
+            });
+        },
+        error: function (error) {
+            console.error('Lỗi khi tải danh sách nhà cung cấp:', error);
+        }
     });
+}
 
-    //On Supplier selection, update hidden MaNCC
-    $('#tenNCC').change(function () {
-        $('#maNCC').val($(this).val());
-    });
+// Tải danh sách sản phẩm khi modal được hiển thị.
+$('#addHoaDonNhapModal').on('shown.bs.modal', function (e) {
+    loadNhanViens();
+    loadSuppliers('#tenNCC');
+    loadProductList('#productListTable');
+});
 
-    // Save Hoa Don Nhap
-    $('#saveHoaDonNhap').click(function () {
+//Khi chọn nhà cung cấp, cập nhật MaNCC ẩn
+$('#tenNCC').change(function () {
+    $('#maNCC').val($(this).val());
+});
+
+// Lưu Hóa Đơn Nhập
+$('#saveHoaDonNhap').click(function () {
     var hoTen = $('#hoTen').val();
     var maNV = $('#hoTen option:selected').data('manv');
     var tenNCC = $('#tenNCC option:selected').data('tenncc');
@@ -754,6 +754,8 @@ $(document).ready(function () {
     }
 
     var chiTietHoaDonNhaps = [];
+    var hasValidItems = false; // Cờ để kiểm tra xem có ít nhất một sản phẩm hợp lệ
+
     $('#productListTable tbody tr').each(function () {
         var maSP = $(this).find('.quantity').data('masp');
         var soLuong = parseFloat($(this).find('.quantity').val()) || 0;
@@ -767,8 +769,19 @@ $(document).ready(function () {
                 soLuong: soLuong,
                 donGia: donGia
             });
+            hasValidItems = true; // Đặt cờ nếu có ít nhất một sản phẩm hợp lệ
         }
     });
+
+    // KIỂM TRA NẾU KHÔNG CÓ SẢN PHẨM HỢP LỆ NÀO
+    if (!hasValidItems) {
+        Swal.fire(
+            'Cảnh báo!',
+            'Vui lòng nhập ít nhất một sản phẩm với số lượng và đơn giá lớn hơn 0.',
+            'warning'
+        );
+        return; // Dừng hàm lại
+    }
 
     // TẠO ĐỐI TƯỢNG DỮ LIỆU ĐỂ GỬI LÊN API
     var data = {
@@ -796,7 +809,7 @@ $(document).ready(function () {
                 'success'
             ).then(() => {
                 $('#addHoaDonNhapModal').modal('hide');
-                loadHoaDonNhaps();
+                window.location.reload();
             });
         },
         error: function (error) {
@@ -808,7 +821,9 @@ $(document).ready(function () {
             );
         }
     });
-});    // Update Hoa Don Nhap
+});
+
+// Update Hoa Don Nhap
     $('#updateHoaDonNhap').click(function () {
         var maHoaDonNhap = $('#editMaHoaDonNhap').val();
 
@@ -887,7 +902,7 @@ $(document).ready(function () {
                     'success'
                 ).then(() => {
                     $('#editHoaDonNhapModal').modal('hide');
-                    loadHoaDonNhaps(); // Reload the table
+                    window.location.reload();
                 });
             },
             error: function (error) {
@@ -1052,7 +1067,8 @@ $(document).ready(function () {
             }
         });
     }
-});    </script>
+});    
+</script>
 </body>
 
 </html>

@@ -35,13 +35,13 @@
             <!-- partial:partials/_sidebar.html -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar"></nav>
             <!-- partial -->
-            <div class="main-panel">
+            <div class="main-panel" style="font-family: 'Times New Roman', Times, serif;">
                 <div class="content-wrapper">
                     <div class="page-header">
-                        <h3 class="page-title">Quản lý Khách hàng</h3>
+                        <h3 class="page-title" style="font-family: 'Times New Roman', Times, serif;">Quản lý Khách hàng</h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Quản lý</a></li>
+                                <li class="breadcrumb-item"><a href="#" >Quản lý</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Khách hàng</li>
                             </ol>
                         </nav>
@@ -55,7 +55,7 @@
                         </div>
                         <div class="col-md-4">
                             <label for="sortSelect" class="form-label">Sắp xếp theo:</label>
-                            <select class="form-select" id="sortSelect">
+                            <select class="form-select" id="sortSelect" style="font-family: 'Times New Roman', Times, serif;">
                                 <option value="">Mặc định</option>
                                 <option value="makh">Mã Khách hàng</option>
                                 <option value="tenkh">Tên Khách hàng</option>
@@ -64,34 +64,34 @@
                         </div>
                         <div class="col-md-4">
                             <label for="sortOrderSelect" class="form-label">Thứ tự:</label>
-                            <select class="form-select" id="sortOrderSelect">
+                            <select class="form-select" id="sortOrderSelect" style="font-family: 'Times New Roman', Times, serif;">
                                 <option value="asc">Tăng dần</option>
                                 <option value="desc">Giảm dần</option>
                             </select>
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row" style="font-family: 'Times New Roman', Times, serif;">
                         <div class="col-lg-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Danh sách Khách hàng</h4>
-                                    <p class="card-description">
+                                    <h4 class="card-title" style="font-family: 'Times New Roman', Times, serif;">Danh sách Khách hàng</h4>
+                                    <p class="card-description" style="font-family: 'Times New Roman', Times, serif;"> 
                                         Quản lý thông tin khách hàng
                                     </p>
                                     <!-- Nút thêm khách hàng -->
-                                    <button class="btn btn-primary mb-3" id="btnAddKhachHang">Thêm Khách hàng</button>
+                                    <button class="btn btn-primary mb-3" id="btnAddKhachHang" style="font-family: 'Times New Roman', Times, serif;"><i class="mdi mdi-plus-circle-outline"></i> Thêm Khách hàng</button>
 
                                     <div class="table-responsive">
                                         <table class="table table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th>Mã khách hàng</th>
-                                                    <th>Tên KH</th>
-                                                    <th>Số Điện Thoại</th>
-                                                    <th>Email</th>
-                                                    <th>Địa Chỉ</th>
-                                                    <th>Hành động</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Mã khách hàng</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Tên khách hàng</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Số Điện Thoại</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Email</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Địa Chỉ</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Hành động</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="tableBody">
@@ -123,9 +123,9 @@
             <div class="modal fade" id="khachHangModal" tabindex="-1" aria-labelledby="khachHangModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
-                    <div class="modal-content">
+                    <div class="modal-content" style="font-family: 'Times New Roman', Times, serif;">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="khachHangModalLabel">Thêm/Sửa Khách hàng</h5>
+                            <h5 class="modal-title" id="khachHangModalLabel" style="font-family: 'Times New Roman', Times, serif;">Thêm/Sửa Khách hàng</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
@@ -164,8 +164,8 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                            <button type="button" class="btn btn-primary" id="btnSaveKhachHang">Lưu</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="font-family: 'Times New Roman', Times, serif;">Đóng</button>
+                            <button type="button" class="btn btn-primary" id="btnSaveKhachHang" style="font-family: 'Times New Roman', Times, serif;">Lưu</button>
                         </div>
                     </div>
                 </div>
@@ -326,8 +326,8 @@
                         <td>${khachHang.email || ''}</td>
                         <td>${khachHang.diaChi || ''}</td>
                         <td>
-                            <button class="btn btn-sm btn-warning btnEdit" data-id="${khachHang.maKH}">Sửa</button>
-                            <button class="btn btn-sm btn-danger btnDelete" data-id="${khachHang.maKH}">Xóa</button>
+                            <button class="btn btn-sm btn-outline-primary mr-2 btnEdit" data-id="${khachHang.maKH}" style="font-family: 'Times New Roman', Times, serif;"><i class="mdi mdi-pencil"></i></button>
+                            <button class="btn btn-sm btn-outline-danger mr-2 btnDelete" data-id="${khachHang.maKH}" style="font-family: 'Times New Roman', Times, serif;"><i class="mdi mdi-delete"></i></button>
                         </td>
                     </tr>
                 `;

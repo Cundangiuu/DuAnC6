@@ -67,11 +67,11 @@
                                 <div class="card-body">
                                     <h4 class="card-title" style="font-family: 'Times New Roman', Times, serif;">Danh
                                         sách Tài Khoản</h4>
-                                    <button type="button" class="btn btn-primary mb-3" data-toggle="modal"
+                                    <!-- <button type="button" class="btn btn-primary mb-3" data-toggle="modal"
                                         data-target="#addTaiKhoanModal"
                                         style="font-family: 'Times New Roman', Times, serif;">
                                         <i class="mdi mdi-account-plus"></i> Thêm mới
-                                    </button>
+                                    </button> -->
 
                                     <!-- Tìm kiếm -->
 
@@ -319,8 +319,8 @@
                         </td>
                         <td>${taiKhoan.vaiTro}</td>
                         <td>
-                            <button class="btn btn-sm btn-primary edit-taiKhoan" data-maTK="${taiKhoan.maTK}" style="font-family: 'Times New Roman', Times, serif;">Sửa</button>
-                            <button class="btn btn-sm btn-warning change-status-taiKhoan" data-maTK="${taiKhoan.maTK}" data-trangThai="${taiKhoan.trangThai}" style="font-family: 'Times New Roman', Times, serif;">
+                            <button class="btn btn-sm btn-outline-primary mr-2 edit-taiKhoan" data-maTK="${taiKhoan.maTK}" style="font-family: 'Times New Roman', Times, serif;"><i class="mdi mdi-pencil"></i></button>
+                            <button class="btn btn-sm btn-outline-danger mr-2 change-status-taiKhoan" data-maTK="${taiKhoan.maTK}" data-trangThai="${taiKhoan.trangThai}" style="font-family: 'Times New Roman', Times, serif;">
                                 ${taiKhoan.trangThai ? 'Ngưng kích hoạt' : 'Kích hoạt'}
                             </button>
                         </td>
@@ -466,7 +466,7 @@
                         'success'
                     ).then(() => {
                         $('#addTaiKhoanModal').modal('hide');
-                        loadTaiKhoanData();
+                        window.location.reload();
                     });
                 },
                 error: function (error) {
@@ -506,7 +506,7 @@
                         'success'
                     ).then(() => {
                         $('#editTaiKhoanModal').modal('hide');
-                        loadTaiKhoanData();
+                        window.location.reload();
                     });
                 },
                 error: function (error) {

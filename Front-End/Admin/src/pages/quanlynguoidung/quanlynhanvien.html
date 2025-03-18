@@ -27,7 +27,7 @@
 </head>
 
 <body>
-    <div class="container-scroller">
+    <div class="container-scroller" style="font-family: 'Times New Roman', Times, serif;">
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
             id="navbar-placeholder"></nav>
         <div class="container-fluid page-body-wrapper">
@@ -35,21 +35,21 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="page-header">
-                        <h3 class="page-title">Quản lý Nhân Viên </h3>
+                        <h3 class="page-title"style="font-family: 'Times New Roman', Times, serif;">Quản lý Nhân Viên </h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Nhân Viên</a></li>
+                                <li class="breadcrumb-item"><a href="#" >Nhân Viên</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Danh sách</li>
                             </ol>
                         </nav>
                     </div>
-                    <div class="row">
+                    <div class="row" >
                         <div class="col-lg-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Danh Sách Nhân Viên</h4>
+                                    <h4 class="card-title"style="font-family: 'Times New Roman', Times, serif;">Danh Sách Nhân Viên</h4>
                                     <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <button class="btn btn-primary" onclick="openAddModal()">Thêm Nhân Viên</button>
+                                        <button class="btn btn-primary" onclick="openAddModal()"style="font-family: 'Times New Roman', Times, serif;"><i class="mdi mdi-plus-circle-outline"></i> Thêm Nhân Viên</button>
                                         <div class="d-flex">
                                             <input type="text" class="form-control mr-2" id="searchInput"
                                                 placeholder="Tìm kiếm...">
@@ -64,9 +64,9 @@
                                                 <option value="Nhân viên">Nhân viên</option>
                                             </select>
                                             <select class="form-control" id="sortOrder">
-                                                <option value="">Mã NV (Mặc định)</option>
-                                                <option value="asc">Mã NV (Tăng dần)</option>
-                                                <option value="desc">Mã NV (Giảm dần)</option>
+                                                <option value="">Mã nhân viên (Mặc định)</option>
+                                                <option value="asc">Mã nhân viên (Tăng dần)</option>
+                                                <option value="desc">Mã nhân viên (Giảm dần)</option>
                                             </select>
                                         </div>
                                     </div>
@@ -74,14 +74,14 @@
                                         <table class="table table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th>Mã NV</th>
-                                                    <th>Họ Tên</th>
-                                                    <th>Vai Trò</th>
-                                                    <th>Số Điện Thoại</th>
-                                                    <th>Email</th>
-                                                    <th>Hình Ảnh</th>
-                                                    <th>Trạng Thái</th>
-                                                    <th>Hành Động</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Mã nhân viên</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Họ Tên</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Vai Trò</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Số Điện Thoại</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Email</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Hình Ảnh</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Trạng Thái</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Hành Động</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="nhanVienTableBody">
@@ -189,8 +189,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-primary" onclick="saveNhanVien()">Lưu</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-family: 'Times New Roman', Times, serif;">Đóng</button>
+                    <button type="button" class="btn btn-primary" onclick="saveNhanVien()" style="font-family: 'Times New Roman', Times, serif;">Lưu</button>
                 </div>
             </div>
         </div>
@@ -366,8 +366,8 @@
             </span>
         </td>
         <td>
-            <button class="btn btn-warning btn-sm" onclick="openEditModal('${nv.maNV}')">Sửa</button>
-            <button class="btn btn-danger btn-sm" onclick="toggleNhanVienStatus('${nv.maNV}')">${nv.trangThai ? 'Vô hiệu hóa' : 'Kích hoạt'}</button>
+            <button class="btn btn-sm btn-outline-primary mr-2 btn-sm" onclick="openEditModal('${nv.maNV}')" style="font-family: 'Times New Roman', Times, serif;"><i class="mdi mdi-pencil"></i></button>
+            <button class="btn btn-sm btn-outline-danger mr-2 btn-sm" style="font-family: 'Times New Roman', Times, serif;" onclick="toggleNhanVienStatus('${nv.maNV}')">${nv.trangThai ? 'Vô hiệu hóa' : 'Kích hoạt'}</button>
         </td>
     </tr>
 `;
@@ -650,7 +650,8 @@
 
                 if (response.ok) {
                     $('#nhanVienModal').modal('hide');
-                    await loadNhanVien();
+                    // await window.location.reload();
+
 
                     // Hiển thị thông báo thành công dựa trên phản hồi từ backend
                     let successMessage = currentNhanVien ? 'Cập nhật thông tin nhân viên thành công.' : 'Thêm nhân viên thành công!';
@@ -664,8 +665,9 @@
                             icon: 'success',
                             title: 'Thành công!',
                             text: successMessage,
-                            timer: 30000, // Thời gian hiển thị (mili giây)
-                            showConfirmButton: false // Ẩn nút xác nhận
+                            timer: 30000,
+                            showConfirmButton: true,
+                            confirmButtonText: 'OK'
                         });
                     } catch (e) {
                         console.error("Lỗi khi phân tích phản hồi JSON thành công:", e);
@@ -674,7 +676,8 @@
                             title: 'Thành công!',
                             text: successMessage,
                             timer: 30000, // Thời gian hiển thị (mili giây)
-                            showConfirmButton: false // Ẩn nút xác nhận
+                            showConfirmButton: true,
+                            confirmButtonText: 'OK' // Ẩn nút xác nhận
                         });
                     }
 
@@ -706,7 +709,8 @@
                         title: 'Thành công!',
                         text: 'Thêm nhân viên thành công!',
                         timer: 30000, // Thời gian hiển thị (mili giây)
-                        showConfirmButton: false // Ẩn nút xác nhận
+                        showConfirmButton: true,
+                        confirmButtonText: 'OK' // Ẩn nút xác nhận
                     });
                 }
             } catch (error) {
@@ -716,7 +720,8 @@
                     title: 'Thành công!',
                     text: 'Thêm nhân viên thành công!',
                     timer: 30000, // Thời gian hiển thị (mili giây)
-                    showConfirmButton: false // Ẩn nút xác nhận
+                    showConfirmButton: true,
+                    confirmButtonText: 'OK' // Ẩn nút xác nhận
                 });
             }
         }
@@ -739,7 +744,8 @@
                     })
                         .then(response => {
                             if (response.ok) {
-                                loadNhanVien();
+                                window.location.reload();
+
                                 Swal.fire(
                                     'Đã thay đổi!',
                                     'Trạng thái nhân viên đã được thay đổi.',
