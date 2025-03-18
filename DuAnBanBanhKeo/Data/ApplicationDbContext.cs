@@ -178,10 +178,17 @@ namespace DuAnBanBanhKeo.Data
                 new HoaDonXuat { MaHoaDonXuat = "HDX002", MaKH = "KH002", MaNV = "NV001", NgayXuat = new DateTime(2024, 6, 15), TongTien = 750000, TrangThai = 0 }
             );
 
-            //Seed Kiểm Kê
+            // Seed dữ liệu cho bảng KiemKe
             modelBuilder.Entity<KiemKe>().HasData(
                 new KiemKe { MaKiemKe = "KK001", MaNV = "NV003", NgayKiemKe = new DateTime(2024, 6, 20), GhiChu = "Kiểm kê định kỳ" },
                 new KiemKe { MaKiemKe = "KK002", MaNV = "NV003", NgayKiemKe = new DateTime(2024, 6, 30), GhiChu = "Sai lệch số lượng" }
+            );
+
+            // Seed dữ liệu cho bảng ChiTietKiemKe (Ví dụ)
+            modelBuilder.Entity<ChiTietKiemKe>().HasData(
+                new ChiTietKiemKe { Id = 1, MaKiemKe = "KK001", MaSP = "SP001", SoLuongThucTe = 90, GhiChu = "Thiếu 10 bánh" },
+                new ChiTietKiemKe { Id = 2, MaKiemKe = "KK001", MaSP = "SP002", SoLuongThucTe = 50, GhiChu = "" },
+                new ChiTietKiemKe { Id = 3, MaKiemKe = "KK002", MaSP = "SP001", SoLuongThucTe = 80, GhiChu = "Thiếu 20 bánh" }
             );
             //Seed Tài Khoản
             modelBuilder.Entity<TaiKhoan>().HasData(

@@ -13,6 +13,7 @@ namespace DuAnBanBanhKeo.Data.Entities
         public SanPham SanPham { get; set; }
 
         public int SoLuongThucTe { get; set; } // Số lượng kiểm kê thực tế
+        public int ChenhLechSoLuong { get; set; }
         public string GhiChu { get; set; } = string.Empty; // Ghi chú nếu có sai lệch
     }
 

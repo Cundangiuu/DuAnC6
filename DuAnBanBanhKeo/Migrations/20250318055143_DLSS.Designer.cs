@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DuAnBanBanhKeo.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250317153303_DLSS")]
+    [Migration("20250318055143_DLSS")]
     partial class DLSS
     {
         /// <inheritdoc />
@@ -103,6 +103,9 @@ namespace DuAnBanBanhKeo.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("ChenhLechSoLuong")
+                        .HasColumnType("int");
+
                     b.Property<string>("GhiChu")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -125,6 +128,35 @@ namespace DuAnBanBanhKeo.Migrations
                     b.HasIndex("MaSP");
 
                     b.ToTable("ChiTietKiemKes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ChenhLechSoLuong = 0,
+                            GhiChu = "Thiếu 10 bánh",
+                            MaKiemKe = "KK001",
+                            MaSP = "SP001",
+                            SoLuongThucTe = 90
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ChenhLechSoLuong = 0,
+                            GhiChu = "",
+                            MaKiemKe = "KK001",
+                            MaSP = "SP002",
+                            SoLuongThucTe = 50
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ChenhLechSoLuong = 0,
+                            GhiChu = "Thiếu 20 bánh",
+                            MaKiemKe = "KK002",
+                            MaSP = "SP001",
+                            SoLuongThucTe = 80
+                        });
                 });
 
             modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.ChiTietPhieuNhap", b =>
@@ -161,17 +193,14 @@ namespace DuAnBanBanhKeo.Migrations
             modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.DanhMuc", b =>
                 {
                     b.Property<string>("MaDanhMuc")
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("MoTa")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TenDanhMuc")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("MaDanhMuc");
 
@@ -212,8 +241,7 @@ namespace DuAnBanBanhKeo.Migrations
 
                     b.Property<string>("Url")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("HinhAnhId");
 
@@ -556,7 +584,7 @@ namespace DuAnBanBanhKeo.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("MaDanhMuc")
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("MaNCC")
                         .HasColumnType("nvarchar(450)");

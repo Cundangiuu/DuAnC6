@@ -17,9 +17,9 @@ namespace DuAnBanBanhKeo.Migrations
                 name: "DanhMucs",
                 columns: table => new
                 {
-                    MaDanhMuc = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    TenDanhMuc = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    MoTa = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
+                    MaDanhMuc = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    TenDanhMuc = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MoTa = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -105,7 +105,7 @@ namespace DuAnBanBanhKeo.Migrations
                     DonViTinh = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TrangThai = table.Column<bool>(type: "bit", nullable: false),
                     MaNCC = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    MaDanhMuc = table.Column<string>(type: "nvarchar(10)", nullable: true)
+                    MaDanhMuc = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -253,7 +253,7 @@ namespace DuAnBanBanhKeo.Migrations
                 {
                     HinhAnhId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Url = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MaSP = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
@@ -334,6 +334,7 @@ namespace DuAnBanBanhKeo.Migrations
                     MaKiemKe = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     MaSP = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     SoLuongThucTe = table.Column<int>(type: "int", nullable: false),
+                    ChenhLechSoLuong = table.Column<int>(type: "int", nullable: false),
                     GhiChu = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -438,6 +439,16 @@ namespace DuAnBanBanhKeo.Migrations
                 {
                     { "TK001", "NV001", "123", "user", true },
                     { "TK002", "NV002", "123", "admin", true }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ChiTietKiemKes",
+                columns: new[] { "Id", "ChenhLechSoLuong", "GhiChu", "MaKiemKe", "MaSP", "SoLuongThucTe" },
+                values: new object[,]
+                {
+                    { 1, 0, "Thiếu 10 bánh", "KK001", "SP001", 90 },
+                    { 2, 0, "", "KK001", "SP002", 50 },
+                    { 3, 0, "Thiếu 20 bánh", "KK002", "SP001", 80 }
                 });
 
             migrationBuilder.CreateIndex(
