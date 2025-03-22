@@ -36,7 +36,7 @@ namespace DuAnBanBanhKeo.Data
             modelBuilder.Entity<KiemKe>().HasKey(kk => kk.MaKiemKe);
             modelBuilder.Entity<PhieuNhap>().HasKey(pn => pn.MaPhieuNhap);
             modelBuilder.Entity<DanhMuc>().HasKey(dm => dm.MaDanhMuc);
-            modelBuilder.Entity<HinhAnh>().HasKey(ha => ha.HinhAnhId);
+            modelBuilder.Entity<HinhAnh>().HasKey(ha => ha.Id);
 
             //Thiết lập quan hệ 1-n giữa NhaCungCap và SanPham
             modelBuilder.Entity<SanPham>()
@@ -50,11 +50,12 @@ namespace DuAnBanBanhKeo.Data
                 .WithMany(dm => dm.SanPhams)
                 .HasForeignKey(sp => sp.MaDanhMuc);
 
-            // **Thiết lập quan hệ 1-n giữa SanPham và SanPhamHinhAnh**
-            modelBuilder.Entity<SanPham>()
-                .HasMany(sp => sp.HinhAnhs) // SanPham có nhiều SanPhamHinhAnh
-                .WithOne(ha => ha.SanPham) // Mỗi SanPhamHinhAnh thuộc về một SanPham
+
+            modelBuilder.Entity<HinhAnh>()
+                .HasOne(ha => ha.SanPham)
+                .WithMany(sp => sp.HinhAnhs)
                 .HasForeignKey(ha => ha.MaSP);
+
 
             //Thiết lập quan hệ 1-n giữa NhanVien và HoaDonNhap
             modelBuilder.Entity<HoaDonNhap>()
@@ -158,7 +159,7 @@ namespace DuAnBanBanhKeo.Data
             modelBuilder.Entity<NhanVien>().HasData(
                 new NhanVien { MaNV = "NV001", HoTen = "Nguyễn Văn An", VaiTro = "Nhân viên", SoDienThoai = "0911123456", Email = "a.nguyen@example.com", TrangThai = true },
                 new NhanVien { MaNV = "NV002", HoTen = "Trần Thị Bông", VaiTro = "Quản lý kho", SoDienThoai = "0912234567", Email = "b.tran@example.com", TrangThai = true },
-                new NhanVien { MaNV = "NV003", HoTen = "Lê Văn Thuận", VaiTro = "Nhân viên", SoDienThoai = "0913345678", Email = "c.le@example.com", TrangThai = false } 
+                new NhanVien { MaNV = "NV003", HoTen = "Lê Văn Thuận", VaiTro = "Nhân viên", SoDienThoai = "0913345678", Email = "c.le@example.com", TrangThai = false }
             );
             //Seed Khách Hàng
             modelBuilder.Entity<KhachHang>().HasData(
@@ -192,7 +193,7 @@ namespace DuAnBanBanhKeo.Data
             );
             //Seed Tài Khoản
             modelBuilder.Entity<TaiKhoan>().HasData(
-                new TaiKhoan { MaTK = "TK001", TenDangNhap = "user", MatKhau = "123", MaNV = "NV001", TrangThai = true},
+                new TaiKhoan { MaTK = "TK001", TenDangNhap = "user", MatKhau = "123", MaNV = "NV001", TrangThai = true },
                 new TaiKhoan { MaTK = "TK002", TenDangNhap = "admin", MatKhau = "123", MaNV = "NV002", TrangThai = true }
             );
 

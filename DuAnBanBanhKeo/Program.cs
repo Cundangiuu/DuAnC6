@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using System.Text.Json.Serialization;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,29 +15,36 @@ builder.Services.AddControllers()
     {
         options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
     });
-builder.Services.AddControllers();
 
 // Configure CORS
-// builder.Services.AddCors(options =>
-// {
-//     options.AddPolicy("AllowMyFrontend", // Tên policy, tự chọn
-//         builder =>
-//         {
-//             builder.WithOrigins("http://127.0.0.1:5501") // Thay bằng địa chỉ frontend của bạn
-//                    .AllowAnyMethod()
-//                    .AllowAnyHeader()
-//                    .AllowCredentials(); // Nếu cần gửi cookies
-//         });
-// });
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowMyFrontend", builder =>
+    {
+        builder.WithOrigins("http://127.0.0.1:5501") // Địa chỉ frontend của bạn
+               .AllowAnyMethod()
+               .AllowAnyHeader()
+               .AllowCredentials();
+    });
+    // Policy cho phép tất cả (dùng trong phát triển, không khuyến khích trong production)
+    //options.AddPolicy("AllowAll", builder =>
+    //{
+    //    builder.AllowAnyOrigin()
+    //           .AllowAnyMethod()
+    //           .AllowAnyHeader()
+    //           .AllowCredentials();
+    //});
+});
 
-// Configure database context (replace with your actual connection string)
+// Configure database context
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Configure JWT settings
 var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
 
-// Cấu hình xác thực và phân quyền
+// Configure Authentication and Authorization
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -46,16 +54,16 @@ builder.Services.AddAuthentication(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
     {
-        ValidateIssuer = false, // Không cần kiểm tra Issuer
-        ValidateAudience = false, // Không cần kiểm tra Audience
+        ValidateIssuer = false, // Trong phát triển, có thể tắt
+        ValidateAudience = false, // Trong phát triển, có thể tắt
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
         IssuerSigningKey = new SymmetricSecurityKey(
-            Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:securitykey"] ?? throw new InvalidOperationException("Missing security key")))
+            Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:SecurityKey"]
+                ?? throw new InvalidOperationException("Missing JWT SecurityKey")))
     };
 });
 
-// Thêm Authorization với các policy
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("Quản lý kho", policy => policy.RequireRole("quản lý kho"));
@@ -66,10 +74,9 @@ builder.Services.AddAutoMapper(typeof(Program));
 
 // Swagger setup for API documentation
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGen(option =>
 {
-    option.SwaggerDoc("v1", new OpenApiInfo { Title = "Demo API", Version = "v1" });
+    option.SwaggerDoc("v1", new OpenApiInfo { Title = "DuAnBanBanhKeo API", Version = "v1" });
     option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         In = ParameterLocation.Header,
@@ -86,11 +93,11 @@ builder.Services.AddSwaggerGen(option =>
             {
                 Reference = new OpenApiReference
                 {
-                    Type=ReferenceType.SecurityScheme,
-                    Id="Bearer"
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
                 }
             },
-            new string[]{}
+            new string[] { }
         }
     });
 });
@@ -100,21 +107,22 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage(); // Hiển thị chi tiết lỗi trong môi trường phát triển
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "DuAnBanBanhKeo API V1");
+    });
 }
-app.UseCors(x => x
-    .AllowAnyMethod()
-    .AllowAnyHeader()
-   .SetIsOriginAllowed(origin => true)
-    .AllowCredentials());
+
 app.UseHttpsRedirection();
 
-// Sử dụng CORS middleware **trước** UseAuthentication và UseAuthorization
-app.UseCors("AllowMyFrontend"); // Áp dụng policy CORS đã cấu hình
+// Sử dụng CORS trước Authentication và Authorization
+app.UseCors("AllowMyFrontend"); // Sử dụng policy đã cấu hình
+
+app.UseStaticFiles(); // Phục vụ file tĩnh (hình ảnh trong wwwroot)
 
 app.UseAuthentication();
-
 app.UseAuthorization();
 
 app.MapControllers();
