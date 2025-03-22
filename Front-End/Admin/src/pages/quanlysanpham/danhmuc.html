@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Quản lý Danh mục</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../../assets/vendors/font-awesome/css/font-awesome.min.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.png" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+    <style>
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        .table th,
+        .table td {
+            white-space: nowrap;
+        }
+
+        .pagination {
+            justify-content: center;
+        }
+
+        .table td.text-center {
+            display: flex; /* Sử dụng Flexbox cho ô td chứa nút thao tác */
+            justify-content: left; /* Căn giữa theo chiều ngang (nếu cần) */
+            align-items: center; /* Căn giữa theo chiều dọc */
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container-scroller">
+        <!-- partial:partials/_navbar.html -->
+        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+            id="navbar-placeholder">
+        </nav>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:partials/_sidebar.html -->
+            <nav class="sidebar sidebar-offcanvas" id="sidebar"></nav>
+            <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="page-header">
+                        <h3 class="page-title"> Quản lý Danh mục </h3>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Danh mục</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Danh sách danh mục</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Danh sách Danh mục</h4>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6 text-left">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#addDanhMucModal" id="addDanhMucButton">
+                                                <i class="mdi mdi-plus-circle-outline"></i> Thêm Danh mục
+                                            </button>
+                                        </div>
+                                        <div
+                                            class="col-md-6 text-md-right d-flex justify-content-end align-items-center">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="searchInput"
+                                                    placeholder="Tìm kiếm danh mục..." aria-label="Tìm kiếm danh mục">
+
+                                            </div>
+                                            <div class="form-group col-md-3" style="margin-left: auto;">
+                                                <!-- Added col-md-3 and margin-left: auto; for alignment -->
+                                                <label for="sortBy">Sắp xếp theo</label>
+                                                <select class="form-control" id="sortByDropdown">
+                                                    <!-- Changed id to sortByDropdown to avoid conflict -->
+                                                    <option value="">Mặc định</option>
+                                                    <option value="TenDM_asc">Tên DM (A-Z)</option>
+                                                    <option value="TenDM_desc">Tên DM (Z-A)</option>
+                                                    <!-- Add more sorting options here if needed -->
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+
+                                                    <th>Tên Danh Mục</th>
+                                                    <th>Mô Tả</th>
+                                                    <th>Thao tác</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="danhMucTableBody">
+                                                <!-- Danh mục rows will be inserted here by JavaScript -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="mt-3 d-flex justify-content-center">
+                                        <nav aria-label="DanhMuc pagination">
+                                            <ul class="pagination" id="paginationControls">
+                                                <!-- Pagination controls will be generated here by JavaScript -->
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- content-wrapper ends -->
+
+                <!--  Add Danh mục Modal -->
+                <div class="modal fade" id="addDanhMucModal" tabindex="-1" role="dialog"
+                    aria-labelledby="addDanhMucModalLabel" aria-hidden="true">
+                    <div class="modal-dialog " role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addDanhMucModalLabel">Thêm Danh mục mới</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="addDanhMucForm">
+                                    <div class="form-group">
+                                        <label for="add_tenDanhMuc">Tên Danh Mục</label>
+                                        <input type="text" class="form-control" id="add_tenDanhMuc" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="add_moTa">Mô Tả</label>
+                                        <textarea class="form-control" id="add_moTa" rows="3"></textarea>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Đóng</button>
+                                        <button type="button" class="btn btn-primary" id="saveDanhMucBtn">Lưu Danh
+                                            mục</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Edit Danh mục Modal -->
+                <div class="modal fade" id="editDanhMucModal" tabindex="-1" role="dialog"
+                    aria-labelledby="editDanhMucModalLabel" aria-hidden="true">
+                    <div class="modal-dialog " role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editDanhMucModalLabel">Chỉnh sửa Danh mục</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="editDanhMucForm">
+                                    <input type="hidden" id="edit_MaDanhMuc" name="maDanhMuc">
+                                    <div class="form-group">
+                                        <label for="edit_tenDanhMuc">Tên Danh Mục</label>
+                                        <input type="text" class="form-control" id="edit_tenDanhMuc" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="edit_moTa">Mô Tả</label>
+                                        <textarea class="form-control" id="edit_moTa" rows="3"></textarea>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Đóng</button>
+                                        <button type="button" class="btn btn-primary" id="updateDanhMucBtn">Lưu Thay
+                                            Đổi</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <!-- partial:partials/_footer.html -->
+                <footer class="footer" id="footer"></footer>
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+
+        <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+        <script src="../../assets/js/off-canvas.js"></script>
+        <script src="../../assets/js/misc.js"></script>
+        <script src="../../assets/js/settings.js"></script>
+        <script src="../../assets/js/todolist.js"></script>
+        <script src="../../assets/js/jquery.cookie.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+        <script>
+
+
+            // Function to load partial HTML content using Fetch API
+            function loadPartial(partialName, elementId) {
+                fetch(`/Admin/src/partials/${partialName}.html`) // Adjust path if needed
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById(elementId).innerHTML = data;
+                    })
+                    .catch(error => console.error(`Error loading ${partialName}:`, error));
+            }
+
+            $(document).ready(function () {
+                loadPartial('_navbar', 'navbar-placeholder');
+                loadPartial('_sidebar', 'sidebar');
+                loadPartial('_footer', 'footer');
+
+                loadDanhMucList(); // Gọi hàm tải danh mục khi trang sẵn sàng
+            });
+
+            const apiUrl = 'https://localhost:7203/api/DanhMuc'; // Điều chỉnh nếu API của bạn được host khác
+            let currentDanhMucToDelete = null;
+            let currentDanhMucToEdit = null;
+            let currentPage = 1;
+            const pageSize = 10;
+            let currentSearchTerm = '';
+            let currentSortOrder = '';
+            let allDanhMucData = [];
+
+            const searchInput = document.getElementById('searchInput');
+            const paginationControls = document.getElementById('paginationControls');
+            const danhMucTableBody = document.getElementById('danhMucTableBody');
+            const sortDropdownButton = document.getElementById('sortDropdownButton');
+
+
+            // Debounce function to limit API calls during real-time search
+            function debounce(func, delay) {
+                let timeoutId;
+                return function (...args) {
+                    clearTimeout(timeoutId);
+                    timeoutId = setTimeout(() => {
+                        func.apply(this, args);
+                    }, delay);
+                };
+            }
+
+
+            async function loadDanhMucList() {
+                try {
+                    // Construct query parameters for pagination, search, and sort
+                    const params = new URLSearchParams({
+                        page: currentPage,
+                        pageSize: pageSize,
+                        searchTerm: currentSearchTerm,
+                        sortBy: currentSortOrder // Backend needs to understand 'az', 'za' or similar
+                    });
+                    const response = await fetch(`${apiUrl}?${params}`);
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const data = await response.json();
+
+                    // Assuming API returns an object with 'danhMucs' array and 'totalCount'
+                    const danhMucs = data.danhMucs;
+                    const totalCount = data.totalCount; // Backend needs to return total count
+
+                    allDanhMucData = danhMucs; // Update all data (for client-side sort/filter if needed)
+                    populateDanhMucTable(danhMucs);
+                    generatePaginationControls(totalCount, pageSize);
+
+                } catch (error) {
+                    console.error('Lỗi khi tải danh mục:', error);
+                    Swal.fire({ icon: 'error', title: 'Lỗi!', text: 'Không thể tải danh sách danh mục.', });
+                }
+            }
+
+
+            function populateDanhMucTable(danhMucs) {
+                danhMucTableBody.innerHTML = '';
+                if (danhMucs.length === 0) {
+                    danhMucTableBody.innerHTML = '<tr><td colspan="4" class="text-center">Không có danh mục nào.</td></tr>';
+                    return;
+                }
+                danhMucs.forEach(danhMuc => {
+                    const row = danhMucTableBody.insertRow();
+
+                    row.insertCell().textContent = danhMuc.tenDanhMuc;
+                    row.insertCell().textContent = danhMuc.moTa || '';
+
+                    const actionsCell = row.insertCell();
+                    actionsCell.classList.add('text-center');
+
+                    // Edit Button
+                    const editButton = createActionButton('mdi-pencil', 'btn-outline-primary', () => openEditModal(danhMuc.maDanhMuc), '#editDanhMucModal');
+                    actionsCell.appendChild(editButton);
+
+                    // Delete Button
+                    const deleteButton = createActionButton('mdi-delete', 'btn-outline-danger', () => openDeleteConfirmation(danhMuc.maDanhMuc)); // Gọi openDeleteConfirmation
+                    actionsCell.appendChild(deleteButton);
+                });
+            }
+
+            function createActionButton(iconClass, btnClass, onClickHandler, targetModal = null) {
+                const button = document.createElement('button');
+                button.innerHTML = `<i class="mdi ${iconClass}"></i>`;
+                button.className = `btn btn-sm ${btnClass} mr-2`;
+                button.onclick = onClickHandler;
+                if (targetModal) {
+                    button.setAttribute('data-toggle', 'modal');
+                    button.setAttribute('data-target', targetModal);
+                }
+                return button;
+            }
+
+
+            function generatePaginationControls(totalItems, itemsPerPage) {
+                const totalPages = Math.ceil(totalItems / itemsPerPage);
+                paginationControls.innerHTML = ''; // Clear previous controls
+
+                if (totalPages <= 1) return; // Don't show pagination if only one page
+
+                // Previous Page Button
+                const prevLi = document.createElement('li');
+                prevLi.className = 'page-item' + (currentPage === 1 ? ' disabled' : '');
+                const prevButton = document.createElement('button'); // Changed to button
+                prevButton.className = 'page-link';
+                prevButton.innerHTML = `<span aria-hidden="true">«</span><span class="sr-only">Previous</span>`;
+                prevButton.onclick = () => {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        loadDanhMucList();
+                    }
+                };
+                prevLi.appendChild(prevButton);
+                paginationControls.appendChild(prevLi);
+
+                // Page Number Buttons
+                for (let i = 1; i <= totalPages; i++) {
+                    const pageLi = document.createElement('li');
+                    pageLi.className = 'page-item' + (currentPage === i ? ' active' : '');
+                    const pageButton = document.createElement('button'); // Changed to button
+                    pageButton.className = 'page-link';
+                    pageButton.textContent = i;
+                    pageButton.onclick = () => {
+                        currentPage = i;
+                        loadDanhMucList();
+                    };
+                    pageLi.appendChild(pageButton);
+                    paginationControls.appendChild(pageLi);
+                }
+
+                // Next Page Button
+                const nextLi = document.createElement('li');
+                nextLi.className = 'page-item' + (currentPage === totalPages ? ' disabled' : '');
+                const nextButton = document.createElement('button'); // Changed to button
+                nextButton.className = 'page-link';
+                nextButton.innerHTML = `<span aria-hidden="true">»</span><span class="sr-only">Next</span>`;
+                nextButton.onclick = () => {
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        loadDanhMucList();
+                    }
+                };
+                nextLi.appendChild(nextButton);
+                paginationControls.appendChild(nextLi);
+            }
+
+
+            // Event listener for Save Danh mục button
+            document.getElementById('saveDanhMucBtn').addEventListener('click', async () => {
+                const tenDanhMuc = document.querySelector('#addDanhMucModal #add_tenDanhMuc').value;
+                const moTa = document.querySelector('#addDanhMucModal #add_moTa').value;
+
+                const danhMucData = {
+                    tenDanhMuc: tenDanhMuc,
+                    moTa: moTa
+                };
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(danhMucData)
+                    });
+
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        if (response.status === 409) {
+                            Swal.fire('Lỗi!', `Mã danh mục đã tồn tại. ${errorText}`, 'error');
+                        } else {
+                            throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+                        }
+                        return;
+                    }
+
+                    $('#addDanhMucModal').modal('hide');
+                    document.getElementById('addDanhMucForm').reset();
+
+                    loadDanhMucList();
+                    Swal.fire('Thành công!', 'Danh mục đã được thêm thành công!', 'success').then(() => {
+                        document.getElementById('addDanhMucButton').focus();
+                    });
+                } catch (error) {
+                    console.error('Lỗi khi thêm danh mục:', error);
+                    Swal.fire('Lỗi!', 'Không thể thêm danh mục. Vui lòng kiểm tra console.', 'error');
+                }
+            });
+
+
+            // Event listener for Update Danh mục button
+            document.getElementById('updateDanhMucBtn').addEventListener('click', async () => {
+                const maDanhMuc = currentDanhMucToEdit;
+                const tenDanhMuc = document.querySelector('#editDanhMucModal #edit_tenDanhMuc').value;
+                const moTa = document.querySelector('#editDanhMucModal #edit_moTa').value;
+
+                const danhMucData = {
+                    maDanhMuc: maDanhMuc,
+                    tenDanhMuc: tenDanhMuc,
+                    moTa: moTa
+                };
+
+                try {
+                    const response = await fetch(`${apiUrl}/${maDanhMuc}`, { // PUT request to update
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(danhMucData)
+                    });
+
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+                    }
+
+                    $('#editDanhMucModal').modal('hide');
+
+
+                    loadDanhMucList();
+                    Swal.fire('Thành công!', 'Danh mục đã được cập nhật thành công!', 'success').then(() => {
+                        document.getElementById('addDanhMucButton').focus();
+                    });
+
+
+                } catch (error) {
+                    console.error('Lỗi khi cập nhật danh mục:', error);
+                    Swal.fire('Lỗi!', 'Không thể cập nhật danh mục. Vui lòng kiểm tra console.', 'error');
+                } finally {
+                    currentDanhMucToEdit = null; // Reset
+                }
+            });
+
+
+
+
+            // New Event listener for Sort <select> dropdown
+            document.getElementById('sortByDropdown').addEventListener('change', function () {
+                const selectedSortOption = this.value; // Get the selected value from <select>
+
+                if (selectedSortOption === 'TenDM_asc') {
+                    currentSortOrder = 'az'; // Map frontend value to backend sort order (if different)
+                } else if (selectedSortOption === 'TenDM_desc') {
+                    currentSortOrder = 'za'; // Map frontend value to backend sort order (if different)
+                } else {
+                    currentSortOrder = ''; // Default/No sorting
+                }
+
+                currentPage = 1; // Reset to first page on sorting
+                loadDanhMucList(); // Reload data with new sort order
+            });
+
+
+            // Real-time search input event listener with debounce
+            searchInput.addEventListener('input', debounce(function (event) {
+                currentSearchTerm = event.target.value;
+                currentPage = 1;
+                loadDanhMucList();
+            }, 300));
+
+
+            // Sort dropdown event listeners
+            document.querySelectorAll('#sortDropdownButton + .dropdown-menu .dropdown-item').forEach(item => {
+                item.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    currentSortOrder = this.dataset.sort;
+                    currentPage = 1;
+                    loadDanhMucList();
+                    sortDropdownButton.textContent = `Sắp xếp (${this.textContent})`; // Update button text
+                });
+            });
+
+
+            async function openEditModal(maDanhMuc) {
+                try {
+                    const response = await fetch(`${apiUrl}/${maDanhMuc}`);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const danhMuc = await response.json();
+
+                    // THỬ SỬ DỤNG getElementById thay vì querySelector
+                    // document.getElementById('edit_maDanhMuc').value = danhMuc.maDanhMuc;
+                    document.getElementById('edit_tenDanhMuc').value = danhMuc.tenDanhMuc;
+                    document.getElementById('edit_moTa').value = danhMuc.moTa || '';
+
+                    $('#editDanhMucModal').modal('show');
+                    currentDanhMucToEdit = danhMuc.maDanhMuc;
+
+                } catch (error) {
+                    console.error('Không thể tải thông tin danh mục để chỉnh sửa:', error);
+                    Swal.fire('Lỗi!', 'Không thể tải thông tin danh mục.', 'error');
+                }
+            }
+
+            function openDeleteConfirmation(maDanhMuc) {
+                Swal.fire({
+                    title: 'Xác nhận xóa danh mục?',
+                    text: "Bạn có chắc chắn muốn xóa danh mục này? Hành động này không thể hoàn tác!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Có, xóa danh mục!',
+                    cancelButtonText: 'Hủy'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        deleteDanhMucSanPham(maDanhMuc); // Gọi hàm xóa danh mục (đã sửa tên hàm)
+                    }
+                })
+            }
+
+            async function deleteDanhMucSanPham(maDanhMuc) { // ĐÃ ĐỔI TÊN HÀM THÀNH deleteDanhMucSanPham
+                try {
+                    const response = await fetch(`${apiUrl}/${maDanhMuc}`, { method: 'DELETE' }); // Sử dụng maDanhMuc
+                    if (response.ok) {
+                        loadDanhMucList();
+                        Swal.fire('Đã xóa!', 'Danh mục đã được xóa thành công.', 'success');
+                    } else if (response.status === 404) {
+                        Swal.fire('Lỗi!', 'Không tìm thấy danh mục để xóa.', 'error');
+                    } else {
+                        throw new Error(`Lỗi HTTP! Status: ${response.status}`);
+                    }
+                } catch (error) {
+                    console.error('Lỗi xóa danh mục:', error);
+                    Swal.fire('Lỗi!', 'Không thể xóa danh mục.', 'error');
+                }
+            }
+        </script>
+
+</body>
+
+</html>
