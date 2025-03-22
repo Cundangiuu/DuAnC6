@@ -37,9 +37,12 @@
         }
 
         .table td.text-center {
-            display: flex; /* Sử dụng Flexbox cho ô td chứa nút thao tác */
-            justify-content: left; /* Căn giữa theo chiều ngang (nếu cần) */
-            align-items: center; /* Căn giữa theo chiều dọc */
+            display: flex;
+            /* Sử dụng Flexbox cho ô td chứa nút thao tác */
+            justify-content: left;
+            /* Căn giữa theo chiều ngang (nếu cần) */
+            align-items: center;
+            /* Căn giữa theo chiều dọc */
         }
     </style>
 
@@ -268,56 +271,53 @@
 
             async function loadDanhMucList() {
                 try {
-                    // Construct query parameters for pagination, search, and sort
                     const params = new URLSearchParams({
                         page: currentPage,
                         pageSize: pageSize,
                         searchTerm: currentSearchTerm,
-                        sortBy: currentSortOrder // Backend needs to understand 'az', 'za' or similar
+                        sortBy: currentSortOrder
                     });
                     const response = await fetch(`${apiUrl}?${params}`);
-
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }
                     const data = await response.json();
+                    console.log('API Response:', data); // Debug the response
 
-                    // Assuming API returns an object with 'danhMucs' array and 'totalCount'
-                    const danhMucs = data.danhMucs;
-                    const totalCount = data.totalCount; // Backend needs to return total count
+                    // Adjust based on actual API structure (example assumes array response)
+                    let danhMucs = Array.isArray(data) ? data : data.danhMucs || [];
+                    let totalCount = data.totalCount || danhMucs.length; // Fallback to length if no totalCount
 
-                    allDanhMucData = danhMucs; // Update all data (for client-side sort/filter if needed)
+                    if (!Array.isArray(danhMucs)) {
+                        console.warn('API did not return an array of danhMucs:', danhMucs);
+                        danhMucs = []; // Default to empty array to avoid errors
+                    }
+
+                    allDanhMucData = danhMucs;
                     populateDanhMucTable(danhMucs);
                     generatePaginationControls(totalCount, pageSize);
-
                 } catch (error) {
                     console.error('Lỗi khi tải danh mục:', error);
-                    Swal.fire({ icon: 'error', title: 'Lỗi!', text: 'Không thể tải danh sách danh mục.', });
+                    Swal.fire({ icon: 'error', title: 'Lỗi!', text: 'Không thể tải danh sách danh mục.' });
                 }
             }
 
 
             function populateDanhMucTable(danhMucs) {
                 danhMucTableBody.innerHTML = '';
-                if (danhMucs.length === 0) {
-                    danhMucTableBody.innerHTML = '<tr><td colspan="4" class="text-center">Không có danh mục nào.</td></tr>';
+                if (!danhMucs || danhMucs.length === 0) {
+                    danhMucTableBody.innerHTML = '<tr><td colspan="3" class="text-center">Không có danh mục nào.</td></tr>';
                     return;
                 }
                 danhMucs.forEach(danhMuc => {
                     const row = danhMucTableBody.insertRow();
-
-                    row.insertCell().textContent = danhMuc.tenDanhMuc;
+                    row.insertCell().textContent = danhMuc.tenDanhMuc || 'N/A';
                     row.insertCell().textContent = danhMuc.moTa || '';
-
                     const actionsCell = row.insertCell();
                     actionsCell.classList.add('text-center');
-
-                    // Edit Button
                     const editButton = createActionButton('mdi-pencil', 'btn-outline-primary', () => openEditModal(danhMuc.maDanhMuc), '#editDanhMucModal');
                     actionsCell.appendChild(editButton);
-
-                    // Delete Button
-                    const deleteButton = createActionButton('mdi-delete', 'btn-outline-danger', () => openDeleteConfirmation(danhMuc.maDanhMuc)); // Gọi openDeleteConfirmation
+                    const deleteButton = createActionButton('mdi-delete', 'btn-outline-danger', () => openDeleteConfirmation(danhMuc.maDanhMuc));
                     actionsCell.appendChild(deleteButton);
                 });
             }

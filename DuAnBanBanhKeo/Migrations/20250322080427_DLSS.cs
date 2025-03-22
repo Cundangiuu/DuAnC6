@@ -18,7 +18,7 @@ namespace DuAnBanBanhKeo.Migrations
                 columns: table => new
                 {
                     MaDanhMuc = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    TenDanhMuc = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TenDanhMuc = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MoTa = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -98,12 +98,14 @@ namespace DuAnBanBanhKeo.Migrations
                 columns: table => new
                 {
                     MaSP = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    TenSP = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TenSP = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     GiaNhap = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     GiaBan = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    SoLuongTon = table.Column<int>(type: "int", nullable: false),
-                    DonViTinh = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TrangThai = table.Column<bool>(type: "bit", nullable: false),
+                    NgayNhap = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    NgayHetHan = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    SoLuongTon = table.Column<int>(type: "int", nullable: true),
+                    DonViTinh = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TrangThai = table.Column<bool>(type: "bit", nullable: true),
                     MaNCC = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     MaDanhMuc = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
@@ -251,20 +253,19 @@ namespace DuAnBanBanhKeo.Migrations
                 name: "HinhAnhs",
                 columns: table => new
                 {
-                    HinhAnhId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MaSP = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    Url = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MaSP = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HinhAnhs", x => x.HinhAnhId);
+                    table.PrimaryKey("PK_HinhAnhs", x => x.Id);
                     table.ForeignKey(
                         name: "FK_HinhAnhs_SanPhams_MaSP",
                         column: x => x.MaSP,
                         principalTable: "SanPhams",
-                        principalColumn: "MaSP",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "MaSP");
                 });
 
             migrationBuilder.CreateTable(
@@ -423,13 +424,13 @@ namespace DuAnBanBanhKeo.Migrations
 
             migrationBuilder.InsertData(
                 table: "SanPhams",
-                columns: new[] { "MaSP", "DonViTinh", "GiaBan", "GiaNhap", "MaDanhMuc", "MaNCC", "SoLuongTon", "TenSP", "TrangThai" },
+                columns: new[] { "MaSP", "DonViTinh", "GiaBan", "GiaNhap", "MaDanhMuc", "MaNCC", "NgayHetHan", "NgayNhap", "SoLuongTon", "TenSP", "TrangThai" },
                 values: new object[,]
                 {
-                    { "SP001", "Lon", 10000m, 5000m, "DM003", "NCC001", 100, "Coca-Cola 330ml", true },
-                    { "SP002", "Lon", 9500m, 4800m, "DM003", "NCC002", 120, "Pepsi 330ml", true },
-                    { "SP003", "Gói", 15000m, 7000m, "DM001", "NCC003", 50, "Bánh Oreo", true },
-                    { "SP004", "Gói", 18000m, 9000m, "DM002", "NCC001", 75, "Snack Lay's", true }
+                    { "SP001", "Lon", 10000m, 5000m, "DM003", "NCC001", null, null, 100, "Coca-Cola 330ml", true },
+                    { "SP002", "Lon", 9500m, 4800m, "DM003", "NCC002", null, null, 120, "Pepsi 330ml", true },
+                    { "SP003", "Gói", 15000m, 7000m, "DM001", "NCC003", null, null, 50, "Bánh Oreo", true },
+                    { "SP004", "Gói", 18000m, 9000m, "DM002", "NCC001", null, null, 75, "Snack Lay's", true }
                 });
 
             migrationBuilder.InsertData(

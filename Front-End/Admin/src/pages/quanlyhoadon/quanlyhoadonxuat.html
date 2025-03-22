@@ -565,7 +565,7 @@
                                 var row = `
                                     <tr>
                                         <td>${product.tenSP}</td>
-                                        <td><input type="number" class="form-control quantity" value="0" min="0" data-masp="${product.maSP}"></td>
+                                        <td><input type="number" class="form-control quantity" value="0" min="0" data-masp="${product.maSP}"data-soluongton="${product.soLuongTon}" ></td>
                                         <td><input type="number" class="form-control unitPrice" value="${product.giaBan}" readonly data-masp="${product.maSP}"></td>
                                         <td class="total">0</td>
                                     </tr>
@@ -705,6 +705,7 @@
 
                     var chiTietHoaDonXuats = [];
                     var hasValidItems = false;
+                    var allQuantitiesValid = true;
                     $('#productListTable tbody tr').each(function () {
                         var maSP = $(this).find('.quantity').data('masp');
                         var donGia = parseFloat($(this).find('.unitPrice').val()) || 0;
@@ -712,6 +713,7 @@
                         var soLuong = parseFloat($(this).find('.quantity').val()) || 0;
                         var tenSP = $(this).find('td:first-child').text(); // **GET TENSP HERE**
                         var soLuongTon = parseFloat($(this).find('.quantity').data('soluongton')) || 0;
+                        console.log('Sản phẩm:', tenSP, 'Mã:', maSP, 'Số lượng mua:', soLuong, 'Số lượng tồn:', soLuongTon); // Thêm log
                         if (soLuong > soLuongTon) {
                         Swal.fire(
                             'Cảnh báo!',
@@ -793,7 +795,9 @@
                         }
                     }
                 });
+                
                 // Update Hoa Don Xuat
+                
                 $('#updateHoaDonXuat').click(async function () {
                     var maHoaDonXuat = $('#editMaHoaDonXuat').val();
                     var maKH = $('#editTenKH').val();

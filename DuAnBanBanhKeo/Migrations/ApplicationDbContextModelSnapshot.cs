@@ -196,7 +196,6 @@ namespace DuAnBanBanhKeo.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TenDanhMuc")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("MaDanhMuc");
@@ -226,21 +225,19 @@ namespace DuAnBanBanhKeo.Migrations
 
             modelBuilder.Entity("DuAnBanBanhKeo.Data.Entities.HinhAnh", b =>
                 {
-                    b.Property<int>("HinhAnhId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HinhAnhId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("MaSP")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Url")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("HinhAnhId");
+                    b.HasKey("Id");
 
                     b.HasIndex("MaSP");
 
@@ -571,7 +568,6 @@ namespace DuAnBanBanhKeo.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("DonViTinh")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("GiaBan")
@@ -586,14 +582,19 @@ namespace DuAnBanBanhKeo.Migrations
                     b.Property<string>("MaNCC")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("SoLuongTon")
+                    b.Property<DateTime?>("NgayHetHan")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("NgayNhap")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("SoLuongTon")
                         .HasColumnType("int");
 
                     b.Property<string>("TenSP")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("TrangThai")
+                    b.Property<bool?>("TrangThai")
                         .HasColumnType("bit");
 
                     b.HasKey("MaSP");
@@ -781,9 +782,7 @@ namespace DuAnBanBanhKeo.Migrations
                 {
                     b.HasOne("DuAnBanBanhKeo.Data.Entities.SanPham", "SanPham")
                         .WithMany("HinhAnhs")
-                        .HasForeignKey("MaSP")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MaSP");
 
                     b.Navigation("SanPham");
                 });

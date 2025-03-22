@@ -47,7 +47,7 @@ namespace DuAnBanBanhKeo.Controllers
                 {
                     MaSP = ct.MaSP,
                     TenSanPham = ct.SanPham.TenSP,
-                    SoLuongTonKho = ct.SanPham.SoLuongTon, // Lấy số lượng tồn kho
+                    SoLuongTonKho = (int)ct.SanPham.SoLuongTon, // Lấy số lượng tồn kho
                     SoLuongThucTe = ct.SoLuongThucTe,
                     GhiChu = ct.GhiChu
                 }).ToList()
@@ -76,7 +76,7 @@ namespace DuAnBanBanhKeo.Controllers
                 {
                     MaSP = ct.MaSP,
                     TenSanPham = ct.SanPham.TenSP,
-                    SoLuongTonKho = ct.SanPham.SoLuongTon, // Lấy số lượng tồn kho
+                    SoLuongTonKho = (int)ct.SanPham.SoLuongTon, // Lấy số lượng tồn kho
                     SoLuongThucTe = ct.SoLuongThucTe,
                     GhiChu = ct.GhiChu
                 }).ToList()
