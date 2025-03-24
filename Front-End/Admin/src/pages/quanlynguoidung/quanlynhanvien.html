@@ -35,21 +35,25 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="page-header">
-                        <h3 class="page-title"style="font-family: 'Times New Roman', Times, serif;">Quản lý Nhân Viên </h3>
+                        <h3 class="page-title" style="font-family: 'Times New Roman', Times, serif;">Quản lý Nhân Viên
+                        </h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#" >Nhân Viên</a></li>
+                                <li class="breadcrumb-item"><a href="#">Nhân Viên</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Danh sách</li>
                             </ol>
                         </nav>
                     </div>
-                    <div class="row" >
+                    <div class="row">
                         <div class="col-lg-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title"style="font-family: 'Times New Roman', Times, serif;">Danh Sách Nhân Viên</h4>
+                                    <h4 class="card-title" style="font-family: 'Times New Roman', Times, serif;">Danh
+                                        Sách Nhân Viên</h4>
                                     <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <button class="btn btn-primary" onclick="openAddModal()"style="font-family: 'Times New Roman', Times, serif;"><i class="mdi mdi-plus-circle-outline"></i> Thêm Nhân Viên</button>
+                                        <button class="btn btn-primary" onclick="openAddModal()"
+                                            style="font-family: 'Times New Roman', Times, serif;"><i
+                                                class="mdi mdi-plus-circle-outline"></i> Thêm Nhân Viên</button>
                                         <div class="d-flex">
                                             <input type="text" class="form-control mr-2" id="searchInput"
                                                 placeholder="Tìm kiếm...">
@@ -74,14 +78,22 @@
                                         <table class="table table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Mã nhân viên</th>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Họ Tên</th>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Vai Trò</th>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Số Điện Thoại</th>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Email</th>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Hình Ảnh</th>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Trạng Thái</th>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Hành Động</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Mã nhân
+                                                        viên</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Họ Tên
+                                                    </th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Vai Trò
+                                                    </th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Số Điện
+                                                        Thoại</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Email
+                                                    </th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Hình Ảnh
+                                                    </th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Trạng
+                                                        Thái</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Hành Động
+                                                    </th>
                                                 </tr>
                                             </thead>
                                             <tbody id="nhanVienTableBody">
@@ -189,8 +201,10 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-family: 'Times New Roman', Times, serif;">Đóng</button>
-                    <button type="button" class="btn btn-primary" onclick="saveNhanVien()" style="font-family: 'Times New Roman', Times, serif;">Lưu</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        style="font-family: 'Times New Roman', Times, serif;">Đóng</button>
+                    <button type="button" class="btn btn-primary" onclick="saveNhanVien()"
+                        style="font-family: 'Times New Roman', Times, serif;">Lưu</button>
                 </div>
             </div>
         </div>
@@ -204,41 +218,136 @@
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        fetch("/Admin/src/partials/_navbar.html")
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById("navbar-placeholder").innerHTML = data;
-            })
-            .catch(error => console.error("Lỗi khi tải navbar:", error));
-
-        fetch("/Admin/src/partials/_sidebar.html")
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById("sidebar").innerHTML = data;
-            })
-            .catch(error => console.error("Lỗi khi tải sidebar:", error));
-
-        fetch("/Admin/src/partials/_footer.html")
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById("footer").innerHTML = data;
-            })
-            .catch(error => console.error("Lỗi khi tải footer:", error));
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
-
-    <script>
         const API_URL = "https://localhost:7203/api/NhanVien";
         const IMAGE_PATH_1 = "/Admin/src/assets/images/nhanVien/";
+        const LOGIN_PAGE_URL = "login.html";
+
+        let navbarLoaded = false;
+        let sidebarLoaded = false;
         let currentImagePath = IMAGE_PATH_1;
         let currentNhanVien = null;
         let allNhanVien = [];
         let currentPage = 1;
         const pageSize = 5;
 
-        $(document).ready(function () {
-            loadNhanVien();
+        function checkAllLoaded() {
+            if (navbarLoaded && sidebarLoaded) {
+                checkLoginStatus();
+                loadNhanVien();
+            }
+        }
 
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch("../../partials/_navbar.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("navbar-placeholder").innerHTML = data;
+                    navbarLoaded = true;
+                    checkAllLoaded();
+                })
+                .catch(error => console.error("Lỗi khi tải navbar:", error));
+
+            fetch("../../partials/_sidebar.html")
+                .then(response => response.text())
+                .then(data => {
+                    const sidebarContent = data;
+                    document.getElementById("sidebar").innerHTML = sidebarContent;
+                    sidebarLoaded = true;
+                    checkAllLoaded();
+                })
+                .catch(error => console.error("Lỗi khi tải sidebar:", error));
+
+            fetch("../../partials/_footer.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("footer").innerHTML = data;
+                })
+                .catch(error => console.error("Lỗi khi tải navbar:", error));
+        });
+
+        function checkLoginStatus() {
+            const token = localStorage.getItem('token');
+            const hoTen = localStorage.getItem('hoTen');
+            const userRole = localStorage.getItem('userRole');
+            let hinhAnh = localStorage.getItem('hinhAnh');
+
+            const loginButton = document.getElementById('loginButton');
+            const profileDropdown = document.getElementById('profileDropdown');
+            const sidebar = document.getElementById('sidebar');
+
+            if (token) {
+                loginButton.style.display = 'none';
+                profileDropdown.style.display = 'block';
+
+                const navbarHoTen = document.querySelector('#profileDropdown .nav-profile-text p');
+                const navbarHinhAnh = document.querySelector('#profileDropdown .nav-profile-img img');
+
+                if (navbarHoTen) {
+                    navbarHoTen.textContent = hoTen;
+                }
+                if (navbarHinhAnh) {
+                    if (hinhAnh && !hinhAnh.startsWith('http')) {
+                        hinhAnh = `${IMAGE_PATH_1}${hinhAnh}`;
+                    }
+                    navbarHinhAnh.src = hinhAnh;
+                }
+
+                const sidebarHoTen = document.getElementById("sidebar-hoTen");
+                const sidebarVaiTro = document.getElementById("sidebar-vaiTro");
+                const sidebarHinhAnh = document.getElementById("sidebar-hinhAnh");
+
+                if (sidebarHoTen) {
+                    sidebarHoTen.textContent = hoTen;
+                }
+                if (sidebarVaiTro) {
+                    sidebarVaiTro.textContent = userRole;
+                }
+                if (sidebarHinhAnh) {
+                    sidebarHinhAnh.src = hinhAnh;
+                }
+
+                if (userRole === 'Nhân viên') {
+                    const quanLyNguoiDungLi = Array.from(sidebar.querySelectorAll('li a'))
+                        .find(a => a.textContent.trim() === 'Quản lý người dùng')
+                        ?.closest('li');
+
+                    if (quanLyNguoiDungLi) {
+                        const quanLyNhanVienLink = quanLyNguoiDungLi.querySelector('a[href*="quanlynhanvien"]');
+
+                        if (quanLyNhanVienLink) {
+                            quanLyNhanVienLink.closest('li').style.display = 'none';
+                        }
+                    }
+                } else if (userRole === 'Quản lý kho') {
+                    const quanLyNguoiDungLi = Array.from(sidebar.querySelectorAll('li a'))
+                        .find(a => a.textContent.trim() === 'Quản lý người dùng')
+                        ?.closest('li');
+
+                    if (quanLyNguoiDungLi) {
+                        const quanLyNhanVienLink = quanLyNguoiDungLi.querySelector('a[href*="quanlynhanvien"]');
+
+                        if (quanLyNhanVienLink) {
+                            quanLyNhanVienLink.closest('li').style.display = 'block';
+                        }
+                    }
+                }
+
+                document.getElementById('logoutButton').addEventListener('click', function () {
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('userRole');
+                    localStorage.removeItem('hoTen');
+                    localStorage.removeItem('hinhAnh');
+                    localStorage.removeItem('maNV');
+                    window.location.href = "/Admin/src/index.html";
+
+                });
+
+            } else {
+                window.location.href = LOGIN_PAGE_URL;
+            }
+        }
+
+        $(document).ready(function () {
             $('#nhanVienModal').on('hidden.bs.modal', function (e) {
                 clearValidationErrors();
                 document.getElementById("tenDangNhap").readOnly = false;
@@ -650,9 +759,8 @@
 
                 if (response.ok) {
                     $('#nhanVienModal').modal('hide');
-                    // await window.location.reload();
 
-
+                    loadNhanVien();
                     // Hiển thị thông báo thành công dựa trên phản hồi từ backend
                     let successMessage = currentNhanVien ? 'Cập nhật thông tin nhân viên thành công.' : 'Thêm nhân viên thành công!';
                     try {
@@ -744,7 +852,7 @@
                     })
                         .then(response => {
                             if (response.ok) {
-                                window.location.reload();
+                                loadNhanVien();
 
                                 Swal.fire(
                                     'Đã thay đổi!',
@@ -806,7 +914,7 @@
                 passwordInput.type = "text";
                 togglePassword.classList.remove("fa-eye");
                 togglePassword.classList.add("fa-eye-slash");
-                
+
             } else {
                 passwordInput.type = "password";
                 togglePassword.classList.remove("fa-eye-slash");

@@ -37,6 +37,8 @@
             cursor: pointer;
         }
     </style>
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.min.css">
 
 </head>
 
@@ -96,6 +98,8 @@
     <script src="assets/js/settings.js"></script>
     <script src="assets/js/todolist.js"></script>
     <!-- endinject -->
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.all.min.js"></script>
 
     <script>
         const togglePassword = document.querySelector('#togglePassword');
@@ -173,7 +177,18 @@
                         localStorage.setItem('hinhAnh', hinhAnh);
                         localStorage.setItem('maNV', maNV);
 
-                        window.location.href = '/Admin/src/index.html';
+                        // Hiển thị SweetAlert2 thông báo thành công
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Đăng nhập thành công!',
+                            text: 'Chào mừng ' + hoTen + '!',
+                            confirmButtonText: 'OK'
+                        }).then((result) => {
+                            // Sau khi người dùng nhấn OK, chuyển hướng
+                            window.location.href = '/Admin/src/index.html';
+                        });
+
+
                     } else {
                         // Nếu trạng thái là false, hiển thị thông báo lỗi
                         errorMessage.textContent = "Tài khoản tạm thời bị khóa.";

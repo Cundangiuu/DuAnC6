@@ -220,17 +220,137 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js"></script>
     <script>
-        $(function () {
-            $("#navbar-placeholder").load("/Admin/src/partials/_navbar.html");
-            $("#sidebar").load("/Admin/src/partials/_sidebar.html");
-            $("#footer").load("/Admin/src/partials/_footer.html");
-        });
-        const apiUrl = 'https://localhost:7203/api/TaiKhoan';
+        var $ = jQuery.noConflict();
+    </script>
+    <script>
+        const API_URL = "https://localhost:7203/api/TaiKhoan";
+        const IMAGE_PATH_1 = "/Admin/src/assets/images/nhanVien/";
+        const LOGIN_PAGE_URL = "login.html";
+
+        let navbarLoaded = false;
+        let sidebarLoaded = false;
 
         let allTaiKhoans = []; // Lưu trữ tất cả dữ liệu tài khoản
         let filteredTaiKhoans = []; // Lưu trữ dữ liệu đã lọc/tìm kiếm
         let currentPage = 1;
         const pageSize = 5; // Số lượng tài khoản hiển thị trên mỗi trang
+
+        function checkAllLoaded() {
+            if (navbarLoaded && sidebarLoaded) {
+                checkLoginStatus();
+                loadTaiKhoanData();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch("../../partials/_navbar.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("navbar-placeholder").innerHTML = data;
+                    navbarLoaded = true;
+                    checkAllLoaded();
+                })
+                .catch(error => console.error("Lỗi khi tải navbar:", error));
+
+            fetch("../../partials/_sidebar.html")
+                .then(response => response.text())
+                .then(data => {
+                    const sidebarContent = data;
+                    document.getElementById("sidebar").innerHTML = sidebarContent;
+                    sidebarLoaded = true;
+                    checkAllLoaded();
+                })
+                .catch(error => console.error("Lỗi khi tải sidebar:", error));
+
+            fetch("../../partials/_footer.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("footer").innerHTML = data;
+                })
+                .catch(error => console.error("Lỗi khi tải navbar:", error));
+        });
+
+        function checkLoginStatus() {
+            const token = localStorage.getItem('token');
+            const hoTen = localStorage.getItem('hoTen');
+            const userRole = localStorage.getItem('userRole');
+            let hinhAnh = localStorage.getItem('hinhAnh');
+
+            const loginButton = document.getElementById('loginButton');
+            const profileDropdown = document.getElementById('profileDropdown');
+            const sidebar = document.getElementById('sidebar');
+
+            if (token) {
+                loginButton.style.display = 'none';
+                profileDropdown.style.display = 'block';
+
+                const navbarHoTen = document.querySelector('#profileDropdown .nav-profile-text p');
+                const navbarHinhAnh = document.querySelector('#profileDropdown .nav-profile-img img');
+
+                if (navbarHoTen) {
+                    navbarHoTen.textContent = hoTen;
+                }
+                if (navbarHinhAnh) {
+                    if (hinhAnh && !hinhAnh.startsWith('http')) {
+                        hinhAnh = `${IMAGE_PATH_1}${hinhAnh}`;
+                    }
+                    navbarHinhAnh.src = hinhAnh;
+                }
+
+                const sidebarHoTen = document.getElementById("sidebar-hoTen");
+                const sidebarVaiTro = document.getElementById("sidebar-vaiTro");
+                const sidebarHinhAnh = document.getElementById("sidebar-hinhAnh");
+
+                if (sidebarHoTen) {
+                    sidebarHoTen.textContent = hoTen;
+                }
+                if (sidebarVaiTro) {
+                    sidebarVaiTro.textContent = userRole;
+                }
+                if (sidebarHinhAnh) {
+                    sidebarHinhAnh.src = hinhAnh;
+                }
+
+                if (userRole === 'Nhân viên') {
+                    const quanLyNguoiDungLi = Array.from(sidebar.querySelectorAll('li a'))
+                        .find(a => a.textContent.trim() === 'Quản lý người dùng')
+                        ?.closest('li');
+
+                    if (quanLyNguoiDungLi) {
+                        const quanLyTaiKhoanLink = quanLyNguoiDungLi.querySelector('a[href*="quanlytaikhoan"]');
+
+                        if (quanLyTaiKhoanLink) {
+                            quanLyTaiKhoanLink.closest('li').style.display = 'none';
+                        }
+                    }
+                } else if (userRole === 'Quản lý kho') {
+                    const quanLyNguoiDungLi = Array.from(sidebar.querySelectorAll('li a'))
+                        .find(a => a.textContent.trim() === 'Quản lý người dùng')
+                        ?.closest('li');
+
+                    if (quanLyNguoiDungLi) {
+                        const quanLyTaiKhoanLink = quanLyNguoiDungLi.querySelector('a[href*="quanlytaikhoan"]');
+
+                        if (quanLyTaiKhoanLink) {
+                            quanLyTaiKhoanLink.closest('li').style.display = 'block';
+                        }
+                    }
+                }
+
+                document.getElementById('logoutButton').addEventListener('click', function () {
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('userRole');
+                    localStorage.removeItem('hoTen');
+                    localStorage.removeItem('hinhAnh');
+                    localStorage.removeItem('maNV');
+                    window.location.href = "/Admin/src/index.html";
+
+                });
+
+            } else {
+                window.location.href = LOGIN_PAGE_URL;
+            }
+        }
 
         $(document).ready(function () {
             loadTaiKhoanData();
@@ -271,7 +391,7 @@
         // Hàm tải dữ liệu từ API
         function loadTaiKhoanData() {
             $.ajax({
-                url: apiUrl,
+                url: API_URL,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -336,7 +456,7 @@
 
             $('.change-status-taiKhoan').click(function () {
                 const maTK = $(this).data('matk');
-                const trangThai = $(this).data('trangthai');
+                const trangThai = $(this).data('trangThai');
                 changeTaiKhoanStatus(maTK, trangThai);
             });
         }
@@ -379,7 +499,7 @@
         // Hàm mở modal sửa
         function openEditTaiKhoanModal(maTK) {
             $.ajax({
-                url: `${apiUrl}/${maTK}`,
+                url: `${API_URL}/${maTK}`,
                 type: 'GET',
                 dataType: 'json',
                 success: function (taiKhoan) {
@@ -455,7 +575,7 @@
             };
 
             $.ajax({
-                url: apiUrl,
+                url: API_URL,
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(taiKhoanData),
@@ -495,7 +615,7 @@
             };
 
             $.ajax({
-                url: `${apiUrl}/${maTK}`,
+                url: `${API_URL}/${maTK}`,
                 type: 'PUT',
                 contentType: 'application/json',
                 data: JSON.stringify(taiKhoanData),

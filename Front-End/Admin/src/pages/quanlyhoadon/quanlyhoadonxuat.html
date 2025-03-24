@@ -1,170 +1,170 @@
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Quản lý Hóa Đơn Xuất</title>
-        <!-- plugins:css -->
-        <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
-        <link rel="stylesheet" href="../../assets/vendors/ti-icons/css/themify-icons.css">
-        <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
-        <link rel="stylesheet" href="../../assets/vendors/font-awesome/css/font-awesome.min.css">
-        <!-- endinject -->
-        <!-- Plugin css for this page -->
-        <!-- End plugin css for this page -->
-        <!-- inject:css -->
-        <link rel="stylesheet" href="../../assets/css/style.css">
-        <!-- endinject -->
-        <!-- Layout styles -->
-        <link rel="stylesheet" href="../../assets/css/style.css">
-        <!-- End layout styles -->
-        <link rel="shortcut icon" href="../../assets/images/favicon.png" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.4/dist/sweetalert2.min.css">
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
-        <style>
-            .table-responsive {
-                overflow-x: auto;
-            }
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Quản lý Hóa Đơn Xuất</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../../assets/vendors/font-awesome/css/font-awesome.min.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.png" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.4/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <style>
+        .table-responsive {
+            overflow-x: auto;
+        }
 
-            #hoaDonXuatTable th,
-            #hoaDonXuatTable td {
-                white-space: nowrap;
-            }
+        #hoaDonXuatTable th,
+        #hoaDonXuatTable td {
+            white-space: nowrap;
+        }
 
-            /* .btn-edit {
-                background-color: #ffc107;
-                border-color: #ffc107;
-                color: #212529;
-            }
+        /* .btn-edit {
+            background-color: #ffc107;
+            border-color: #ffc107;
+            color: #212529;
+        }
 
-            .btn-edit:hover {
-                background-color: #e0a800;
-                border-color: #d39e00;
-                color: #212529;
-            }
+        .btn-edit:hover {
+            background-color: #e0a800;
+            border-color: #d39e00;
+            color: #212529;
+        }
 
-            .btn-delete {
-                background-color: #dc3545;
-                border-color: #dc3545;
-                color: #fff;
-            }
+        .btn-delete {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: #fff;
+        }
 
-            .btn-delete:hover {
-                background-color: #c82333;
-                border-color: #bd2130;
-                color: #fff;
-            } */
-        </style>
-    </head>
+        .btn-delete:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+            color: #fff;
+        } */
+    </style>
+</head>
 
-    <body>
-        <div class="container-scroller">
-            <!-- partial:partials/_navbar.html -->
-            <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
-                id="navbar-placeholder"></nav>
+<body>
+    <div class="container-scroller">
+        <!-- partial:partials/_navbar.html -->
+        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+            id="navbar-placeholder"></nav>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:partials/_sidebar.html -->
+            <nav class="sidebar sidebar-offcanvas" id="sidebar"></nav>
             <!-- partial -->
-            <div class="container-fluid page-body-wrapper">
-                <!-- partial:partials/_sidebar.html -->
-                <nav class="sidebar sidebar-offcanvas" id="sidebar"></nav>
-                <!-- partial -->
-                <div class="main-panel" style="font-family: 'Times New Roman', Times, serif;">
-                    <div class="content-wrapper" style="font-family: 'Times New Roman', Times, serif;">
-                        <div class="page-header">
-                            <h3 class="page-title" style="font-family: 'Times New Roman', Times, serif;">Quản lý Hóa Đơn
-                                Xuất</h3>
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#"
-                                            style="font-family: 'Times New Roman', Times, serif;">Quản lý</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page"
-                                        style="font-family: 'Times New Roman', Times, serif;">Hóa Đơn Xuất</li>
-                                </ol>
-                            </nav>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="searchInput"
-                                        style="font-family: 'Times New Roman', Times, serif;">Tìm
-                                        kiếm:</label>
-                                    <input type="text" class="form-control" id="searchInput"
-                                        placeholder="Tìm kiếm theo tên nhân viên hoặc khách hàng">
-                                </div>
+            <div class="main-panel" style="font-family: 'Times New Roman', Times, serif;">
+                <div class="content-wrapper" style="font-family: 'Times New Roman', Times, serif;">
+                    <div class="page-header">
+                        <h3 class="page-title" style="font-family: 'Times New Roman', Times, serif;">Quản lý Hóa Đơn
+                            Xuất</h3>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#"
+                                        style="font-family: 'Times New Roman', Times, serif;">Quản lý</a></li>
+                                <li class="breadcrumb-item active" aria-current="page"
+                                    style="font-family: 'Times New Roman', Times, serif;">Hóa Đơn Xuất</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="searchInput"
+                                    style="font-family: 'Times New Roman', Times, serif;">Tìm
+                                    kiếm:</label>
+                                <input type="text" class="form-control" id="searchInput"
+                                    placeholder="Tìm kiếm theo tên nhân viên hoặc khách hàng">
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="statusFilter"
-                                        style="font-family: 'Times New Roman', Times, serif;">Trạng
-                                        thái:</label>
-                                    <select class="form-control" id="statusFilter">
-                                        <option value="">Tất cả</option>
-                                        <option value="0">Đang tạo</option>
-                                        <option value="1">Đã xuất kho</option>
-                                        <option value="2">Đã thanh toán</option>
-                                        <option value="3">Đã hủy</option>
-                                    </select>
-                                </div>
-                            </div>
-
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12 grid-margin stretch-card">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title" style="font-family: 'Times New Roman', Times, serif;">Danh
-                                            sách Hóa Đơn Xuất</h4>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#addHoaDonXuatModal"
-                                            style="font-family: 'Times New Roman', Times, serif;">
-                                            <i class="mdi mdi-plus-circle-outline"></i> Tạo Hóa Đơn Xuất
-                                        </button>
-                                        <br>
-                                        <!-- Search, Filter, and Sort Controls -->
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="statusFilter"
+                                    style="font-family: 'Times New Roman', Times, serif;">Trạng
+                                    thái:</label>
+                                <select class="form-control" id="statusFilter">
+                                    <option value="">Tất cả</option>
+                                    <option value="0">Đang tạo</option>
+                                    <option value="1">Đã xuất kho</option>
+                                    <option value="2">Đã thanh toán</option>
+                                    <option value="3">Đã hủy</option>
+                                </select>
+                            </div>
+                        </div>
 
-                                        <br>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title" style="font-family: 'Times New Roman', Times, serif;">Danh
+                                        sách Hóa Đơn Xuất</h4>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#addHoaDonXuatModal" id="btnThemHoaDonXuat"
+                                        style="font-family: 'Times New Roman', Times, serif;">
+                                        <i class="mdi mdi-plus-circle-outline"></i> Tạo Hóa Đơn Xuất
+                                    </button>
+                                    <br>
+                                    <!-- Search, Filter, and Sort Controls -->
 
-                                        <div class="table-responsive">
-                                            <table class="table table-striped" id="hoaDonXuatTable">
-                                                <thead>
-                                                    <tr>
-                                                        <th style="font-family: 'Times New Roman', Times, serif;">Mã Hóa
-                                                            Xuất</th>
-                                                        <th style="font-family: 'Times New Roman', Times, serif;">Ngày Xuất
-                                                        </th>
-                                                        <th style="font-family: 'Times New Roman', Times, serif;">Nhân Viên
-                                                            Tạo Hóa Xuất</th>
-                                                        <th style="font-family: 'Times New Roman', Times, serif;">Tên Khách
-                                                            Hàng</th>
-                                                        <th style="font-family: 'Times New Roman', Times, serif;">Trạng
-                                                            Thái</th>
-                                                        <th style="font-family: 'Times New Roman', Times, serif;">Tổng Tiền
-                                                        </th>
-                                                        <th style="font-family: 'Times New Roman', Times, serif;">Chi Tiết
-                                                        </th>
-                                                        <th style="font-family: 'Times New Roman', Times, serif;">Hành Động
-                                                        </th>
-                                                        <th style="font-family: 'Times New Roman', Times, serif;">Xuất
-                                                            Word
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <!-- Data will be loaded here -->
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                    <br>
 
-                                        <!-- Modal for adding a new HoaDonXuat -->
-                                        <div class="modal fade" id="addHoaDonXuatModal" tabindex="-1" role="dialog"
-                                            aria-labelledby="addHoaDonXuatModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="addHoaDonXuatModalLabel"
-                                                            style="font-family: 'Times New Roman', Times, serif;">Tạo Hóa Đơn
-                                                            Xuất</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped" id="hoaDonXuatTable">
+                                            <thead>
+                                                <tr>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Mã Hóa
+                                                        Xuất</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Ngày Xuất
+                                                    </th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Nhân Viên
+                                                        Tạo Hóa Xuất</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Tên Khách
+                                                        Hàng</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Trạng
+                                                        Thái</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Tổng Tiền
+                                                    </th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Chi Tiết
+                                                    </th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Hành Động
+                                                    </th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Xuất
+                                                        Word
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- Data will be loaded here -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <!-- Modal for adding a new HoaDonXuat -->
+                                    <div class="modal fade" id="addHoaDonXuatModal" tabindex="-1" role="dialog"
+                                        aria-labelledby="addHoaDonXuatModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="addHoaDonXuatModalLabel"
+                                                        style="font-family: 'Times New Roman', Times, serif;">Tạo Hóa Đơn
+                                                        Xuất</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
                                                             <span aria-hidden="true">×</span>
@@ -395,10 +395,45 @@
         <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
         <script>
             $(document).ready(function () {
+                const IMAGE_PATH_1 = "/Admin/src/assets/images/nhanVien/";
+                const LOGIN_PAGE_URL = "login.html";
+
+                // Lấy MaNV từ localStorage
+                var maNV = localStorage.getItem('maNV');
+                var token = localStorage.getItem('token'); // Lấy token từ localStorage
+                var userRole = localStorage.getItem('userRole'); //Lấy role
+                let hinhAnh = localStorage.getItem('hinhAnh');
+                const sidebar = document.getElementById('sidebar');
+
+                // Kiểm tra xem MaNV có tồn tại không
+                if (!maNV || !token) {
+                    // Nếu không có MaNV hoặc token, chuyển hướng người dùng đến trang đăng nhập
+                    alert('Bạn chưa đăng nhập hoặc token không tồn tại. Vui lòng đăng nhập để tiếp tục.');
+                    window.location.href = '/Admin/src/login.html'; // Thay đổi đường dẫn nếu cần
+                    return; // Dừng thực thi script nếu chưa đăng nhập
+                }
+
                 // Load navbar, sidebar, and footer
-                $("#navbar-placeholder").load("/Admin/src/partials/_navbar.html");
-                $("#sidebar").load("/Admin/src/partials/_sidebar.html");
+                $("#navbar-placeholder").load("/Admin/src/partials/_navbar.html", function () {
+                    checkLoginStatus();
+                });
+                $("#sidebar").load("/Admin/src/partials/_sidebar.html", function () {
+                    phanQuyen(userRole); // Gọi hàm phân quyền sau khi sidebar đã được load
+                    checkLoginStatus(); // Gọi hàm checkLoginStatus sau khi sidebar load xong
+
+                });
                 $("#footer").load("/Admin/src/partials/_footer.html");
+
+                // Hàm phân quyền
+                function phanQuyen(userRole) {
+                    if (userRole === 'Nhân viên') {
+                        // Ẩn nút thêm hóa đơn nhập nếu là nhân viên
+                        $('#btnThemHoaDonXuat').hide();
+                    } else {
+                        // Hiển thị nút thêm hóa đơn nhập nếu không phải nhân viên
+                        $('#btnThemHoaDonXuat').show();
+                    }
+                }
 
                 // Function to format currency to VND
                 function formatCurrency(amount) {
@@ -715,14 +750,14 @@
                         var soLuongTon = parseFloat($(this).find('.quantity').data('soluongton')) || 0;
                         console.log('Sản phẩm:', tenSP, 'Mã:', maSP, 'Số lượng mua:', soLuong, 'Số lượng tồn:', soLuongTon); // Thêm log
                         if (soLuong > soLuongTon) {
-                        Swal.fire(
-                            'Cảnh báo!',
-                            `Số lượng sản phẩm ${tenSP} vượt quá số lượng tồn kho.`,
-                            'warning'
-                        );
-                        allQuantitiesValid = false;
-                        return false; // Dừng vòng lặp each
-                        }                        
+                            Swal.fire(
+                                'Cảnh báo!',
+                                `Số lượng sản phẩm ${tenSP} vượt quá số lượng tồn kho.`,
+                                'warning'
+                            );
+                            allQuantitiesValid = false;
+                            return false; // Dừng vòng lặp each
+                        }
                         if (soLuong > 0) {
                             chiTietHoaDonXuats.push({
                                 maSP: maSP,
@@ -795,9 +830,9 @@
                         }
                     }
                 });
-                
+
                 // Update Hoa Don Xuat
-                
+
                 $('#updateHoaDonXuat').click(async function () {
                     var maHoaDonXuat = $('#editMaHoaDonXuat').val();
                     var maKH = $('#editTenKH').val();
@@ -809,7 +844,7 @@
                         var maSP = $(this).find('.quantity').data('masp');
                         var soLuong = parseFloat($(this).find('.quantity').val()) || 0;
                         var donGia = parseFloat($(this).find('.unitPrice').val()) || 0;
-                         
+
                         if (soLuong > 0 && donGia > 0) {
                             chiTietHoaDonXuats.push({
                                 maSP: maSP,
@@ -818,7 +853,7 @@
                             });
                         }
                     });
-                    
+
                     var data = {
                         maHoaDonXuat: maHoaDonXuat,
                         maKH: maKH,
@@ -904,56 +939,56 @@
                         "data": [], // Provide an empty dataset initially
 
                         "columns": [{
-                                "data": "maHoaDonXuat"
-                            },
-                            {
-                                "data": "ngayXuat",
-                                "render": function (data) {
-                                    return new Date(data).toLocaleDateString();
-                                }
-                            },
-                            {
-                                "data": "nhanVien",
-                                "render": function (data) {
-                                    return data?.hoTen || 'N/A'; // Access TenNV from NhanVien
-                                }
-                            },
-                            {
-                                "data": "khachHang",
-                                "render": function (data) {
-                                    return data?.tenKH || 'N/A'; // Access TenKH from KhachHang
-                                }
-                            },
-                            {
-                                "data": "trangThai",
-                                "render": function (data) {
-                                    return getTrangThaiLabel(data);
-                                }
-                            },
-                            {
-                                "data": "tongTien",
-                                "render": function (data) {
-                                    return formatCurrency(data);
-                                }
-                            },
-                            {
-                                "data": "maHoaDonXuat",
-                                "render": function (data) {
-                                    return `<button class="btn btn-info btn-sm details-button" data-id="${data}" style="font-family: 'Times New Roman', Times, serif">Chi Tiết</button>`;
-                                }
-                            },
-                            {
-                                "data": "maHoaDonXuat",
-                                "render": function (data) {
-                                    return `<button class="btn btn-warning btn-sm mr-1 btn-edit edit-button" data-id="${data}" style="font-family: 'Times New Roman', Times, serif">Sửa</button>`;
-                                }
-                            },
-                            {
-                                "data": "maHoaDonXuat",
-                                "render": function (data) {
-                                    return `<button class="btn btn-success btn-sm export-button" data-id="${data}" style="font-family: 'Times New Roman', Times, serif">Xuất Word</button>`;
-                                }
+                            "data": "maHoaDonXuat"
+                        },
+                        {
+                            "data": "ngayXuat",
+                            "render": function (data) {
+                                return new Date(data).toLocaleDateString();
                             }
+                        },
+                        {
+                            "data": "nhanVien",
+                            "render": function (data) {
+                                return data?.hoTen || 'N/A'; // Access TenNV from NhanVien
+                            }
+                        },
+                        {
+                            "data": "khachHang",
+                            "render": function (data) {
+                                return data?.tenKH || 'N/A'; // Access TenKH from KhachHang
+                            }
+                        },
+                        {
+                            "data": "trangThai",
+                            "render": function (data) {
+                                return getTrangThaiLabel(data);
+                            }
+                        },
+                        {
+                            "data": "tongTien",
+                            "render": function (data) {
+                                return formatCurrency(data);
+                            }
+                        },
+                        {
+                            "data": "maHoaDonXuat",
+                            "render": function (data) {
+                                return `<button class="btn btn-info btn-sm details-button" data-id="${data}" style="font-family: 'Times New Roman', Times, serif">Chi Tiết</button>`;
+                            }
+                        },
+                        {
+                            "data": "maHoaDonXuat",
+                            "render": function (data) {
+                                return `<button class="btn btn-warning btn-sm mr-1 btn-edit edit-button" data-id="${data}" style="font-family: 'Times New Roman', Times, serif">Sửa</button>`;
+                            }
+                        },
+                        {
+                            "data": "maHoaDonXuat",
+                            "render": function (data) {
+                                return `<button class="btn btn-success btn-sm export-button" data-id="${data}" style="font-family: 'Times New Roman', Times, serif">Xuất Word</button>`;
+                            }
+                        }
                         ],
                         "createdRow": function (row, data, dataIndex) {
                             $(row).find('.details-button').on('click', function () {
@@ -1015,8 +1050,89 @@
                         }
                     });
                 }
+                function checkLoginStatus() {
+                    const token = localStorage.getItem('token');
+                    const hoTen = localStorage.getItem('hoTen');
+                    const userRole = localStorage.getItem('userRole');
+                    let hinhAnh = localStorage.getItem('hinhAnh');
+
+                    const loginButton = document.getElementById('loginButton');
+                    const profileDropdown = document.getElementById('profileDropdown');
+
+                    if (token) {
+                        loginButton.style.display = 'none';
+                        profileDropdown.style.display = 'block';
+
+                        const navbarHoTen = document.querySelector('#profileDropdown .nav-profile-text p');
+                        const navbarHinhAnh = document.querySelector('#profileDropdown .nav-profile-img img');
+
+                        if (navbarHoTen) {
+                            navbarHoTen.textContent = hoTen;
+                        }
+                        if (navbarHinhAnh) {
+                            if (hinhAnh && !hinhAnh.startsWith('http')) {
+                                hinhAnh = `${IMAGE_PATH_1}${hinhAnh}`;
+                            }
+                            navbarHinhAnh.src = hinhAnh;
+                        }
+
+                        const sidebarHoTen = document.getElementById("sidebar-hoTen");
+                        const sidebarVaiTro = document.getElementById("sidebar-vaiTro");
+                        const sidebarHinhAnh = document.getElementById("sidebar-hinhAnh");
+
+                        if (sidebarHoTen) {
+                            sidebarHoTen.textContent = hoTen;
+                        }
+                        if (sidebarVaiTro) {
+                            sidebarVaiTro.textContent = userRole;
+                        }
+                        if (sidebarHinhAnh) {
+                            sidebarHinhAnh.src = hinhAnh;
+                        }
+
+                        if (userRole === 'Nhân viên') {
+                            const quanLyNguoiDungLi = Array.from(sidebar.querySelectorAll('li a'))
+                                .find(a => a.textContent.trim() === 'Quản lý người dùng')
+                                ?.closest('li');
+
+                            if (quanLyNguoiDungLi) {
+                                const basicTable = quanLyNguoiDungLi.querySelector('a[href*="basic-table"]');
+
+                                if (basicTable) {
+                                    basicTable.closest('li').style.display = 'none';
+                                }
+                            }
+                        } else if (userRole === 'Quản lý kho') {
+                            const quanLyNguoiDungLi = Array.from(sidebar.querySelectorAll('li a'))
+                                .find(a => a.textContent.trim() === 'Quản lý người dùng')
+                                ?.closest('li');
+
+                            if (quanLyNguoiDungLi) {
+                                const basicTable = quanLyNguoiDungLi.querySelector('a[href*="basic-table"]');
+
+                                if (basicTable) {
+                                    basicTable.closest('li').style.display = 'block';
+                                }
+                            }
+                        }
+
+                        document.getElementById('logoutButton').addEventListener('click', function () {
+                            localStorage.removeItem('token');
+                            localStorage.removeItem('userRole');
+                            localStorage.removeItem('hoTen');
+                            localStorage.removeItem('hinhAnh');
+                            localStorage.removeItem('maNV');
+                            window.location.href = "/Admin/src/index.html";
+
+                        });
+
+                    } else {
+                        window.location.href = LOGIN_PAGE_URL;
+                    }
+                }
+
             });
         </script>
-    </body>
+</body>
 
-    </html>
+</html>

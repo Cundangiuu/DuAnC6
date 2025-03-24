@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DuAnBanBanhKeo.Migrations
 {
     /// <inheritdoc />
-    public partial class DLSS : Migration
+    public partial class dfhfdg : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

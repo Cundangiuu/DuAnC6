@@ -105,7 +105,7 @@
                                     <h4 class="card-title" style="font-family: 'Times New Roman', Times, serif;">Danh
                                         sách Hóa Đơn Nhập</h4>
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#addHoaDonNhapModal"
+                                        data-target="#addHoaDonNhapModal" id="btnThemHoaDonNhap"
                                         style="font-family: 'Times New Roman', Times, serif;">
                                         <i class="mdi mdi-plus-circle-outline"></i> Tạo Hóa Đơn Nhập
                                     </button>
@@ -372,149 +372,171 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.4/dist/sweetalert2.all.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script>
-$(document).ready(function () {
-    // Lấy MaNV từ localStorage
-    var maNV = localStorage.getItem('maNV');
-    var token = localStorage.getItem('token'); // Lấy token từ localStorage
+        $(document).ready(function () {
+             const IMAGE_PATH_1 = "/Admin/src/assets/images/nhanVien/";
+            const LOGIN_PAGE_URL = "login.html";
 
-    // Kiểm tra xem MaNV có tồn tại không
-    if (!maNV || !token) {
-        // Nếu không có MaNV hoặc token, chuyển hướng người dùng đến trang đăng nhập
-        alert('Bạn chưa đăng nhập hoặc token không tồn tại. Vui lòng đăng nhập để tiếp tục.');
-        window.location.href = '/Admin/src/login.html'; // Thay đổi đường dẫn nếu cần
-        return; // Dừng thực thi script nếu chưa đăng nhập
-    }
+            // Lấy MaNV từ localStorage
+            var maNV = localStorage.getItem('maNV');
+            var token = localStorage.getItem('token'); // Lấy token từ localStorage
+            var userRole = localStorage.getItem('userRole'); //Lấy role
+            let hinhAnh = localStorage.getItem('hinhAnh');
+             const sidebar = document.getElementById('sidebar');
+            // Kiểm tra xem MaNV có tồn tại không
+            if (!maNV || !token) {
+                // Nếu không có MaNV hoặc token, chuyển hướng người dùng đến trang đăng nhập
+                alert('Bạn chưa đăng nhập hoặc token không tồn tại. Vui lòng đăng nhập để tiếp tục.');
+                window.location.href = '/Admin/src/login.html'; // Thay đổi đường dẫn nếu cần
+                return; // Dừng thực thi script nếu chưa đăng nhập
+            }
 
-    // Load navbar, sidebar, and footer
-    $("#navbar-placeholder").load("/Admin/src/partials/_navbar.html");
-    $("#sidebar").load("/Admin/src/partials/_sidebar.html");
-    $("#footer").load("/Admin/src/partials/_footer.html");
+            // Load navbar, sidebar, and footer
+            $("#navbar-placeholder").load("/Admin/src/partials/_navbar.html", function(){
+                checkLoginStatus();
+            });
+            $("#sidebar").load("/Admin/src/partials/_sidebar.html", function () {
+                phanQuyen(userRole); // Gọi hàm phân quyền sau khi sidebar đã được load
+                checkLoginStatus(); // Gọi hàm checkLoginStatus sau khi sidebar load xong
 
-    // Function to format currency to VND
-    function formatCurrency(amount) {
-        return new Intl.NumberFormat('vi-VN', {
-            style: 'currency',
-            currency: 'VND'
-        }).format(amount);
-    }
+            });
+            $("#footer").load("/Admin/src/partials/_footer.html");
 
-    // Function to fetch and display HoaDonNhap data
-    function loadHoaDonNhaps() {
-        $.ajax({
-            url: 'https://localhost:7203/api/HoaDonNhap',
-            type: 'GET',
-            success: function (data) {
-                var tableBody = $('#hoaDonNhapTable tbody');
-                tableBody.empty(); // Clear existing data
-
-                $.each(data, function (i, hoaDonNhap) {
-                    var row = $('<tr>');
-                    row.append($('<td>').text(hoaDonNhap.maHoaDonNhap));
-                    row.append($('<td>').text(new Date(hoaDonNhap.ngayNhap).toLocaleDateString()));
-                    row.append($('<td>').text(hoaDonNhap.hoTen)); // Display TenNhanVien
-                    row.append($('<td>').text(hoaDonNhap.tenNCC)); // Display TenNhaCungCap
-                    row.append($('<td>').text(getTrangThaiLabel(hoaDonNhap.trangThai))); // Display TrangThai
-                    row.append($('<td>').text(formatCurrency(hoaDonNhap.tongTien)));
-
-                    // Details button
-                    var detailsButton = $('<button>')
-                        .addClass('btn btn-sm btn-outline-info mr-2')
-                        .html('<i class="mdi mdi-eye"></i>')
-                        .css('font-family', "'Times New Roman', Times, serif")
-                        .click(function () {
-                            showDetails(hoaDonNhap.maHoaDonNhap);
-                        });
-                    row.append($('<td>').append(detailsButton));
-
-                    // Edit and Delete buttons
-                    var actions = $('<td>');
-                    var editButton = $('<button>')
-                        .addClass('btn btn-sm btn-outline-primary mr-2 btn-edit')
-                        .html('<i class="mdi mdi-pencil"></i>')
-                        .css('font-family', "'Times New Roman', Times, serif")
-                        .click(function () {
-                            showEditModal(hoaDonNhap);
-                        });
-                    actions.append(editButton);
-
-
-                    row.append(actions);
-
-                    // Word Export Button
-                    var exportButton = $('<button>')
-                        .addClass('btn btn-sm btn-outline-success mr-2 btn-sm')
-                        .html('<i class="mdi mdi-cloud-download"></i>')
-                        .css('font-family', "'Times New Roman', Times, serif")
-                        .click(function () {
-                            exportToWord(hoaDonNhap.maHoaDonNhap);
-                        });
-                    row.append($('<td>').append(exportButton)); // Append to the 'Xuất Word' column
-
-
-                    tableBody.append(row);
-                });
-
-                // Initialize or refresh DataTable after data is loaded
-                if ($.fn.DataTable.isDataTable('#hoaDonNhapTable')) {
-                    $('#hoaDonNhapTable').DataTable().destroy();
+            // Hàm phân quyền
+            function phanQuyen(userRole) {
+                if (userRole === 'Nhân viên') {
+                    // Ẩn nút thêm hóa đơn nhập nếu là nhân viên
+                    $('#btnThemHoaDonNhap').hide();
+                } else {
+                    // Hiển thị nút thêm hóa đơn nhập nếu không phải nhân viên
+                    $('#btnThemHoaDonNhap').show();
                 }
-                $('#hoaDonNhapTable').DataTable({
-                    "paging": true,
-                    "ordering": true,
-                    "info": true,
-                    "searching": true,
-                    "language": {
-                        "url": "//cdn.datatables.net/plug-ins/1.13.7/i18n/vi.json"
+            }
+
+            // Function to format currency to VND
+            function formatCurrency(amount) {
+                return new Intl.NumberFormat('vi-VN', {
+                    style: 'currency',
+                    currency: 'VND'
+                }).format(amount);
+            }
+
+            // Function to fetch and display HoaDonNhap data
+            function loadHoaDonNhaps() {
+                $.ajax({
+                    url: 'https://localhost:7203/api/HoaDonNhap',
+                    type: 'GET',
+                    success: function (data) {
+                        var tableBody = $('#hoaDonNhapTable tbody');
+                        tableBody.empty(); // Clear existing data
+
+                        $.each(data, function (i, hoaDonNhap) {
+                            var row = $('<tr>');
+                            row.append($('<td>').text(hoaDonNhap.maHoaDonNhap));
+                            row.append($('<td>').text(new Date(hoaDonNhap.ngayNhap).toLocaleDateString()));
+                            row.append($('<td>').text(hoaDonNhap.hoTen)); // Display TenNhanVien
+                            row.append($('<td>').text(hoaDonNhap.tenNCC)); // Display TenNhaCungCap
+                            row.append($('<td>').text(getTrangThaiLabel(hoaDonNhap.trangThai))); // Display TrangThai
+                            row.append($('<td>').text(formatCurrency(hoaDonNhap.tongTien)));
+
+                            // Details button
+                            var detailsButton = $('<button>')
+                                .addClass('btn btn-sm btn-outline-info mr-2')
+                                .html('<i class="mdi mdi-eye"></i>')
+                                .css('font-family', "'Times New Roman', Times, serif")
+                                .click(function () {
+                                    showDetails(hoaDonNhap.maHoaDonNhap);
+                                });
+                            row.append($('<td>').append(detailsButton));
+
+                            // Edit and Delete buttons
+                            var actions = $('<td>');
+                            var editButton = $('<button>')
+                                .addClass('btn btn-sm btn-outline-primary mr-2 btn-edit')
+                                .html('<i class="mdi mdi-pencil"></i>')
+                                .css('font-family', "'Times New Roman', Times, serif")
+                                .click(function () {
+                                    showEditModal(hoaDonNhap);
+                                });
+                            actions.append(editButton);
+
+
+                            row.append(actions);
+
+                            // Word Export Button
+                            var exportButton = $('<button>')
+                                .addClass('btn btn-sm btn-outline-success mr-2 btn-sm')
+                                .html('<i class="mdi mdi-cloud-download"></i>')
+                                .css('font-family', "'Times New Roman', Times, serif")
+                                .click(function () {
+                                    exportToWord(hoaDonNhap.maHoaDonNhap);
+                                });
+                            row.append($('<td>').append(exportButton)); // Append to the 'Xuất Word' column
+
+
+                            tableBody.append(row);
+                        });
+
+                        // Initialize or refresh DataTable after data is loaded
+                        if ($.fn.DataTable.isDataTable('#hoaDonNhapTable')) {
+                            $('#hoaDonNhapTable').DataTable().destroy();
+                        }
+                        $('#hoaDonNhapTable').DataTable({
+                            "paging": true,
+                            "ordering": true,
+                            "info": true,
+                            "searching": true,
+                            "language": {
+                                "url": "//cdn.datatables.net/plug-ins/1.13.7/i18n/vi.json"
+                            }
+                        });
+                    },
+                    error: function (error) {
+                        console.error('Error fetching HoaDonNhaps:', error);
                     }
                 });
-            },
-            error: function (error) {
-                console.error('Error fetching HoaDonNhaps:', error);
             }
-        });
-    }
 
-    function exportToWord(maHoaDonNhap) {
-        // Trigger the API call to generate the Word document
-        $.ajax({
-            url: `https://localhost:7203/api/HoaDonNhap/ExportToWord/${maHoaDonNhap}`,
-            type: 'GET',
-            xhrFields: {
-                responseType: 'blob' // Important: Expect a binary blob
-            },
-            success: function (data, status, xhr) {
-                // Extract filename from the Content-Disposition header, if available
-                var filename = `HoaDonNhap_${maHoaDonNhap}.docx`;
+            function exportToWord(maHoaDonNhap) {
+                // Trigger the API call to generate the Word document
+                $.ajax({
+                    url: `https://localhost:7203/api/HoaDonNhap/ExportToWord/${maHoaDonNhap}`,
+                    type: 'GET',
+                    xhrFields: {
+                        responseType: 'blob' // Important: Expect a binary blob
+                    },
+                    success: function (data, status, xhr) {
+                        // Extract filename from the Content-Disposition header, if available
+                        var filename = `HoaDonNhap_${maHoaDonNhap}.docx`;
 
-                // Create a download link and trigger the download
-                var a = document.createElement('a');
-                var url = window.URL.createObjectURL(data);
-                a.href = url;
-                a.download = filename;
-                document.body.append(a);
-                a.click();
-                a.remove();
-                window.URL.revokeObjectURL(url);
-            },
-            error: function (xhr, status, error) {
-                console.error('Error exporting to Word:', error);
-                alert('Error exporting to Word: ' + error);
+                        // Create a download link and trigger the download
+                        var a = document.createElement('a');
+                        var url = window.URL.createObjectURL(data);
+                        a.href = url;
+                        a.download = filename;
+                        document.body.append(a);
+                        a.click();
+                        a.remove();
+                        window.URL.revokeObjectURL(url);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error exporting to Word:', error);
+                        alert('Error exporting to Word: ' + error);
+                    }
+                });
             }
-        });
-    }
 
 
-    // Load data on page load
-    loadHoaDonNhaps();
+            // Load data on page load
+            loadHoaDonNhaps();
 
-    // Function to display details in the modal
-    function showDetails(maHoaDonNhap) {
-        console.log("Hàm showDetails được gọi với maHoaDonNhap:", maHoaDonNhap); // Thêm dòng này
-        $.ajax({
-            url: `https://localhost:7203/api/HoaDonNhap/${maHoaDonNhap}`,
-            type: 'GET',
-            success: function (hoaDonNhap) {
-                var detailsContent = `
+            // Function to display details in the modal
+            function showDetails(maHoaDonNhap) {
+                console.log("Hàm showDetails được gọi với maHoaDonNhap:", maHoaDonNhap); // Thêm dòng này
+                $.ajax({
+                    url: `https://localhost:7203/api/HoaDonNhap/${maHoaDonNhap}`,
+                    type: 'GET',
+                    success: function (hoaDonNhap) {
+                        var detailsContent = `
                         <p><strong>Mã Hóa Đơn:</strong> ${hoaDonNhap.maHoaDonNhap}</p>
                         <p><strong>Ngày Nhập:</strong> ${new Date(hoaDonNhap.ngayNhap).toLocaleDateString()}</p>
                         <p><strong>Tên Nhân Viên:</strong> ${hoaDonNhap.hoTen}</p>
@@ -524,53 +546,53 @@ $(document).ready(function () {
                         <h5 style="font-family: 'Times New Roman', Times, serif;">Chi Tiết Hóa Đơn</h5>
                         <ul>`;
 
-                // Assuming the API now returns a "products" array inside chiTietHoaDonNhaps
-                if (hoaDonNhap.chiTietHoaDonNhaps && hoaDonNhap.chiTietHoaDonNhaps.length > 0) {
-                    $.each(hoaDonNhap.chiTietHoaDonNhaps, function (i, chiTiet) {
-                        detailsContent += `<li>Sản phẩm: ${chiTiet.tenSP}, Số lượng: ${chiTiet.soLuong}, Đơn giá: ${formatCurrency(chiTiet.donGia)}</li>`;
-                    });
-                } else {
-                    detailsContent += `<li>Không có sản phẩm nào.</li>`;
-                }
-                detailsContent += `</ul>`;
-                $('#hoaDonNhapDetailsContent').html(detailsContent);
-                $('#hoaDonNhapDetailsModal').modal('show');
+                        // Assuming the API now returns a "products" array inside chiTietHoaDonNhaps
+                        if (hoaDonNhap.chiTietHoaDonNhaps && hoaDonNhap.chiTietHoaDonNhaps.length > 0) {
+                            $.each(hoaDonNhap.chiTietHoaDonNhaps, function (i, chiTiet) {
+                                detailsContent += `<li>Sản phẩm: ${chiTiet.tenSP}, Số lượng: ${chiTiet.soLuong}, Đơn giá: ${formatCurrency(chiTiet.donGia)}</li>`;
+                            });
+                        } else {
+                            detailsContent += `<li>Không có sản phẩm nào.</li>`;
+                        }
+                        detailsContent += `</ul>`;
+                        $('#hoaDonNhapDetailsContent').html(detailsContent);
+                        $('#hoaDonNhapDetailsModal').modal('show');
 
-            },
-            error: function (error) {
-                console.error('Error fetching HoaDonNhap details:', error);
+                    },
+                    error: function (error) {
+                        console.error('Error fetching HoaDonNhap details:', error);
+                    }
+                });
             }
-        });
-    }
-    $('#hoaDonNhapTable tbody').on('click', '.details-button', function (event) {
-        event.stopPropagation(); // Ngăn chặn sự kiện lan truyền
-        console.log("Nút chi tiết được nhấn!");
-        var maHoaDonNhap = $(this).data('id');
-        showDetails(maHoaDonNhap);
-    });
-    // Function to populate the edit modal
-    function showEditModal(hoaDonNhap) {
-        $('#editMaHoaDonNhap').val(hoaDonNhap.maHoaDonNhap);
-        $('#editTenNCC').val(hoaDonNhap.maNCC); // Corrected this line
-        $('#editTongTien').val(hoaDonNhap.tongTien);
-        // Set selected value for the "Trạng Thái" dropdown
-        $('#editTrangThai').val(hoaDonNhap.trangThai);  // Thêm dòng này
-        loadSuppliers('#editTenNCC', hoaDonNhap.maNCC);
-        loadEditProductList('#editProductListTable', hoaDonNhap.chiTietHoaDonNhaps);
-        $('#editHoaDonNhapModal').modal('show');
-    }
+            $('#hoaDonNhapTable tbody').on('click', '.details-button', function (event) {
+                event.stopPropagation(); // Ngăn chặn sự kiện lan truyền
+                console.log("Nút chi tiết được nhấn!");
+                var maHoaDonNhap = $(this).data('id');
+                showDetails(maHoaDonNhap);
+            });
+            // Function to populate the edit modal
+            function showEditModal(hoaDonNhap) {
+                $('#editMaHoaDonNhap').val(hoaDonNhap.maHoaDonNhap);
+                $('#editTenNCC').val(hoaDonNhap.maNCC); // Corrected this line
+                $('#editTongTien').val(hoaDonNhap.tongTien);
+                // Set selected value for the "Trạng Thái" dropdown
+                $('#editTrangThai').val(hoaDonNhap.trangThai);  // Thêm dòng này
+                loadSuppliers('#editTenNCC', hoaDonNhap.maNCC);
+                loadEditProductList('#editProductListTable', hoaDonNhap.chiTietHoaDonNhaps);
+                $('#editHoaDonNhapModal').modal('show');
+            }
 
-    // Load list of product in the product selection table.
-    function loadProductList(tableId) {
-        $.ajax({
-            url: 'https://localhost:7203/api/HoaDonNhap/Products', // Lấy danh sách sản phẩm
-            type: 'GET',
-            success: function (data) {
-                var tableBody = $(tableId + ' tbody');
-                tableBody.empty();
+            // Load list of product in the product selection table.
+            function loadProductList(tableId) {
+                $.ajax({
+                    url: 'https://localhost:7203/api/HoaDonNhap/Products', // Lấy danh sách sản phẩm
+                    type: 'GET',
+                    success: function (data) {
+                        var tableBody = $(tableId + ' tbody');
+                        tableBody.empty();
 
-                $.each(data, function (i, product) {
-                    var row = `
+                        $.each(data, function (i, product) {
+                            var row = `
                         <tr>
                             <td>${product.tenSP}</td>
                             <td><input type="number" class="form-control quantity" value="0" min="0" data-masp="${product.maSP}" data-gianhap="${product.giaNhap}"></td>
@@ -578,34 +600,34 @@ $(document).ready(function () {
                             <td class="total">0</td>
                         </tr>
                     `;
-                    tableBody.append(row);
+                            tableBody.append(row);
+                        });
+
+                        // Calculate totals on load
+                        calculateTotals(tableId);
+                    },
+                    error: function (error) {
+                        console.error('Error fetching product list:', error);
+                    }
                 });
-
-                // Calculate totals on load
-                calculateTotals(tableId);
-            },
-            error: function (error) {
-                console.error('Error fetching product list:', error);
             }
-        });
-    }
 
-    function loadEditProductList(tableId, chiTietHoaDonNhaps) {
-        $.ajax({
-            url: 'https://localhost:7203/api/HoaDonNhap/Products',
-            type: 'GET',
-            success: function (data) {
-                var tableBody = $(tableId + ' tbody');
-                tableBody.empty();
+            function loadEditProductList(tableId, chiTietHoaDonNhaps) {
+                $.ajax({
+                    url: 'https://localhost:7203/api/HoaDonNhap/Products',
+                    type: 'GET',
+                    success: function (data) {
+                        var tableBody = $(tableId + ' tbody');
+                        tableBody.empty();
 
-                $.each(data, function (i, product) {
-                    // Find the corresponding chiTietHoaDonNhap for the product
-                    var chiTiet = chiTietHoaDonNhaps.find(ct => ct.maSP === product.maSP);
-                    var quantity = chiTiet ? chiTiet.soLuong : 0;
-                    var unitPrice = chiTiet ? chiTiet.donGia : product.giaNhap;//Sử dụng product.giaNhap nếu không tìm thấy chi tiết hóa đơn
-                    console.log("Unit Price: " + unitPrice);
+                        $.each(data, function (i, product) {
+                            // Find the corresponding chiTietHoaDonNhap for the product
+                            var chiTiet = chiTietHoaDonNhaps.find(ct => ct.maSP === product.maSP);
+                            var quantity = chiTiet ? chiTiet.soLuong : 0;
+                            var unitPrice = chiTiet ? chiTiet.donGia : product.giaNhap;//Sử dụng product.giaNhap nếu không tìm thấy chi tiết hóa đơn
+                            console.log("Unit Price: " + unitPrice);
 
-                    var row = `
+                            var row = `
                         <tr>
                             <td>${product.tenSP}</td>
                             <td><input type="number" class="form-control quantity" value="${quantity}" min="0" data-masp="${product.maSP}"></td>
@@ -613,462 +635,540 @@ $(document).ready(function () {
                             <td class="total">0</td>
                         </tr>
                     `;
-                    tableBody.append(row);
-                });
-                calculateTotals(tableId);
-            },
-            error: function (error) {
-                console.error('Error fetching product list:', error);
-            }
-        });
-    }
-
-    function loadNhanViens() {
-        console.log("Hàm loadNhanViens đang được gọi...");
-        $.ajax({
-            url: 'https://localhost:7203/api/NhanVien', // Thay đổi URL API nếu cần
-            type: 'GET',
-            success: function (data) {
-                var selectElement = $('#hoTen'); // Sử dụng ID hoTen
-                selectElement.empty(); // Xóa các option cũ
-                $.each(data, function (i, nhanVien) {
-                    selectElement.append($('<option>', {
-                        value: nhanVien.hoTen, // Giá trị là tên nhân viên (để hiển thị)
-                        text: nhanVien.hoTen // Hiển thị tên nhân viên
-                    }).data('manv', nhanVien.maNV)); // Lưu mã nhân viên trong thuộc tính data
-                });
-            },
-            error: function (error) {
-                console.error('Error fetching NhanViens:', error);
-            }
-        });
-    }
-    // Calculate totals on quantity/unit price change
-    $(document).on('input', '.quantity, .unitPrice', function () {
-    var tableId = $(this).closest('table').attr('id');
-    calculateTotals('#' + tableId);
-});
-
-function calculateTotals(tableId) {
-    var totalAmount = 0;
-    $(tableId + ' tbody tr').each(function () {
-        var quantityInput = $(this).find('.quantity');
-        var unitPriceInput = $(this).find('.unitPrice');
-
-        var quantity = parseFloat(quantityInput.val()) || 0;
-        var unitPrice = parseFloat(unitPriceInput.val()) || 0;
-
-        // Kiểm tra nếu số lượng âm
-        if (quantity < 0) {
-            Swal.fire(
-                'Cảnh báo!',
-                'Số lượng không được âm.',
-                'warning'
-            );
-            quantityInput.val(0); // Đặt lại về 0 hoặc một giá trị hợp lệ
-            quantity = 0; // Đảm bảo tính toán tổng sử dụng giá trị hợp lệ
-        }
-        if (quantity > 1000) {
-            Swal.fire(
-                'Cảnh báo!',
-                'Số lượng không được vượt quá 1000.',
-                'warning'
-            );
-            quantityInput.val(0); // Đặt lại về 0 hoặc một giá trị hợp lệ
-            quantity = 0; // Đảm bảo tính toán tổng sử dụng giá trị hợp lệ
-        }
-        //Kiểm tra nếu đơn giá âm
-        if (unitPrice < 0) {
-            Swal.fire(
-                'Cảnh báo!',
-                'Đơn giá không được âm.',
-                'warning'
-            );
-            unitPriceInput.val(0);
-            unitPrice = 0;
-        }
-
-        var total = quantity * unitPrice;
-        $(this).find('.total').text(formatCurrency(total));
-        totalAmount += total;
-    });
-
-    // Cập nhật tổng tiền trong form modal
-    var modalId = '#' + $(tableId).closest('.modal').attr('id');
-    $(modalId + ' #tongTien').val(totalAmount);
-    console.log("Tổng tiền trong modal:", totalAmount); // Ghi log để debug
-}
-
-
-// Hàm tải danh sách nhà cung cấp
-function loadSuppliers(selectElementId, selectedMaNCC) {
-    $.ajax({
-        url: 'https://localhost:7203/api/HoaDonNhap/Suppliers', // Thay đổi URL API nếu cần
-        type: 'GET',
-        success: function (data) {
-            var selectElement = $(selectElementId);
-            selectElement.empty(); // Xóa các option hiện tại
-            $.each(data, function (i, nhaCungCap) {
-                // Tạo option với value là maNCC, data-tenncc là tenNCC, và data-mancc là maNCC
-                var option = `<option value="${nhaCungCap.maNCC}" data-tenncc="${nhaCungCap.tenNCC}" ${nhaCungCap.maNCC === selectedMaNCC ? 'selected' : ''}>${nhaCungCap.tenNCC}</option>`;
-                selectElement.append(option);
-            });
-        },
-        error: function (error) {
-            console.error('Lỗi khi tải danh sách nhà cung cấp:', error);
-        }
-    });
-}
-
-// Tải danh sách sản phẩm khi modal được hiển thị.
-$('#addHoaDonNhapModal').on('shown.bs.modal', function (e) {
-    loadNhanViens();
-    loadSuppliers('#tenNCC');
-    loadProductList('#productListTable');
-});
-
-//Khi chọn nhà cung cấp, cập nhật MaNCC ẩn
-$('#tenNCC').change(function () {
-    $('#maNCC').val($(this).val());
-});
-
-// Lưu Hóa Đơn Nhập
-$('#saveHoaDonNhap').click(function () {
-    var hoTen = $('#hoTen').val();
-    var maNV = $('#hoTen option:selected').data('manv');
-    var tenNCC = $('#tenNCC option:selected').data('tenncc');
-    var maNCC = $('#tenNCC option:selected').val();
-
-    // LẤY TỔNG TIỀN TỪ MODAL
-    var tongTien = parseFloat($('#tongTien').val());
-
-    // KIỂM TRA TỔNG TIỀN
-    if (isNaN(tongTien)) {
-        console.error("Tổng tiền không hợp lệ!");
-        Swal.fire(
-            'Lỗi!',
-            'Tổng tiền không hợp lệ. Vui lòng kiểm tra lại.',
-            'error'
-        );
-        return; // Dừng lại nếu tổng tiền không hợp lệ
-    }
-
-    var chiTietHoaDonNhaps = [];
-    var hasValidItems = false; // Cờ để kiểm tra xem có ít nhất một sản phẩm hợp lệ
-
-    $('#productListTable tbody tr').each(function () {
-        var maSP = $(this).find('.quantity').data('masp');
-        var soLuong = parseFloat($(this).find('.quantity').val()) || 0;
-        var donGia = parseFloat($(this).find('.unitPrice').val()) || 0;
-        var tenSP = $(this).find('td:first-child').text();
-
-        if (soLuong > 0 && donGia > 0) {
-            chiTietHoaDonNhaps.push({
-                maSP: maSP,
-                tenSP: tenSP,
-                soLuong: soLuong,
-                donGia: donGia
-            });
-            hasValidItems = true; // Đặt cờ nếu có ít nhất một sản phẩm hợp lệ
-        }
-    });
-
-    // KIỂM TRA NẾU KHÔNG CÓ SẢN PHẨM HỢP LỆ NÀO
-    if (!hasValidItems) {
-        Swal.fire(
-            'Cảnh báo!',
-            'Vui lòng nhập ít nhất một sản phẩm với số lượng và đơn giá lớn hơn 0.',
-            'warning'
-        );
-        return; // Dừng hàm lại
-    }
-
-    // TẠO ĐỐI TƯỢNG DỮ LIỆU ĐỂ GỬI LÊN API
-    var data = {
-        hoTen: hoTen,
-        maNV: maNV,
-        tenNCC: tenNCC,
-        maNCC: maNCC,
-        tongTien: tongTien, // Gửi tổng tiền lên API
-        chiTietHoaDonNhaps: chiTietHoaDonNhaps
-    };
-
-    console.log("Dữ liệu gửi đi:", data); // Kiểm tra dữ liệu trước khi gửi
-
-    // GỌI API ĐỂ LƯU DỮ LIỆU
-    $.ajax({
-        url: 'https://localhost:7203/api/HoaDonNhap',
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(data),
-        success: function (response) {
-            console.log("Phản hồi từ API:", response); // Kiểm tra phản hồi từ API
-            Swal.fire(
-                'Thành công!',
-                'Tạo hóa đơn mới thành công!',
-                'success'
-            ).then(() => {
-                $('#addHoaDonNhapModal').modal('hide');
-                window.location.reload();
-            });
-        },
-        error: function (error) {
-            console.error('Lỗi khi tạo hóa đơn:', error);
-            Swal.fire(
-                'Lỗi!',
-                'Tạo hóa đơn mới thất bại!',
-                'error'
-            );
-        }
-    });
-});
-
-// Update Hoa Don Nhap
-    $('#updateHoaDonNhap').click(function () {
-        var maHoaDonNhap = $('#editMaHoaDonNhap').val();
-
-        // Lấy TenNCC từ dropdown
-        var tenNCC = $('#editTenNCC option:selected').text();
-        var maNCC = $('#editTenNCC').val(); // Vẫn cần lấy maNCC để gửi trong các trường hợp khác
-
-        var tongTien = parseFloat($('#editTongTien').val());
-
-        // Validate tongTien
-        if (isNaN(tongTien)) {
-            Swal.fire('Lỗi!', 'Tổng tiền không hợp lệ.', 'error');
-            return; // Dừng lại nếu có lỗi
-        }
-
-        var trangThai = parseInt($('#editTrangThai').val());
-
-        var chiTietHoaDonNhaps = [];
-        $('#editProductListTable tbody tr').each(function () {
-            var maSP = $(this).find('.quantity').data('masp');
-            var tenSP = $(this).find('td:first-child').text();
-
-            // Kiểm tra maSP
-            if (maSP === undefined) {
-                console.error("Lỗi: Không tìm thấy maSP cho sản phẩm này.");
-                return true; // Bỏ qua dòng này và tiếp tục vòng lặp
-            }
-
-            var soLuong = parseFloat($(this).find('.quantity').val()) || 0;
-            var donGia = parseFloat($(this).find('.unitPrice').val()) || 0;
-
-            // Kiểm tra SoLuong và DonGia
-            if (isNaN(soLuong) || isNaN(donGia)) {
-                console.error("Lỗi: Số lượng hoặc đơn giá không hợp lệ.");
-                return true; // Bỏ qua dòng này và tiếp tục vòng lặp
-            }
-
-            if (soLuong > 0 && donGia > 0) {
-                chiTietHoaDonNhaps.push({
-                    maSP: maSP,
-                    tenSP: tenSP,
-                    soLuong: soLuong,
-                    donGia: donGia
-                });
-            }
-        });
-
-        // **(Quan trọng)** Tính toán lại tongTien
-        tongTien = 0;
-        chiTietHoaDonNhaps.forEach(ct => {
-            tongTien += ct.soLuong * ct.donGia;
-        });
-        $('#editTongTien').val(tongTien.toFixed(2)); // Cập nhật giá trị trong input
-
-
-        var data = {
-            maHoaDonNhap: maHoaDonNhap,
-            tenNCC: tenNCC,
-            maNCC: maNCC,
-            tongTien: tongTien, // Đảm bảo giá trị tongTien chính xác
-            trangThai: trangThai,
-            chiTietHoaDonNhaps: chiTietHoaDonNhaps
-        };
-
-        console.log("Dữ liệu gửi đi khi cập nhật:", data);
-
-        $.ajax({
-            url: `https://localhost:7203/api/HoaDonNhap/${maHoaDonNhap}`,
-            type: 'PUT',
-            contentType: 'application/json',
-            data: JSON.stringify(data),
-            success: function (response) {
-                Swal.fire(
-                    'Thành công!',
-                    'Cập nhật thành công!',
-                    'success'
-                ).then(() => {
-                    $('#editHoaDonNhapModal').modal('hide');
-                    window.location.reload();
-                });
-            },
-            error: function (error) {
-                console.error('Error updating HoaDonNhap:', error);
-                let errorMessage = 'Cập nhật thất bại!';
-                if (error.responseJSON && error.responseJSON.message) {
-                    errorMessage = error.responseJSON.message; // Lấy thông báo lỗi từ server
-                } else if (error.responseText) {
-                    errorMessage = error.responseText; // Lấy phản hồi lỗi trực tiếp
-                }
-                Swal.fire(
-                    'Lỗi!',
-                    errorMessage,
-                    'error'
-                );
-            }
-        });
-    });
-
-    function getTrangThaiLabel(trangThai) {
-        switch (trangThai) {
-            case 0: return "Đang tạo";
-            case 1: return "Đã nhập kho";
-            case 2: return "Đã thanh toán";
-            case 3: return "Đã hủy";
-            default: return "Không xác định";
-        }
-    }
-
-    // Event listeners for search, filter, and sort
-    $('#searchInput').on('keyup', function () {
-        applyFilters();
-    });
-
-    $('#statusFilter').on('change', function () {
-        applyFilters();
-    });
-
-    $('#sortOrder').on('change', function () {
-        applyFilters();
-    });
-
-    // Apply filters and sorting to the DataTable
-    function applyFilters() {
-        var searchText = $('#searchInput').val().toLowerCase();
-        var statusValue = $('#statusFilter').val();
-        var sortOrder = $('#sortOrder').val();
-
-        // Destroy the DataTable instance
-        if ($.fn.DataTable.isDataTable('#hoaDonNhapTable')) {
-            $('#hoaDonNhapTable').DataTable().destroy();
-        }
-
-        // Reinitialize DataTable with filtering and sorting
-        $('#hoaDonNhapTable').DataTable({
-            "paging": true,
-            "ordering": true,
-            "info": true,
-            "searching": false, // Disable the built-in search
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.13.7/i18n/vi.json"
-            },
-            "data": [], // Provide an empty dataset initially
-
-            "columns": [
-                { "data": "maHoaDonNhap" },
-                {
-                    "data": "ngayNhap",
-                    "render": function (data) {
-                        return new Date(data).toLocaleDateString();
-                    }
-                },
-                { "data": "hoTen" },
-                { "data": "tenNCC" },
-                {
-                    "data": "trangThai",
-                    "render": function (data) {
-                        return getTrangThaiLabel(data);
-                    }
-                },
-                {
-                    "data": "tongTien",
-                    "render": function (data) {
-                        return formatCurrency(data);
-                    }
-                },
-                {
-                    "data": "maHoaDonNhap",
-                    "render": function (data) {
-                        return `<button class="btn btn-info btn-sm details-button" data-id="${data}" style="font-family: 'Times New Roman', Times, serif">Chi Tiết</button>`;
-                    }
-                },
-                {
-                    "data": "maHoaDonNhap",
-                    "render": function (data) {
-                        return `<button class="btn btn-warning btn-sm mr-1 btn-edit edit-button" data-id="${data}" style="font-family: 'Times New Roman', Times, serif">Sửa</button>`;
-                    }
-                },
-                {
-                    "data": "maHoaDonNhap",
-                    "render": function (data) {
-                        return `<button class="btn btn-success btn-sm export-button" data-id="${data}" style="font-family: 'Times New Roman', Times, serif">Xuất Word</button>`;
-                    }
-                }
-            ],
-            "createdRow": function (row, data, dataIndex) {
-                $(row).find('.details-button').on('click', function () {
-                    showDetails(data.maHoaDonNhap);
-                });
-
-                $(row).find('.edit-button').on('click', function () {
-                    showEditModal(data);
-                });
-
-                $(row).find('.export-button').on('click', function () {
-                    exportToWord(data.maHoaDonNhap);
-                });
-            },
-            "initComplete": function (settings, json) {
-                // Load data from API after DataTable is initialized
-                $.ajax({
-                    url: 'https://localhost:7203/api/HoaDonNhap',
-                    type: 'GET',
-                    headers: {
-                        'Authorization': 'Bearer ' + token, // Thêm token vào header
-                        'MaNV': maNV // Sử dụng MaNV từ localStorage
-                    },
-                    success: function (apiData) {
-                        var filteredData = apiData.filter(function (item) {
-                            var employeeName = item.hoTen ? item.hoTen.toLowerCase() : ''; // Check if hoTen exists
-                            var statusMatch = !statusValue || item.trangThai.toString() === statusValue;
-                            var nameMatch = employeeName.includes(searchText);
-                            return statusMatch && nameMatch;
+                            tableBody.append(row);
                         });
-
-                        // Sorting logic
-                        if (sortOrder === 'asc') {
-                            filteredData.sort(function (a, b) {
-                                return a.tongTien - b.tongTien;
-                            });
-                        } else if (sortOrder === 'desc') {
-                            filteredData.sort(function (a, b) {
-                                return b.tongTien - a.tongTien;
-                            });
-                        } else if (sortOrder === 'name_asc') {
-                            filteredData.sort(function (a, b) {
-                                return a.hoTen.localeCompare(b.hoTen);
-                            });
-                        } else if (sortOrder === 'name_desc') {
-                            filteredData.sort(function (a, b) {
-                                return b.hoTen.localeCompare(a.hoTen);
-                            });
-                        }
-                        var table = $('#hoaDonNhapTable').DataTable();
-                        table.clear();
-                        table.rows.add(filteredData).draw();
+                        calculateTotals(tableId);
                     },
                     error: function (error) {
-                        console.error('Error fetching HoaDonNhaps:', error);
+                        console.error('Error fetching product list:', error);
                     }
                 });
             }
-        });
-    }
-});    
-</script>
-</body>
 
-</html>
+            function loadNhanViens() {
+                console.log("Hàm loadNhanViens đang được gọi...");
+                $.ajax({
+                    url: 'https://localhost:7203/api/NhanVien', // Thay đổi URL API nếu cần
+                    type: 'GET',
+                    success: function (data) {
+                        var selectElement = $('#hoTen'); // Sử dụng ID hoTen
+                        selectElement.empty(); // Xóa các option cũ
+                        $.each(data, function (i, nhanVien) {
+                            selectElement.append($('<option>', {
+                                value: nhanVien.hoTen, // Giá trị là tên nhân viên (để hiển thị)
+                                text: nhanVien.hoTen // Hiển thị tên nhân viên
+                            }).data('manv', nhanVien.maNV)); // Lưu mã nhân viên trong thuộc tính data
+                        });
+                    },
+                    error: function (error) {
+                        console.error('Error fetching NhanViens:', error);
+                    }
+                });
+            }
+            // Calculate totals on quantity/unit price change
+            $(document).on('input', '.quantity, .unitPrice', function () {
+                var tableId = $(this).closest('table').attr('id');
+                calculateTotals('#' + tableId);
+            });
+
+            function calculateTotals(tableId) {
+                var totalAmount = 0;
+                $(tableId + ' tbody tr').each(function () {
+                    var quantityInput = $(this).find('.quantity');
+                    var unitPriceInput = $(this).find('.unitPrice');
+
+                    var quantity = parseFloat(quantityInput.val()) || 0;
+                    var unitPrice = parseFloat(unitPriceInput.val()) || 0;
+
+                    // Kiểm tra nếu số lượng âm
+                    if (quantity < 0) {
+                        Swal.fire(
+                            'Cảnh báo!',
+                            'Số lượng không được âm.',
+                            'warning'
+                        );
+                        quantityInput.val(0); // Đặt lại về 0 hoặc một giá trị hợp lệ
+                        quantity = 0; // Đảm bảo tính toán tổng sử dụng giá trị hợp lệ
+                    }
+                    if (quantity > 1000) {
+                        Swal.fire(
+                            'Cảnh báo!',
+                            'Số lượng không được vượt quá 1000.',
+                            'warning'
+                        );
+                        quantityInput.val(0); // Đặt lại về 0 hoặc một giá trị hợp lệ
+                        quantity = 0; // Đảm bảo tính toán tổng sử dụng giá trị hợp lệ
+                    }
+                    //Kiểm tra nếu đơn giá âm
+                    if (unitPrice < 0) {
+                        Swal.fire(
+                            'Cảnh báo!',
+                            'Đơn giá không được âm.',
+                            'warning'
+                        );
+                        unitPriceInput.val(0);
+                        unitPrice = 0;
+                    }
+
+                    var total = quantity * unitPrice;
+                    $(this).find('.total').text(formatCurrency(total));
+                    totalAmount += total;
+                });
+
+                // Cập nhật tổng tiền trong form modal
+                var modalId = '#' + $(tableId).closest('.modal').attr('id');
+                $(modalId + ' #tongTien').val(totalAmount);
+                console.log("Tổng tiền trong modal:", totalAmount); // Ghi log để debug
+            }
+
+
+            // Hàm tải danh sách nhà cung cấp
+            function loadSuppliers(selectElementId, selectedMaNCC) {
+                $.ajax({
+                    url: 'https://localhost:7203/api/HoaDonNhap/Suppliers', // Thay đổi URL API nếu cần
+                    type: 'GET',
+                    success: function (data) {
+                        var selectElement = $(selectElementId);
+                        selectElement.empty(); // Xóa các option hiện tại
+                        $.each(data, function (i, nhaCungCap) {
+                            // Tạo option với value là maNCC, data-tenncc là tenNCC, và data-mancc là maNCC
+                            var option = `<option value="${nhaCungCap.maNCC}" data-tenncc="${nhaCungCap.tenNCC}" ${nhaCungCap.maNCC === selectedMaNCC ? 'selected' : ''}>${nhaCungCap.tenNCC}</option>`;
+                            selectElement.append(option);
+                        });
+                    },
+                    error: function (error) {
+                        console.error('Lỗi khi tải danh sách nhà cung cấp:', error);
+                    }
+                });
+            }
+
+            // Tải danh sách sản phẩm khi modal được hiển thị.
+            $('#addHoaDonNhapModal').on('shown.bs.modal', function (e) {
+                loadNhanViens();
+                loadSuppliers('#tenNCC');
+                loadProductList('#productListTable');
+            });
+
+            //Khi chọn nhà cung cấp, cập nhật MaNCC ẩn
+            $('#tenNCC').change(function () {
+                $('#maNCC').val($(this).val());
+            });
+
+            // Lưu Hóa Đơn Nhập
+            $('#saveHoaDonNhap').click(function () {
+                var hoTen = $('#hoTen').val();
+                var maNV = $('#hoTen option:selected').data('manv');
+                var tenNCC = $('#tenNCC option:selected').data('tenncc');
+                var maNCC = $('#tenNCC option:selected').val();
+
+                // LẤY TỔNG TIỀN TỪ MODAL
+                var tongTien = parseFloat($('#tongTien').val());
+
+                // KIỂM TRA TỔNG TIỀN
+                if (isNaN(tongTien)) {
+                    console.error("Tổng tiền không hợp lệ!");
+                    Swal.fire(
+                        'Lỗi!',
+                        'Tổng tiền không hợp lệ. Vui lòng kiểm tra lại.',
+                        'error'
+                    );
+                    return; // Dừng lại nếu tổng tiền không hợp lệ
+                }
+
+                var chiTietHoaDonNhaps = [];
+                var hasValidItems = false; // Cờ để kiểm tra xem có ít nhất một sản phẩm hợp lệ
+
+                $('#productListTable tbody tr').each(function () {
+                    var maSP = $(this).find('.quantity').data('masp');
+                    var soLuong = parseFloat($(this).find('.quantity').val()) || 0;
+                    var donGia = parseFloat($(this).find('.unitPrice').val()) || 0;
+                    var tenSP = $(this).find('td:first-child').text();
+
+                    if (soLuong > 0 && donGia > 0) {
+                        chiTietHoaDonNhaps.push({
+                            maSP: maSP,
+                            tenSP: tenSP,
+                            soLuong: soLuong,
+                            donGia: donGia
+                        });
+                        hasValidItems = true; // Đặt cờ nếu có ít nhất một sản phẩm hợp lệ
+                    }
+                });
+
+                // KIỂM TRA NẾU KHÔNG CÓ SẢN PHẨM HỢP LỆ NÀO
+                if (!hasValidItems) {
+                    Swal.fire(
+                        'Cảnh báo!',
+                        'Vui lòng nhập ít nhất một sản phẩm với số lượng và đơn giá lớn hơn 0.',
+                        'warning'
+                    );
+                    return; // Dừng hàm lại
+                }
+
+                // TẠO ĐỐI TƯỢNG DỮ LIỆU ĐỂ GỬI LÊN API
+                var data = {
+                    hoTen: hoTen,
+                    maNV: maNV,
+                    tenNCC: tenNCC,
+                    maNCC: maNCC,
+                    tongTien: tongTien, // Gửi tổng tiền lên API
+                    chiTietHoaDonNhaps: chiTietHoaDonNhaps
+                };
+
+                console.log("Dữ liệu gửi đi:", data); // Kiểm tra dữ liệu trước khi gửi
+
+                // GỌI API ĐỂ LƯU DỮ LIỆU
+                $.ajax({
+                    url: 'https://localhost:7203/api/HoaDonNhap',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    success: function (response) {
+                        console.log("Phản hồi từ API:", response); // Kiểm tra phản hồi từ API
+                        Swal.fire(
+                            'Thành công!',
+                            'Tạo hóa đơn mới thành công!',
+                            'success'
+                        ).then(() => {
+                            $('#addHoaDonNhapModal').modal('hide');
+                            window.location.reload();
+                        });
+                    },
+                    error: function (error) {
+                        console.error('Lỗi khi tạo hóa đơn:', error);
+                        Swal.fire(
+                            'Lỗi!',
+                            'Tạo hóa đơn mới thất bại!',
+                            'error'
+                        );
+                    }
+                });
+            });
+
+            // Update Hoa Don Nhap
+            $('#updateHoaDonNhap').click(function () {
+                var maHoaDonNhap = $('#editMaHoaDonNhap').val();
+
+                // Lấy TenNCC từ dropdown
+                var tenNCC = $('#editTenNCC option:selected').text();
+                var maNCC = $('#editTenNCC').val(); // Vẫn cần lấy maNCC để gửi trong các trường hợp khác
+
+                var tongTien = parseFloat($('#editTongTien').val());
+
+                // Validate tongTien
+                if (isNaN(tongTien)) {
+                    Swal.fire('Lỗi!', 'Tổng tiền không hợp lệ.', 'error');
+                    return; // Dừng lại nếu có lỗi
+                }
+
+                var trangThai = parseInt($('#editTrangThai').val());
+
+                var chiTietHoaDonNhaps = [];
+                $('#editProductListTable tbody tr').each(function () {
+                    var maSP = $(this).find('.quantity').data('masp');
+                    var tenSP = $(this).find('td:first-child').text();
+
+                    // Kiểm tra maSP
+                    if (maSP === undefined) {
+                        console.error("Lỗi: Không tìm thấy maSP cho sản phẩm này.");
+                        return true; // Bỏ qua dòng này và tiếp tục vòng lặp
+                    }
+
+                    var soLuong = parseFloat($(this).find('.quantity').val()) || 0;
+                    var donGia = parseFloat($(this).find('.unitPrice').val()) || 0;
+
+                    // Kiểm tra SoLuong và DonGia
+                    if (isNaN(soLuong) || isNaN(donGia)) {
+                        console.error("Lỗi: Số lượng hoặc đơn giá không hợp lệ.");
+                        return true; // Bỏ qua dòng này và tiếp tục vòng lặp
+                    }
+
+                    if (soLuong > 0 && donGia > 0) {
+                        chiTietHoaDonNhaps.push({
+                            maSP: maSP,
+                            tenSP: tenSP,
+                            soLuong: soLuong,
+                            donGia: donGia
+                        });
+                    }
+                });
+
+                // **(Quan trọng)** Tính toán lại tongTien
+                tongTien = 0;
+                chiTietHoaDonNhaps.forEach(ct => {
+                    tongTien += ct.soLuong * ct.donGia;
+                });
+                $('#editTongTien').val(tongTien.toFixed(2)); // Cập nhật giá trị trong input
+
+
+                var data = {
+                    maHoaDonNhap: maHoaDonNhap,
+                    tenNCC: tenNCC,
+                    maNCC: maNCC,
+                    tongTien: tongTien, // Đảm bảo giá trị tongTien chính xác
+                    trangThai: trangThai,
+                    chiTietHoaDonNhaps: chiTietHoaDonNhaps
+                };
+
+                console.log("Dữ liệu gửi đi khi cập nhật:", data);
+
+                $.ajax({
+                    url: `https://localhost:7203/api/HoaDonNhap/${maHoaDonNhap}`,
+                    type: 'PUT',
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    success: function (response) {
+                        Swal.fire(
+                            'Thành công!',
+                            'Cập nhật thành công!',
+                            'success'
+                        ).then(() => {
+                            $('#editHoaDonNhapModal').modal('hide');
+                            window.location.reload();
+                        });
+                    },
+                    error: function (error) {
+                        console.error('Error updating HoaDonNhap:', error);
+                        let errorMessage = 'Cập nhật thất bại!';
+                        if (error.responseJSON && error.responseJSON.message) {
+                            errorMessage = error.responseJSON.message; // Lấy thông báo lỗi từ server
+                        } else if (error.responseText) {
+                            errorMessage = error.responseText; // Lấy phản hồi lỗi trực tiếp
+                        }
+                        Swal.fire(
+                            'Lỗi!',
+                            errorMessage,
+                            'error'
+                        );
+                    }
+                });
+            });
+
+            function getTrangThaiLabel(trangThai) {
+                switch (trangThai) {
+                    case 0: return "Đang tạo";
+                    case 1: return "Đã nhập kho";
+                    case 2: return "Đã thanh toán";
+                    case 3: return "Đã hủy";
+                    default: return "Không xác định";
+                }
+            }
+
+            // Event listeners for search, filter, and sort
+            $('#searchInput').on('keyup', function () {
+                applyFilters();
+            });
+
+            $('#statusFilter').on('change', function () {
+                applyFilters();
+            });
+
+            $('#sortOrder').on('change', function () {
+                applyFilters();
+            });
+
+            // Apply filters and sorting to the DataTable
+            function applyFilters() {
+                var searchText = $('#searchInput').val().toLowerCase();
+                var statusValue = $('#statusFilter').val();
+                var sortOrder = $('#sortOrder').val();
+
+                // Destroy the DataTable instance
+                if ($.fn.DataTable.isDataTable('#hoaDonNhapTable')) {
+                    $('#hoaDonNhapTable').DataTable().destroy();
+                }
+
+                // Reinitialize DataTable with filtering and sorting
+                $('#hoaDonNhapTable').DataTable({
+                    "paging": true,
+                    "ordering": true,
+                    "info": true,
+                    "searching": false, // Disable the built-in search
+                    "language": {
+                        "url": "//cdn.datatables.net/plug-ins/1.13.7/i18n/vi.json"
+                    },
+                    "data": [], // Provide an empty dataset initially
+
+                    "columns": [
+                        { "data": "maHoaDonNhap" },
+                        {
+                            "data": "ngayNhap",
+                            "render": function (data) {
+                                return new Date(data).toLocaleDateString();
+                            }
+                        },
+                        { "data": "hoTen" },
+                        { "data": "tenNCC" },
+                        {
+                            "data": "trangThai",
+                            "render": function (data) {
+                                return getTrangThaiLabel(data);
+                            }
+                        },
+                        {
+                            "data": "tongTien",
+                            "render": function (data) {
+                                return formatCurrency(data);
+                            }
+                        },
+                        {
+                            "data": "maHoaDonNhap",
+                            "render": function (data) {
+                                return `<button class="btn btn-info btn-sm details-button" data-id="${data}" style="font-family: 'Times New Roman', Times, serif">Chi Tiết</button>`;
+                            }
+                        },
+                        {
+                            "data": "maHoaDonNhap",
+                            "render": function (data) {
+                                return `<button class="btn btn-warning btn-sm mr-1 btn-edit edit-button" data-id="${data}" style="font-family: 'Times New Roman', Times, serif">Sửa</button>`;
+                            }
+                        },
+                        {
+                            "data": "maHoaDonNhap",
+                            "render": function (data) {
+                                return `<button class="btn btn-success btn-sm export-button" data-id="${data}" style="font-family: 'Times New Roman', Times, serif">Xuất Word</button>`;
+                            }
+                        }
+                    ],
+                    "createdRow": function (row, data, dataIndex) {
+                        $(row).find('.details-button').on('click', function () {
+                            showDetails(data.maHoaDonNhap);
+                        });
+
+                        $(row).find('.edit-button').on('click', function () {
+                            showEditModal(data);
+                        });
+
+                        $(row).find('.export-button').on('click', function () {
+                            exportToWord(data.maHoaDonNhap);
+                        });
+                    },
+                    "initComplete": function (settings, json) {
+                        // Load data from API after DataTable is initialized
+                        $.ajax({
+                            url: 'https://localhost:7203/api/HoaDonNhap',
+                            type: 'GET',
+                            headers: {
+                                'Authorization': 'Bearer ' + token, // Thêm token vào header
+                                'MaNV': maNV // Sử dụng MaNV từ localStorage
+                            },
+                            success: function (apiData) {
+                                var filteredData = apiData.filter(function (item) {
+                                    var employeeName = item.hoTen ? item.hoTen.toLowerCase() : ''; // Check if hoTen exists
+                                    var statusMatch = !statusValue || item.trangThai.toString() === statusValue;
+                                    var nameMatch = employeeName.includes(searchText);
+                                    return statusMatch && nameMatch;
+                                });
+
+                                // Sorting logic
+                                if (sortOrder === 'asc') {
+                                    filteredData.sort(function (a, b) {
+                                        return a.tongTien - b.tongTien;
+                                    });
+                                } else if (sortOrder === 'desc') {
+                                    filteredData.sort(function (a, b) {
+                                        return b.tongTien - a.tongTien;
+                                    });
+                                } else if (sortOrder === 'name_asc') {
+                                    filteredData.sort(function (a, b) {
+                                        return a.hoTen.localeCompare(b.hoTen);
+                                    });
+                                } else if (sortOrder === 'name_desc') {
+                                    filteredData.sort(function (a, b) {
+                                        return b.hoTen.localeCompare(a.hoTen);
+                                    });
+                                }
+                                var table = $('#hoaDonNhapTable').DataTable();
+                                table.clear();
+                                table.rows.add(filteredData).draw();
+                            },
+                            error: function (error) {
+                                console.error('Error fetching HoaDonNhaps:', error);
+                            }
+                        });
+                    }
+                });
+            }
+            function checkLoginStatus() {
+                const token = localStorage.getItem('token');
+                const hoTen = localStorage.getItem('hoTen');
+                const userRole = localStorage.getItem('userRole');
+                let hinhAnh = localStorage.getItem('hinhAnh');
+
+                const loginButton = document.getElementById('loginButton');
+                const profileDropdown = document.getElementById('profileDropdown');
+
+                if (token) {
+                    loginButton.style.display = 'none';
+                    profileDropdown.style.display = 'block';
+
+                    const navbarHoTen = document.querySelector('#profileDropdown .nav-profile-text p');
+                    const navbarHinhAnh = document.querySelector('#profileDropdown .nav-profile-img img');
+
+                    if (navbarHoTen) {
+                        navbarHoTen.textContent = hoTen;
+                    }
+                    if (navbarHinhAnh) {
+                        if (hinhAnh && !hinhAnh.startsWith('http')) {
+                            hinhAnh = `${IMAGE_PATH_1}${hinhAnh}`;
+                        }
+                        navbarHinhAnh.src = hinhAnh;
+                    }
+
+                    const sidebarHoTen = document.getElementById("sidebar-hoTen");
+                    const sidebarVaiTro = document.getElementById("sidebar-vaiTro");
+                    const sidebarHinhAnh = document.getElementById("sidebar-hinhAnh");
+
+                    if (sidebarHoTen) {
+                        sidebarHoTen.textContent = hoTen;
+                    }
+                    if (sidebarVaiTro) {
+                        sidebarVaiTro.textContent = userRole;
+                    }
+                    if (sidebarHinhAnh) {
+                        sidebarHinhAnh.src = hinhAnh;
+                    }
+
+                    if (userRole === 'Nhân viên') {
+                        const quanLyNguoiDungLi = Array.from(sidebar.querySelectorAll('li a'))
+                            .find(a => a.textContent.trim() === 'Quản lý người dùng')
+                            ?.closest('li');
+
+                        if (quanLyNguoiDungLi) {
+                            const basicTable = quanLyNguoiDungLi.querySelector('a[href*="basic-table"]');
+
+                            if (basicTable) {
+                                basicTable.closest('li').style.display = 'none';
+                            }
+                        }
+                    } else if (userRole === 'Quản lý kho') {
+                        const quanLyNguoiDungLi = Array.from(sidebar.querySelectorAll('li a'))
+                            .find(a => a.textContent.trim() === 'Quản lý người dùng')
+                            ?.closest('li');
+
+                        if (quanLyNguoiDungLi) {
+                            const basicTable = quanLyNguoiDungLi.querySelector('a[href*="basic-table"]');
+
+                            if (basicTable) {
+                                basicTable.closest('li').style.display = 'block';
+                            }
+                        }
+                    }
+
+                    document.getElementById('logoutButton').addEventListener('click', function () {
+                        localStorage.removeItem('token');
+                        localStorage.removeItem('userRole');
+                        localStorage.removeItem('hoTen');
+                        localStorage.removeItem('hinhAnh');
+                        localStorage.removeItem('maNV');
+                        window.location.href = "/Admin/src/index.html";
+
+                    });
+
+                } else {
+                    window.location.href = LOGIN_PAGE_URL;
+                }
+            }
+
+        });
+    </script>

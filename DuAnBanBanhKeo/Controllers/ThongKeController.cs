@@ -313,6 +313,39 @@ namespace DuAnBanBanhKeo.Controllers
                 return StatusCode(500, "Lỗi khi tính giá trị nhập theo tháng");
             }
         }
+        //Thống kê Hóa đơn Xuất
+        [HttpGet("HoaDonXuat/TongSoLuongHoaDonXuat")]
+        public async Task<ActionResult<int>> GetTongSoLuongHoaDonXuat()
+        {
+            try
+            {
+                var totalHoaDonXuat = await _context.HoaDonXuats.CountAsync();
+                return Ok(totalHoaDonXuat);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Lỗi khi tính tổng số lượng hóa đơn xuất: {ex.Message}");
+                return StatusCode(500, "Lỗi khi tính tổng số lượng hóa đơn xuất");
+            }
+        }
+
+        [HttpGet("HoaDonXuat/GiaTriXuatTheoThang/{thang}")]
+        public async Task<ActionResult<decimal>> GetGiaTriXuatTheoThang(int thang)
+        {
+            try
+            {
+                var giaTriXuat = await _context.HoaDonXuats
+                    .Where(hdx => hdx.NgayXuat.Month == thang)
+                    .SumAsync(hdx => hdx.TongTien);
+
+                return Ok(giaTriXuat);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Lỗi khi tính giá trị xuất theo tháng: {ex.Message}");
+                return StatusCode(500, "Lỗi khi tính giá trị xuất theo tháng");
+            }
+        }
 
     }
 }

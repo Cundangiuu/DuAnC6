@@ -289,6 +289,51 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-6 stretch-card grid-margin">
+                                        <div class="card bg-gradient-primary card-img-holder text-white">
+                                            <div class="card-body">
+                                                <img src="assets/images/dashboard/circle.svg"
+                                                    class="card-img-absolute" alt="circle-image" />
+                                                <h4 class="font-weight-normal mb-3">Tổng số lượng hóa đơn xuất <i
+                                                        class="mdi mdi-file-document-box mdi-24px float-end"></i>
+                                                </h4>
+                                                <h2 class="mb-5" id="hoadon-total-count-xuat">Đang tải...</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 stretch-card grid-margin">
+                                        <div class="card bg-gradient-info card-img-holder text-white">
+                                            <div class="card-body">
+                                                <img src="assets/images/dashboard/circle.svg"
+                                                    class="card-img-absolute" alt="circle-image" />
+                                                <h4 class="font-weight-normal mb-3">Giá trị xuất theo tháng <i
+                                                        class="mdi mdi-cash mdi-24px float-end"></i>
+                                                </h4>
+                                                <h2 class="mb-5" id="hoadon-monthly-export-value">Đang tải...</h2>
+                                                <div class="form-group">
+                                                    <label for="hoadon-month-xuat">Chọn tháng:</label>
+                                                    <select class="form-control" id="hoadon-month-xuat">
+                                                        <option value="1">Tháng 1</option>
+                                                        <option value="2">Tháng 2</option>
+                                                        <option value="3">Tháng 3</option>
+                                                        <option value="4">Tháng 4</option>
+                                                        <option value="5">Tháng 5</option>
+                                                        <option value="6">Tháng 6</option>
+                                                        <option value="7">Tháng 7</option>
+                                                        <option value="8">Tháng 8</option>
+                                                        <option value="9">Tháng 9</option>
+                                                        <option value="10">Tháng 10</option>
+                                                        <option value="11">Tháng 11</option>
+                                                        <option value="12">Tháng 12</option>
+                                                    </select>
+                                                </div>
+                                                <!-- Thêm canvas để vẽ biểu đồ -->
+                                                <canvas id="hoadon-monthly-export-chart" height="150"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -343,6 +388,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', function () {
+            // Load navbar
             fetch("partials/_navbar.html")
                 .then(response => response.text())
                 .then(data => {
@@ -352,22 +398,23 @@
                 })
                 .catch(error => console.error("Lỗi khi tải navbar:", error));
 
+            // Load sidebar
             fetch("partials/_sidebar.html")
                 .then(response => response.text())
                 .then(data => {
-                    const sidebarContent = data;
-                    document.getElementById("sidebar").innerHTML = sidebarContent;
+                    document.getElementById("sidebar").innerHTML = data;
                     sidebarLoaded = true;
                     checkAllLoaded();
                 })
                 .catch(error => console.error("Lỗi khi tải sidebar:", error));
 
+            // Load footer
             fetch("partials/_footer.html")
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById("footer").innerHTML = data;
                 })
-                .catch(error => console.error("Lỗi khi tải navbar:", error));
+                .catch(error => console.error("Lỗi khi tải footer:", error));
         });
 
         function checkLoginStatus() {
@@ -413,7 +460,9 @@
                     sidebarHinhAnh.src = hinhAnh;
                 }
 
+                // Role-based access control
                 if (userRole === 'Nhân viên') {
+                    // Hide elements specific to admin
                     const quanLyNguoiDungLi = Array.from(sidebar.querySelectorAll('li a'))
                         .find(a => a.textContent.trim() === 'Quản lý người dùng')
                         ?.closest('li');
@@ -426,6 +475,7 @@
                         }
                     }
                 } else if (userRole === 'Quản lý kho') {
+                    // Show elements specific to quản lý kho
                     const quanLyNguoiDungLi = Array.from(sidebar.querySelectorAll('li a'))
                         .find(a => a.textContent.trim() === 'Quản lý người dùng')
                         ?.closest('li');
@@ -439,6 +489,7 @@
                     }
                 }
 
+                // Logout functionality
                 document.getElementById('logoutButton').addEventListener('click', function () {
                     localStorage.removeItem('token');
                     localStorage.removeItem('userRole');
@@ -451,7 +502,7 @@
             } else {
                 loginButton.style.display = 'block';
                 profileDropdown.style.display = 'none';
-                mainContent.style.display = 'block';
+                mainContent.style.display = 'block'; //or none if it needs login
             }
         }
 
@@ -470,7 +521,7 @@
             });
         }
 
-        let productMonthlyImportChart, hoadonMonthlyImportChart, productCategoryChart;
+        let productMonthlyImportChart, hoadonMonthlyImportChart, productCategoryChart, hoadonMonthlyExportChart;
 
         function createChart(canvasId, type, data, options) {
             const ctx = document.getElementById(canvasId).getContext('2d');
@@ -541,39 +592,41 @@
                     loadMonthlyImportValue(selectedMonth);
                 });
 
-                productMonthlyImportChart = createChart(
-                    'product-monthly-import-chart',
-                    'bar', {
-                    labels: ['Tháng'],
-                    datasets: [{
-                        label: 'Giá trị nhập',
-                        data: [0],
-                        backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        borderWidth: 1
-                    }]
-                }, {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            display: false
+                // Product Monthly Import Chart Initialization
+                if (!productMonthlyImportChart) {
+                    productMonthlyImportChart = createChart(
+                        'product-monthly-import-chart',
+                        'bar', {
+                        labels: ['Tháng'],
+                        datasets: [{
+                            label: 'Giá trị nhập',
+                            data: [0],
+                            backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        }]
+                    }, {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
                         },
-                        title: {
-                            display: true,
-                            text: 'Giá trị nhập hàng theo tháng',
-                            font: {
-                                size: 16
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            title: {
+                                display: true,
+                                text: 'Giá trị nhập hàng theo tháng',
+                                font: {
+                                    size: 16
+                                }
                             }
                         }
-                    }
+                    });
                 }
-                );
 
-                // Gọi hàm để tạo biểu đồ tròn phân loại sản phẩm
+                // Product Category Data
                 await loadProductCategoryData();
 
             } catch (error) {
@@ -587,13 +640,12 @@
                 document.getElementById('supplier-total-count').textContent = totalSuppliers;
 
                 // Fetch all suppliers
-                suppliersData = await fetchData(`${API_URL}/NhaCungCap`); // Assuming you have an endpoint to get all suppliers
+                suppliersData = await fetchData(`${API_URL}/NhaCungCap`);
 
                 // Populate the dropdown
                 const supplierDropdown = document.getElementById('supplier-dropdown');
-                supplierDropdown.innerHTML = ''; // Clear existing options
+                supplierDropdown.innerHTML = '';
 
-                // Add a default "Select" option
                 const defaultOption = document.createElement('option');
                 defaultOption.value = '';
                 defaultOption.textContent = 'Chọn nhà cung cấp';
@@ -601,8 +653,8 @@
 
                 suppliersData.forEach(supplier => {
                     const option = document.createElement('option');
-                    option.value = supplier.maNCC; // Use the correct property name for supplier ID
-                    option.textContent = supplier.tenNCC; // Use the correct property name for supplier name
+                    option.value = supplier.maNCC;
+                    option.textContent = supplier.tenNCC;
                     supplierDropdown.appendChild(option);
                 });
 
@@ -612,7 +664,7 @@
                     loadTotalImportValueBySupplier(selectedSupplierId);
                 });
 
-                // Initial load (optional): Load for the first supplier if any
+                // Initial load
                 if (suppliersData.length > 0) {
                     loadTotalImportValueBySupplier(suppliersData[0].maNCC);
                 }
@@ -636,12 +688,13 @@
 
         async function loadHoaDonData() {
             try {
-                const totalHoaDon = await fetchData(`${API_URL}/ThongKe/HoaDonNhap/TongSoLuongHoaDonNhap`);
-                document.getElementById('hoadon-total-count').textContent = totalHoaDon;
+                // Hoa Don Nhap
+                const totalHoaDonNhap = await fetchData(`${API_URL}/ThongKe/HoaDonNhap/TongSoLuongHoaDonNhap`);
+                document.getElementById('hoadon-total-count').textContent = totalHoaDonNhap;
 
-                const currentMonth = new Date().getMonth() + 1;
-                document.getElementById('hoadon-month').value = currentMonth;
-                loadMonthlyImportValue(currentMonth);
+                const currentMonthNhap = new Date().getMonth() + 1;
+                document.getElementById('hoadon-month').value = currentMonthNhap;
+                loadMonthlyImportValue(currentMonthNhap);
 
                 async function loadMonthlyImportValue(month) {
                     try {
@@ -662,38 +715,103 @@
                     loadMonthlyImportValue(selectedMonth);
                 });
 
-                hoadonMonthlyImportChart = createChart(
-                    'hoadon-monthly-import-chart',
-                    'line', {
-                    labels: ['Tháng'],
-                    datasets: [{
-                        label: 'Giá trị nhập',
-                        data: [0],
-                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        borderWidth: 1,
-                        fill: true
-                    }]
-                }, {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            display: false
+                // Init chart if it doesn't exist
+                if (!hoadonMonthlyImportChart) {
+                    hoadonMonthlyImportChart = createChart(
+                        'hoadon-monthly-import-chart',
+                        'line', {
+                        labels: ['Tháng'],
+                        datasets: [{
+                            label: 'Giá trị nhập',
+                            data: [0],
+                            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1,
+                            fill: true
+                        }]
+                    }, {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
                         },
-                        title: {
-                            display: true,
-                            text: 'Giá trị nhập hóa đơn theo tháng',
-                            font: {
-                                size: 16
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            title: {
+                                display: true,
+                                text: 'Giá trị nhập hóa đơn theo tháng',
+                                font: {
+                                    size: 16
+                                }
                             }
                         }
+                    });
+                }
+
+                // Hoa Don Xuat
+                const totalHoaDonXuat = await fetchData(`${API_URL}/ThongKe/HoaDonXuat/TongSoLuongHoaDonXuat`);
+                document.getElementById('hoadon-total-count-xuat').textContent = totalHoaDonXuat;
+
+                const currentMonthXuat = new Date().getMonth() + 1;
+                document.getElementById('hoadon-month-xuat').value = currentMonthXuat;
+                loadMonthlyExportValue(currentMonthXuat);
+
+                async function loadMonthlyExportValue(month) {
+                    try {
+                        const monthlyExportValue = await fetchData(`${API_URL}/ThongKe/HoaDonXuat/GiaTriXuatTheoThang/${month}`);
+                        document.getElementById('hoadon-monthly-export-value').textContent = monthlyExportValue.toLocaleString('vi-VN', {
+                            style: 'currency',
+                            currency: 'VND'
+                        });
+                        updateHoadonMonthlyExportChart(month, monthlyExportValue);
+                    } catch (error) {
+                        console.error("Lỗi khi tải giá trị xuất theo tháng:", error);
+                        document.getElementById('hoadon-monthly-export-value').textContent = "Lỗi";
                     }
                 }
-                );
+
+                document.getElementById('hoadon-month-xuat').addEventListener('change', function () {
+                    const selectedMonth = this.value;
+                    loadMonthlyExportValue(selectedMonth);
+                });
+
+                // Init chart if it doesn't exist
+                if (!hoadonMonthlyExportChart) {
+                    hoadonMonthlyExportChart = createChart(
+                        'hoadon-monthly-export-chart',
+                        'line', {
+                        labels: ['Tháng'],
+                        datasets: [{
+                            label: 'Giá trị xuất',
+                            data: [0],
+                            backgroundColor: 'rgba(40, 167, 69, 0.5)', // Green color
+                            borderColor: 'rgba(40, 167, 69, 1)',
+                            borderWidth: 1,
+                            fill: true
+                        }]
+                    }, {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            title: {
+                                display: true,
+                                text: 'Giá trị xuất hóa đơn theo tháng',
+                                font: {
+                                    size: 16
+                                }
+                            }
+                        }
+                    });
+                }
+
             } catch (error) {
                 console.error("Lỗi khi tải dữ liệu hóa đơn:", error);
             }
@@ -701,16 +819,16 @@
 
         async function loadProductCategoryData() {
             try {
-                // Gọi API để lấy dữ liệu phân loại sản phẩm
+                // API to get product category data
                 const categoryData = await fetchData(`${API_URL}/ThongKe/SanPham/PhanLoaiSanPham`);
 
-                // Kiểm tra xem dữ liệu có hợp lệ không
+                // Check if data is valid
                 if (categoryData && categoryData.length > 0) {
-                    // Lấy danh sách các loại sản phẩm và số lượng tương ứng
+                    // List of product types and their corresponding quantities
                     const labels = categoryData.map(item => item.tenLoai);
                     const data = categoryData.map(item => item.soLuong);
 
-                    // Tạo màu sắc cho biểu đồ
+                    // Define chart colors
                     const backgroundColors = [
                         'rgba(255, 99, 132, 0.5)',
                         'rgba(54, 162, 235, 0.5)',
@@ -729,7 +847,7 @@
                         'rgba(255, 159, 64, 1)',
                     ];
 
-                    // Tạo dataset cho biểu đồ
+                    // Dataset for the chart
                     const dataset = [{
                         label: 'Số lượng',
                         data: data,
@@ -738,44 +856,47 @@
                         borderWidth: 1
                     }];
 
-                    // Tạo cấu hình cho biểu đồ
+                    // Config for the chart
                     const config = {
-                        type: 'pie', // Chọn loại biểu đồ tròn
+                        type: 'pie', // pie chart
                         data: {
                             labels: labels,
                             datasets: dataset
                         },
                         options: {
                             responsive: true,
-                            maintainAspectRatio: false, // Thêm dòng này
+                            maintainAspectRatio: false, // Maintain aspect ratio
                             plugins: {
                                 legend: {
-                                    position: 'top', // Vị trí hiển thị chú thích
-                                    labels: {       // Thêm đoạn này
-                                        fontSize: 12   // Chỉnh kích thước font chữ chú thích
+                                    position: 'top', // Position of the legend
+                                    labels: {
+                                        fontSize: 12   // Legend font size
                                     }
                                 },
                                 title: {
                                     display: true,
-                                    text: 'Phân loại sản phẩm', // Tiêu đề biểu đồ
+                                    text: 'Phân loại sản phẩm', // Chart title
                                     font: {
-                                        size: 18         // Chỉnh kích thước font chữ tiêu đề
+                                        size: 18         // Chart title font size
                                     }
                                 }
                             }
                         }
                     };
 
-// Lấy canvas element và tạo biểu đồ
-const canvas = document.getElementById('product-category-chart');
+                    // Get canvas element and create chart
+                    const canvas = document.getElementById('product-category-chart');
+                    if (productCategoryChart) {
+                        productCategoryChart.destroy();  // Destroy existing chart
+                    }
                     productCategoryChart = new Chart(canvas, config);
                 } else {
                     console.warn('Không có dữ liệu phân loại sản phẩm hoặc dữ liệu không hợp lệ.');
-                    // Xử lý trường hợp không có dữ liệu, ví dụ: hiển thị thông báo cho người dùng
+                    // Handle cases where no data is available, e.g., displaying a message
                 }
             } catch (error) {
                 console.error('Lỗi khi tải dữ liệu phân loại sản phẩm:', error);
-                // Xử lý lỗi, ví dụ: hiển thị thông báo cho người dùng
+                // Error handling, e.g., displaying a message
             }
         }
 
@@ -799,6 +920,12 @@ const canvas = document.getElementById('product-category-chart');
             hoadonMonthlyImportChart.update();
         }
 
+        function updateHoadonMonthlyExportChart(month, value) {
+            hoadonMonthlyExportChart.data.labels = [`Tháng ${month}`];
+            hoadonMonthlyExportChart.data.datasets[0].data = [value];
+            hoadonMonthlyExportChart.update();
+        }
+
         $(document).ready(function () {
             $('#myTabs a').on('click', function (e) {
                 e.preventDefault()
@@ -806,6 +933,4 @@ const canvas = document.getElementById('product-category-chart');
             })
         });
     </script>
-</body>
-
-</html>
+        

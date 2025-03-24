@@ -38,10 +38,11 @@
             <div class="main-panel" style="font-family: 'Times New Roman', Times, serif;">
                 <div class="content-wrapper">
                     <div class="page-header">
-                        <h3 class="page-title" style="font-family: 'Times New Roman', Times, serif;">Quản lý Khách hàng</h3>
+                        <h3 class="page-title" style="font-family: 'Times New Roman', Times, serif;">Quản lý Khách hàng
+                        </h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#" >Quản lý</a></li>
+                                <li class="breadcrumb-item"><a href="#">Quản lý</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Khách hàng</li>
                             </ol>
                         </nav>
@@ -55,7 +56,8 @@
                         </div>
                         <div class="col-md-4">
                             <label for="sortSelect" class="form-label">Sắp xếp theo:</label>
-                            <select class="form-select" id="sortSelect" style="font-family: 'Times New Roman', Times, serif;">
+                            <select class="form-select" id="sortSelect"
+                                style="font-family: 'Times New Roman', Times, serif;">
                                 <option value="">Mặc định</option>
                                 <option value="makh">Mã Khách hàng</option>
                                 <option value="tenkh">Tên Khách hàng</option>
@@ -64,7 +66,8 @@
                         </div>
                         <div class="col-md-4">
                             <label for="sortOrderSelect" class="form-label">Thứ tự:</label>
-                            <select class="form-select" id="sortOrderSelect" style="font-family: 'Times New Roman', Times, serif;">
+                            <select class="form-select" id="sortOrderSelect"
+                                style="font-family: 'Times New Roman', Times, serif;">
                                 <option value="asc">Tăng dần</option>
                                 <option value="desc">Giảm dần</option>
                             </select>
@@ -75,23 +78,31 @@
                         <div class="col-lg-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title" style="font-family: 'Times New Roman', Times, serif;">Danh sách Khách hàng</h4>
-                                    <p class="card-description" style="font-family: 'Times New Roman', Times, serif;"> 
+                                    <h4 class="card-title" style="font-family: 'Times New Roman', Times, serif;">Danh sách
+                                        Khách hàng</h4>
+                                    <p class="card-description" style="font-family: 'Times New Roman', Times, serif;">
                                         Quản lý thông tin khách hàng
                                     </p>
                                     <!-- Nút thêm khách hàng -->
-                                    <button class="btn btn-primary mb-3" id="btnAddKhachHang" style="font-family: 'Times New Roman', Times, serif;"><i class="mdi mdi-plus-circle-outline"></i> Thêm Khách hàng</button>
+                                    <button class="btn btn-primary mb-3" id="btnAddKhachHang"
+                                        style="font-family: 'Times New Roman', Times, serif;"><i
+                                            class="mdi mdi-plus-circle-outline"></i> Thêm Khách hàng</button>
 
                                     <div class="table-responsive">
                                         <table class="table table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Mã khách hàng</th>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Tên khách hàng</th>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Số Điện Thoại</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Mã khách
+                                                        hàng</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Tên khách
+                                                        hàng</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Số Điện
+                                                        Thoại</th>
                                                     <th style="font-family: 'Times New Roman', Times, serif;">Email</th>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Địa Chỉ</th>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Hành động</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Địa Chỉ
+                                                    </th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Hành động
+                                                    </th>
                                                 </tr>
                                             </thead>
                                             <tbody id="tableBody">
@@ -125,7 +136,8 @@
                 <div class="modal-dialog">
                     <div class="modal-content" style="font-family: 'Times New Roman', Times, serif;">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="khachHangModalLabel" style="font-family: 'Times New Roman', Times, serif;">Thêm/Sửa Khách hàng</h5>
+                            <h5 class="modal-title" id="khachHangModalLabel"
+                                style="font-family: 'Times New Roman', Times, serif;">Thêm/Sửa Khách hàng</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
@@ -164,8 +176,10 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="font-family: 'Times New Roman', Times, serif;">Đóng</button>
-                            <button type="button" class="btn btn-primary" id="btnSaveKhachHang" style="font-family: 'Times New Roman', Times, serif;">Lưu</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                                style="font-family: 'Times New Roman', Times, serif;">Đóng</button>
+                            <button type="button" class="btn btn-primary" id="btnSaveKhachHang"
+                                style="font-family: 'Times New Roman', Times, serif;">Lưu</button>
                         </div>
                     </div>
                 </div>
@@ -179,11 +193,23 @@
     <script src="../../assets/js/todolist.js"></script>
     <script src="../../assets/js/jquery.cookie.js"></script>
     <script>
+        const IMAGE_PATH_1 = "/Admin/src/assets/images/nhanVien/";
+        const LOGIN_PAGE_URL = "login.html";
+
+        let navbarLoaded = false;
+        let sidebarLoaded = false;
+        function checkAllLoaded() {
+            if (navbarLoaded && sidebarLoaded) {
+                checkLoginStatus();
+            }
+        }
         // Các hàm để tải navbar, sidebar và footer từ các file HTML
         fetch("/Admin/src/partials/_navbar.html")
             .then(response => response.text())
             .then(data => {
                 document.getElementById("navbar-placeholder").innerHTML = data;
+                navbarLoaded = true;
+                checkAllLoaded();
             })
             .catch(error => console.error("Lỗi khi tải navbar:", error));
     </script>
@@ -192,6 +218,8 @@
             .then(response => response.text())
             .then(data => {
                 document.getElementById("sidebar").innerHTML = data;
+                sidebarLoaded = true;
+                checkAllLoaded();
             })
             .catch(error => console.error("Lỗi khi tải sidebar:", error));
     </script>
@@ -263,7 +291,7 @@
                 const response = await fetch(url);
                 allKhachHangs = await response.json(); // Store all the data
 
-                renderNhanVien(); // Render the data with pagination
+                renderKhachHangs(); // Render the data with pagination
             } catch (error) {
                 console.error('Error loading data:', error);
                 Swal.fire({
@@ -274,7 +302,7 @@
             }
         }
 
-        function renderNhanVien() {
+        function renderKhachHangs() {
             tableBody.innerHTML = ''; // Clear old data
 
             // Apply Search
@@ -364,7 +392,7 @@
             prevLink.addEventListener("click", () => {
                 if (currentPage > 1) {
                     currentPage--;
-                    renderNhanVien();
+                    renderKhachHangs();
                 }
             });
             prevLi.appendChild(prevLink);
@@ -382,7 +410,7 @@
                 pageLink.innerText = i;
                 pageLink.addEventListener("click", () => {
                     currentPage = i;
-                    renderNhanVien();
+                    renderKhachHangs();
                 });
                 pageLi.appendChild(pageLink);
                 pagination.appendChild(pageLi);
@@ -400,7 +428,7 @@
             nextLink.addEventListener("click", () => {
                 if (currentPage < totalPages) {
                     currentPage++;
-                    renderNhanVien();
+                    renderKhachHangs();
                 }
             });
             nextLi.appendChild(nextLink);
@@ -416,18 +444,18 @@
         // Event listener for search input
         searchInput.addEventListener('input', () => {
             currentPage = 1; // Reset to first page on search
-            renderNhanVien();
+            renderKhachHangs();
         });
 
         // Event listeners for sort select boxes
         sortSelect.addEventListener('change', () => {
             currentPage = 1; // Reset to first page on sort
-            renderNhanVien();
+            renderKhachHangs();
         });
 
         sortOrderSelect.addEventListener('change', () => {
             currentPage = 1; // Reset to first page on sortOrder
-            renderNhanVien();
+            renderKhachHangs();
         });
 
         // Load initial data with default values.
@@ -712,11 +740,93 @@
                 console.error('Error adding/editing customer:', error);
                 Swal.fire({
                     icon: 'error',
-                        title: 'Lỗi',
-                        text: 'Lỗi khi thêm/sửa khách hàng. Vui lòng kiểm tra console.',
+                    title: 'Lỗi',
+                    text: 'Lỗi khi thêm/sửa khách hàng. Vui lòng kiểm tra console.',
                 });
             }
         });
+
+        function checkLoginStatus() {
+            const token = localStorage.getItem('token');
+            const hoTen = localStorage.getItem('hoTen');
+            const userRole = localStorage.getItem('userRole');
+            let hinhAnh = localStorage.getItem('hinhAnh');
+
+            const loginButton = document.getElementById('loginButton');
+            const profileDropdown = document.getElementById('profileDropdown');
+            const sidebar = document.getElementById('sidebar');
+
+            if (token) {
+                loginButton.style.display = 'none';
+                profileDropdown.style.display = 'block';
+
+                const navbarHoTen = document.querySelector('#profileDropdown .nav-profile-text p');
+                const navbarHinhAnh = document.querySelector('#profileDropdown .nav-profile-img img');
+
+                if (navbarHoTen) {
+                    navbarHoTen.textContent = hoTen;
+                }
+                if (navbarHinhAnh) {
+                    if (hinhAnh && !hinhAnh.startsWith('http')) {
+                        hinhAnh = `${IMAGE_PATH_1}${hinhAnh}`;
+                    }
+                    navbarHinhAnh.src = hinhAnh;
+                }
+
+                const sidebarHoTen = document.getElementById("sidebar-hoTen");
+                const sidebarVaiTro = document.getElementById("sidebar-vaiTro");
+                const sidebarHinhAnh = document.getElementById("sidebar-hinhAnh");
+
+                if (sidebarHoTen) {
+                    sidebarHoTen.textContent = hoTen;
+                }
+                if (sidebarVaiTro) {
+                    sidebarVaiTro.textContent = userRole;
+                }
+                if (sidebarHinhAnh) {
+                    sidebarHinhAnh.src = hinhAnh;
+                }
+
+                if (userRole === 'Nhân viên') {
+                    const quanLyNguoiDungLi = Array.from(sidebar.querySelectorAll('li a'))
+                        .find(a => a.textContent.trim() === 'Quản lý người dùng')
+                        ?.closest('li');
+
+                    if (quanLyNguoiDungLi) {
+                        const quanLyKhachHangLink = quanLyNguoiDungLi.querySelector('a[href*="khachhang"]');
+
+                        if (quanLyKhachHangLink) {
+                            quanLyKhachHangLink.closest('li').style.display = 'none';
+                        }
+                    }
+                } else if (userRole === 'Quản lý kho') {
+                    const quanLyNguoiDungLi = Array.from(sidebar.querySelectorAll('li a'))
+                        .find(a => a.textContent.trim() === 'Quản lý người dùng')
+                        ?.closest('li');
+
+                    if (quanLyNguoiDungLi) {
+                        const quanLyKhachHangLink = quanLyNguoiDungLi.querySelector('a[href*="khachhang"]');
+
+                        if (quanLyKhachHangLink) {
+                            quanLyKhachHangLink.closest('li').style.display = 'block';
+                        }
+                    }
+                }
+
+                document.getElementById('logoutButton').addEventListener('click', function () {
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('userRole');
+                    localStorage.removeItem('hoTen');
+                    localStorage.removeItem('hinhAnh');
+                    localStorage.removeItem('maNV');
+                    window.location.href = "/Admin/src/index.html";
+
+                });
+
+            } else {
+                window.location.href = LOGIN_PAGE_URL;
+            }
+        }
     </script>
 </body>
 

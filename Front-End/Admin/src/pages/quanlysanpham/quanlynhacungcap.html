@@ -55,7 +55,8 @@
                         </div>
                         <div class="col-md-4">
                             <label for="sortSelect" class="form-label">Sắp xếp theo:</label>
-                            <select class="form-select" id="sortSelect" style="font-family: 'Times New Roman', Times, serif;">
+                            <select class="form-select" id="sortSelect"
+                                style="font-family: 'Times New Roman', Times, serif;">
                                 <option value="">Mặc định</option>
                                 <option value="mancc">Mã nhà cung cấp</option>
                                 <option value="tenncc">Tên nhà cung cấp</option>
@@ -64,7 +65,8 @@
                         </div>
                         <div class="col-md-4">
                             <label for="sortOrderSelect" class="form-label">Thứ tự:</label>
-                            <select class="form-select" id="sortOrderSelect" style="font-family: 'Times New Roman', Times, serif;">
+                            <select class="form-select" id="sortOrderSelect"
+                                style="font-family: 'Times New Roman', Times, serif;">
                                 <option value="asc">Tăng dần</option>
                                 <option value="desc">Giảm dần</option>
                             </select>
@@ -75,23 +77,31 @@
                         <div class="col-lg-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title"style="font-family: 'Times New Roman', Times, serif;">Danh sách Nhà Cung Cấp</h4>
-                                    <p class="card-description"style="font-family: 'Times New Roman', Times, serif;">
+                                    <h4 class="card-title" style="font-family: 'Times New Roman', Times, serif;">Danh sách
+                                        Nhà Cung Cấp</h4>
+                                    <p class="card-description" style="font-family: 'Times New Roman', Times, serif;">
                                         Quản lý thông tin nhà cung cấp
                                     </p>
                                     <!-- Nút thêm nhà cung cấp -->
-                                    <button class="btn btn-primary mb-3" id="btnAddNhaCungCap"style="font-family: 'Times New Roman', Times, serif;"><i class="mdi mdi-plus-circle-outline"></i> Thêm Nhà Cung Cấp</button>
+                                    <button class="btn btn-primary mb-3" id="btnAddNhaCungCap"
+                                        style="font-family: 'Times New Roman', Times, serif;"><i
+                                            class="mdi mdi-plus-circle-outline"></i> Thêm Nhà Cung Cấp</button>
 
                                     <div class="table-responsive">
                                         <table class="table table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Mã Nhà Cung Cấp</th>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Tên Nhà Cung Cấp</th>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Số Điện Thoại</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Mã Nhà Cung
+                                                        Cấp</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Tên Nhà Cung
+                                                        Cấp</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Số Điện
+                                                        Thoại</th>
                                                     <th style="font-family: 'Times New Roman', Times, serif;">Email</th>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Địa Chỉ</th>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Hành động</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Địa Chỉ
+                                                    </th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Hành động
+                                                    </th>
                                                 </tr>
                                             </thead>
                                             <tbody id="tableBody">
@@ -125,7 +135,8 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="nhaCungCapModalLabel"style="font-family: 'Times New Roman', Times, serif;">Thêm/Sửa Nhà Cung Cấp</h5>
+                            <h5 class="modal-title" id="nhaCungCapModalLabel"
+                                style="font-family: 'Times New Roman', Times, serif;">Thêm/Sửa Nhà Cung Cấp</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
@@ -164,8 +175,10 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="font-family: 'Times New Roman', Times, serif;">Đóng</button>
-                            <button type="button" class="btn btn-primary" id="btnSaveNhaCungCap" style="font-family: 'Times New Roman', Times, serif;">Lưu</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                                style="font-family: 'Times New Roman', Times, serif;">Đóng</button>
+                            <button type="button" class="btn btn-primary" id="btnSaveNhaCungCap"
+                                style="font-family: 'Times New Roman', Times, serif;">Lưu</button>
                         </div>
                     </div>
                 </div>
@@ -179,10 +192,24 @@
     <script src="../../assets/js/todolist.js"></script>
     <script src="../../assets/js/jquery.cookie.js"></script>
     <script>
+        const IMAGE_PATH_1 = "/Admin/src/assets/images/nhanVien/";
+        const LOGIN_PAGE_URL = "login.html";
+
+        let navbarLoaded = false;
+        let sidebarLoaded = false;
+        function checkAllLoaded() {
+            if (navbarLoaded && sidebarLoaded) {
+                checkLoginStatus();
+                loadNhaCungCaps();
+            }
+        }
+        // Các hàm để tải navbar, sidebar và footer từ các file HTML
         fetch("/Admin/src/partials/_navbar.html")
             .then(response => response.text())
             .then(data => {
                 document.getElementById("navbar-placeholder").innerHTML = data;
+                navbarLoaded = true;
+                checkAllLoaded();
             })
             .catch(error => console.error("Lỗi khi tải navbar:", error));
     </script>
@@ -191,6 +218,8 @@
             .then(response => response.text())
             .then(data => {
                 document.getElementById("sidebar").innerHTML = data;
+                sidebarLoaded = true;
+                checkAllLoaded();
             })
             .catch(error => console.error("Lỗi khi tải navbar:", error));
     </script>
@@ -610,7 +639,7 @@
 
             // Validate Email
             const emailValue = document.getElementById('email').value.trim();
-            if (emailValue !== '' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
+            if (emailValue !== '' && !/^[^\s@]+@[^@\s]+\.[^\s@]+$/.test(emailValue)) {
                 displayValidationError('email', 'Địa chỉ email không hợp lệ.');
                 isValid = false;
             }
@@ -712,7 +741,87 @@
                 });
             }
         });
+        function checkLoginStatus() {
+            const token = localStorage.getItem('token');
+            const hoTen = localStorage.getItem('hoTen');
+            const userRole = localStorage.getItem('userRole');
+            let hinhAnh = localStorage.getItem('hinhAnh');
 
+            const loginButton = document.getElementById('loginButton');
+            const profileDropdown = document.getElementById('profileDropdown');
+            const sidebar = document.getElementById('sidebar');
+
+            if (token) {
+                loginButton.style.display = 'none';
+                profileDropdown.style.display = 'block';
+
+                const navbarHoTen = document.querySelector('#profileDropdown .nav-profile-text p');
+                const navbarHinhAnh = document.querySelector('#profileDropdown .nav-profile-img img');
+
+                if (navbarHoTen) {
+                    navbarHoTen.textContent = hoTen;
+                }
+                if (navbarHinhAnh) {
+                    if (hinhAnh && !hinhAnh.startsWith('http')) {
+                        hinhAnh = `${IMAGE_PATH_1}${hinhAnh}`;
+                    }
+                    navbarHinhAnh.src = hinhAnh;
+                }
+
+                const sidebarHoTen = document.getElementById("sidebar-hoTen");
+                
+const sidebarVaiTro = document.getElementById("sidebar-vaiTro");
+                const sidebarHinhAnh = document.getElementById("sidebar-hinhAnh");
+
+                if (sidebarHoTen) {
+                    sidebarHoTen.textContent = hoTen;
+                }
+                if (sidebarVaiTro) {
+                    sidebarVaiTro.textContent = userRole;
+                }
+                if (sidebarHinhAnh) {
+                    sidebarHinhAnh.src = hinhAnh;
+                }
+
+                if (userRole === 'Nhân viên') {
+                    const quanLyNguoiDungLi = Array.from(sidebar.querySelectorAll('li a'))
+                        .find(a => a.textContent.trim() === 'Quản lý người dùng')
+                        ?.closest('li');
+
+                    if (quanLyNguoiDungLi) {
+                        const quanLyNhaCungCapLink = quanLyNguoiDungLi.querySelector('a[href*="nhacungcap"]');
+
+                        if (quanLyNhaCungCapLink) {
+                            quanLyNhaCungCapLink.closest('li').style.display = 'none';
+                        }
+                    }
+                } else if (userRole === 'Quản lý kho') {
+                    const quanLyNguoiDungLi = Array.from(sidebar.querySelectorAll('li a'))
+                        .find(a => a.textContent.trim() === 'Quản lý người dùng')
+                        ?.closest('li');
+
+                    if (quanLyNguoiDungLi) {
+                        const quanLyNhaCungCapLink = quanLyNguoiDungLi.querySelector('a[href*="nhacungcap"]');
+
+                        if (quanLyNhaCungCapLink) {
+                            quanLyNhaCungCapLink.closest('li').style.display = 'block';
+                        }
+                    }
+                }
+
+                document.getElementById('logoutButton').addEventListener('click', function () {
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('userRole');
+                    localStorage.removeItem('hoTen');
+                    localStorage.removeItem('hinhAnh');
+                    localStorage.removeItem('maNV');
+                    window.location.href = "/Admin/src/index.html";
+                });
+
+            } else {
+                window.location.href = LOGIN_PAGE_URL;
+            }
+        }
     </script>
 </body>
 

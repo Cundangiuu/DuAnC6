@@ -222,7 +222,17 @@
 
 
         <script>
+            const IMAGE_PATH_1 = "/Admin/src/assets/images/nhanVien/";
+            const LOGIN_PAGE_URL = "login.html";
 
+            let navbarLoaded = false;
+            let sidebarLoaded = false;
+            function checkAllLoaded() {
+                if (navbarLoaded && sidebarLoaded) {
+                    checkLoginStatus();
+                    loadDanhMucList(); // Gọi hàm tải danh mục khi trang sẵn sàng
+                }
+            }
 
             // Function to load partial HTML content using Fetch API
             function loadPartial(partialName, elementId) {
@@ -230,6 +240,9 @@
                     .then(response => response.text())
                     .then(data => {
                         document.getElementById(elementId).innerHTML = data;
+                        if (partialName === '_navbar') navbarLoaded = true;
+                        if (partialName === '_sidebar') sidebarLoaded = true;
+                        checkAllLoaded();
                     })
                     .catch(error => console.error(`Error loading ${partialName}:`, error));
             }
@@ -239,7 +252,7 @@
                 loadPartial('_sidebar', 'sidebar');
                 loadPartial('_footer', 'footer');
 
-                loadDanhMucList(); // Gọi hàm tải danh mục khi trang sẵn sàng
+
             });
 
             const apiUrl = 'https://localhost:7203/api/DanhMuc'; // Điều chỉnh nếu API của bạn được host khác
@@ -567,6 +580,88 @@
                 } catch (error) {
                     console.error('Lỗi xóa danh mục:', error);
                     Swal.fire('Lỗi!', 'Không thể xóa danh mục.', 'error');
+                }
+            }
+
+            function checkLoginStatus() {
+                const token = localStorage.getItem('token');
+                const hoTen = localStorage.getItem('hoTen');
+                const userRole = localStorage.getItem('userRole');
+                let hinhAnh = localStorage.getItem('hinhAnh');
+
+                const loginButton = document.getElementById('loginButton');
+                const profileDropdown = document.getElementById('profileDropdown');
+                const sidebar = document.getElementById('sidebar');
+
+                if (token) {
+                    loginButton.style.display = 'none';
+                    profileDropdown.style.display = 'block';
+
+                    const navbarHoTen = document.querySelector('#profileDropdown .nav-profile-text p');
+                    const navbarHinhAnh = document.querySelector('#profileDropdown .nav-profile-img img');
+
+                    if (navbarHoTen) {
+                        navbarHoTen.textContent = hoTen;
+                    }
+                    if (navbarHinhAnh) {
+                        if (hinhAnh && !hinhAnh.startsWith('http')) {
+                            hinhAnh = `${IMAGE_PATH_1}${hinhAnh}`;
+                        }
+                        navbarHinhAnh.src = hinhAnh;
+                    }
+
+                    const sidebarHoTen = document.getElementById("sidebar-hoTen");
+                    const sidebarVaiTro = document.getElementById("sidebar-vaiTro");
+                    const sidebarHinhAnh = document.getElementById("sidebar-hinhAnh");
+
+                    if (sidebarHoTen) {
+                        sidebarHoTen.textContent = hoTen;
+                    }
+                    if (sidebarVaiTro) {
+                        sidebarVaiTro.textContent = userRole;
+                    }
+                    if (sidebarHinhAnh) {
+                        sidebarHinhAnh.src = hinhAnh;
+                    }
+
+                    if (userRole === 'Nhân viên') {
+                        const quanLyNguoiDungLi = Array.from(sidebar.querySelectorAll('li a'))
+                            .find(a => a.textContent.trim() === 'Quản lý người dùng')
+                            ?.closest('li');
+
+                        if (quanLyNguoiDungLi) {
+                            const quanLyDanhMucLink = quanLyNguoiDungLi.querySelector('a[href*="quanlydanhmuc"]');
+
+                            if (quanLyDanhMucLink) {
+                                quanLyDanhMucLink.closest('li').style.display = 'none';
+                            }
+                        }
+                    } else if (userRole === 'Quản lý kho') {
+                        const quanLyNguoiDungLi = Array.from(sidebar.querySelectorAll('li a'))
+                            .find(a => a.textContent.trim() === 'Quản lý người dùng')
+                            ?.closest('li');
+
+                        if (quanLyNguoiDungLi) {
+                            const quanLyDanhMucLink = quanLyNguoiDungLi.querySelector('a[href*="quanlydanhmuc"]');
+
+                            if (quanLyDanhMucLink) {
+                                quanLyDanhMucLink.closest('li').style.display = 'block';
+                            }
+                        }
+                    }
+
+                    document.getElementById('logoutButton').addEventListener('click', function () {
+                        localStorage.removeItem('token');
+                        localStorage.removeItem('userRole');
+                        localStorage.removeItem('hoTen');
+                        localStorage.removeItem('hinhAnh');
+                        localStorage.removeItem('maNV');
+                        window.location.href = "/Admin/src/index.html";
+
+                    });
+
+                } else {
+                    window.location.href = LOGIN_PAGE_URL;
                 }
             }
         </script>
