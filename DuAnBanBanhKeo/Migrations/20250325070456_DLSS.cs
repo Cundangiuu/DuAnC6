@@ -187,7 +187,8 @@ namespace DuAnBanBanhKeo.Migrations
                     MaKiemKe = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     NgayKiemKe = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MaNV = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    GhiChu = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    GhiChu = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TrangThai = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -415,11 +416,11 @@ namespace DuAnBanBanhKeo.Migrations
 
             migrationBuilder.InsertData(
                 table: "KiemKes",
-                columns: new[] { "MaKiemKe", "GhiChu", "MaNV", "NgayKiemKe" },
+                columns: new[] { "MaKiemKe", "GhiChu", "MaNV", "NgayKiemKe", "TrangThai" },
                 values: new object[,]
                 {
-                    { "KK001", "Kiểm kê định kỳ", "NV003", new DateTime(2024, 6, 20, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { "KK002", "Sai lệch số lượng", "NV003", new DateTime(2024, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                    { "KK001", "Kiểm kê định kỳ", "NV003", new DateTime(2024, 6, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 0 },
+                    { "KK002", "Sai lệch số lượng", "NV003", new DateTime(2024, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), 0 }
                 });
 
             migrationBuilder.InsertData(

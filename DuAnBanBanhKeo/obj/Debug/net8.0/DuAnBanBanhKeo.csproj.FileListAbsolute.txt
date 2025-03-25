@@ -494,8 +494,6 @@ D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Scriptin
 D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
 D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
-D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
-D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
 D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\appsettings.Development.json
@@ -1129,3 +1127,12 @@ D:\CNTT\CSharp6\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\Microsoft.IO.RecyclableMe
 D:\CNTT\CSharp6\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
 D:\CNTT\CSharp6\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Win32.SystemEvents.dll
 D:\CNTT\CSharp6\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\EPPlus.dll
+D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\EPPlus.Interfaces.dll
+D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\EPPlus.System.Drawing.dll
+D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Json.dll
+D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\Microsoft.IO.RecyclableMemoryStream.dll
+D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Win32.SystemEvents.dll
+D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll

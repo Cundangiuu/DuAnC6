@@ -440,6 +440,7 @@
                     <div data-product-detail="hinhAnh"></div>
                     </p>
                   </div>
+                  <div id="qrCodeContainer"></div>
                 </div>
               </div>
               <div class="modal-footer">
@@ -452,396 +453,6 @@
         <!-- partial:partials/_footer.html -->
         <footer class="footer" id="footer"></footer>
         <!-- partial -->
-        <div class="container-fluid page-body-wrapper">
-            <!-- partial:partials/_sidebar.html -->
-            <nav class="sidebar sidebar-offcanvas" id="sidebar"></nav>
-            <!-- partial -->
-            <div class="main-panel" style="font-family: 'Times New Roman', Times, serif;">
-                <div class="content-wrapper">
-                    <div class="page-header">
-                        <h3 class="page-title" style="font-family: 'Times New Roman', Times, serif;"> Quản lý Sản phẩm
-                        </h3>
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Sản phẩm</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Danh sách sản phẩm</li>
-                            </ol>
-                        </nav>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12 grid-margin stretch-card">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title" style="font-family: 'Times New Roman', Times, serif;">Danh
-                                        sách Sản phẩm</h4>
-                                    <div class="row mb-3">
-                                        <div class="col-md-12 mb-3">
-                                            <div class="row">
-                                                <!-- Category Filter -->
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label for="categoryFilter">Danh mục</label>
-                                                        <select class="form-control" id="categoryFilter"
-                                                            name="categoryFilter">
-                                                            <option value="">Tất cả danh mục</option>
-                                                            <!-- Categories will be loaded here -->
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <!-- Supplier Filter -->
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label for="supplierFilter">Nhà cung cấp</label>
-                                                        <select class="form-control" id="supplierFilter"
-                                                            name="supplierFilter">
-                                                            <option value="">Tất cả nhà cung cấp</option>
-                                                            <!-- Suppliers will be loaded here -->
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <!-- Status Filter -->
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label for="statusFilter">Trạng thái</label>
-                                                        <select class="form-control" id="statusFilter">
-                                                            <option value="">Tất cả trạng thái</option>
-                                                            <option value="Còn hàng">Còn hàng</option>
-                                                            <option value="Hết hàng">Hết hàng</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <!-- Sorting Dropdown -->
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label for="sortBy">Sắp xếp theo</label>
-                                                        <select class="form-control" id="sortBy">
-                                                            <option value="">Mặc định</option>
-                                                            <option value="TenSP_asc">Tên sản phẩm (A-Z)</option>
-                                                            <option value="TenSP_desc">Tên sản phẩm (Z-A)</option>
-                                                            <!-- Add more sorting options here if needed -->
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 text-left">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" id="searchInput"
-                                                    placeholder="Tìm kiếm sản phẩm..." aria-label="Tìm kiếm sản phẩm">
-                                                <div class="input-group-append" style="display: none;">
-                                                    <button class="btn btn-sm btn-primary" type="button"
-                                                        id="searchButton">Tìm kiếm</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 text-md-right">
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                data-bs-target="#addProductModal">
-                                                <i class="mdi mdi-plus-circle-outline"></i> Thêm Sản phẩm
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div class="table-responsive">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Tên Sản
-                                                        phẩm</th>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Hình Ảnh
-                                                    </th>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Danh mục
-                                                    </th>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Nhà cung
-                                                        cấp</th>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Số Lượng
-                                                        Tồn</th>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Trạng
-                                                        Thái</th>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Thao tác
-                                                    </th> <!-- Vẫn giữ cột thao tác -->
-                                                </tr>
-                                            </thead>
-                                            <tbody id="productTableBody">
-                                                <!-- Product rows will be inserted here by JavaScript -->
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="mt-3 d-flex justify-content-center">
-                                        <nav aria-label="Product pagination">
-                                            <ul class="pagination">
-                                                <li class="page-item" id="previousPage">
-                                                    <button class="page-link" aria-label="Previous">
-                                                        <span aria-hidden="true">«</span>
-                                                        <span class="sr-only">Previous</span>
-                                                    </button>
-                                                </li>
-                                                <li class="page-item disabled"><span class="page-link"
-                                                        id="currentPageNumber">1</span></li>
-                                                <li class="page-item" id="nextPage">
-                                                    <button class="page-link" aria-label="Next">
-                                                        <span aria-hidden="true">»</span>
-                                                        <span class="sr-only">Next</span>
-                                                    </button>
-                                                </li>
-                                            </ul>
-                                        </nav>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- content-wrapper ends -->
-
-                <!-- Add Product Modal -->
-                <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="addProductModalLabel">Thêm Sản phẩm mới</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form id="addProductForm" data-product-form="add">
-                                    <div class="form-group">
-                                        <label for="tenSP">Tên Sản Phẩm</label>
-                                        <input type="text" class="form-control" id="tenSP" name="tenSP" required>
-                                        <small class="text-danger" id="tenSPError"></small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="giaNhap">Giá Nhập</label>
-                                        <input type="number" class="form-control" id="giaNhap" name="giaNhap" min="0"
-                                            step="1" required>
-                                        <small class="text-danger" id="giaNhapError"></small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="giaBan">Giá Bán</label>
-                                        <input type="number" class="form-control" id="giaBan" name="giaBan" min="0"
-                                            step="1" required>
-                                        <small class="text-danger" id="giaBanError"></small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="soLuongTon">Số Lượng Tồn</label>
-                                        <input type="number" class="form-control" id="soLuongTon" name="soLuongTon"
-                                            min="0" required>
-                                        <small class="text-danger" id="soLuongTonError"></small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="donViTinh">Đơn Vị Tính</label>
-                                        <input type="text" class="form-control" id="donViTinh" name="donViTinh">
-                                        <small class="text-danger" id="donViTinhError"></small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="ngayNhap">Ngày Nhập</label>
-                                        <input type="date" class="form-control" id="ngayNhap" name="ngayNhap"
-                                            readonly>
-                                        <small class="text-danger" id="ngayNhapError"></small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="ngayHetHan">Ngày Hết Hạn</label>
-                                        <input type="date" class="form-control" id="ngayHetHan" name="ngayHetHan">
-                                        <small class="text-danger" id="ngayHetHanError"></small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="maNCC">Nhà cung cấp</label>
-                                        <select class="form-control" id="maNCC" name="maNCC" required>
-                                            <option value="">Chọn nhà cung cấp</option>
-                                            <!-- Suppliers will be loaded here -->
-                                        </select>
-                                        <small class="text-danger" id="maNCCError"></small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="maDanhMuc">Danh mục sản phẩm</label>
-                                        <select class="form-control" id="maDanhMuc" name="maDanhMuc" required>
-                                            <option value="">Chọn danh mục</option>
-                                            <!-- Categories will be loaded here -->
-                                        </select>
-                                        <small class="text-danger" id="maDanhMucError"></small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Hình Ảnh Sản Phẩm</label>
-                                        <div id="addProductImageUploadArea" class="drop-area">
-                                            <p>Kéo và thả hình ảnh vào đây hoặc</p>
-                                            <button type="button"
-                                                class="btn btn-sm btn-outline-secondary btn-upload-image">Chọn hình ảnh
-                                                từ
-                                                máy tính</button>
-                                            <input type="file" id="addProductImageFile" name="hinhAnhFiles" multiple
-                                                style="display:none;" accept="image/*">
-                                        </div>
-                                        <div id="addProductImagePreview" class="image-preview-container">
-                                            <!-- File image previews here -->
-                                        </div>
-                                    </div>
-                                    <div class="form-check form-check-primary">
-                                        <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input" id="trangThai"
-                                                name="trangThai" checked>
-                                            Còn hàng <i class="input-helper"></i>
-                                        </label>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Đóng</button>
-                                        <button type="button" class="btn btn-primary"
-                                            data-action="save">Lưu Sản phẩm</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Edit Product Modal -->
-                <div class="modal fade" id="editProductModal" tabindex="-1" role="dialog"
-                    aria-labelledby="editProductModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="editProductModalLabel">Chỉnh sửa Sản phẩm</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form id="editProductForm" data-product-form="edit">
-                                    <input type="hidden" id="editMaSP" name="maSP">
-                                    <div class="form-group">
-                                        <label for="editTenSP">Tên Sản Phẩm</label>
-                                        <input type="text" class="form-control" id="editTenSP" name="tenSP" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="editGiaNhap">Giá Nhập</label>
-                                        <input type="number" class="form-control" id="editGiaNhap" name="giaNhap"
-                                            min="0" step="0.01" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="editGiaBan">Giá Bán</label>
-                                        <input type="number" class="form-control" id="editGiaBan" name="giaBan"
-                                            min="0" step="0.01" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="editSoLuongTon">Số Lượng Tồn</label>
-                                        <input type="number" class="form-control" id="editSoLuongTon" name="soLuongTon"
-                                            min="0" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="editDonViTinh">Đơn Vị Tính</label>
-                                        <input type="text" class="form-control" id="editDonViTinh" name="donViTinh">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="editNgayNhap">Ngày Nhập</label>
-                                        <input type="date" class="form-control" id="editNgayNhap" name="ngayNhap"
-                                            required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="editNgayHetHan">Ngày Hết Hạn</label>
-                                        <input type="date" class="form-control" id="editNgayHetHan"
-                                            name="ngayHetHan">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="editMaNCC">Nhà cung cấp</label>
-                                        <select class="form-control" id="editMaNCC" name="maNCC" required>
-                                            <option value="">Chọn nhà cung cấp</option>
-                                            <!-- Suppliers will be loaded here -->
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="editMaDanhMuc">Danh mục sản phẩm</label>
-                                        <select class="form-control" id="editMaDanhMuc" name="maDanhMuc" required>
-                                            <option value="">Chọn danh mục</option>
-                                            <!-- Categories will be loaded here -->
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Hình Ảnh Sản Phẩm</label>
-                                        <div id="editProductImageUploadArea" class="drop-area">
-                                            <p>Kéo và thả hình ảnh vào đây hoặc</p>
-                                            <button type="button"
-                                                class="btn btn-sm btn-outline-secondary btn-upload-image">Chọn hình ảnh
-                                                từ
-                                                máy tính</button>
-                                            <input type="file" id="editProductImageFile" name="hinhAnhFiles" multiple
-                                                style="display:none;" accept="image/*">
-                                        </div>
-                                        <div id="editProductImagePreview" class="image-preview-container">
-                                            <!-- File image previews here -->
-                                        </div>
-                                    </div>
-                                    <div class="form-check form-check-primary">
-                                        <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input" id="editTrangThai"
-                                                name="trangThai">
-                                            Còn hàng <i class="input-helper"></i>
-                                        </label>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Đóng</button>
-                                        <button type="button" class="btn btn-primary" data-action="update">Lưu Thay
-                                            Đổi</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- View Product Modal -->
-                <div class="modal fade" id="viewProductModal" tabindex="-1" role="dialog"
-                    aria-labelledby="viewProductModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="viewProductModalLabel">Chi tiết Sản phẩm</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                            <div class="modal-body" id="viewProductDetails">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <p><strong>Mã Sản Phẩm:</strong> <span data-product-detail="maSP"></span></p>
-                                        <p><strong>Tên Sản Phẩm:</strong> <span data-product-detail="tenSP"></span></p>
-                                        <p><strong>Danh mục:</strong> <span data-product-detail="danhMuc"></span></p>
-                                        <p><strong>Nhà cung cấp:</strong> <span
-                                                data-product-detail="nhaCungCap"></span></p>
-                                        <p><strong>Đơn Vị Tính:</strong> <span data-product-detail="donViTinh"></span>
-                                        </p>
-                                        <p><strong>Trạng Thái:</strong> <span data-product-detail="trangThai"></span>
-                                        </p>
-                                        <p><strong>Ngày Nhập:</strong> <span data-product-detail="ngayNhap"></span></p>
-                                        <p><strong>Ngày Hết Hạn:</strong> <span data-product-detail="ngayHetHan"></span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p><strong>Giá Nhập:</strong> <span data-product-detail="giaNhap"></span></p>
-                                        <p><strong>Giá Bán:</strong> <span data-product-detail="giaBan"></span></p>
-                                        <p><strong>Số Lượng Tồn:</strong> <span
-                                                data-product-detail="soLuongTon"></span></p>
-                                        <p><strong>Hình Ảnh:</strong>
-                                        <div data-product-detail="hinhAnh"></div>
-                                        </p>
-                                    </div>
-                                    <div id="qrCodeContainer"></div>                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- partial:partials/_footer.html -->
-                <footer class="footer" id="footer"></footer>
-                <!-- partial -->
-            </div>
-            <!-- main-panel ends -->
-        </div>
-        <!-- page-body-wrapper ends -->
     </div>
 
     <!-- Bootstrap 5.3.2 JS Bundle -->
@@ -873,379 +484,6 @@
                 checkLoginStatus();
                 //loadTaiKhoanData();
             }
-      if (!window.productManagerInstance) {
-        window.productManagerInstance = new ProductManager();
-        console.log("ProductManager initialized ONCE");
-      } else {
-        console.log("ProductManager already initialized, skipping re-initialization.");
-      }
-
-    });
-
-    const apiBaseUrl = 'https://localhost:7203'; // Domain/port của backend
-    const apiUrl = `${apiBaseUrl}/api/SanPham`;
-    const categoryApiUrl = `${apiBaseUrl}/api/DanhMuc`;
-    const nhaCungCapApiUrl = `${apiBaseUrl}/api/NhaCungCap`;
-    const hinhAnhApiUrl = `${apiBaseUrl}/api/HinhAnh`;
-
-    class ProductManager {
-      constructor() {
-        this.currentPage = 1;
-        this.pageSize = 10;
-        this.searchTerm = '';
-        this.categoryFilter = '';
-        this.statusFilter = '';
-        this.nhaCungCapFilter = '';
-        this.sortBy = '';
-        this.sortOrder = 'asc';
-        this.productTableBody = document.getElementById('productTableBody');
-        this.categoryFilterDropdown = document.getElementById('categoryFilter');
-        this.statusFilterDropdown = document.getElementById('statusFilter');
-        this.sortByDropdown = document.getElementById('sortBy');
-        this.searchInput = document.getElementById('searchInput');
-        this.previousPageButton = document.getElementById('previousPage');
-        this.nextPageButton = document.getElementById('nextPage');
-        this.currentPageSpan = document.getElementById('currentPageNumber');
-        this.nhaCungCapFilterDropdown = document.getElementById('supplierFilter');
-
-        this.addProductForm = document.getElementById('addProductForm');
-        this.editProductForm = document.getElementById('editProductForm');
-        this.viewProductDetails = document.getElementById('viewProductDetails');
-
-        this.addProductImageUpload = this.setupImageUpload('addProduct');
-        this.editProductImageUpload = this.setupImageUpload('editProduct');
-
-        this.nhaCungCapDropdownAdd = document.getElementById('maNCC');
-        this.nhaCungCapDropdownEdit = document.getElementById('editMaNCC');
-        this.filterNCCDropdown = document.getElementById('supplierFilter');
-
-        this.exportExcelButton = document.getElementById('exportExcelButton');
-
-        this.loadCategories();
-        this.loadNhaCungCaps();
-        this.loadProducts();
-        this.setupEventListeners();
-        this.setupModalFocusManagement(); // Thêm quản lý focus
-      }
-
-      setupModalFocusManagement() {
-        const addProductModal = document.getElementById('addProductModal');
-        const editProductModal = document.getElementById('editProductModal');
-        const viewProductModal = document.getElementById('viewProductModal');
-        const openAddModalButton = document.querySelector('button[data-bs-target="#addProductModal"]');
-
-        // Quản lý focus khi modal "Thêm Sản phẩm" mở
-        addProductModal.addEventListener('shown.bs.modal', () => {
-          console.log("Modal 'Thêm Sản phẩm' đã mở hoàn toàn...");
-          const today = new Date();
-          const year = today.getFullYear();
-          const month = String(today.getMonth() + 1).padStart(2, '0');
-          const day = String(today.getDate()).padStart(2, '0');
-          const formattedDate = `${year}-${month}-${day}`;
-          document.getElementById('ngayNhap').value = formattedDate;
-          document.getElementById('tenSP').focus(); // Focus vào "Tên Sản Phẩm"
-        });
-
-        // Chuyển focus khi modal "Thêm Sản phẩm" đóng
-        addProductModal.addEventListener('hidden.bs.modal', () => {
-          openAddModalButton.focus();
-        });
-
-        // Chuyển focus khi modal "Chỉnh sửa Sản phẩm" đóng
-        editProductModal.addEventListener('hidden.bs.modal', () => {
-          const activeEditButton = document.querySelector('.btn-outline-primary[data-bs-target="#editProductModal"]');
-          if (activeEditButton) activeEditButton.focus();
-        });
-
-        // Chuyển focus khi modal "Xem Chi tiết Sản phẩm" đóng
-        viewProductModal.addEventListener('hidden.bs.modal', () => {
-          const activeViewButton = document.querySelector('.btn-outline-info[data-bs-target="#viewProductModal"]');
-          if (activeViewButton) activeViewButton.focus();
-        });
-      }
-
-      setupEventListeners() {
-        document.querySelector('#addProductModal [data-action="save"]').addEventListener('click', () => this.createProduct());
-        document.querySelector('#editProductModal [data-action="update"]').addEventListener('click', () => this.updateProduct());
-        document.getElementById('searchButton').addEventListener('click', () => this.handleSearch());
-        this.searchInput.addEventListener('input', () => this.handleSearch());
-        this.categoryFilterDropdown.addEventListener('change', () => this.applyFiltersAndSorting());
-        this.statusFilterDropdown.addEventListener('change', () => this.applyFiltersAndSorting());
-        this.sortByDropdown.addEventListener('change', () => this.applyFiltersAndSorting());
-        this.previousPageButton.addEventListener('click', () => this.goToPreviousPage());
-        this.nextPageButton.addEventListener('click', () => this.goToNextPage());
-        this.nhaCungCapFilterDropdown.addEventListener('change', () => this.applyFiltersAndSorting());
-        this.exportExcelButton.addEventListener('click', () => this.exportToExcel());
-
-        // Add drag-and-drop functionality for the add modal
-        const addDropArea = document.getElementById('addProductImageUploadArea');
-        const addFileInput = document.getElementById('addProductImageFile');
-        const addUploadButton = addDropArea.querySelector('.btn-upload-image');
-
-        addDropArea.addEventListener('dragover', (e) => {
-          e.preventDefault();
-          addDropArea.classList.add('highlight');
-        });
-
-        addDropArea.addEventListener('dragleave', () => {
-          addDropArea.classList.remove('highlight');
-        });
-
-        addDropArea.addEventListener('drop', (e) => {
-          e.preventDefault();
-          addDropArea.classList.remove('highlight');
-          const files = e.dataTransfer.files;
-          addFileInput.files = files;
-          this.addProductImageUpload.handleFiles(files);
-        });
-
-        addUploadButton.addEventListener('click', () => {
-          addFileInput.click();
-        });
-
-        // Add drag-and-drop functionality for the edit modal
-        const editDropArea = document.getElementById('editProductImageUploadArea');
-        const editFileInput = document.getElementById('editProductImageFile');
-        const editUploadButton = editDropArea.querySelector('.btn-upload-image');
-
-        editDropArea.addEventListener('dragover', (e) => {
-          e.preventDefault();
-          editDropArea.classList.add('highlight');
-        });
-
-        editDropArea.addEventListener('dragleave', () => {
-          editDropArea.classList.remove('highlight');
-        });
-
-        editDropArea.addEventListener('drop', (e) => {
-          e.preventDefault();
-          editDropArea.classList.remove('highlight');
-          const files = e.dataTransfer.files;
-          editFileInput.files = files;
-          this.editProductImageUpload.handleFiles(files);
-        });
-
-        editUploadButton.addEventListener('click', () => {
-          editFileInput.click();
-        });
-      }
-
-      async exportToExcel() {
-        let url = `${apiBaseUrl}/api/SanPham/export-excel?searchTerm=${this.searchTerm}`;
-
-        if (this.categoryFilter) url += `&maDanhMucFilter=${this.categoryFilter}`;
-        if (this.statusFilter) url += `&trangThaiFilter=${this.statusFilter === 'Còn hàng' ? true : false}`;
-        if (this.nhaCungCapFilter) url += `&maNCCFilter=${this.nhaCungCapFilter}`;
-        if (this.sortBy) url += `&sortBy=${this.sortBy}&sortOrder=${this.sortOrder}`;
-
-        try {
-          const response = await fetch(url);
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-
-          const blob = await response.blob();
-          const link = document.createElement('a');
-          link.href = URL.createObjectURL(blob);
-          link.download = `DanhSachSanPhamChiTiet_${new Date().toISOString().replace(/[-:T]/g, '').slice(0, 14)}.xlsx`;
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        } catch (error) {
-          console.error('Lỗi xuất Excel:', error);
-          Swal.fire('Lỗi!', 'Không thể xuất danh sách sản phẩm ra Excel.', 'error');
-        }
-      }
-
-      async loadProducts() {
-        let url = `${apiUrl}?page=${this.currentPage}&pageSize=${this.pageSize}&searchTerm=${this.searchTerm}`;
-
-        if (this.categoryFilter) url += `&maDanhMucFilter=${this.categoryFilter}`;
-        if (this.statusFilter) url += `&trangThaiFilter=${this.statusFilter === 'Còn hàng' ? true : false}`;
-        if (this.nhaCungCapFilter) url += `&maNCCFilter=${this.nhaCungCapFilter}`;
-        if (this.sortBy) url += `&sortBy=${this.sortBy}&sortOrder=${this.sortOrder}`;
-
-        try {
-          const response = await fetch(url);
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          const data = await response.json();
-          this.displayProducts(data.items);
-          this.updatePaginationControls(data.currentPage, data.totalPages);
-        } catch (error) {
-          console.error('Không thể tải sản phẩm:', error);
-          Swal.fire({ icon: 'error', title: 'Lỗi!', text: 'Không thể tải danh sách sản phẩm.' });
-        }
-      }
-
-      async loadCategories() {
-        try {
-          const response = await fetch(categoryApiUrl);
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          const categories = await response.json();
-          this.populateCategoryDropdowns(categories);
-        } catch (error) {
-          console.error('Không thể tải danh mục sản phẩm:', error);
-          Swal.fire({
-            icon: 'error',
-            title: 'Lỗi!',
-            text: 'Không thể tải danh mục sản phẩm.',
-          });
-        }
-      }
-
-      populateCategoryDropdowns(categories) {
-        const categoryFilterDropdown = document.getElementById('categoryFilter');
-        const addCategoryDropdown = document.getElementById('maDanhMuc');
-        const editCategoryDropdown = document.getElementById('editMaDanhMuc');
-
-        categoryFilterDropdown.innerHTML = '<option value="">Tất cả danh mục</option>';
-        addCategoryDropdown.innerHTML = '<option value="">Chọn danh mục</option>';
-        editCategoryDropdown.innerHTML = '<option value="">Chọn danh mục</option>';
-
-        categories.forEach(category => {
-          const optionFilter = document.createElement('option');
-          optionFilter.value = category.maDanhMuc;
-          optionFilter.textContent = category.tenDanhMuc;
-          categoryFilterDropdown.appendChild(optionFilter);
-
-          const optionAdd = document.createElement('option');
-          optionAdd.value = category.maDanhMuc;
-          optionAdd.textContent = category.tenDanhMuc;
-          addCategoryDropdown.appendChild(optionAdd);
-
-          const optionEdit = document.createElement('option');
-          optionEdit.value = category.maDanhMuc;
-          optionEdit.textContent = category.tenDanhMuc;
-          editCategoryDropdown.appendChild(optionEdit);
-        });
-      }
-
-      async loadNhaCungCaps() {
-        try {
-          const response = await fetch(nhaCungCapApiUrl);
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          const nhaCungCaps = await response.json();
-          this.populateNhaCungCapDropdowns(nhaCungCaps);
-        } catch (error) {
-          console.error('Không thể tải nhà cung cấp:', error);
-          Swal.fire({ icon: 'error', title: 'Lỗi!', text: 'Không thể tải danh sách nhà cung cấp.' });
-        }
-      }
-
-      populateNhaCungCapDropdowns(nhaCungCaps) {
-        const addNCCDropdown = document.getElementById('maNCC');
-        const editNCCDropdown = document.getElementById('editMaNCC');
-        const filterNCCDropdown = document.getElementById('supplierFilter');
-
-        addNCCDropdown.innerHTML = '<option value="">Chọn nhà cung cấp</option>';
-        editNCCDropdown.innerHTML = '<option value="">Chọn nhà cung cấp</option>';
-        filterNCCDropdown.innerHTML = '<option value="">Tất cả nhà cung cấp</option>';
-
-        nhaCungCaps.forEach(ncc => {
-          const optionAdd = document.createElement('option');
-          optionAdd.value = ncc.maNCC;
-          optionAdd.textContent = ncc.tenNCC;
-          addNCCDropdown.appendChild(optionAdd);
-
-          const optionEdit = document.createElement('option');
-          optionEdit.value = ncc.maNCC;
-          optionEdit.textContent = ncc.tenNCC;
-          editNCCDropdown.appendChild(optionEdit);
-
-          const optionFilter = document.createElement('option');
-          optionFilter.value = ncc.maNCC;
-          optionFilter.textContent = ncc.tenNCC;
-          filterNCCDropdown.appendChild(optionFilter);
-        });
-      }
-
-      displayProducts(products) {
-        this.productTableBody.innerHTML = '';
-
-        products.forEach(product => {
-          const row = this.productTableBody.insertRow();
-          row.insertCell(0).textContent = product.tenSP;
-          const imageCell = row.insertCell(1);
-          if (product.hinhAnhDaiDien) {
-            const img = document.createElement('img');
-            img.src = `${apiBaseUrl}${product.hinhAnhDaiDien}`;
-            img.alt = 'Hình ảnh sản phẩm';
-            img.style.maxWidth = '50px';
-            img.style.maxHeight = '50px';
-            img.loading = 'lazy';
-            imageCell.appendChild(img);
-          } else {
-            imageCell.textContent = 'Không có ảnh';
-          }
-
-          row.insertCell(2).textContent = product.tenDanhMuc || 'Không có danh mục';
-          row.insertCell(3).textContent = product.tenNCC || 'Không có NCC';
-          row.insertCell(4).textContent = product.soLuongTon;
-
-          const statusCell = row.insertCell(5);
-          statusCell.textContent = product.trangThai;
-          if (product.trangThai === 'Còn hàng') {
-            statusCell.style.color = 'green';
-          } else if (product.trangThai === 'Sắp hết hàng') {
-            statusCell.style.color = '#d4a017'; // Màu vàng đậm
-          } else if (product.trangThai === 'Hết hàng') {
-            statusCell.style.color = 'red';
-          }
-
-          const actionsCell = row.insertCell(6);
-          actionsCell.classList.add('text-center');
-
-          const viewButton = this.createActionButton('mdi-eye', 'btn-outline-info', () => this.openViewModal(product.maSP), '#viewProductModal');
-          actionsCell.appendChild(viewButton);
-
-          const editButton = this.createActionButton('mdi-pencil', 'btn-outline-primary', () => this.openEditModal(product.maSP), '#editProductModal');
-          actionsCell.appendChild(editButton);
-
-          const deleteButton = this.createActionButton('mdi-delete', 'btn-outline-danger', () => this.deleteProduct(product.maSP));
-          actionsCell.appendChild(deleteButton);
-        });
-      }
-
-      createActionButton(iconClass, btnClass, onClickHandler, targetModal = null) {
-        const button = document.createElement('button');
-        button.innerHTML = `<i class="mdi ${iconClass}"></i>`;
-        button.className = `btn btn-sm ${btnClass} mr-2`;
-        button.onclick = onClickHandler;
-        if (targetModal) {
-          button.setAttribute('data-bs-toggle', 'modal');
-          button.setAttribute('data-bs-target', targetModal);
-        }
-        return button;
-      }
-
-      async createProduct() {
-        // Lấy giá trị từ các trường
-        const tenSP = document.querySelector('#addProductModal #tenSP').value.trim();
-        const giaNhap = parseFloat(document.querySelector('#addProductModal #giaNhap').value);
-        const giaBan = parseFloat(document.querySelector('#addProductModal #giaBan').value);
-        const soLuongTon = parseInt(document.querySelector('#addProductModal #soLuongTon').value);
-        const donViTinh = document.querySelector('#addProductModal #donViTinh').value.trim();
-        const ngayNhap = document.querySelector('#addProductModal #ngayNhap').value;
-        const ngayHetHan = document.querySelector('#addProductModal #ngayHetHan').value;
-        const maNCC = document.querySelector('#addProductModal #maNCC').value;
-        const maDanhMuc = document.querySelector('#addProductModal #maDanhMuc').value;
-        const trangThai = document.querySelector('#addProductModal #trangThai').checked;
-
-        // Reset thông báo lỗi
-        document.querySelectorAll('#addProductModal .text-danger').forEach(error => error.textContent = '');
-
-        let isValid = true;
-
-        // Validate Tên Sản Phẩm
-        if (!tenSP) {
-          document.getElementById('tenSPError').textContent = 'Tên sản phẩm không được để trống.';
-          isValid = false;
         }
 
         document.addEventListener('DOMContentLoaded', function () {
@@ -1393,8 +631,7 @@
             constructor() {
                 this.currentPage = 1;
                 this.pageSize = 10;
-                this.searchTerm = '';
-                this.categoryFilter = '';
+                this.searchTerm = '';                this.categoryFilter = '';
                 this.statusFilter = '';
                 this.nhaCungCapFilter = '';
                 this.sortBy = '';
@@ -1419,6 +656,8 @@
                 this.nhaCungCapDropdownAdd = document.getElementById('maNCC');
                 this.nhaCungCapDropdownEdit = document.getElementById('editMaNCC');
                 this.filterNCCDropdown = document.getElementById('supplierFilter');
+
+                this.exportExcelButton = document.getElementById('exportExcelButton');
 
                 this.loadCategories();
                 this.loadNhaCungCaps();
@@ -1455,43 +694,6 @@
                     const activeEditButton = document.querySelector('.btn-outline-primary[data-bs-target="#editProductModal"]');
                     if (activeEditButton) activeEditButton.focus();
                 });
-        try {
-          const hinhAnhs = await fetch(`${hinhAnhApiUrl}/SanPham/${product.maSP}`).then(res => res.json());
-          if (hinhAnhs && hinhAnhs.length > 0) {
-            hinhAnhs.forEach(hinhAnh => {
-              if (hinhAnh.url) {
-                const imgElement = document.createElement('img');
-                imgElement.src = `${apiBaseUrl}${hinhAnh.url}`;
-                imgElement.alt = 'Hình ảnh sản phẩm';
-                imgElement.style.maxWidth = '150px';
-                imgElement.style.maxHeight = '150px';
-                imgElement.style.marginRight = '5px';
-                imgElement.loading = 'lazy';
-                hinhAnhContainer.appendChild(imgElement);
-              }
-            });
-          } else {
-            hinhAnhContainer.textContent = 'Không có hình ảnh';
-          }
-          const trangThaiSpan = this.viewProductDetails.querySelector('[data-product-detail="trangThai"]');
-          const soLuongTon = product.soLuongTon;
-          let trangThaiText;
-          if (soLuongTon > 10) {
-            trangThaiText = 'Còn hàng';
-            trangThaiSpan.style.color = 'green';
-          } else if (soLuongTon > 0) {
-            trangThaiText = 'Sắp hết hàng';
-            trangThaiSpan.style.color = '#d4a017'; // Màu vàng đậm
-          } else {
-            trangThaiText = 'Hết hàng';
-            trangThaiSpan.style.color = 'red';
-          }
-          trangThaiSpan.textContent = trangThaiText;
-        } catch (error) {
-          console.error('Lỗi tải hình ảnh chi tiết sản phẩm:', error);
-          hinhAnhContainer.textContent = 'Lỗi tải ảnh';
-        }
-      }
 
                 // Chuyển focus khi modal "Xem Chi tiết Sản phẩm" đóng
                 viewProductModal.addEventListener('hidden.bs.modal', () => {
@@ -1511,6 +713,7 @@
                 this.previousPageButton.addEventListener('click', () => this.goToPreviousPage());
                 this.nextPageButton.addEventListener('click', () => this.goToNextPage());
                 this.nhaCungCapFilterDropdown.addEventListener('change', () => this.applyFiltersAndSorting());
+                this.exportExcelButton.addEventListener('click', () => this.exportToExcel());
 
                 // Add drag-and-drop functionality for the add modal
                 const addDropArea = document.getElementById('addProductImageUploadArea');
@@ -1563,6 +766,33 @@
                 editUploadButton.addEventListener('click', () => {
                     editFileInput.click();
                 });
+            }
+
+            async exportToExcel() {
+                let url = `${apiBaseUrl}/api/SanPham/export-excel?searchTerm=${this.searchTerm}`;
+
+                if (this.categoryFilter) url += `&maDanhMucFilter=${this.categoryFilter}`;
+                if (this.statusFilter) url += `&trangThaiFilter=${this.statusFilter === 'Còn hàng' ? true : false}`;
+                if (this.nhaCungCapFilter) url += `&maNCCFilter=${this.nhaCungCapFilter}`;
+                if (this.sortBy) url += `&sortBy=${this.sortBy}&sortOrder=${this.sortOrder}`;
+
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const blob = await response.blob();
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    link.download = `DanhSachSanPhamChiTiet_${new Date().toISOString().replace(/[-:T]/g, '').slice(0, 14)}.xlsx`;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                } catch (error) {
+                    console.error('Lỗi xuất Excel:', error);
+                    Swal.fire('Lỗi!', 'Không thể xuất danh sách sản phẩm ra Excel.', 'error');
+                }
             }
 
             async loadProducts() {
@@ -1695,7 +925,16 @@
                     row.insertCell(2).textContent = product.tenDanhMuc || 'Không có danh mục';
                     row.insertCell(3).textContent = product.tenNCC || 'Không có NCC';
                     row.insertCell(4).textContent = product.soLuongTon;
-                    row.insertCell(5).textContent = product.trangThai;
+
+                    const statusCell = row.insertCell(5);
+                    statusCell.textContent = product.trangThai;
+                    if (product.trangThai === 'Còn hàng') {
+                        statusCell.style.color = 'green';
+                    } else if (product.trangThai === 'Sắp hết hàng') {
+                        statusCell.style.color = '#d4a017'; // Màu vàng đậm
+                    } else if (product.trangThai === 'Hết hàng') {
+                        statusCell.style.color = 'red';
+                    }
 
                     const actionsCell = row.insertCell(6);
                     actionsCell.classList.add('text-center');
@@ -1982,7 +1221,7 @@
 
                 const hinhAnhContainer = this.viewProductDetails.querySelector('[data-product-detail="hinhAnh"]');
                 hinhAnhContainer.innerHTML = '';
-                
+
                 try {
                     const hinhAnhs = await fetch(`${hinhAnhApiUrl}/SanPham/${product.maSP}`).then(res => res.json());
                     if (hinhAnhs && hinhAnhs.length > 0) {
@@ -2140,7 +1379,6 @@
 
                 fileInput.addEventListener('change', (e) => {
                     handleFiles(e.target.files);
-                    fileInput.value = '';
                 });
 
                 return {
