@@ -21,19 +21,11 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowMyFrontend", builder =>
     {
-        builder.WithOrigins("http://127.0.0.1:5501") // Địa chỉ frontend của bạn
+        builder.WithOrigins("http://127.0.0.1:5501") // Nguồn gốc frontend 
                .AllowAnyMethod()
                .AllowAnyHeader()
                .AllowCredentials();
     });
-    // Policy cho phép tất cả (dùng trong phát triển, không khuyến khích trong production)
-    //options.AddPolicy("AllowAll", builder =>
-    //{
-    //    builder.AllowAnyOrigin()
-    //           .AllowAnyMethod()
-    //           .AllowAnyHeader()
-    //           .AllowCredentials();
-    //});
 });
 
 // Configure database context
