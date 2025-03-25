@@ -9,6 +9,8 @@ using System.IO;
 using System.Collections.Generic;
 using DuAnBanBanhKeo.Modal;
 using System.Threading.Tasks;
+using OfficeOpenXml;
+using System.IO;
 
 namespace DuAnBanBanhKeo.Controllers
 {
@@ -96,11 +98,11 @@ namespace DuAnBanBanhKeo.Controllers
                 {
                     MaSP = sp.MaSP,
                     TenSP = sp.TenSP,
-                    HinhAnhDaiDien = sp.HinhAnhs.FirstOrDefault()?.Url, // Now a URL, not Base64
+                    HinhAnhDaiDien = sp.HinhAnhs.FirstOrDefault()?.Url,
                     TenDanhMuc = sp.DanhMuc?.TenDanhMuc,
                     TenNCC = sp.NhaCungCap?.TenNCC,
                     SoLuongTon = sp.SoLuongTon,
-                    TrangThai = sp.TrangThai == true ? "Còn hàng" : "Hết hàng"
+                    TrangThai = sp.SoLuongTon > 10 ? "Còn hàng" : (sp.SoLuongTon > 0 ? "Sắp hết hàng" : "Hết hàng")
                 }).ToList();
 
 
@@ -363,6 +365,156 @@ namespace DuAnBanBanhKeo.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+
+        [HttpGet("export-excel")]
+        public async Task<IActionResult> ExportSanPhamsToExcel(
+            string? searchTerm,
+            string? maDanhMucFilter,
+            bool? trangThaiFilter,
+            string? maNCCFilter,
+            string? sortBy,
+            string? sortOrder = "asc")
+        {
+            try
+            {
+                IQueryable<SanPham> query = _context.SanPhams
+                    .Include(sp => sp.NhaCungCap)
+                    .Include(sp => sp.DanhMuc)
+                    .Include(sp => sp.HinhAnhs);
+
+                if (!string.IsNullOrEmpty(searchTerm))
+                {
+                    searchTerm = searchTerm.ToLower();
+                    query = query.Where(sp =>
+                        sp.TenSP.ToLower().Contains(searchTerm) ||
+                        (sp.NhaCungCap != null && sp.NhaCungCap.TenNCC.ToLower().Contains(searchTerm)) ||
+                        (sp.DanhMuc != null && sp.DanhMuc.TenDanhMuc.ToLower().Contains(searchTerm)));
+                }
+
+                if (!string.IsNullOrEmpty(maDanhMucFilter))
+                {
+                    query = query.Where(sp => sp.MaDanhMuc == maDanhMucFilter);
+                }
+
+                if (trangThaiFilter.HasValue)
+                {
+                    query = query.Where(sp => sp.TrangThai == trangThaiFilter.Value);
+                }
+
+                if (!string.IsNullOrEmpty(maNCCFilter))
+                {
+                    query = query.Where(sp => sp.MaNCC == maNCCFilter);
+                }
+
+                if (!string.IsNullOrEmpty(sortBy))
+                {
+                    if (sortBy.ToLower() == "tensp")
+                    {
+                        query = sortOrder.ToLower() == "desc" ? query.OrderByDescending(sp => sp.TenSP) : query.OrderBy(sp => sp.TenSP);
+                    }
+                }
+                else
+                {
+                    query = query.OrderBy(sp => sp.MaSP);
+                }
+
+                var sanPhams = await query.ToListAsync();
+
+                // Tạo file Excel bằng EPPlus
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+                using (var package = new ExcelPackage())
+                {
+                    var worksheet = package.Workbook.Worksheets.Add("DanhSachSanPhamChiTiet");
+
+                    // Tiêu đề cột
+                    string[] headers = new string[]
+                    {
+                "Mã Sản Phẩm", "Tên Sản Phẩm", "Giá Nhập", "Giá Bán", "Số Lượng Tồn", "Đơn Vị Tính",
+                "Trạng Thái", "Ngày Nhập", "Ngày Hết Hạn", "Danh Mục", "Nhà Cung Cấp", "Hình Ảnh"
+                    };
+                    for (int i = 0; i < headers.Length; i++)
+                    {
+                        worksheet.Cells[1, i + 1].Value = headers[i];
+                    }
+
+                    // Định dạng tiêu đề
+                    using (var range = worksheet.Cells[1, 1, 1, headers.Length])
+                    {
+                        range.Style.Font.Bold = true;
+                        range.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                        range.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightGray);
+                    }
+
+                    // Thêm dữ liệu
+                    int row = 2;
+                    foreach (var sp in sanPhams)
+                    {
+                        worksheet.Cells[row, 1].Value = sp.MaSP;
+                        worksheet.Cells[row, 2].Value = sp.TenSP;
+                        worksheet.Cells[row, 3].Value = sp.GiaNhap;
+                        worksheet.Cells[row, 3].Style.Numberformat.Format = "#,##0.00"; // Định dạng tiền tệ
+                        worksheet.Cells[row, 4].Value = sp.GiaBan;
+                        worksheet.Cells[row, 4].Style.Numberformat.Format = "#,##0.00"; // Định dạng tiền tệ
+                        worksheet.Cells[row, 5].Value = sp.SoLuongTon;
+                        worksheet.Cells[row, 6].Value = sp.DonViTinh ?? "Không có";
+
+                        // Xác định trạng thái dựa trên số lượng tồn kho
+                        string trangThai;
+                        System.Drawing.Color color;
+                        if (sp.SoLuongTon > 10)
+                        {
+                            trangThai = "Còn hàng";
+                            color = System.Drawing.Color.Green;
+                        }
+                        else if (sp.SoLuongTon > 0)
+                        {
+                            trangThai = "Sắp hết hàng";
+                            color = System.Drawing.Color.Yellow;
+                        }
+                        else
+                        {
+                            trangThai = "Hết hàng";
+                            color = System.Drawing.Color.Red;
+                        }
+                        worksheet.Cells[row, 7].Value = trangThai;
+                        worksheet.Cells[row, 7].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                        worksheet.Cells[row, 7].Style.Fill.BackgroundColor.SetColor(color);
+
+                        worksheet.Cells[row, 8].Value = sp.NgayNhap?.ToString("dd/MM/yyyy") ?? "Không có";
+                        worksheet.Cells[row, 9].Value = sp.NgayHetHan?.ToString("dd/MM/yyyy") ?? "Không có";
+                        worksheet.Cells[row, 10].Value = sp.DanhMuc?.TenDanhMuc ?? "Không có";
+                        worksheet.Cells[row, 11].Value = sp.NhaCungCap?.TenNCC ?? "Không có";
+
+                        // Danh sách URL hình ảnh
+                        if (sp.HinhAnhs != null && sp.HinhAnhs.Any())
+                        {
+                            var imageUrls = string.Join("; ", sp.HinhAnhs.Select(h => $"{Request.Scheme}://{Request.Host}{h.Url}"));
+                            worksheet.Cells[row, 12].Value = imageUrls;
+                        }
+                        else
+                        {
+                            worksheet.Cells[row, 12].Value = "Không có hình ảnh";
+                        }
+
+                        row++;
+                    }
+
+                    // Tự động điều chỉnh kích thước cột
+                    worksheet.Cells.AutoFitColumns();
+
+                    var stream = new MemoryStream();
+                    package.SaveAs(stream);
+                    stream.Position = 0;
+
+                    string fileName = $"DanhSachSanPhamChiTiet_{DateTime.Now:yyyyMMddHHmmss}.xlsx";
+                    return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Lỗi khi xuất Excel: {ex.Message}");
+            }
         }
 
         private bool SanPhamExists(string maSP)

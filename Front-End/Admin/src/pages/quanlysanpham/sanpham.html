@@ -102,7 +102,7 @@
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar"></nav>
       <!-- partial -->
-      <div class="main-panel" style="font-family: 'Times New Roman', Times, serif;" >
+      <div class="main-panel" style="font-family: 'Times New Roman', Times, serif;">
         <div class="content-wrapper">
           <div class="page-header">
             <h3 class="page-title" style="font-family: 'Times New Roman', Times, serif;"> Quản lý Sản phẩm </h3>
@@ -117,7 +117,7 @@
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title"style="font-family: 'Times New Roman', Times, serif;">Danh sách Sản phẩm</h4>
+                  <h4 class="card-title" style="font-family: 'Times New Roman', Times, serif;">Danh sách Sản phẩm</h4>
                   <div class="row mb-3">
                     <div class="col-md-12 mb-3">
                       <div class="row">
@@ -180,6 +180,9 @@
                         data-bs-target="#addProductModal">
                         <i class="mdi mdi-plus-circle-outline"></i> Thêm Sản phẩm
                       </button>
+                      <button type="button" class="btn btn-success" id="exportExcelButton">
+                        <i class="mdi mdi-file-excel"></i> Xuất Excel
+                      </button>
                     </div>
                   </div>
 
@@ -193,7 +196,8 @@
                           <th style="font-family: 'Times New Roman', Times, serif;">Nhà cung cấp</th>
                           <th style="font-family: 'Times New Roman', Times, serif;">Số Lượng Tồn</th>
                           <th style="font-family: 'Times New Roman', Times, serif;">Trạng Thái</th>
-                          <th style="font-family: 'Times New Roman', Times, serif;">Thao tác</th> <!-- Vẫn giữ cột thao tác -->
+                          <th style="font-family: 'Times New Roman', Times, serif;">Thao tác</th>
+                          <!-- Vẫn giữ cột thao tác -->
                         </tr>
                       </thead>
                       <tbody id="productTableBody">
@@ -530,6 +534,8 @@
         this.nhaCungCapDropdownEdit = document.getElementById('editMaNCC');
         this.filterNCCDropdown = document.getElementById('supplierFilter');
 
+        this.exportExcelButton = document.getElementById('exportExcelButton');
+
         this.loadCategories();
         this.loadNhaCungCaps();
         this.loadProducts();
@@ -584,6 +590,7 @@
         this.previousPageButton.addEventListener('click', () => this.goToPreviousPage());
         this.nextPageButton.addEventListener('click', () => this.goToNextPage());
         this.nhaCungCapFilterDropdown.addEventListener('change', () => this.applyFiltersAndSorting());
+        this.exportExcelButton.addEventListener('click', () => this.exportToExcel());
 
         // Add drag-and-drop functionality for the add modal
         const addDropArea = document.getElementById('addProductImageUploadArea');
@@ -638,7 +645,32 @@
         });
       }
 
+      async exportToExcel() {
+        let url = `${apiBaseUrl}/api/SanPham/export-excel?searchTerm=${this.searchTerm}`;
 
+        if (this.categoryFilter) url += `&maDanhMucFilter=${this.categoryFilter}`;
+        if (this.statusFilter) url += `&trangThaiFilter=${this.statusFilter === 'Còn hàng' ? true : false}`;
+        if (this.nhaCungCapFilter) url += `&maNCCFilter=${this.nhaCungCapFilter}`;
+        if (this.sortBy) url += `&sortBy=${this.sortBy}&sortOrder=${this.sortOrder}`;
+
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const blob = await response.blob();
+          const link = document.createElement('a');
+          link.href = URL.createObjectURL(blob);
+          link.download = `DanhSachSanPhamChiTiet_${new Date().toISOString().replace(/[-:T]/g, '').slice(0, 14)}.xlsx`;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        } catch (error) {
+          console.error('Lỗi xuất Excel:', error);
+          Swal.fire('Lỗi!', 'Không thể xuất danh sách sản phẩm ra Excel.', 'error');
+        }
+      }
 
       async loadProducts() {
         let url = `${apiUrl}?page=${this.currentPage}&pageSize=${this.pageSize}&searchTerm=${this.searchTerm}`;
@@ -770,7 +802,16 @@
           row.insertCell(2).textContent = product.tenDanhMuc || 'Không có danh mục';
           row.insertCell(3).textContent = product.tenNCC || 'Không có NCC';
           row.insertCell(4).textContent = product.soLuongTon;
-          row.insertCell(5).textContent = product.trangThai;
+
+          const statusCell = row.insertCell(5);
+          statusCell.textContent = product.trangThai;
+          if (product.trangThai === 'Còn hàng') {
+            statusCell.style.color = 'green';
+          } else if (product.trangThai === 'Sắp hết hàng') {
+            statusCell.style.color = '#d4a017'; // Màu vàng đậm
+          } else if (product.trangThai === 'Hết hàng') {
+            statusCell.style.color = 'red';
+          }
 
           const actionsCell = row.insertCell(6);
           actionsCell.classList.add('text-center');
@@ -1076,6 +1117,20 @@
           } else {
             hinhAnhContainer.textContent = 'Không có hình ảnh';
           }
+          const trangThaiSpan = this.viewProductDetails.querySelector('[data-product-detail="trangThai"]');
+          const soLuongTon = product.soLuongTon;
+          let trangThaiText;
+          if (soLuongTon > 10) {
+            trangThaiText = 'Còn hàng';
+            trangThaiSpan.style.color = 'green';
+          } else if (soLuongTon > 0) {
+            trangThaiText = 'Sắp hết hàng';
+            trangThaiSpan.style.color = '#d4a017'; // Màu vàng đậm
+          } else {
+            trangThaiText = 'Hết hàng';
+            trangThaiSpan.style.color = 'red';
+          }
+          trangThaiSpan.textContent = trangThaiText;
         } catch (error) {
           console.error('Lỗi tải hình ảnh chi tiết sản phẩm:', error);
           hinhAnhContainer.textContent = 'Lỗi tải ảnh';

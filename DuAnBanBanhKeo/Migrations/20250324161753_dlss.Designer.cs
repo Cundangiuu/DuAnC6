@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DuAnBanBanhKeo.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250322080427_DLSS")]
-    partial class DLSS
+    [Migration("20250324161753_dlss")]
+    partial class dlss
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -411,6 +411,9 @@ namespace DuAnBanBanhKeo.Migrations
                     b.Property<DateTime>("NgayKiemKe")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("TrangThai")
+                        .HasColumnType("int");
+
                     b.HasKey("MaKiemKe");
 
                     b.HasIndex("MaNV");
@@ -423,14 +426,16 @@ namespace DuAnBanBanhKeo.Migrations
                             MaKiemKe = "KK001",
                             GhiChu = "Kiểm kê định kỳ",
                             MaNV = "NV003",
-                            NgayKiemKe = new DateTime(2024, 6, 20, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            NgayKiemKe = new DateTime(2024, 6, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TrangThai = 0
                         },
                         new
                         {
                             MaKiemKe = "KK002",
                             GhiChu = "Sai lệch số lượng",
                             MaNV = "NV003",
-                            NgayKiemKe = new DateTime(2024, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            NgayKiemKe = new DateTime(2024, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TrangThai = 0
                         });
                 });
 

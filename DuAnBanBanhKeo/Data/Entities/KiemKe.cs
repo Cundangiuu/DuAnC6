@@ -6,15 +6,11 @@ namespace DuAnBanBanhKeo.Data.Entities
     {
         [Key]
         public string MaKiemKe { get; set; }
-
         public DateTime NgayKiemKe { get; set; } = DateTime.Now;
-
         public string MaNV { get; set; }
-        public NhanVien NhanVien { get; set; } // Nhân viên thực hiện kiểm kê
+        public NhanVien NhanVien { get; set; }
         public string GhiChu { get; set; }
-
+        public int TrangThai { get; set; } = 0; // 0: Chưa duyệt, 1: Đã duyệt
         public ICollection<ChiTietKiemKe> ChiTietKiemKes { get; set; } = new List<ChiTietKiemKe>();
     }
-
-
 }

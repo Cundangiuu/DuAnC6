@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "PPAf5waxUB7JaHrhKqS5ahOOkaZvaOk8/KvmdiCErc4=",
+  "Hash": "ZMkHDPTqwTblns4l9z15z1S/Wp9X2ard+hDN2IP4kaE=",
   "Source": "DuAnBanBanhKeo",
   "BasePath": "_content/DuAnBanBanhKeo",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "DuAnBanBanhKeo\\wwwroot",
       "Source": "DuAnBanBanhKeo",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\01e0352a-3075-4b34-b41d-4c539206640c.png",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\01e0352a-3075-4b34-b41d-4c539206640c.png",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "images/01e0352a-3075-4b34-b41d-4c539206640c#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -38,10 +38,10 @@
       "OriginalItemSpec": "wwwroot\\images\\01e0352a-3075-4b34-b41d-4c539206640c.png"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\26c1f45d-5b6f-405e-b1aa-3dff450c7abb.png",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\26c1f45d-5b6f-405e-b1aa-3dff450c7abb.png",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "images/26c1f45d-5b6f-405e-b1aa-3dff450c7abb#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -59,10 +59,10 @@
       "OriginalItemSpec": "wwwroot\\images\\26c1f45d-5b6f-405e-b1aa-3dff450c7abb.png"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\3fa704c2-44ea-4223-8b89-193f5b7b631f.png",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\3fa704c2-44ea-4223-8b89-193f5b7b631f.png",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "images/3fa704c2-44ea-4223-8b89-193f5b7b631f#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -80,10 +80,10 @@
       "OriginalItemSpec": "wwwroot\\images\\3fa704c2-44ea-4223-8b89-193f5b7b631f.png"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\7d62eec7-ca18-4ca1-b292-eb5bb0417f71.png",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\7d62eec7-ca18-4ca1-b292-eb5bb0417f71.png",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "images/7d62eec7-ca18-4ca1-b292-eb5bb0417f71#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -101,10 +101,10 @@
       "OriginalItemSpec": "wwwroot\\images\\7d62eec7-ca18-4ca1-b292-eb5bb0417f71.png"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\906ee06c-9527-4e04-98bf-59ec059211a4.png",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\906ee06c-9527-4e04-98bf-59ec059211a4.png",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "images/906ee06c-9527-4e04-98bf-59ec059211a4#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -122,10 +122,10 @@
       "OriginalItemSpec": "wwwroot\\images\\906ee06c-9527-4e04-98bf-59ec059211a4.png"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\cb7123c1-b0ff-4888-98fa-5345bee3d250.png",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\cb7123c1-b0ff-4888-98fa-5345bee3d250.png",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "images/cb7123c1-b0ff-4888-98fa-5345bee3d250#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -143,10 +143,10 @@
       "OriginalItemSpec": "wwwroot\\images\\cb7123c1-b0ff-4888-98fa-5345bee3d250.png"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\efa8674a-f40a-45f7-8b12-ef9e3ad0e8c3.png",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\efa8674a-f40a-45f7-8b12-ef9e3ad0e8c3.png",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "images/efa8674a-f40a-45f7-8b12-ef9e3ad0e8c3#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -164,10 +164,10 @@
       "OriginalItemSpec": "wwwroot\\images\\efa8674a-f40a-45f7-8b12-ef9e3ad0e8c3.png"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\05d5a8b9-d507-4995-9815-528114dbd24c_WIN_20241101_16_04_28_Pro.jpg",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\05d5a8b9-d507-4995-9815-528114dbd24c_WIN_20241101_16_04_28_Pro.jpg",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "temp_uploads/nhanVien/05d5a8b9-d507-4995-9815-528114dbd24c_WIN_20241101_16_04_28_Pro#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -185,10 +185,10 @@
       "OriginalItemSpec": "wwwroot\\temp_uploads\\nhanVien\\05d5a8b9-d507-4995-9815-528114dbd24c_WIN_20241101_16_04_28_Pro.jpg"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\097513ee-2f91-411a-868c-2c89b069691d_473568245_699139029124934_4388227159575837485_n.jpg",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\097513ee-2f91-411a-868c-2c89b069691d_473568245_699139029124934_4388227159575837485_n.jpg",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "temp_uploads/nhanVien/097513ee-2f91-411a-868c-2c89b069691d_473568245_699139029124934_4388227159575837485_n#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -206,10 +206,10 @@
       "OriginalItemSpec": "wwwroot\\temp_uploads\\nhanVien\\097513ee-2f91-411a-868c-2c89b069691d_473568245_699139029124934_4388227159575837485_n.jpg"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\1cc4e1a3-c0f0-44e2-93f4-42693d3d2f47_a18d0abd-cde3-4858-bcba-758409e368b4.jpg",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\1cc4e1a3-c0f0-44e2-93f4-42693d3d2f47_a18d0abd-cde3-4858-bcba-758409e368b4.jpg",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "temp_uploads/nhanVien/1cc4e1a3-c0f0-44e2-93f4-42693d3d2f47_a18d0abd-cde3-4858-bcba-758409e368b4#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -227,10 +227,10 @@
       "OriginalItemSpec": "wwwroot\\temp_uploads\\nhanVien\\1cc4e1a3-c0f0-44e2-93f4-42693d3d2f47_a18d0abd-cde3-4858-bcba-758409e368b4.jpg"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\275beec8-77d9-4dd2-bd22-1b8b38509d95_WIN_20240802_00_30_45_Pro.jpg",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\275beec8-77d9-4dd2-bd22-1b8b38509d95_WIN_20240802_00_30_45_Pro.jpg",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "temp_uploads/nhanVien/275beec8-77d9-4dd2-bd22-1b8b38509d95_WIN_20240802_00_30_45_Pro#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -248,10 +248,10 @@
       "OriginalItemSpec": "wwwroot\\temp_uploads\\nhanVien\\275beec8-77d9-4dd2-bd22-1b8b38509d95_WIN_20240802_00_30_45_Pro.jpg"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\2d73aa5f-0e87-426a-a2c8-aaccad0e477d_WIN_20240808_18_55_58_Pro.jpg",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\2d73aa5f-0e87-426a-a2c8-aaccad0e477d_WIN_20240808_18_55_58_Pro.jpg",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "temp_uploads/nhanVien/2d73aa5f-0e87-426a-a2c8-aaccad0e477d_WIN_20240808_18_55_58_Pro#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -269,10 +269,10 @@
       "OriginalItemSpec": "wwwroot\\temp_uploads\\nhanVien\\2d73aa5f-0e87-426a-a2c8-aaccad0e477d_WIN_20240808_18_55_58_Pro.jpg"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\62ef8ee3-9cac-4c0c-b304-321b431c7431_WIN_20250125_22_28_16_Pro.jpg",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\62ef8ee3-9cac-4c0c-b304-321b431c7431_WIN_20250125_22_28_16_Pro.jpg",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "temp_uploads/nhanVien/62ef8ee3-9cac-4c0c-b304-321b431c7431_WIN_20250125_22_28_16_Pro#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -290,10 +290,10 @@
       "OriginalItemSpec": "wwwroot\\temp_uploads\\nhanVien\\62ef8ee3-9cac-4c0c-b304-321b431c7431_WIN_20250125_22_28_16_Pro.jpg"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\646578bc-e683-47e4-8959-b6d337066538_WIN_20241101_16_04_28_Pro.jpg",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\646578bc-e683-47e4-8959-b6d337066538_WIN_20241101_16_04_28_Pro.jpg",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "temp_uploads/nhanVien/646578bc-e683-47e4-8959-b6d337066538_WIN_20241101_16_04_28_Pro#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -311,10 +311,10 @@
       "OriginalItemSpec": "wwwroot\\temp_uploads\\nhanVien\\646578bc-e683-47e4-8959-b6d337066538_WIN_20241101_16_04_28_Pro.jpg"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\6bd442cb-5b97-4379-9984-e0bd61e9788a_IMG_3755.jpg",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\6bd442cb-5b97-4379-9984-e0bd61e9788a_IMG_3755.jpg",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "temp_uploads/nhanVien/6bd442cb-5b97-4379-9984-e0bd61e9788a_IMG_3755#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -332,10 +332,10 @@
       "OriginalItemSpec": "wwwroot\\temp_uploads\\nhanVien\\6bd442cb-5b97-4379-9984-e0bd61e9788a_IMG_3755.jpg"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\6d6f6834-c49d-4f81-85b5-271239e7c698_a18d0abd-cde3-4858-bcba-758409e368b4.jpg",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\6d6f6834-c49d-4f81-85b5-271239e7c698_a18d0abd-cde3-4858-bcba-758409e368b4.jpg",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "temp_uploads/nhanVien/6d6f6834-c49d-4f81-85b5-271239e7c698_a18d0abd-cde3-4858-bcba-758409e368b4#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -353,10 +353,10 @@
       "OriginalItemSpec": "wwwroot\\temp_uploads\\nhanVien\\6d6f6834-c49d-4f81-85b5-271239e7c698_a18d0abd-cde3-4858-bcba-758409e368b4.jpg"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\837d7463-a87b-499d-beef-b73662e77171_49b1cdb3-dcf4-4057-99e9-0ab99ba6c20b.jpg",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\837d7463-a87b-499d-beef-b73662e77171_49b1cdb3-dcf4-4057-99e9-0ab99ba6c20b.jpg",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "temp_uploads/nhanVien/837d7463-a87b-499d-beef-b73662e77171_49b1cdb3-dcf4-4057-99e9-0ab99ba6c20b#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -374,10 +374,10 @@
       "OriginalItemSpec": "wwwroot\\temp_uploads\\nhanVien\\837d7463-a87b-499d-beef-b73662e77171_49b1cdb3-dcf4-4057-99e9-0ab99ba6c20b.jpg"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\8d4f7de7-020c-4737-b68d-58b114d885fb_49b1cdb3-dcf4-4057-99e9-0ab99ba6c20b.jpg",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\8d4f7de7-020c-4737-b68d-58b114d885fb_49b1cdb3-dcf4-4057-99e9-0ab99ba6c20b.jpg",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "temp_uploads/nhanVien/8d4f7de7-020c-4737-b68d-58b114d885fb_49b1cdb3-dcf4-4057-99e9-0ab99ba6c20b#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -395,10 +395,10 @@
       "OriginalItemSpec": "wwwroot\\temp_uploads\\nhanVien\\8d4f7de7-020c-4737-b68d-58b114d885fb_49b1cdb3-dcf4-4057-99e9-0ab99ba6c20b.jpg"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\9b46dc5c-6316-4e3b-af34-52708dc82704_WIN_20241006_20_10_20_Pro.jpg",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\9b46dc5c-6316-4e3b-af34-52708dc82704_WIN_20241006_20_10_20_Pro.jpg",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "temp_uploads/nhanVien/9b46dc5c-6316-4e3b-af34-52708dc82704_WIN_20241006_20_10_20_Pro#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -416,10 +416,10 @@
       "OriginalItemSpec": "wwwroot\\temp_uploads\\nhanVien\\9b46dc5c-6316-4e3b-af34-52708dc82704_WIN_20241006_20_10_20_Pro.jpg"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\9e041fd5-972f-4225-b087-a94566254222_IMG_3755.jpg",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\9e041fd5-972f-4225-b087-a94566254222_IMG_3755.jpg",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "temp_uploads/nhanVien/9e041fd5-972f-4225-b087-a94566254222_IMG_3755#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -437,10 +437,10 @@
       "OriginalItemSpec": "wwwroot\\temp_uploads\\nhanVien\\9e041fd5-972f-4225-b087-a94566254222_IMG_3755.jpg"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\acf404ca-fa4c-4203-8175-7a693eaf88f9_WIN_20240916_15_29_19_Pro.jpg",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\acf404ca-fa4c-4203-8175-7a693eaf88f9_WIN_20240916_15_29_19_Pro.jpg",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "temp_uploads/nhanVien/acf404ca-fa4c-4203-8175-7a693eaf88f9_WIN_20240916_15_29_19_Pro#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -458,10 +458,10 @@
       "OriginalItemSpec": "wwwroot\\temp_uploads\\nhanVien\\acf404ca-fa4c-4203-8175-7a693eaf88f9_WIN_20240916_15_29_19_Pro.jpg"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\b39c6de5-3041-4e1b-8184-0c0287173e72_WIN_20240919_04_44_38_Pro.jpg",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\b39c6de5-3041-4e1b-8184-0c0287173e72_WIN_20240919_04_44_38_Pro.jpg",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "temp_uploads/nhanVien/b39c6de5-3041-4e1b-8184-0c0287173e72_WIN_20240919_04_44_38_Pro#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -479,10 +479,10 @@
       "OriginalItemSpec": "wwwroot\\temp_uploads\\nhanVien\\b39c6de5-3041-4e1b-8184-0c0287173e72_WIN_20240919_04_44_38_Pro.jpg"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\be97923f-0dd4-4176-90f1-d7fc60e043e4_WIN_20241101_16_04_28_Pro.jpg",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\be97923f-0dd4-4176-90f1-d7fc60e043e4_WIN_20241101_16_04_28_Pro.jpg",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "temp_uploads/nhanVien/be97923f-0dd4-4176-90f1-d7fc60e043e4_WIN_20241101_16_04_28_Pro#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -500,10 +500,10 @@
       "OriginalItemSpec": "wwwroot\\temp_uploads\\nhanVien\\be97923f-0dd4-4176-90f1-d7fc60e043e4_WIN_20241101_16_04_28_Pro.jpg"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\ee27358e-4a1c-4b26-9ea2-d23d3921e315_WIN_20240808_22_47_31_Pro.jpg",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\ee27358e-4a1c-4b26-9ea2-d23d3921e315_WIN_20240808_22_47_31_Pro.jpg",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "temp_uploads/nhanVien/ee27358e-4a1c-4b26-9ea2-d23d3921e315_WIN_20240808_22_47_31_Pro#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -521,10 +521,10 @@
       "OriginalItemSpec": "wwwroot\\temp_uploads\\nhanVien\\ee27358e-4a1c-4b26-9ea2-d23d3921e315_WIN_20240808_22_47_31_Pro.jpg"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\f8a4f681-672c-4640-baed-fef2e6ec165a_473568245_699139029124934_4388227159575837485_n.jpg",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\f8a4f681-672c-4640-baed-fef2e6ec165a_473568245_699139029124934_4388227159575837485_n.jpg",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "temp_uploads/nhanVien/f8a4f681-672c-4640-baed-fef2e6ec165a_473568245_699139029124934_4388227159575837485_n#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -542,10 +542,10 @@
       "OriginalItemSpec": "wwwroot\\temp_uploads\\nhanVien\\f8a4f681-672c-4640-baed-fef2e6ec165a_473568245_699139029124934_4388227159575837485_n.jpg"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\f914347b-d0e5-4845-85da-2560f324c381_WIN_20240808_22_47_31_Pro.jpg",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\f914347b-d0e5-4845-85da-2560f324c381_WIN_20240808_22_47_31_Pro.jpg",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "temp_uploads/nhanVien/f914347b-d0e5-4845-85da-2560f324c381_WIN_20240808_22_47_31_Pro#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -563,10 +563,10 @@
       "OriginalItemSpec": "wwwroot\\temp_uploads\\nhanVien\\f914347b-d0e5-4845-85da-2560f324c381_WIN_20240808_22_47_31_Pro.jpg"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\05122fe4-5ed8-4e96-9fd4-5aa1477b9167.png",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\05122fe4-5ed8-4e96-9fd4-5aa1477b9167.png",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "uploads/05122fe4-5ed8-4e96-9fd4-5aa1477b9167#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -584,10 +584,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\05122fe4-5ed8-4e96-9fd4-5aa1477b9167.png"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\10b5a782-860d-4afd-a552-2935ec0f900f.png",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\10b5a782-860d-4afd-a552-2935ec0f900f.png",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "uploads/10b5a782-860d-4afd-a552-2935ec0f900f#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -605,10 +605,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\10b5a782-860d-4afd-a552-2935ec0f900f.png"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\613d0402-d35e-4e53-8794-eb97646c7a7f.png",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\613d0402-d35e-4e53-8794-eb97646c7a7f.png",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "uploads/613d0402-d35e-4e53-8794-eb97646c7a7f#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -626,10 +626,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\613d0402-d35e-4e53-8794-eb97646c7a7f.png"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\65b312fc-5471-4a20-8641-d057a88ff256.png",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\65b312fc-5471-4a20-8641-d057a88ff256.png",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "uploads/65b312fc-5471-4a20-8641-d057a88ff256#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -647,10 +647,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\65b312fc-5471-4a20-8641-d057a88ff256.png"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\69de47cd-1df6-4a11-af32-d352561cc0dd.png",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\69de47cd-1df6-4a11-af32-d352561cc0dd.png",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "uploads/69de47cd-1df6-4a11-af32-d352561cc0dd#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -668,10 +668,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\69de47cd-1df6-4a11-af32-d352561cc0dd.png"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\74168729-0fa2-42c0-b12f-7392c66647b7.png",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\74168729-0fa2-42c0-b12f-7392c66647b7.png",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "uploads/74168729-0fa2-42c0-b12f-7392c66647b7#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -689,10 +689,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\74168729-0fa2-42c0-b12f-7392c66647b7.png"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\8ac3c137-e02f-4446-9d13-5b6f842fd845.png",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\8ac3c137-e02f-4446-9d13-5b6f842fd845.png",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "uploads/8ac3c137-e02f-4446-9d13-5b6f842fd845#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -710,10 +710,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\8ac3c137-e02f-4446-9d13-5b6f842fd845.png"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\8c3fe8a1-ada3-47dd-a95e-b65b3b62322a.png",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\8c3fe8a1-ada3-47dd-a95e-b65b3b62322a.png",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "uploads/8c3fe8a1-ada3-47dd-a95e-b65b3b62322a#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -731,10 +731,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\8c3fe8a1-ada3-47dd-a95e-b65b3b62322a.png"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\8cc8d176-fcaa-410b-941b-94428d6094c5.png",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\8cc8d176-fcaa-410b-941b-94428d6094c5.png",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "uploads/8cc8d176-fcaa-410b-941b-94428d6094c5#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -752,10 +752,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\8cc8d176-fcaa-410b-941b-94428d6094c5.png"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\8f9bba35-4281-4956-9c2a-503cd6ff7af7.png",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\8f9bba35-4281-4956-9c2a-503cd6ff7af7.png",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "uploads/8f9bba35-4281-4956-9c2a-503cd6ff7af7#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -773,10 +773,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\8f9bba35-4281-4956-9c2a-503cd6ff7af7.png"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\c64cd3c8-79d5-40a3-8a50-c60daa06ac88.png",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\c64cd3c8-79d5-40a3-8a50-c60daa06ac88.png",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "uploads/c64cd3c8-79d5-40a3-8a50-c60daa06ac88#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -794,10 +794,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\c64cd3c8-79d5-40a3-8a50-c60daa06ac88.png"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\ccb55724-82cc-456c-aa8c-c130ccb597a9.png",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\ccb55724-82cc-456c-aa8c-c130ccb597a9.png",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "uploads/ccb55724-82cc-456c-aa8c-c130ccb597a9#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -815,10 +815,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\ccb55724-82cc-456c-aa8c-c130ccb597a9.png"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\ed19dd50-cf73-4739-a57e-763436c52926.png",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\ed19dd50-cf73-4739-a57e-763436c52926.png",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "uploads/ed19dd50-cf73-4739-a57e-763436c52926#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -836,10 +836,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\ed19dd50-cf73-4739-a57e-763436c52926.png"
     },
     {
-      "Identity": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\fc3f5bc9-c8cd-4508-a0b2-a9bace163375.png",
+      "Identity": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\fc3f5bc9-c8cd-4508-a0b2-a9bace163375.png",
       "SourceId": "DuAnBanBanhKeo",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
+      "ContentRoot": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\",
       "BasePath": "_content/DuAnBanBanhKeo",
       "RelativePath": "uploads/fc3f5bc9-c8cd-4508-a0b2-a9bace163375#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -860,7 +860,7 @@
   "Endpoints": [
     {
       "Route": "images/01e0352a-3075-4b34-b41d-4c539206640c.kahxoh4wyr.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\01e0352a-3075-4b34-b41d-4c539206640c.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\01e0352a-3075-4b34-b41d-4c539206640c.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -881,7 +881,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -905,7 +905,7 @@
     },
     {
       "Route": "images/01e0352a-3075-4b34-b41d-4c539206640c.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\01e0352a-3075-4b34-b41d-4c539206640c.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\01e0352a-3075-4b34-b41d-4c539206640c.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -926,7 +926,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -942,7 +942,7 @@
     },
     {
       "Route": "images/26c1f45d-5b6f-405e-b1aa-3dff450c7abb.6uqdpn42fb.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\26c1f45d-5b6f-405e-b1aa-3dff450c7abb.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\26c1f45d-5b6f-405e-b1aa-3dff450c7abb.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -963,7 +963,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -987,7 +987,7 @@
     },
     {
       "Route": "images/26c1f45d-5b6f-405e-b1aa-3dff450c7abb.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\26c1f45d-5b6f-405e-b1aa-3dff450c7abb.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\26c1f45d-5b6f-405e-b1aa-3dff450c7abb.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1008,7 +1008,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1024,7 +1024,7 @@
     },
     {
       "Route": "images/3fa704c2-44ea-4223-8b89-193f5b7b631f.3grqhqwn1q.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\3fa704c2-44ea-4223-8b89-193f5b7b631f.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\3fa704c2-44ea-4223-8b89-193f5b7b631f.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1045,7 +1045,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1069,7 +1069,7 @@
     },
     {
       "Route": "images/3fa704c2-44ea-4223-8b89-193f5b7b631f.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\3fa704c2-44ea-4223-8b89-193f5b7b631f.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\3fa704c2-44ea-4223-8b89-193f5b7b631f.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1090,7 +1090,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1106,7 +1106,7 @@
     },
     {
       "Route": "images/7d62eec7-ca18-4ca1-b292-eb5bb0417f71.iiuugma5np.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\7d62eec7-ca18-4ca1-b292-eb5bb0417f71.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\7d62eec7-ca18-4ca1-b292-eb5bb0417f71.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1127,7 +1127,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1151,7 +1151,7 @@
     },
     {
       "Route": "images/7d62eec7-ca18-4ca1-b292-eb5bb0417f71.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\7d62eec7-ca18-4ca1-b292-eb5bb0417f71.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\7d62eec7-ca18-4ca1-b292-eb5bb0417f71.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1172,7 +1172,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1188,7 +1188,7 @@
     },
     {
       "Route": "images/906ee06c-9527-4e04-98bf-59ec059211a4.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\906ee06c-9527-4e04-98bf-59ec059211a4.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\906ee06c-9527-4e04-98bf-59ec059211a4.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1209,7 +1209,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1225,7 +1225,7 @@
     },
     {
       "Route": "images/906ee06c-9527-4e04-98bf-59ec059211a4.ri4km229o9.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\906ee06c-9527-4e04-98bf-59ec059211a4.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\906ee06c-9527-4e04-98bf-59ec059211a4.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1246,7 +1246,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1270,7 +1270,7 @@
     },
     {
       "Route": "images/cb7123c1-b0ff-4888-98fa-5345bee3d250.guw8vltw2x.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\cb7123c1-b0ff-4888-98fa-5345bee3d250.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\cb7123c1-b0ff-4888-98fa-5345bee3d250.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1291,7 +1291,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1315,7 +1315,7 @@
     },
     {
       "Route": "images/cb7123c1-b0ff-4888-98fa-5345bee3d250.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\cb7123c1-b0ff-4888-98fa-5345bee3d250.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\cb7123c1-b0ff-4888-98fa-5345bee3d250.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1336,7 +1336,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1352,7 +1352,7 @@
     },
     {
       "Route": "images/efa8674a-f40a-45f7-8b12-ef9e3ad0e8c3.kw2b6lmq70.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\efa8674a-f40a-45f7-8b12-ef9e3ad0e8c3.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\efa8674a-f40a-45f7-8b12-ef9e3ad0e8c3.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1373,7 +1373,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1397,7 +1397,7 @@
     },
     {
       "Route": "images/efa8674a-f40a-45f7-8b12-ef9e3ad0e8c3.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\efa8674a-f40a-45f7-8b12-ef9e3ad0e8c3.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\images\\efa8674a-f40a-45f7-8b12-ef9e3ad0e8c3.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1418,7 +1418,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1434,7 +1434,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/05d5a8b9-d507-4995-9815-528114dbd24c_WIN_20241101_16_04_28_Pro.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\05d5a8b9-d507-4995-9815-528114dbd24c_WIN_20241101_16_04_28_Pro.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\05d5a8b9-d507-4995-9815-528114dbd24c_WIN_20241101_16_04_28_Pro.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1455,7 +1455,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 15:12:45 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1471,7 +1471,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/05d5a8b9-d507-4995-9815-528114dbd24c_WIN_20241101_16_04_28_Pro.r0535dsaih.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\05d5a8b9-d507-4995-9815-528114dbd24c_WIN_20241101_16_04_28_Pro.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\05d5a8b9-d507-4995-9815-528114dbd24c_WIN_20241101_16_04_28_Pro.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1492,7 +1492,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 15:12:45 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1516,7 +1516,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/097513ee-2f91-411a-868c-2c89b069691d_473568245_699139029124934_4388227159575837485_n.bhrv3t2nqg.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\097513ee-2f91-411a-868c-2c89b069691d_473568245_699139029124934_4388227159575837485_n.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\097513ee-2f91-411a-868c-2c89b069691d_473568245_699139029124934_4388227159575837485_n.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1537,7 +1537,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1561,7 +1561,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/097513ee-2f91-411a-868c-2c89b069691d_473568245_699139029124934_4388227159575837485_n.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\097513ee-2f91-411a-868c-2c89b069691d_473568245_699139029124934_4388227159575837485_n.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\097513ee-2f91-411a-868c-2c89b069691d_473568245_699139029124934_4388227159575837485_n.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1582,7 +1582,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1598,7 +1598,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/1cc4e1a3-c0f0-44e2-93f4-42693d3d2f47_a18d0abd-cde3-4858-bcba-758409e368b4.2fedimug79.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\1cc4e1a3-c0f0-44e2-93f4-42693d3d2f47_a18d0abd-cde3-4858-bcba-758409e368b4.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\1cc4e1a3-c0f0-44e2-93f4-42693d3d2f47_a18d0abd-cde3-4858-bcba-758409e368b4.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1619,7 +1619,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 15:12:45 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1643,7 +1643,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/1cc4e1a3-c0f0-44e2-93f4-42693d3d2f47_a18d0abd-cde3-4858-bcba-758409e368b4.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\1cc4e1a3-c0f0-44e2-93f4-42693d3d2f47_a18d0abd-cde3-4858-bcba-758409e368b4.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\1cc4e1a3-c0f0-44e2-93f4-42693d3d2f47_a18d0abd-cde3-4858-bcba-758409e368b4.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1664,7 +1664,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 15:12:45 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1680,7 +1680,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/275beec8-77d9-4dd2-bd22-1b8b38509d95_WIN_20240802_00_30_45_Pro.hbwna7ktdk.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\275beec8-77d9-4dd2-bd22-1b8b38509d95_WIN_20240802_00_30_45_Pro.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\275beec8-77d9-4dd2-bd22-1b8b38509d95_WIN_20240802_00_30_45_Pro.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1701,7 +1701,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1725,7 +1725,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/275beec8-77d9-4dd2-bd22-1b8b38509d95_WIN_20240802_00_30_45_Pro.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\275beec8-77d9-4dd2-bd22-1b8b38509d95_WIN_20240802_00_30_45_Pro.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\275beec8-77d9-4dd2-bd22-1b8b38509d95_WIN_20240802_00_30_45_Pro.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1746,7 +1746,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1762,7 +1762,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/2d73aa5f-0e87-426a-a2c8-aaccad0e477d_WIN_20240808_18_55_58_Pro.9dxp0v7bsv.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\2d73aa5f-0e87-426a-a2c8-aaccad0e477d_WIN_20240808_18_55_58_Pro.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\2d73aa5f-0e87-426a-a2c8-aaccad0e477d_WIN_20240808_18_55_58_Pro.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1783,7 +1783,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1807,7 +1807,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/2d73aa5f-0e87-426a-a2c8-aaccad0e477d_WIN_20240808_18_55_58_Pro.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\2d73aa5f-0e87-426a-a2c8-aaccad0e477d_WIN_20240808_18_55_58_Pro.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\2d73aa5f-0e87-426a-a2c8-aaccad0e477d_WIN_20240808_18_55_58_Pro.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1828,7 +1828,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1844,7 +1844,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/62ef8ee3-9cac-4c0c-b304-321b431c7431_WIN_20250125_22_28_16_Pro.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\62ef8ee3-9cac-4c0c-b304-321b431c7431_WIN_20250125_22_28_16_Pro.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\62ef8ee3-9cac-4c0c-b304-321b431c7431_WIN_20250125_22_28_16_Pro.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1865,7 +1865,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 15:12:45 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1881,7 +1881,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/62ef8ee3-9cac-4c0c-b304-321b431c7431_WIN_20250125_22_28_16_Pro.qw0ye7kv2z.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\62ef8ee3-9cac-4c0c-b304-321b431c7431_WIN_20250125_22_28_16_Pro.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\62ef8ee3-9cac-4c0c-b304-321b431c7431_WIN_20250125_22_28_16_Pro.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1902,7 +1902,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 15:12:45 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1926,7 +1926,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/646578bc-e683-47e4-8959-b6d337066538_WIN_20241101_16_04_28_Pro.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\646578bc-e683-47e4-8959-b6d337066538_WIN_20241101_16_04_28_Pro.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\646578bc-e683-47e4-8959-b6d337066538_WIN_20241101_16_04_28_Pro.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1947,7 +1947,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 15:12:45 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1963,7 +1963,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/646578bc-e683-47e4-8959-b6d337066538_WIN_20241101_16_04_28_Pro.r0535dsaih.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\646578bc-e683-47e4-8959-b6d337066538_WIN_20241101_16_04_28_Pro.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\646578bc-e683-47e4-8959-b6d337066538_WIN_20241101_16_04_28_Pro.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1984,7 +1984,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 15:12:45 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2008,7 +2008,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/6bd442cb-5b97-4379-9984-e0bd61e9788a_IMG_3755.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\6bd442cb-5b97-4379-9984-e0bd61e9788a_IMG_3755.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\6bd442cb-5b97-4379-9984-e0bd61e9788a_IMG_3755.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2029,7 +2029,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 15:12:45 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2045,7 +2045,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/6bd442cb-5b97-4379-9984-e0bd61e9788a_IMG_3755.l8j2asiwo5.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\6bd442cb-5b97-4379-9984-e0bd61e9788a_IMG_3755.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\6bd442cb-5b97-4379-9984-e0bd61e9788a_IMG_3755.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2066,7 +2066,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 15:12:45 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2090,7 +2090,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/6d6f6834-c49d-4f81-85b5-271239e7c698_a18d0abd-cde3-4858-bcba-758409e368b4.2fedimug79.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\6d6f6834-c49d-4f81-85b5-271239e7c698_a18d0abd-cde3-4858-bcba-758409e368b4.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\6d6f6834-c49d-4f81-85b5-271239e7c698_a18d0abd-cde3-4858-bcba-758409e368b4.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2111,7 +2111,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 15:12:45 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2135,7 +2135,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/6d6f6834-c49d-4f81-85b5-271239e7c698_a18d0abd-cde3-4858-bcba-758409e368b4.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\6d6f6834-c49d-4f81-85b5-271239e7c698_a18d0abd-cde3-4858-bcba-758409e368b4.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\6d6f6834-c49d-4f81-85b5-271239e7c698_a18d0abd-cde3-4858-bcba-758409e368b4.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2156,7 +2156,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 15:12:45 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2172,7 +2172,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/837d7463-a87b-499d-beef-b73662e77171_49b1cdb3-dcf4-4057-99e9-0ab99ba6c20b.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\837d7463-a87b-499d-beef-b73662e77171_49b1cdb3-dcf4-4057-99e9-0ab99ba6c20b.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\837d7463-a87b-499d-beef-b73662e77171_49b1cdb3-dcf4-4057-99e9-0ab99ba6c20b.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2193,7 +2193,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 15:12:45 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2209,7 +2209,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/837d7463-a87b-499d-beef-b73662e77171_49b1cdb3-dcf4-4057-99e9-0ab99ba6c20b.t7v6yplghd.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\837d7463-a87b-499d-beef-b73662e77171_49b1cdb3-dcf4-4057-99e9-0ab99ba6c20b.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\837d7463-a87b-499d-beef-b73662e77171_49b1cdb3-dcf4-4057-99e9-0ab99ba6c20b.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2230,7 +2230,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 15:12:45 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2254,7 +2254,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/8d4f7de7-020c-4737-b68d-58b114d885fb_49b1cdb3-dcf4-4057-99e9-0ab99ba6c20b.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\8d4f7de7-020c-4737-b68d-58b114d885fb_49b1cdb3-dcf4-4057-99e9-0ab99ba6c20b.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\8d4f7de7-020c-4737-b68d-58b114d885fb_49b1cdb3-dcf4-4057-99e9-0ab99ba6c20b.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2275,7 +2275,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 15:12:45 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2291,7 +2291,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/8d4f7de7-020c-4737-b68d-58b114d885fb_49b1cdb3-dcf4-4057-99e9-0ab99ba6c20b.t7v6yplghd.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\8d4f7de7-020c-4737-b68d-58b114d885fb_49b1cdb3-dcf4-4057-99e9-0ab99ba6c20b.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\8d4f7de7-020c-4737-b68d-58b114d885fb_49b1cdb3-dcf4-4057-99e9-0ab99ba6c20b.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2312,7 +2312,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 15:12:45 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2336,7 +2336,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/9b46dc5c-6316-4e3b-af34-52708dc82704_WIN_20241006_20_10_20_Pro.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\9b46dc5c-6316-4e3b-af34-52708dc82704_WIN_20241006_20_10_20_Pro.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\9b46dc5c-6316-4e3b-af34-52708dc82704_WIN_20241006_20_10_20_Pro.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2357,7 +2357,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 15:12:45 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2373,7 +2373,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/9b46dc5c-6316-4e3b-af34-52708dc82704_WIN_20241006_20_10_20_Pro.ypm7kj90za.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\9b46dc5c-6316-4e3b-af34-52708dc82704_WIN_20241006_20_10_20_Pro.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\9b46dc5c-6316-4e3b-af34-52708dc82704_WIN_20241006_20_10_20_Pro.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2394,7 +2394,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 15:12:45 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2418,7 +2418,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/9e041fd5-972f-4225-b087-a94566254222_IMG_3755.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\9e041fd5-972f-4225-b087-a94566254222_IMG_3755.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\9e041fd5-972f-4225-b087-a94566254222_IMG_3755.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2439,7 +2439,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 15:12:45 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2455,7 +2455,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/9e041fd5-972f-4225-b087-a94566254222_IMG_3755.l8j2asiwo5.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\9e041fd5-972f-4225-b087-a94566254222_IMG_3755.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\9e041fd5-972f-4225-b087-a94566254222_IMG_3755.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2476,7 +2476,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 15:12:45 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2500,7 +2500,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/acf404ca-fa4c-4203-8175-7a693eaf88f9_WIN_20240916_15_29_19_Pro.hzmo3pnt1a.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\acf404ca-fa4c-4203-8175-7a693eaf88f9_WIN_20240916_15_29_19_Pro.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\acf404ca-fa4c-4203-8175-7a693eaf88f9_WIN_20240916_15_29_19_Pro.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2521,7 +2521,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2545,7 +2545,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/acf404ca-fa4c-4203-8175-7a693eaf88f9_WIN_20240916_15_29_19_Pro.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\acf404ca-fa4c-4203-8175-7a693eaf88f9_WIN_20240916_15_29_19_Pro.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\acf404ca-fa4c-4203-8175-7a693eaf88f9_WIN_20240916_15_29_19_Pro.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2566,7 +2566,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2582,7 +2582,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/b39c6de5-3041-4e1b-8184-0c0287173e72_WIN_20240919_04_44_38_Pro.7ljzyi3iw6.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\b39c6de5-3041-4e1b-8184-0c0287173e72_WIN_20240919_04_44_38_Pro.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\b39c6de5-3041-4e1b-8184-0c0287173e72_WIN_20240919_04_44_38_Pro.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2603,7 +2603,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2627,7 +2627,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/b39c6de5-3041-4e1b-8184-0c0287173e72_WIN_20240919_04_44_38_Pro.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\b39c6de5-3041-4e1b-8184-0c0287173e72_WIN_20240919_04_44_38_Pro.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\b39c6de5-3041-4e1b-8184-0c0287173e72_WIN_20240919_04_44_38_Pro.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2648,7 +2648,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2664,7 +2664,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/be97923f-0dd4-4176-90f1-d7fc60e043e4_WIN_20241101_16_04_28_Pro.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\be97923f-0dd4-4176-90f1-d7fc60e043e4_WIN_20241101_16_04_28_Pro.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\be97923f-0dd4-4176-90f1-d7fc60e043e4_WIN_20241101_16_04_28_Pro.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2685,7 +2685,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2701,7 +2701,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/be97923f-0dd4-4176-90f1-d7fc60e043e4_WIN_20241101_16_04_28_Pro.r0535dsaih.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\be97923f-0dd4-4176-90f1-d7fc60e043e4_WIN_20241101_16_04_28_Pro.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\be97923f-0dd4-4176-90f1-d7fc60e043e4_WIN_20241101_16_04_28_Pro.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2722,7 +2722,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2746,7 +2746,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/ee27358e-4a1c-4b26-9ea2-d23d3921e315_WIN_20240808_22_47_31_Pro.358a0v9ah6.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\ee27358e-4a1c-4b26-9ea2-d23d3921e315_WIN_20240808_22_47_31_Pro.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\ee27358e-4a1c-4b26-9ea2-d23d3921e315_WIN_20240808_22_47_31_Pro.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2767,7 +2767,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2791,7 +2791,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/ee27358e-4a1c-4b26-9ea2-d23d3921e315_WIN_20240808_22_47_31_Pro.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\ee27358e-4a1c-4b26-9ea2-d23d3921e315_WIN_20240808_22_47_31_Pro.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\ee27358e-4a1c-4b26-9ea2-d23d3921e315_WIN_20240808_22_47_31_Pro.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2812,7 +2812,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2828,7 +2828,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/f8a4f681-672c-4640-baed-fef2e6ec165a_473568245_699139029124934_4388227159575837485_n.bhrv3t2nqg.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\f8a4f681-672c-4640-baed-fef2e6ec165a_473568245_699139029124934_4388227159575837485_n.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\f8a4f681-672c-4640-baed-fef2e6ec165a_473568245_699139029124934_4388227159575837485_n.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2849,7 +2849,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2873,7 +2873,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/f8a4f681-672c-4640-baed-fef2e6ec165a_473568245_699139029124934_4388227159575837485_n.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\f8a4f681-672c-4640-baed-fef2e6ec165a_473568245_699139029124934_4388227159575837485_n.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\f8a4f681-672c-4640-baed-fef2e6ec165a_473568245_699139029124934_4388227159575837485_n.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2894,7 +2894,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 18:23:18 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2910,7 +2910,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/f914347b-d0e5-4845-85da-2560f324c381_WIN_20240808_22_47_31_Pro.358a0v9ah6.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\f914347b-d0e5-4845-85da-2560f324c381_WIN_20240808_22_47_31_Pro.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\f914347b-d0e5-4845-85da-2560f324c381_WIN_20240808_22_47_31_Pro.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2931,7 +2931,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 15:12:45 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2955,7 +2955,7 @@
     },
     {
       "Route": "temp_uploads/nhanVien/f914347b-d0e5-4845-85da-2560f324c381_WIN_20240808_22_47_31_Pro.jpg",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\f914347b-d0e5-4845-85da-2560f324c381_WIN_20240808_22_47_31_Pro.jpg",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\temp_uploads\\nhanVien\\f914347b-d0e5-4845-85da-2560f324c381_WIN_20240808_22_47_31_Pro.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2976,7 +2976,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 15:12:45 GMT"
+          "Value": "Tue, 18 Mar 2025 05:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2992,7 +2992,7 @@
     },
     {
       "Route": "uploads/05122fe4-5ed8-4e96-9fd4-5aa1477b9167.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\05122fe4-5ed8-4e96-9fd4-5aa1477b9167.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\05122fe4-5ed8-4e96-9fd4-5aa1477b9167.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3013,7 +3013,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3029,7 +3029,7 @@
     },
     {
       "Route": "uploads/05122fe4-5ed8-4e96-9fd4-5aa1477b9167.q0z4l5buq9.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\05122fe4-5ed8-4e96-9fd4-5aa1477b9167.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\05122fe4-5ed8-4e96-9fd4-5aa1477b9167.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3050,7 +3050,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3074,7 +3074,7 @@
     },
     {
       "Route": "uploads/10b5a782-860d-4afd-a552-2935ec0f900f.0p3mb6fgg7.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\10b5a782-860d-4afd-a552-2935ec0f900f.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\10b5a782-860d-4afd-a552-2935ec0f900f.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3095,7 +3095,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3119,7 +3119,7 @@
     },
     {
       "Route": "uploads/10b5a782-860d-4afd-a552-2935ec0f900f.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\10b5a782-860d-4afd-a552-2935ec0f900f.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\10b5a782-860d-4afd-a552-2935ec0f900f.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3140,7 +3140,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3156,7 +3156,7 @@
     },
     {
       "Route": "uploads/613d0402-d35e-4e53-8794-eb97646c7a7f.0wkg3njz0r.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\613d0402-d35e-4e53-8794-eb97646c7a7f.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\613d0402-d35e-4e53-8794-eb97646c7a7f.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3177,7 +3177,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3201,7 +3201,7 @@
     },
     {
       "Route": "uploads/613d0402-d35e-4e53-8794-eb97646c7a7f.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\613d0402-d35e-4e53-8794-eb97646c7a7f.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\613d0402-d35e-4e53-8794-eb97646c7a7f.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3222,7 +3222,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3238,7 +3238,7 @@
     },
     {
       "Route": "uploads/65b312fc-5471-4a20-8641-d057a88ff256.9n7qoz9vkk.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\65b312fc-5471-4a20-8641-d057a88ff256.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\65b312fc-5471-4a20-8641-d057a88ff256.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3259,7 +3259,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3283,7 +3283,7 @@
     },
     {
       "Route": "uploads/65b312fc-5471-4a20-8641-d057a88ff256.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\65b312fc-5471-4a20-8641-d057a88ff256.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\65b312fc-5471-4a20-8641-d057a88ff256.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3304,7 +3304,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3320,7 +3320,7 @@
     },
     {
       "Route": "uploads/69de47cd-1df6-4a11-af32-d352561cc0dd.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\69de47cd-1df6-4a11-af32-d352561cc0dd.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\69de47cd-1df6-4a11-af32-d352561cc0dd.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3341,7 +3341,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3357,7 +3357,7 @@
     },
     {
       "Route": "uploads/69de47cd-1df6-4a11-af32-d352561cc0dd.ysik992scx.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\69de47cd-1df6-4a11-af32-d352561cc0dd.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\69de47cd-1df6-4a11-af32-d352561cc0dd.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3378,7 +3378,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3402,7 +3402,7 @@
     },
     {
       "Route": "uploads/74168729-0fa2-42c0-b12f-7392c66647b7.o97om7zxfv.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\74168729-0fa2-42c0-b12f-7392c66647b7.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\74168729-0fa2-42c0-b12f-7392c66647b7.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3423,7 +3423,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3447,7 +3447,7 @@
     },
     {
       "Route": "uploads/74168729-0fa2-42c0-b12f-7392c66647b7.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\74168729-0fa2-42c0-b12f-7392c66647b7.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\74168729-0fa2-42c0-b12f-7392c66647b7.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3468,7 +3468,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3484,7 +3484,7 @@
     },
     {
       "Route": "uploads/8ac3c137-e02f-4446-9d13-5b6f842fd845.ovw4rlw8s3.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\8ac3c137-e02f-4446-9d13-5b6f842fd845.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\8ac3c137-e02f-4446-9d13-5b6f842fd845.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3505,7 +3505,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3529,7 +3529,7 @@
     },
     {
       "Route": "uploads/8ac3c137-e02f-4446-9d13-5b6f842fd845.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\8ac3c137-e02f-4446-9d13-5b6f842fd845.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\8ac3c137-e02f-4446-9d13-5b6f842fd845.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3550,7 +3550,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3566,7 +3566,7 @@
     },
     {
       "Route": "uploads/8c3fe8a1-ada3-47dd-a95e-b65b3b62322a.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\8c3fe8a1-ada3-47dd-a95e-b65b3b62322a.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\8c3fe8a1-ada3-47dd-a95e-b65b3b62322a.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3587,7 +3587,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3603,7 +3603,7 @@
     },
     {
       "Route": "uploads/8c3fe8a1-ada3-47dd-a95e-b65b3b62322a.r3ty1cer60.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\8c3fe8a1-ada3-47dd-a95e-b65b3b62322a.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\8c3fe8a1-ada3-47dd-a95e-b65b3b62322a.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3624,7 +3624,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3648,7 +3648,7 @@
     },
     {
       "Route": "uploads/8cc8d176-fcaa-410b-941b-94428d6094c5.b6gqpr01p6.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\8cc8d176-fcaa-410b-941b-94428d6094c5.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\8cc8d176-fcaa-410b-941b-94428d6094c5.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3669,7 +3669,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3693,7 +3693,7 @@
     },
     {
       "Route": "uploads/8cc8d176-fcaa-410b-941b-94428d6094c5.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\8cc8d176-fcaa-410b-941b-94428d6094c5.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\8cc8d176-fcaa-410b-941b-94428d6094c5.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3714,7 +3714,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3730,7 +3730,7 @@
     },
     {
       "Route": "uploads/8f9bba35-4281-4956-9c2a-503cd6ff7af7.2ghpfmaaxy.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\8f9bba35-4281-4956-9c2a-503cd6ff7af7.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\8f9bba35-4281-4956-9c2a-503cd6ff7af7.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3751,7 +3751,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3775,7 +3775,7 @@
     },
     {
       "Route": "uploads/8f9bba35-4281-4956-9c2a-503cd6ff7af7.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\8f9bba35-4281-4956-9c2a-503cd6ff7af7.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\8f9bba35-4281-4956-9c2a-503cd6ff7af7.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3796,7 +3796,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3812,7 +3812,7 @@
     },
     {
       "Route": "uploads/c64cd3c8-79d5-40a3-8a50-c60daa06ac88.5r4aydpya4.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\c64cd3c8-79d5-40a3-8a50-c60daa06ac88.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\c64cd3c8-79d5-40a3-8a50-c60daa06ac88.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3833,7 +3833,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3857,7 +3857,7 @@
     },
     {
       "Route": "uploads/c64cd3c8-79d5-40a3-8a50-c60daa06ac88.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\c64cd3c8-79d5-40a3-8a50-c60daa06ac88.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\c64cd3c8-79d5-40a3-8a50-c60daa06ac88.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3878,7 +3878,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3894,7 +3894,7 @@
     },
     {
       "Route": "uploads/ccb55724-82cc-456c-aa8c-c130ccb597a9.hjpf74cs3n.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\ccb55724-82cc-456c-aa8c-c130ccb597a9.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\ccb55724-82cc-456c-aa8c-c130ccb597a9.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3915,7 +3915,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3939,7 +3939,7 @@
     },
     {
       "Route": "uploads/ccb55724-82cc-456c-aa8c-c130ccb597a9.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\ccb55724-82cc-456c-aa8c-c130ccb597a9.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\ccb55724-82cc-456c-aa8c-c130ccb597a9.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3960,7 +3960,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3976,7 +3976,7 @@
     },
     {
       "Route": "uploads/ed19dd50-cf73-4739-a57e-763436c52926.kahxoh4wyr.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\ed19dd50-cf73-4739-a57e-763436c52926.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\ed19dd50-cf73-4739-a57e-763436c52926.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3997,7 +3997,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4021,7 +4021,7 @@
     },
     {
       "Route": "uploads/ed19dd50-cf73-4739-a57e-763436c52926.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\ed19dd50-cf73-4739-a57e-763436c52926.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\ed19dd50-cf73-4739-a57e-763436c52926.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4042,7 +4042,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4058,7 +4058,7 @@
     },
     {
       "Route": "uploads/fc3f5bc9-c8cd-4508-a0b2-a9bace163375.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\fc3f5bc9-c8cd-4508-a0b2-a9bace163375.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\fc3f5bc9-c8cd-4508-a0b2-a9bace163375.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4079,7 +4079,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4095,7 +4095,7 @@
     },
     {
       "Route": "uploads/fc3f5bc9-c8cd-4508-a0b2-a9bace163375.vp2tzz13tr.png",
-      "AssetFile": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\fc3f5bc9-c8cd-4508-a0b2-a9bace163375.png",
+      "AssetFile": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\wwwroot\\uploads\\fc3f5bc9-c8cd-4508-a0b2-a9bace163375.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4116,7 +4116,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 07:55:48 GMT"
+          "Value": "Sun, 23 Mar 2025 15:25:11 GMT"
         },
         {
           "Name": "Cache-Control",

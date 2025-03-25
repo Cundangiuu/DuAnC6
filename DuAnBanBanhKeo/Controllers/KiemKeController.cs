@@ -21,6 +21,68 @@ namespace DuAnBanBanhKeo.Controllers
             _context = context;
         }
 
+        // GET: api/KiemKe (Phân trang, lọc theo ngày và trạng thái)
+        [HttpGet]
+        public async Task<ActionResult<object>> GetKiemKes(
+            DateTime? ngayKiemKe = null,
+            int? trangThai = null,
+            int page = 1,
+            int pageSize = 10)
+        {
+            var query = _context.KiemKes
+                .Include(k => k.NhanVien)
+                .Include(k => k.ChiTietKiemKes)
+                    .ThenInclude(ct => ct.SanPham)
+                .AsQueryable();
+
+            if (ngayKiemKe.HasValue)
+            {
+                query = query.Where(k => k.NgayKiemKe.Date == ngayKiemKe.Value.Date);
+            }
+
+            if (trangThai.HasValue)
+            {
+                query = query.Where(k => k.TrangThai == trangThai.Value);
+            }
+
+            int totalItems = await query.CountAsync();
+            int totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+
+            var kiemKes = await query
+                .OrderByDescending(k => k.NgayKiemKe)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            var kiemKeViewModels = kiemKes.Select(kiemKe => new KiemKeViewModel
+            {
+                MaKiemKe = kiemKe.MaKiemKe,
+                NgayKiemKe = kiemKe.NgayKiemKe,
+                MaNV = kiemKe.MaNV,
+                TenNhanVien = kiemKe.NhanVien?.HoTen, // Lấy tên nhân viên
+                GhiChu = kiemKe.GhiChu,
+                TrangThai = kiemKe.TrangThai,
+                ChiTietKiemKes = kiemKe.ChiTietKiemKes.Select(ct => new ChiTietKiemKeViewModel
+                {
+                    MaSP = ct.MaSP,
+                    TenSanPham = ct.SanPham.TenSP,
+                    SoLuongTonKho = (int)ct.SanPham.SoLuongTon,
+                    SoLuongThucTe = ct.SoLuongThucTe,
+                    ChenhLechSoLuong = ct.ChenhLechSoLuong,
+                    GhiChu = ct.GhiChu
+                }).ToList()
+            }).ToList();
+
+            return Ok(new
+            {
+                Items = kiemKeViewModels,
+                TotalItems = totalItems,
+                TotalPages = totalPages,
+                CurrentPage = page,
+                PageSize = pageSize
+            });
+        }
+
         // GET: api/KiemKe/5
         [HttpGet("{id}")]
         public async Task<ActionResult<KiemKeViewModel>> GetKiemKe(string id)
@@ -36,55 +98,27 @@ namespace DuAnBanBanhKeo.Controllers
                 return NotFound();
             }
 
-            // Chuyển đổi sang KiemKeViewModel
             var kiemKeViewModel = new KiemKeViewModel
             {
                 MaKiemKe = kiemKe.MaKiemKe,
                 NgayKiemKe = kiemKe.NgayKiemKe,
                 MaNV = kiemKe.MaNV,
+                TenNhanVien = kiemKe.NhanVien?.HoTen, // Lấy tên nhân viên
                 GhiChu = kiemKe.GhiChu,
+                TrangThai = kiemKe.TrangThai,
                 ChiTietKiemKes = kiemKe.ChiTietKiemKes.Select(ct => new ChiTietKiemKeViewModel
                 {
                     MaSP = ct.MaSP,
                     TenSanPham = ct.SanPham.TenSP,
-                    SoLuongTonKho = (int)ct.SanPham.SoLuongTon, // Lấy số lượng tồn kho
+                    SoLuongTonKho = (int)ct.SanPham.SoLuongTon,
                     SoLuongThucTe = ct.SoLuongThucTe,
+                    ChenhLechSoLuong = ct.ChenhLechSoLuong,
                     GhiChu = ct.GhiChu
                 }).ToList()
             };
 
             return kiemKeViewModel;
         }
-
-        // GET: api/KiemKe
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<KiemKeViewModel>>> GetKiemKes()
-        {
-            var kiemKes = await _context.KiemKes
-                .Include(k => k.NhanVien)
-                .Include(k => k.ChiTietKiemKes)
-                    .ThenInclude(ct => ct.SanPham)
-                .ToListAsync();
-
-            var kiemKeViewModels = kiemKes.Select(kiemKe => new KiemKeViewModel
-            {
-                MaKiemKe = kiemKe.MaKiemKe,
-                NgayKiemKe = kiemKe.NgayKiemKe,
-                MaNV = kiemKe.MaNV,
-                GhiChu = kiemKe.GhiChu,
-                ChiTietKiemKes = kiemKe.ChiTietKiemKes.Select(ct => new ChiTietKiemKeViewModel
-                {
-                    MaSP = ct.MaSP,
-                    TenSanPham = ct.SanPham.TenSP,
-                    SoLuongTonKho = (int)ct.SanPham.SoLuongTon, // Lấy số lượng tồn kho
-                    SoLuongThucTe = ct.SoLuongThucTe,
-                    GhiChu = ct.GhiChu
-                }).ToList()
-            }).ToList();
-
-            return kiemKeViewModels;
-        }
-
 
         // POST: api/KiemKe
         [HttpPost]
@@ -102,10 +136,10 @@ namespace DuAnBanBanhKeo.Controllers
                 MaKiemKe = maKiemKe,
                 MaNV = kiemKeInput.MaNV,
                 GhiChu = kiemKeInput.GhiChu,
-                NgayKiemKe = DateTime.Now
+                NgayKiemKe = DateTime.Now,
+                TrangThai = 0 // Mặc định là "Chưa duyệt"
             };
 
-            // Thêm chi tiết kiểm kê
             foreach (var chiTietInput in kiemKeInput.ChiTietKiemKes)
             {
                 var sanPham = await _context.SanPhams.FindAsync(chiTietInput.MaSP);
@@ -119,14 +153,11 @@ namespace DuAnBanBanhKeo.Controllers
                     MaKiemKe = maKiemKe,
                     MaSP = chiTietInput.MaSP,
                     SoLuongThucTe = chiTietInput.SoLuongThucTe,
+                    ChenhLechSoLuong = (int)(sanPham.SoLuongTon - chiTietInput.SoLuongThucTe),
                     GhiChu = chiTietInput.GhiChu
                 };
 
                 kiemKe.ChiTietKiemKes.Add(chiTietKiemKe);
-
-                // Cập nhật số lượng tồn kho
-                sanPham.SoLuongTon = chiTietInput.SoLuongThucTe;
-                _context.Update(sanPham);
             }
 
             _context.KiemKes.Add(kiemKe);
@@ -134,39 +165,10 @@ namespace DuAnBanBanhKeo.Controllers
 
             return CreatedAtAction("GetKiemKe", new { id = kiemKe.MaKiemKe }, kiemKe);
         }
-        // PUT: api/KiemKe/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutKiemKe(string id, KiemKe kiemKe)
-        {
-            if (id != kiemKe.MaKiemKe)
-            {
-                return BadRequest();
-            }
 
-            _context.Entry(kiemKe).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!KiemKeExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // DELETE: api/KiemKe/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteKiemKe(string id)
+        // PATCH: api/KiemKe/5 (Chỉ điều chỉnh trạng thái)
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> UpdateTrangThai(string id, [FromBody] int trangThai)
         {
             var kiemKe = await _context.KiemKes.FindAsync(id);
             if (kiemKe == null)
@@ -174,19 +176,10 @@ namespace DuAnBanBanhKeo.Controllers
                 return NotFound();
             }
 
-            // Xóa chi tiết kiểm kê liên quan
-            var chiTietKiemKes = await _context.ChiTietKiemKes.Where(ct => ct.MaKiemKe == id).ToListAsync();
-            _context.ChiTietKiemKes.RemoveRange(chiTietKiemKes);
-
-            _context.KiemKes.Remove(kiemKe);
+            kiemKe.TrangThai = trangThai;
             await _context.SaveChangesAsync();
 
             return NoContent();
-        }
-
-        private bool KiemKeExists(string id)
-        {
-            return _context.KiemKes.Any(e => e.MaKiemKe == id);
         }
 
         private async Task<string> GenerateMaKiemKeAsync()
@@ -194,21 +187,19 @@ namespace DuAnBanBanhKeo.Controllers
             string prefix = "KK";
             int nextId = 1;
 
-            var lastKiemKe = await _context.KiemKes.ToListAsync();
-            if (lastKiemKe.Any())
+            var lastKiemKe = await _context.KiemKes
+                .OrderByDescending(k => k.MaKiemKe)
+                .FirstOrDefaultAsync();
+
+            if (lastKiemKe != null && lastKiemKe.MaKiemKe.StartsWith(prefix))
             {
-                var lastMaKiemKe = lastKiemKe.Max(k => k.MaKiemKe);
-                if (!string.IsNullOrEmpty(lastMaKiemKe) && lastMaKiemKe.StartsWith(prefix))
+                if (int.TryParse(lastKiemKe.MaKiemKe.Substring(prefix.Length), out int lastId))
                 {
-                    if (int.TryParse(lastMaKiemKe.Substring(prefix.Length), out int lastId))
-                    {
-                        nextId = lastId + 1;
-                    }
+                    nextId = lastId + 1;
                 }
             }
 
-            string newMaKiemKe = prefix + nextId.ToString("D3");
-            return newMaKiemKe;
+            return prefix + nextId.ToString("D3");
         }
     }
 
