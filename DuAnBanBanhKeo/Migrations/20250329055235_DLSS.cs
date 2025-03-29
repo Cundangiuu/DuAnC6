@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DuAnBanBanhKeo.Migrations
 {
     /// <inheritdoc />
-    public partial class DLVvt : Migration
+    public partial class DLSS : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -209,7 +209,8 @@ namespace DuAnBanBanhKeo.Migrations
                     TenDangNhap = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MatKhau = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MaNV = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    TrangThai = table.Column<bool>(type: "bit", nullable: false)
+                    TrangThai = table.Column<bool>(type: "bit", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -436,11 +437,11 @@ namespace DuAnBanBanhKeo.Migrations
 
             migrationBuilder.InsertData(
                 table: "TaiKhoans",
-                columns: new[] { "MaTK", "MaNV", "MatKhau", "TenDangNhap", "TrangThai" },
+                columns: new[] { "MaTK", "Email", "MaNV", "MatKhau", "TenDangNhap", "TrangThai" },
                 values: new object[,]
                 {
-                    { "TK001", "NV001", "123", "user", true },
-                    { "TK002", "NV002", "123", "admin", true }
+                    { "TK001", "user@example.com", "NV001", "123", "user", true },
+                    { "TK002", "nguyenhoanganh28052005@gmail.com", "NV002", "123", "admin", true }
                 });
 
             migrationBuilder.InsertData(

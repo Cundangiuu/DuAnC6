@@ -705,7 +705,7 @@ namespace DuAnBanBanhKeo.Migrations
                         new
                         {
                             MaTK = "TK002",
-                            Email = "admin@example.com",
+                            Email = "nguyenhoanganh28052005@gmail.com",
                             MaNV = "NV002",
                             MatKhau = "123",
                             TenDangNhap = "admin",
