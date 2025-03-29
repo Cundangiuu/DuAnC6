@@ -666,10 +666,6 @@ namespace DuAnBanBanhKeo.Migrations
                     b.Property<string>("MaTK")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("MaNV")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -696,7 +692,6 @@ namespace DuAnBanBanhKeo.Migrations
                         new
                         {
                             MaTK = "TK001",
-                            Email = "user@example.com",
                             MaNV = "NV001",
                             MatKhau = "123",
                             TenDangNhap = "user",
@@ -705,7 +700,6 @@ namespace DuAnBanBanhKeo.Migrations
                         new
                         {
                             MaTK = "TK002",
-                            Email = "nguyenhoanganh28052005@gmail.com",
                             MaNV = "NV002",
                             MatKhau = "123",
                             TenDangNhap = "admin",

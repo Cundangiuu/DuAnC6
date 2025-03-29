@@ -7,7 +7,7 @@ namespace DuAnBanBanhKeo.Services
     public class EmailService : IEmailService
     {
         private readonly string _emailSender = "nguyenhoanganh28052005@gmail.com";
-        private readonly string _emailPassword = "szhu qfjp sydl jjfg";
+        private readonly string _emailPassword = "dvto pzzh nxrw jtep";
 
         public async Task SendEmailAsync(string toEmail, string subject, string otpCode)
         {
