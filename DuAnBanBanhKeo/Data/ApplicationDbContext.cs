@@ -193,8 +193,8 @@ namespace DuAnBanBanhKeo.Data
             );
             //Seed Tài Khoản
             modelBuilder.Entity<TaiKhoan>().HasData(
-                new TaiKhoan { MaTK = "TK001", TenDangNhap = "user", MatKhau = "123", MaNV = "NV001", TrangThai = true },
-                new TaiKhoan { MaTK = "TK002", TenDangNhap = "admin", MatKhau = "123", MaNV = "NV002", TrangThai = true }
+                new TaiKhoan { MaTK = "TK001", TenDangNhap = "user", MatKhau = "123", MaNV = "NV001", TrangThai = true, Email = "user@example.com" },
+                new TaiKhoan { MaTK = "TK002", TenDangNhap = "admin", MatKhau = "123", MaNV = "NV002", TrangThai = true, Email = "admin@example.com" }
             );
 
             //Seed Danh Mục

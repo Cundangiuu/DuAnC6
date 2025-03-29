@@ -9,5 +9,6 @@
         public string MatKhau { get; set; }
         public bool TrangThai { get; set; }
         public string VaiTro { get; set; }
+
     }
 }

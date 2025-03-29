@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using System.Text.Json.Serialization;
+using DuAnBanBanhKeo.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -66,6 +67,8 @@ builder.Services.AddAutoMapper(typeof(Program));
 
 // Swagger setup for API documentation
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSingleton<IEmailService, EmailService>();
+builder.Services.AddMemoryCache();
 builder.Services.AddSwaggerGen(option =>
 {
     option.SwaggerDoc("v1", new OpenApiInfo { Title = "DuAnBanBanhKeo API", Version = "v1" });

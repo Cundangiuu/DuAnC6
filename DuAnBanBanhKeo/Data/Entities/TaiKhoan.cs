@@ -11,6 +11,7 @@ namespace DuAnBanBanhKeo.Data.Entities
         public string MaNV { get; set; }
         public NhanVien NhanVien { get; set; }
         public bool TrangThai { get; set; }
+        public string Email { get; set; }
     }
 
 }
