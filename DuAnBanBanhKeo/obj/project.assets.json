@@ -63,6 +63,19 @@
           }
         }
       },
+      "BCrypt.Net-Next/4.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/BCrypt.Net-Next.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/BCrypt.Net-Next.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "DocumentFormat.OpenXml/3.3.0": {
         "type": "package",
         "dependencies": {
@@ -3527,6 +3540,37 @@
         "azureicon.png",
         "lib/netstandard2.0/Azure.Identity.dll",
         "lib/netstandard2.0/Azure.Identity.xml"
+      ]
+    },
+    "BCrypt.Net-Next/4.0.3": {
+      "sha512": "W+U9WvmZQgi5cX6FS5GDtDoPzUCV4LkBLkywq/kRZhuDwcbavOzcDAr3LXJFqHUi952Yj3LEYoWW0jbEUQChsA==",
+      "type": "package",
+      "path": "bcrypt.net-next/4.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "bcrypt.net-next.4.0.3.nupkg.sha512",
+        "bcrypt.net-next.nuspec",
+        "ico.png",
+        "lib/net20/BCrypt.Net-Next.dll",
+        "lib/net20/BCrypt.Net-Next.xml",
+        "lib/net35/BCrypt.Net-Next.dll",
+        "lib/net35/BCrypt.Net-Next.xml",
+        "lib/net462/BCrypt.Net-Next.dll",
+        "lib/net462/BCrypt.Net-Next.xml",
+        "lib/net472/BCrypt.Net-Next.dll",
+        "lib/net472/BCrypt.Net-Next.xml",
+        "lib/net48/BCrypt.Net-Next.dll",
+        "lib/net48/BCrypt.Net-Next.xml",
+        "lib/net5.0/BCrypt.Net-Next.dll",
+        "lib/net5.0/BCrypt.Net-Next.xml",
+        "lib/net6.0/BCrypt.Net-Next.dll",
+        "lib/net6.0/BCrypt.Net-Next.xml",
+        "lib/netstandard2.0/BCrypt.Net-Next.dll",
+        "lib/netstandard2.0/BCrypt.Net-Next.xml",
+        "lib/netstandard2.1/BCrypt.Net-Next.dll",
+        "lib/netstandard2.1/BCrypt.Net-Next.xml",
+        "readme.md"
       ]
     },
     "DocumentFormat.OpenXml/3.3.0": {
@@ -9447,6 +9491,7 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "AutoMapper >= 14.0.0",
+      "BCrypt.Net-Next >= 4.0.3",
       "DocumentFormat.OpenXml >= 3.3.0",
       "EPPlus >= 7.7.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.11",
@@ -9467,23 +9512,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\nghi2\\.nuget\\packages\\": {},
-    "D:\\FPT\\visual_tool\\NuGetPackages": {}
+    "C:\\Users\\84372\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj",
+      "projectUniqueName": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj",
       "projectName": "DuAnBanBanhKeo",
-      "projectPath": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj",
-      "packagesPath": "C:\\Users\\nghi2\\.nuget\\packages\\",
-      "outputPath": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\obj\\",
+      "projectPath": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj",
+      "packagesPath": "C:\\Users\\84372\\.nuget\\packages\\",
+      "outputPath": "D:\\CNTT\\CSharp6\\DuAnC6\\DuAnBanBanhKeo\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\FPT\\visual_tool\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\nghi2\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\84372\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -9509,9 +9554,9 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "direct"
+        "auditMode": "all"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -9520,6 +9565,10 @@
           "AutoMapper": {
             "target": "Package",
             "version": "[14.0.0, )"
+          },
+          "BCrypt.Net-Next": {
+            "target": "Package",
+            "version": "[4.0.3, )"
           },
           "DocumentFormat.OpenXml": {
             "target": "Package",
@@ -9611,7 +9660,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200-preview.0.24575.35/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

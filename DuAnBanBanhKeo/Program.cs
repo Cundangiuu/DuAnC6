@@ -1,4 +1,5 @@
 ﻿using DuAnBanBanhKeo.Data;
+using DuAnBanBanhKeo.Helpers;
 using DuAnBanBanhKeo.Modal;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 builder.Services.AddControllers()
@@ -62,7 +64,7 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("Nhân viên", policy => policy.RequireRole("nhân viên"));
 });
 
-builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddAutoMapper(typeof(AutoMapperHelper));
 
 // Swagger setup for API documentation
 builder.Services.AddEndpointsApiExplorer();

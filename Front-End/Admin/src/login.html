@@ -105,7 +105,7 @@
         const togglePassword = document.querySelector('#togglePassword');
         const password = document.querySelector('#password');
 
-        togglePassword.addEventListener('click', function(e) {
+        togglePassword.addEventListener('click', function (e) {
             // toggle the type attribute
             const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
             password.setAttribute('type', type);
@@ -114,7 +114,7 @@
             this.classList.toggle('mdi-eye-off');
         });
 
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
             event.preventDefault(); // Ngăn chặn form submit mặc định
 
             const username = document.getElementById('username').value;
@@ -132,43 +132,34 @@
             }
 
             // Gửi yêu cầu đăng nhập đến API
-            fetch('https://localhost:7203/api/Authorize/GenerateToken', { // Đảm bảo URL này đúng với API của bạn
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        tenDangNhap: username, // Đảm bảo tên thuộc tính khớp với API
-                        matKhau: passwordValue // Đảm bảo tên thuộc tính khớp với API
-                    })
+            fetch('https://localhost:7203/api/Authorize/GenerateToken', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    tenDangNhap: username,
+                    matKhau: passwordValue
                 })
+            })
                 .then(response => {
                     if (!response.ok) {
-                        return response.json().then(errorData => {
-                            throw new Error(errorData.message || 'Tên đăng nhập hoặc mật khẩu không chính xác.');
+                        return response.text().then(errorText => {
+                            throw new Error(errorText || 'Tên đăng nhập hoặc mật khẩu không chính xác.');
                         });
                     }
                     return response.json();
                 })
                 .then(data => {
-                    // Kiểm tra xem JWT có hợp lệ hay không (ví dụ: có thể hết hạn)
-                    if (!data.token) {
-                        throw new Error("Đăng nhập không thành công. Vui lòng thử lại.");
-                    }
-
-                    // Giải mã token để lấy thông tin
+                    // Logic xử lý token giữ nguyên
                     const decodedToken = parseJwt(data.token);
-
-                    // Kiểm tra xem token có chứa thông tin trạng thái tài khoản không
                     if (decodedToken.TrangThaiTK === 'False') {
                         throw new Error("Tài khoản tạm thời bị khóa.");
                     }
-
-                    //** THAY ĐỔI LỚN Ở ĐÂY: CHỈ CHUYỂN HƯỚNG NẾU TRẠNG THÁI TK LÀ TRUE **
-                   if (decodedToken.TrangThaiTK === 'True') {
+                    if (decodedToken.TrangThaiTK === 'True') {
                         const role = decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
                         const maNV = decodedToken["MaNV"];
-                        const hoTen = decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"]; // SỬA LẠI ĐÂY
+                        const hoTen = decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
                         const hinhAnh = decodedToken["HinhAnh"];
 
                         localStorage.setItem('token', data.token);
@@ -177,32 +168,24 @@
                         localStorage.setItem('hinhAnh', hinhAnh);
                         localStorage.setItem('maNV', maNV);
 
-                        // Hiển thị SweetAlert2 thông báo thành công
                         Swal.fire({
                             icon: 'success',
                             title: 'Đăng nhập thành công!',
                             text: 'Chào mừng ' + hoTen + '!',
                             confirmButtonText: 'OK'
                         }).then((result) => {
-                            // Sau khi người dùng nhấn OK, chuyển hướng
                             window.location.href = '/Admin/src/index.html';
                         });
-
-
-                    } else {
-                        // Nếu trạng thái là false, hiển thị thông báo lỗi
-                        errorMessage.textContent = "Tài khoản tạm thời bị khóa.";
                     }
-                    //** KẾT THÚC THAY ĐỔI LỚN **
                 })
                 .catch(error => {
                     console.error('Lỗi đăng nhập:', error);
-                    errorMessage.textContent = error.message; // Hiển thị thông báo lỗi từ API
+                    document.getElementById('error-message').textContent = error.message;
                 });
         });
 
         // Kiểm tra thông tin đăng nhập đã lưu khi trang tải
-        window.onload = function() {
+        window.onload = function () {
             const rememberedUsername = localStorage.getItem('rememberedUsername');
             const rememberedPassword = localStorage.getItem('rememberedPassword');
 
@@ -216,7 +199,7 @@
         function parseJwt(token) {
             var base64Url = token.split('.')[1];
             var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-            var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+            var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
                 return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
             }).join(''));
 

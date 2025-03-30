@@ -1136,3 +1136,4 @@ D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\Microsoft.IO.RecyclableMemoryStrea
 D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
 D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Win32.SystemEvents.dll
 D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+D:\CNTT\CSharp6\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\BCrypt.Net-Next.dll

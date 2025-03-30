@@ -2,15 +2,13 @@
 using DuAnBanBanhKeo.Data;
 using DuAnBanBanhKeo.Data.Entities;
 using DuAnBanBanhKeo.Modal;
-using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
-using LoginRequest = DuAnBanBanhKeo.Modal.LoginRequest;
+using BCrypt.Net;
 
 namespace DuAnBanBanhKeo.Controllers
 {
@@ -31,21 +29,11 @@ namespace DuAnBanBanhKeo.Controllers
         public async Task<ActionResult<IEnumerable<TaiKhoanDto>>> GetTaiKhoans()
         {
             var taiKhoans = await _context.TaiKhoans
-                .Include(tk => tk.NhanVien) // Giả sử bạn có navigation property "MaNVNavigation"
+                .Include(tk => tk.NhanVien)
                 .ToListAsync();
 
-            var taiKhoanDtos = taiKhoans.Select(tk => new TaiKhoanDto
-            {
-                MaTK = tk.MaTK,
-                TenDangNhap = tk.TenDangNhap,
-                MaNV = tk.MaNV,
-                HoTen = tk.NhanVien?.HoTen, // Sửa thành HoTen
-                MatKhau = tk.MatKhau,
-                VaiTro = tk.NhanVien.VaiTro,
-                TrangThai = tk.TrangThai
-            }).ToList();
-
-            return taiKhoanDtos;
+            var taiKhoanDtos = _mapper.Map<List<TaiKhoanDto>>(taiKhoans);
+            return Ok(taiKhoanDtos);
         }
 
         [HttpGet("{maTK}")]
@@ -60,18 +48,8 @@ namespace DuAnBanBanhKeo.Controllers
                 return NotFound();
             }
 
-            var taiKhoanDto = new TaiKhoanDto
-            {
-                MaTK = taiKhoan.MaTK,
-                TenDangNhap = taiKhoan.TenDangNhap,
-                MaNV = taiKhoan.MaNV,
-                HoTen = taiKhoan.NhanVien?.HoTen, // Sửa thành HoTen
-                MatKhau = taiKhoan.MatKhau,
-                VaiTro = taiKhoan.NhanVien.VaiTro,
-                TrangThai = taiKhoan.TrangThai
-            };
-
-            return taiKhoanDto;
+            var taiKhoanDto = _mapper.Map<TaiKhoanDto>(taiKhoan);
+            return Ok(taiKhoanDto);
         }
 
         [HttpPut("{maTK}")]
@@ -82,27 +60,29 @@ namespace DuAnBanBanhKeo.Controllers
                 return BadRequest(ModelState);
             }
 
-            var existingTaiKhoan = await _context.TaiKhoans.FindAsync(maTK);
+            var existingTaiKhoan = await _context.TaiKhoans
+                .Include(tk => tk.NhanVien)
+                .FirstOrDefaultAsync(tk => tk.MaTK == maTK);
 
             if (existingTaiKhoan == null)
             {
                 return NotFound();
             }
 
-            existingTaiKhoan.TenDangNhap = taiKhoanUpdateDto.TenDangNhap;
-            existingTaiKhoan.MaNV = taiKhoanUpdateDto.MaNV;
+            // Cập nhật các trường cơ bản
+            existingTaiKhoan.TenDangNhap = taiKhoanUpdateDto.TenDangNhap ?? existingTaiKhoan.TenDangNhap;
+            existingTaiKhoan.MaNV = taiKhoanUpdateDto.MaNV ?? existingTaiKhoan.MaNV;
 
-            // Cập nhật trạng thái nếu có
+            // Cập nhật trạng thái nếu có giá trị
             if (taiKhoanUpdateDto.TrangThai.HasValue)
             {
                 existingTaiKhoan.TrangThai = taiKhoanUpdateDto.TrangThai.Value;
             }
 
+            // Cập nhật mật khẩu nếu được cung cấp
             if (!string.IsNullOrEmpty(taiKhoanUpdateDto.MatKhau))
             {
-                string salt = GenerateSalt();
-                string hashedPassword = HashPassword(taiKhoanUpdateDto.MatKhau, salt);
-                existingTaiKhoan.MatKhau = hashedPassword + ":" + salt;
+                existingTaiKhoan.MatKhau = BCrypt.Net.BCrypt.HashPassword(taiKhoanUpdateDto.MatKhau);
             }
 
             try
@@ -115,42 +95,34 @@ namespace DuAnBanBanhKeo.Controllers
                 {
                     return NotFound();
                 }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
             return NoContent();
         }
 
         [HttpPost]
-        public async Task<ActionResult<TaiKhoan>> PostTaiKhoan(TaiKhoanCreateDto taiKhoanCreateDto)
+        public async Task<ActionResult<TaiKhoanDto>> PostTaiKhoan(TaiKhoanCreateDto taiKhoanCreateDto)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            string salt = GenerateSalt();
-            string hashedPassword = HashPassword(taiKhoanCreateDto.MatKhau, salt);
-
-            // Tạo mã tài khoản tự động
-            string maTK = GenerateMaTK();
-
             var taiKhoan = new TaiKhoan
             {
-                MaTK = maTK,
+                MaTK = GenerateMaTK(),
                 TenDangNhap = taiKhoanCreateDto.TenDangNhap,
-                MatKhau = hashedPassword + ":" + salt,
+                MatKhau = BCrypt.Net.BCrypt.HashPassword(taiKhoanCreateDto.MatKhau), // Hash mật khẩu bằng BCrypt
                 MaNV = taiKhoanCreateDto.MaNV,
-                TrangThai = true 
+                TrangThai = true
             };
 
             _context.TaiKhoans.Add(taiKhoan);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetTaiKhoan", new { maTK = taiKhoan.MaTK }, _mapper.Map<TaiKhoanDto>(taiKhoan));
+            var taiKhoanDto = _mapper.Map<TaiKhoanDto>(taiKhoan);
+            return CreatedAtAction(nameof(GetTaiKhoan), new { maTK = taiKhoan.MaTK }, taiKhoanDto);
         }
 
         [HttpDelete("{maTK}")]
@@ -162,62 +134,15 @@ namespace DuAnBanBanhKeo.Controllers
                 return NotFound();
             }
 
-            // Thay vì xóa, cập nhật trạng thái thành false (ngưng hoạt động)
+            // Soft delete: cập nhật trạng thái thay vì xóa
             taiKhoan.TrangThai = false;
-
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool TaiKhoanExists(string maTK)
-        {
-            return _context.TaiKhoans.Any(e => e.MaTK == maTK);
-        }
-
-        private string GenerateSalt()
-        {
-            byte[] salt = new byte[16];
-            using (var rng = RandomNumberGenerator.Create())
-            {
-                rng.GetBytes(salt);
-            }
-            return Convert.ToBase64String(salt);
-        }
-
-        private string HashPassword(string password, string salt)
-        {
-            string passwordWithSalt = password + salt;
-            using (SHA256 sha256Hash = SHA256.Create())
-            {
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(passwordWithSalt));
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++)
-                {
-                    builder.Append(bytes[i].ToString("x2"));
-                }
-                return builder.ToString();
-            }
-        }
-
-        private string GenerateMaTK()
-        {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            var random = new Random();
-            string maTK;
-
-            do
-            {
-                maTK = "TK" + new string(Enumerable.Repeat(chars, 6)
-                    .Select(s => s[random.Next(s.Length)]).ToArray()); // 6 ký tự ngẫu nhiên sau "TK"
-            }
-            while (_context.TaiKhoans.Any(tk => tk.MaTK == maTK)); // Đảm bảo không trùng lặp
-
-            return maTK;
-        }
-
         [HttpPost("Login")]
-        public async Task<ActionResult<object>> Login(LoginRequest loginRequest)
+        public async Task<ActionResult<object>> Login([FromBody] LoginRequest loginRequest)
         {
             if (!ModelState.IsValid)
             {
@@ -226,36 +151,49 @@ namespace DuAnBanBanhKeo.Controllers
 
             var taiKhoan = await _context.TaiKhoans
                 .Include(tk => tk.NhanVien)
-                .FirstOrDefaultAsync(tk => tk.TenDangNhap == loginRequest.TenDangNhap && tk.TrangThai == true); // Kiểm tra cả TrangThai
+                .FirstOrDefaultAsync(tk => tk.TenDangNhap == loginRequest.TenDangNhap);
 
-            if (taiKhoan == null)
+            if (taiKhoan == null || !taiKhoan.TrangThai)
             {
                 return Unauthorized("Tên đăng nhập không tồn tại hoặc tài khoản đã bị vô hiệu hóa.");
             }
 
-            // Xác thực mật khẩu
-            string[] parts = taiKhoan.MatKhau.Split(':');
-            string hashedPassword = parts[0];
-            string salt = parts[1];
-
-            string hashedPasswordAttempt = HashPassword(loginRequest.MatKhau, salt);
-
-            if (hashedPassword != hashedPasswordAttempt)
+            // Kiểm tra mật khẩu bằng BCrypt
+            if (!BCrypt.Net.BCrypt.Verify(loginRequest.MatKhau, taiKhoan.MatKhau))
             {
                 return Unauthorized("Mật khẩu không đúng.");
             }
 
-            // Tạo đối tượng trả về chứa thông tin tài khoản và nhân viên
             var loginResponse = new
             {
                 taiKhoan.MaTK,
                 taiKhoan.TenDangNhap,
                 taiKhoan.MaNV,
                 HoTenNhanVien = taiKhoan.NhanVien?.HoTen,
-                ChucVu = taiKhoan.NhanVien?.VaiTro // Thêm thông tin chức vụ nếu cần
+                VaiTro = taiKhoan.NhanVien?.VaiTro
             };
 
             return Ok(loginResponse);
+        }
+
+        private bool TaiKhoanExists(string maTK)
+        {
+            return _context.TaiKhoans.Any(e => e.MaTK == maTK);
+        }
+
+        private string GenerateMaTK()
+        {
+            const string chars = "0123456789";
+            var random = new Random();
+            string maTK;
+
+            do
+            {
+                maTK = "TK" + new string(Enumerable.Repeat(chars, 3)
+                    .Select(s => s[random.Next(s.Length)]).ToArray());
+            } while (_context.TaiKhoans.Any(tk => tk.MaTK == maTK));
+
+            return maTK;
         }
     }
 }

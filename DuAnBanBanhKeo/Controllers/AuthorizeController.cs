@@ -1,5 +1,6 @@
 ﻿using DuAnBanBanhKeo.Data;
 using DuAnBanBanhKeo.Modal;
+using DuAnBanBanhKeo.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -26,19 +27,20 @@ namespace DuAnBanBanhKeo.Controllers
         {
             var user = await _context.TaiKhoans
                 .Include(t => t.NhanVien)
-                .SingleOrDefaultAsync(nv =>
-                    nv.TenDangNhap == taiKhoanCredential.TenDangNhap &&
-                    nv.MatKhau == taiKhoanCredential.MatKhau);
+                .SingleOrDefaultAsync(nv => nv.TenDangNhap == taiKhoanCredential.TenDangNhap);
 
-            if (user == null) return Unauthorized();
+            if (user == null || !PasswordHelper.VerifyPassword(taiKhoanCredential.MatKhau, user.MatKhau))
+            {
+                return Unauthorized("Tên đăng nhập hoặc mật khẩu không chính xác.");
+            }
 
             var authClaims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.NhanVien.HoTen), // Thêm HoTen từ NhanVien
-                new Claim(ClaimTypes.Role, user.NhanVien.VaiTro), // Lấy vai trò từ NhanVien
+                new Claim(ClaimTypes.Name, user.NhanVien.HoTen),
+                new Claim(ClaimTypes.Role, user.NhanVien.VaiTro),
                 new Claim("MaNV", user.MaNV),
-                new Claim("HinhAnh", user.NhanVien.HinhAnh ?? ""), // Thêm HinhAnh (có thể null)
-                 new Claim("TrangThaiTK", user.TrangThai.ToString()), // Thêm TrangThai
+                new Claim("HinhAnh", user.NhanVien.HinhAnh ?? ""),
+                new Claim("TrangThaiTK", user.TrangThai.ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
