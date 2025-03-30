@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DuAnBanBanhKeo.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250325070456_DLSS")]
+    [Migration("20250330051342_DLSS")]
     partial class DLSS
     {
         /// <inheritdoc />

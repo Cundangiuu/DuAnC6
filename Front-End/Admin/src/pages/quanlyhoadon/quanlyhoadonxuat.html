@@ -407,11 +407,23 @@
 
                 // Kiểm tra xem MaNV có tồn tại không
                 if (!maNV || !token) {
-                    // Nếu không có MaNV hoặc token, chuyển hướng người dùng đến trang đăng nhập
-                    alert('Bạn chưa đăng nhập hoặc token không tồn tại. Vui lòng đăng nhập để tiếp tục.');
+            // Nếu không có MaNV hoặc token, chuyển hướng người dùng đến trang đăng nhập
+            Swal.fire({
+                title: 'Thông báo!',
+                text: 'Bạn chưa đăng nhập hoặc token không tồn tại. Vui lòng đăng nhập để tiếp tục.',
+                icon: 'warning',
+                confirmButtonText: 'Đăng nhập',
+                allowOutsideClick: false, // Ngăn người dùng đóng bằng cách click ra ngoài
+                allowEscapeKey: false  // Ngăn người dùng đóng bằng phím ESC
+            }).then((result) => {
+                if (result.isConfirmed) {
                     window.location.href = '/Admin/src/login.html'; // Thay đổi đường dẫn nếu cần
-                    return; // Dừng thực thi script nếu chưa đăng nhập
+                } else {
+                    window.location.href = '/Admin/src/login.html'; // Thay đổi đường dẫn nếu cần - phòng trường hợp không bấm vào nút đăng nhập.
                 }
+            });
+            return; // Dừng thực thi script nếu chưa đăng nhập
+            }
 
                 // Load navbar, sidebar, and footer
                 $("#navbar-placeholder").load("/Admin/src/partials/_navbar.html", function () {

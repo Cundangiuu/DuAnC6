@@ -217,7 +217,7 @@
     <!-- End custom js for this page -->
     <script>
       const IMAGE_PATH_1 = "/Admin/src/assets/images/nhanVien/";
-        const LOGIN_PAGE_URL = "login.html";
+      const LOGIN_PAGE_URL = "/Admin/src/login.html";
 
         let navbarLoaded = false;
         let sidebarLoaded = false;
@@ -225,7 +225,7 @@
             if (navbarLoaded && sidebarLoaded) {
                 checkLoginStatus();
             }
-        }
+      }
       // Sử dụng Fetch API để nạp _navbar.html vào trang
       fetch("/Admin/src/partials/_navbar.html")
           .then(response => response.text())
