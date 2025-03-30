@@ -21,10 +21,13 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowMyFrontend", builder =>
     {
-        builder.WithOrigins("http://127.0.0.1:5501") // Nguồn gốc frontend 
-               .AllowAnyMethod()
-               .AllowAnyHeader()
-               .AllowCredentials();
+        builder.WithOrigins(
+            "http://127.0.0.1:5501", // Máy chủ ảo của bạn
+            "https://nhom-arise.netlify.app" // Trang web Netlify của bạn
+        )
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials();
     });
 });
 

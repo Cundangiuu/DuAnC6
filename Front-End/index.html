@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Trang chủ Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="assets/images/favicon.png" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        /* CSS để kiểm soát kích thước biểu đồ tròn */
+        .chart-container {
+            width: 900px;
+            /* Đặt chiều rộng mong muốn (tăng lên gấp đôi) */
+            height: 600px;
+            /* Đặt chiều cao mong muốn (tăng lên gấp đôi) */
+            margin: 0 auto;
+            /* Căn giữa biểu đồ */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-scroller">
+        <!-- partial:partials/_navbar.html -->
+        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+            id="navbar-placeholder"></nav>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:partials/_sidebar.html -->
+            <nav class="sidebar sidebar-offcanvas" id="sidebar"></nav>
+            <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="page-header">
+                        <h3 class="page-title">
+                            <span class="page-title-icon bg-gradient-primary text-white me-2">
+                                <i class="mdi mdi-home"></i>
+                            </span>
+                        </h3>
+                        <nav aria-label="breadcrumb">
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    <span></span> <i
+                                        class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div id="mainContent">
+                        <!-- Tabs -->
+                        <ul class="nav nav-tabs" id="myTabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="product-tab" data-toggle="tab" href="#product"
+                                    role="tab" aria-controls="product" aria-selected="true">Sản phẩm</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="supplier-tab" data-toggle="tab" href="#supplier"
+                                    role="tab" aria-controls="supplier" aria-selected="false">Nhà cung cấp</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="hoadon-tab" data-toggle="tab" href="#hoadon"
+                                    role="tab" aria-controls="hoadon" aria-selected="false">Hóa đơn</a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab Content -->
+                        <div class="tab-content" id="myTabsContent">
+                            <!-- Product Tab -->
+                            <div class="tab-pane fade show active" id="product" role="tabpanel"
+                                aria-labelledby="product-tab">
+                                <div class="row">
+                                    <div class="col-md-4 stretch-card grid-margin">
+                                        <div class="card bg-gradient-danger card-img-holder text-white">
+                                            <div class="card-body">
+                                                <img src="assets/images/dashboard/circle.svg"
+                                                    class="card-img-absolute" alt="circle-image" />
+                                                <h4 class="font-weight-normal mb-3">Tổng giá trị tồn kho <i
+                                                        class="mdi mdi-chart-line mdi-24px float-end"></i>
+                                                </h4>
+                                                <h2 class="mb-5" id="product-total-inventory-value">Đang tải...</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 stretch-card grid-margin">
+                                        <div class="card bg-gradient-info card-img-holder text-white">
+                                            <div class="card-body">
+                                                <img src="assets/images/dashboard/circle.svg"
+                                                    class="card-img-absolute" alt="circle-image" />
+                                                <h4 class="font-weight-normal mb-3">Sản phẩm nhập nhiều nhất <i
+                                                        class="mdi mdi-bookmark-outline mdi-24px float-end"></i>
+                                                </h4>
+                                                <h2 class="mb-5" id="product-most-imported-product">Đang tải...</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 stretch-card grid-margin">
+                                        <div class="card bg-gradient-success card-img-holder text-white">
+                                            <div class="card-body">
+                                                <img src="assets/images/dashboard/circle.svg"
+                                                    class="card-img-absolute" alt="circle-image" />
+                                                <h4 class="font-weight-normal mb-3">Sản phẩm nhập ít nhất <i
+                                                        class="mdi mdi-diamond mdi-24px float-end"></i>
+                                                </h4>
+                                                <h2 class="mb-5" id="product-least-imported-product">Đang tải...</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 stretch-card grid-margin">
+                                        <div class="card bg-gradient-warning card-img-holder text-white">
+                                            <div class="card-body">
+                                                <img src="assets/images/dashboard/circle.svg"
+                                                    class="card-img-absolute" alt="circle-image" />
+                                                <h4 class="font-weight-normal mb-3">Tổng số lượng hàng tồn <i
+                                                        class="mdi mdi-archive mdi-24px float-end"></i>
+                                                </h4>
+                                                <h2 class="mb-5" id="product-total-quantity-in-stock">Đang tải...</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 stretch-card grid-margin">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="card-title" style="font-family: 'Times New Roman', Times, serif;">Sản phẩm sắp hết hàng</h4>
+                                                <div class="table-responsive">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th style="font-family: 'Times New Roman', Times, serif;">Mã sản phẩm</th>
+                                                                <th style="font-family: 'Times New Roman', Times, serif;">Tên sản phẩm</th>
+                                                                <th style="font-family: 'Times New Roman', Times, serif;">Số lượng tồn</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="product-low-stock-products">
+                                                            <!-- Dữ liệu sản phẩm sắp hết hàng sẽ được thêm vào đây -->
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 stretch-card grid-margin">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Giá trị nhập theo tháng</h4>
+                                                <div class="form-group">
+                                                    <label for="product-month">Chọn tháng:</label>
+                                                    <select class="form-control" id="product-month">
+                                                        <option value="1">Tháng 1</option>
+                                                        <option value="2">Tháng 2</option>
+                                                        <option value="3">Tháng 3</option>
+                                                        <option value="4">Tháng 4</option>
+                                                        <option value="5">Tháng 5</option>
+                                                        <option value="6">Tháng 6</option>
+                                                        <option value="7">Tháng 7</option>
+                                                        <option value="8">Tháng 8</option>
+                                                        <option value="9">Tháng 9</option>
+                                                        <option value="10">Tháng 10</option>
+                                                        <option value="11">Tháng 11</option>
+                                                        <option value="12">Tháng 12</option>
+                                                    </select>
+                                                </div>
+                                                <p>Giá trị nhập: <span id="product-monthly-import-value">Đang
+                                                        tải...</span></p>
+
+                                                <!-- Thêm canvas để vẽ biểu đồ -->
+                                                <canvas id="product-monthly-import-chart" height="150"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Thêm biểu đồ tròn vào tab Sản phẩm -->
+                                <div class="row">
+                                    <div class="col-md-12 stretch-card grid-margin">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Phân loại sản phẩm</h4>
+                                                <div class="chart-container">
+                                                    <canvas id="product-category-chart"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Supplier Tab -->
+                            <div class="tab-pane fade" id="supplier" role="tabpanel" aria-labelledby="supplier-tab">
+                                <div class="row">
+                                    <div class="col-md-6 stretch-card grid-margin">
+                                        <div class="card bg-gradient-primary card-img-holder text-white">
+                                            <div class="card-body">
+                                                <img src="assets/images/dashboard/circle.svg"
+                                                    class="card-img-absolute" alt="circle-image" />
+                                                <h4 class="font-weight-normal mb-3">Tổng số lượng nhà cung cấp <i
+                                                        class="mdi mdi-factory mdi-24px float-end"></i>
+                                                </h4>
+                                                <h2 class="mb-5" id="supplier-total-count">Đang tải...</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 stretch-card grid-margin">
+                                        <div class="card bg-gradient-info card-img-holder text-white">
+                                            <div class="card-body">
+                                                <img src="assets/images/dashboard/circle.svg"
+                                                    class="card-img-absolute" alt="circle-image" />
+                                                <h4 class="font-weight-normal mb-3">Tổng giá trị nhập hàng từ nhà cung
+                                                    cấp <i class="mdi mdi-cash mdi-24px float-end"></i>
+                                                </h4>
+                                                <h2 class="mb-5" id="supplier-total-import-value">Đang tải...</h2>
+                                                <div class="form-group">
+                                                    <label for="supplier-dropdown">Chọn nhà cung cấp:</label>
+                                                    <select class="form-control" id="supplier-dropdown">
+                                                        <option value="">Đang tải...</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- HoaDon Tab -->
+                            <div class="tab-pane fade" id="hoadon" role="tabpanel" aria-labelledby="hoadon-tab">
+                                <div class="row">
+                                    <div class="col-md-6 stretch-card grid-margin">
+                                        <div class="card bg-gradient-primary card-img-holder text-white">
+                                            <div class="card-body">
+                                                <img src="assets/images/dashboard/circle.svg"
+                                                    class="card-img-absolute" alt="circle-image" />
+                                                <h4 class="font-weight-normal mb-3">Tổng số lượng hóa đơn nhập <i
+                                                        class="mdi mdi-file-document-box mdi-24px float-end"></i>
+                                                </h4>
+                                                <h2 class="mb-5" id="hoadon-total-count">Đang tải...</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 stretch-card grid-margin">
+                                        <div class="card bg-gradient-info card-img-holder text-white">
+                                            <div class="card-body">
+                                                <img src="assets/images/dashboard/circle.svg"
+                                                    class="card-img-absolute" alt="circle-image" />
+                                                <h4 class="font-weight-normal mb-3">Giá trị nhập theo tháng <i
+                                                        class="mdi mdi-cash mdi-24px float-end"></i>
+                                                </h4>
+                                                <h2 class="mb-5" id="hoadon-monthly-import-value">Đang tải...</h2>
+                                                <div class="form-group">
+                                                    <label for="hoadon-month">Chọn tháng:</label>
+                                                    <select class="form-control" id="hoadon-month">
+                                                        <option value="1">Tháng 1</option>
+                                                        <option value="2">Tháng 2</option>
+                                                        <option value="3">Tháng 3</option>
+                                                        <option value="4">Tháng 4</option>
+                                                        <option value="5">Tháng 5</option>
+                                                        <option value="6">Tháng 6</option>
+                                                        <option value="7">Tháng 7</option>
+                                                        <option value="8">Tháng 8</option>
+                                                        <option value="9">Tháng 9</option>
+                                                        <option value="10">Tháng 10</option>
+                                                        <option value="11">Tháng 11</option>
+                                                        <option value="12">Tháng 12</option>
+                                                    </select>
+                                                </div>
+                                                <!-- Thêm canvas để vẽ biểu đồ -->
+                                                <canvas id="hoadon-monthly-import-chart" height="150"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 stretch-card grid-margin">
+                                        <div class="card bg-gradient-primary card-img-holder text-white">
+                                            <div class="card-body">
+                                                <img src="assets/images/dashboard/circle.svg"
+                                                    class="card-img-absolute" alt="circle-image" />
+                                                <h4 class="font-weight-normal mb-3">Tổng số lượng hóa đơn xuất <i
+                                                        class="mdi mdi-file-document-box mdi-24px float-end"></i>
+                                                </h4>
+                                                <h2 class="mb-5" id="hoadon-total-count-xuat">Đang tải...</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 stretch-card grid-margin">
+                                        <div class="card bg-gradient-info card-img-holder text-white">
+                                            <div class="card-body">
+                                                <img src="assets/images/dashboard/circle.svg"
+                                                    class="card-img-absolute" alt="circle-image" />
+                                                <h4 class="font-weight-normal mb-3">Giá trị xuất theo tháng <i
+                                                        class="mdi mdi-cash mdi-24px float-end"></i>
+                                                </h4>
+                                                <h2 class="mb-5" id="hoadon-monthly-export-value">Đang tải...</h2>
+                                                <div class="form-group">
+                                                    <label for="hoadon-month-xuat">Chọn tháng:</label>
+                                                    <select class="form-control" id="hoadon-month-xuat">
+                                                        <option value="1">Tháng 1</option>
+                                                        <option value="2">Tháng 2</option>
+                                                        <option value="3">Tháng 3</option>
+                                                        <option value="4">Tháng 4</option>
+                                                        <option value="5">Tháng 5</option>
+                                                        <option value="6">Tháng 6</option>
+                                                        <option value="7">Tháng 7</option>
+                                                        <option value="8">Tháng 8</option>
+                                                        <option value="9">Tháng 9</option>
+                                                        <option value="10">Tháng 10</option>
+                                                        <option value="11">Tháng 11</option>
+                                                        <option value="12">Tháng 12</option>
+                                                    </select>
+                                                </div>
+                                                <!-- Thêm canvas để vẽ biểu đồ -->
+                                                <canvas id="hoadon-monthly-export-chart" height="150"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- content-wrapper ends -->
+                <!-- partial:partials/_footer.html -->
+                <footer class="footer" id="footer"></footer>
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="assets/vendors/chart.js/chart.umd.js"></script>
+    <script src="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/misc.js"></script>
+    <script src="assets/js/settings.js"></script>
+    <script src="assets/js/todolist.js"></script>
+    <script src="assets/js/jquery.cookie.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="assets/js/dashboard.js"></script>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        const API_URL = "https://localhost:7203/api";
+        const IMAGE_PATH_1 = "/Admin/src/assets/images/nhanVien/";
+        const LOGIN_PAGE_URL = "login.html";
+
+        let navbarLoaded = false;
+        let sidebarLoaded = false;
+        let suppliersData = []; // Store the supplier data
+
+        function checkAllLoaded() {
+            if (navbarLoaded && sidebarLoaded) {
+                checkLoginStatus();
+                attachNavigationEventListeners();
+                loadThongKeData();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Load navbar
+            fetch("partials/_navbar.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("navbar-placeholder").innerHTML = data;
+                    navbarLoaded = true;
+                    checkAllLoaded();
+                })
+                .catch(error => console.error("Lỗi khi tải navbar:", error));
+
+            // Load sidebar
+            fetch("partials/_sidebar.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("sidebar").innerHTML = data;
+                    sidebarLoaded = true;
+                    checkAllLoaded();
+                })
+                .catch(error => console.error("Lỗi khi tải sidebar:", error));
+
+            // Load footer
+            fetch("partials/_footer.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("footer").innerHTML = data;
+                })
+                .catch(error => console.error("Lỗi khi tải footer:", error));
+        });
+
+        function checkLoginStatus() {
+            const token = localStorage.getItem('token');
+            const hoTen = localStorage.getItem('hoTen');
+            const userRole = localStorage.getItem('userRole');
+            let hinhAnh = localStorage.getItem('hinhAnh');
+
+            const loginButton = document.getElementById('loginButton');
+            const profileDropdown = document.getElementById('profileDropdown');
+            const mainContent = document.getElementById('mainContent');
+            const sidebar = document.getElementById('sidebar');
+
+            if (token) {
+                loginButton.style.display = 'none';
+                profileDropdown.style.display = 'block';
+
+                const navbarHoTen = document.querySelector('#profileDropdown .nav-profile-text p');
+                const navbarHinhAnh = document.querySelector('#profileDropdown .nav-profile-img img');
+
+                if (navbarHoTen) {
+                    navbarHoTen.textContent = hoTen;
+                }
+                if (navbarHinhAnh) {
+                    if (hinhAnh && !hinhAnh.startsWith('http')) {
+                        hinhAnh = `${IMAGE_PATH_1}${hinhAnh}`;
+                    }
+                    navbarHinhAnh.src = hinhAnh;
+                }
+                mainContent.style.display = 'block';
+
+                const sidebarHoTen = document.getElementById("sidebar-hoTen");
+                const sidebarVaiTro = document.getElementById("sidebar-vaiTro");
+                const sidebarHinhAnh = document.getElementById("sidebar-hinhAnh");
+
+                if (sidebarHoTen) {
+                    sidebarHoTen.textContent = hoTen;
+                }
+                if (sidebarVaiTro) {
+                    sidebarVaiTro.textContent = userRole;
+                }
+                if (sidebarHinhAnh) {
+                    sidebarHinhAnh.src = hinhAnh;
+                }
+
+                // Role-based access control
+                if (userRole === 'Nhân viên') {
+                    // Hide elements specific to admin
+                    const quanLyNguoiDungLi = Array.from(sidebar.querySelectorAll('li a'))
+                        .find(a => a.textContent.trim() === 'Quản lý người dùng')
+                        ?.closest('li');
+
+                    if (quanLyNguoiDungLi) {
+                        const quanLyNhanVienLink = quanLyNguoiDungLi.querySelector('a[href*="quanlynhanvien"]');
+
+                        if (quanLyNhanVienLink) {
+                            quanLyNhanVienLink.closest('li').style.display = 'none';
+                        }
+                    }
+                } else if (userRole === 'Quản lý kho') {
+                    // Show elements specific to quản lý kho
+                    const quanLyNguoiDungLi = Array.from(sidebar.querySelectorAll('li a'))
+                        .find(a => a.textContent.trim() === 'Quản lý người dùng')
+                        ?.closest('li');
+
+                    if (quanLyNguoiDungLi) {
+                        const quanLyNhanVienLink = quanLyNguoiDungLi.querySelector('a[href*="quanlynhanvien"]');
+
+                        if (quanLyNhanVienLink) {
+                            quanLyNhanVienLink.closest('li').style.display = 'block';
+                        }
+                    }
+                }
+
+                // Logout functionality
+                document.getElementById('logoutButton').addEventListener('click', function () {
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('userRole');
+                    localStorage.removeItem('hoTen');
+                    localStorage.removeItem('hinhAnh');
+                    localStorage.removeItem('maNV');
+                    window.location.reload();
+                });
+
+            } else {
+                loginButton.style.display = 'block';
+                profileDropdown.style.display = 'none';
+                mainContent.style.display = 'block'; //or none if it needs login
+            }
+        }
+
+        function attachNavigationEventListeners() {
+            const navLinks = document.querySelectorAll('#sidebar a, #navbar-placeholder a');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (event) {
+                    const token = localStorage.getItem('token');
+
+                    if (!token && !this.href.includes(LOGIN_PAGE_URL)) {
+                        event.preventDefault();
+                        window.location.href = LOGIN_PAGE_URL;
+                    }
+                });
+            });
+        }
+
+        let productMonthlyImportChart, hoadonMonthlyImportChart, productCategoryChart, hoadonMonthlyExportChart;
+
+        function createChart(canvasId, type, data, options) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            return new Chart(ctx, {
+                type: type,
+                data: data,
+                options: options
+            });
+        }
+
+        async function loadThongKeData() {
+            loadProductData();
+            loadSupplierData();
+            loadHoaDonData();
+        }
+
+        async function loadProductData() {
+            try {
+                const totalInventoryValue = await fetchData(`${API_URL}/ThongKe/SanPham/TongGiaTriTonKho`);
+                document.getElementById('product-total-inventory-value').textContent = totalInventoryValue.toLocaleString('vi-VN', {
+                    style: 'currency',
+                    currency: 'VND'
+                });
+
+                const mostImportedProduct = await fetchData(`${API_URL}/ThongKe/SanPham/NhapNhieuNhat`);
+                document.getElementById('product-most-imported-product').textContent = mostImportedProduct ?
+                    `${mostImportedProduct.tenSP} (${mostImportedProduct.tongSoLuongNhap})` : "Không có";
+
+                const leastImportedProduct = await fetchData(`${API_URL}/ThongKe/SanPham/NhapItNhat`);
+                document.getElementById('product-least-imported-product').textContent = leastImportedProduct ?
+                    `${leastImportedProduct.tenSP} (${leastImportedProduct.tongSoLuongNhap})` : "Không có";
+
+                const lowStockProducts = await fetchData(`${API_URL}/ThongKe/SanPham/SapHetHang`);
+                const lowStockProductsTable = document.getElementById('product-low-stock-products');
+                lowStockProductsTable.innerHTML = "";
+                lowStockProducts.forEach(product => {
+                    const row = `<tr>
+                                    <td>${product.maSP}</td>
+                                    <td>${product.tenSP}</td>
+                                    <td>${product.soLuongTon}</td>
+                                </tr>`;
+                    lowStockProductsTable.innerHTML += row;
+                });
+
+                const totalQuantityInStock = await fetchData(`${API_URL}/ThongKe/SanPham/TongSoLuongTon`);
+                document.getElementById('product-total-quantity-in-stock').textContent = totalQuantityInStock;
+
+                const currentMonth = new Date().getMonth() + 1;
+                document.getElementById('product-month').value = currentMonth;
+                loadMonthlyImportValue(currentMonth);
+
+                async function loadMonthlyImportValue(month) {
+                    try {
+                        const monthlyImportValue = await fetchData(`${API_URL}/ThongKe/HoaDonNhap/GiaTriNhapTheoThang/${month}`);
+                        document.getElementById('product-monthly-import-value').textContent = monthlyImportValue.toLocaleString('vi-VN', {
+                            style: 'currency',
+                            currency: 'VND'
+                        });
+                        updateProductMonthlyImportChart(month, monthlyImportValue);
+                    } catch (error) {
+                        console.error("Lỗi khi tải giá trị nhập theo tháng:", error);
+                        document.getElementById('product-monthly-import-value').textContent = "Lỗi";
+                    }
+                }
+
+                document.getElementById('product-month').addEventListener('change', function () {
+                    const selectedMonth = this.value;
+                    loadMonthlyImportValue(selectedMonth);
+                });
+
+                // Product Monthly Import Chart Initialization
+                if (!productMonthlyImportChart) {
+                    productMonthlyImportChart = createChart(
+                        'product-monthly-import-chart',
+                        'bar', {
+                        labels: ['Tháng'],
+                        datasets: [{
+                            label: 'Giá trị nhập',
+                            data: [0],
+                            backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        }]
+                    }, {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            title: {
+                                display: true,
+                                text: 'Giá trị nhập hàng theo tháng',
+                                font: {
+                                    size: 16
+                                }
+                            }
+                        }
+                    });
+                }
+
+                // Product Category Data
+                await loadProductCategoryData();
+
+            } catch (error) {
+                console.error("Lỗi khi tải dữ liệu sản phẩm:", error);
+            }
+        }
+
+        async function loadSupplierData() {
+            try {
+                const totalSuppliers = await fetchData(`${API_URL}/ThongKe/NhaCungCap/TongSoLuong`);
+                document.getElementById('supplier-total-count').textContent = totalSuppliers;
+
+                // Fetch all suppliers
+                suppliersData = await fetchData(`${API_URL}/NhaCungCap`);
+
+                // Populate the dropdown
+                const supplierDropdown = document.getElementById('supplier-dropdown');
+                supplierDropdown.innerHTML = '';
+
+                const defaultOption = document.createElement('option');
+                defaultOption.value = '';
+                defaultOption.textContent = 'Chọn nhà cung cấp';
+                supplierDropdown.appendChild(defaultOption);
+
+                suppliersData.forEach(supplier => {
+                    const option = document.createElement('option');
+                    option.value = supplier.maNCC;
+                    option.textContent = supplier.tenNCC;
+                    supplierDropdown.appendChild(option);
+                });
+
+                // Event listener for dropdown change
+                supplierDropdown.addEventListener('change', function () {
+                    const selectedSupplierId = this.value;
+                    loadTotalImportValueBySupplier(selectedSupplierId);
+                });
+
+                // Initial load
+                if (suppliersData.length > 0) {
+                    loadTotalImportValueBySupplier(suppliersData[0].maNCC);
+                }
+            } catch (error) {
+                console.error("Lỗi khi tải dữ liệu nhà cung cấp:", error);
+            }
+        }
+
+        async function loadTotalImportValueBySupplier(supplierId) {
+            try {
+                const totalImportValue = await fetchData(`${API_URL}/ThongKe/NhaCungCap/TongGiaTriNhapHang/${supplierId}`);
+                document.getElementById('supplier-total-import-value').textContent = totalImportValue.toLocaleString('vi-VN', {
+                    style: 'currency',
+                    currency: 'VND'
+                });
+            } catch (error) {
+                console.error("Lỗi khi tải tổng giá trị nhập hàng từ nhà cung cấp:", error);
+                document.getElementById('supplier-total-import-value').textContent = "Lỗi";
+            }
+        }
+
+        async function loadHoaDonData() {
+            try {
+                // Hoa Don Nhap
+                const totalHoaDonNhap = await fetchData(`${API_URL}/ThongKe/HoaDonNhap/TongSoLuongHoaDonNhap`);
+                document.getElementById('hoadon-total-count').textContent = totalHoaDonNhap;
+
+                const currentMonthNhap = new Date().getMonth() + 1;
+                document.getElementById('hoadon-month').value = currentMonthNhap;
+                loadMonthlyImportValue(currentMonthNhap);
+
+                async function loadMonthlyImportValue(month) {
+                    try {
+                        const monthlyImportValue = await fetchData(`${API_URL}/ThongKe/HoaDonNhap/GiaTriNhapTheoThang/${month}`);
+                        document.getElementById('hoadon-monthly-import-value').textContent = monthlyImportValue.toLocaleString('vi-VN', {
+                            style: 'currency',
+                            currency: 'VND'
+                        });
+                        updateHoadonMonthlyImportChart(month, monthlyImportValue);
+                    } catch (error) {
+                        console.error("Lỗi khi tải giá trị nhập theo tháng:", error);
+                        document.getElementById('hoadon-monthly-import-value').textContent = "Lỗi";
+                    }
+                }
+
+                document.getElementById('hoadon-month').addEventListener('change', function () {
+                    const selectedMonth = this.value;
+                    loadMonthlyImportValue(selectedMonth);
+                });
+
+                // Init chart if it doesn't exist
+                if (!hoadonMonthlyImportChart) {
+                    hoadonMonthlyImportChart = createChart(
+                        'hoadon-monthly-import-chart',
+                        'line', {
+                        labels: ['Tháng'],
+                        datasets: [{
+                            label: 'Giá trị nhập',
+                            data: [0],
+                            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1,
+                            fill: true
+                        }]
+                    }, {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            title: {
+                                display: true,
+                                text: 'Giá trị nhập hóa đơn theo tháng',
+                                font: {
+                                    size: 16
+                                }
+                            }
+                        }
+                    });
+                }
+
+                // Hoa Don Xuat
+                const totalHoaDonXuat = await fetchData(`${API_URL}/ThongKe/HoaDonXuat/TongSoLuongHoaDonXuat`);
+                document.getElementById('hoadon-total-count-xuat').textContent = totalHoaDonXuat;
+
+                const currentMonthXuat = new Date().getMonth() + 1;
+                document.getElementById('hoadon-month-xuat').value = currentMonthXuat;
+                loadMonthlyExportValue(currentMonthXuat);
+
+                async function loadMonthlyExportValue(month) {
+                    try {
+                        const monthlyExportValue = await fetchData(`${API_URL}/ThongKe/HoaDonXuat/GiaTriXuatTheoThang/${month}`);
+                        document.getElementById('hoadon-monthly-export-value').textContent = monthlyExportValue.toLocaleString('vi-VN', {
+                            style: 'currency',
+                            currency: 'VND'
+                        });
+                        updateHoadonMonthlyExportChart(month, monthlyExportValue);
+                    } catch (error) {
+                        console.error("Lỗi khi tải giá trị xuất theo tháng:", error);
+                        document.getElementById('hoadon-monthly-export-value').textContent = "Lỗi";
+                    }
+                }
+
+                document.getElementById('hoadon-month-xuat').addEventListener('change', function () {
+                    const selectedMonth = this.value;
+                    loadMonthlyExportValue(selectedMonth);
+                });
+
+                // Init chart if it doesn't exist
+                if (!hoadonMonthlyExportChart) {
+                    hoadonMonthlyExportChart = createChart(
+                        'hoadon-monthly-export-chart',
+                        'line', {
+                        labels: ['Tháng'],
+                        datasets: [{
+                            label: 'Giá trị xuất',
+                            data: [0],
+                            backgroundColor: 'rgba(40, 167, 69, 0.5)', // Green color
+                            borderColor: 'rgba(40, 167, 69, 1)',
+                            borderWidth: 1,
+                            fill: true
+                        }]
+                    }, {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            title: {
+                                display: true,
+                                text: 'Giá trị xuất hóa đơn theo tháng',
+                                font: {
+                                    size: 16
+                                }
+                            }
+                        }
+                    });
+                }
+
+            } catch (error) {
+                console.error("Lỗi khi tải dữ liệu hóa đơn:", error);
+            }
+        }
+
+        async function loadProductCategoryData() {
+            try {
+                // API to get product category data
+                const categoryData = await fetchData(`${API_URL}/ThongKe/SanPham/PhanLoaiSanPham`);
+
+                // Check if data is valid
+                if (categoryData && categoryData.length > 0) {
+                    // List of product types and their corresponding quantities
+                    const labels = categoryData.map(item => item.tenLoai);
+                    const data = categoryData.map(item => item.soLuong);
+
+                    // Define chart colors
+                    const backgroundColors = [
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(255, 206, 86, 0.5)',
+                        'rgba(75, 192, 192, 0.5)',
+                        'rgba(153, 102, 255, 0.5)',
+                        'rgba(255, 159, 64, 0.5)',
+                    ];
+
+                    const borderColors = [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                    ];
+
+                    // Dataset for the chart
+                    const dataset = [{
+                        label: 'Số lượng',
+                        data: data,
+                        backgroundColor: backgroundColors,
+                        borderColor: borderColors,
+                        borderWidth: 1
+                    }];
+
+                    // Config for the chart
+                    const config = {
+                        type: 'pie', // pie chart
+                        data: {
+                            labels: labels,
+                            datasets: dataset
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false, // Maintain aspect ratio
+                            plugins: {
+                                legend: {
+                                    position: 'top', // Position of the legend
+                                    labels: {
+                                        fontSize: 12   // Legend font size
+                                    }
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Phân loại sản phẩm', // Chart title
+                                    font: {
+                                        size: 18         // Chart title font size
+                                    }
+                                }
+                            }
+                        }
+                    };
+
+                    // Get canvas element and create chart
+                    const canvas = document.getElementById('product-category-chart');
+                    if (productCategoryChart) {
+                        productCategoryChart.destroy();  // Destroy existing chart
+                    }
+                    productCategoryChart = new Chart(canvas, config);
+                } else {
+                    console.warn('Không có dữ liệu phân loại sản phẩm hoặc dữ liệu không hợp lệ.');
+                    // Handle cases where no data is available, e.g., displaying a message
+                }
+            } catch (error) {
+                console.error('Lỗi khi tải dữ liệu phân loại sản phẩm:', error);
+                // Error handling, e.g., displaying a message
+            }
+        }
+
+        async function fetchData(url) {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return await response.json();
+        }
+
+        function updateProductMonthlyImportChart(month, value) {
+            productMonthlyImportChart.data.labels = [`Tháng ${month}`];
+            productMonthlyImportChart.data.datasets[0].data = [value];
+            productMonthlyImportChart.update();
+        }
+
+        function updateHoadonMonthlyImportChart(month, value) {
+            hoadonMonthlyImportChart.data.labels = [`Tháng ${month}`];
+            hoadonMonthlyImportChart.data.datasets[0].data = [value];
+            hoadonMonthlyImportChart.update();
+        }
+
+        function updateHoadonMonthlyExportChart(month, value) {
+            hoadonMonthlyExportChart.data.labels = [`Tháng ${month}`];
+            hoadonMonthlyExportChart.data.datasets[0].data = [value];
+            hoadonMonthlyExportChart.update();
+        }
+
+        $(document).ready(function () {
+            $('#myTabs a').on('click', function (e) {
+                e.preventDefault()
+                $(this).tab('show')
+            })
+        });
+    </script>
+        

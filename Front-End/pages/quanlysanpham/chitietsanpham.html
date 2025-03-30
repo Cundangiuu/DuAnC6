@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết Sản phẩm</title>
+    <!-- Thêm các link CSS cần thiết -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/ti-icons/css/themify-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+
+    <style>
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .image-gallery img {
+            max-width: 150px;
+            max-height: 150px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper">
+            <div class="main-panel" style="font-family: 'Times New Roman', Times, serif;">
+                <div class="content-wrapper">
+                    <div class="row">
+                        <div class="col-md-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title" style="font-family: 'Times New Roman', Times, serif;">Chi tiết Sản phẩm</h4>
+                                    <div id="productDetails">
+                                        <!-- Thông tin sản phẩm sẽ được hiển thị ở đây -->
+                                    </div>
+                                    <a href="sanpham.html" class="btn btn-secondary mt-3">Quay lại danh sách sản phẩm</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const apiBaseUrl = 'https://localhost:7203'; // Thay đổi URL BE của bạn
+            const apiUrl = `${apiBaseUrl}/api/SanPham`;
+            const hinhAnhApiUrl = `${apiBaseUrl}/api/HinhAnh`;
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+
+            if (productId) {
+                fetch(`${apiUrl}/${productId}`)
+                    .then(response => response.json())
+                    .then(product => {
+                        const productDetailsDiv = document.getElementById('productDetails');
+                        productDetailsDiv.innerHTML = `
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><strong>Tên Sản Phẩm:</strong> ${product.tenSP}</p>
+                                    <p><strong>Danh mục:</strong> ${product.danhMuc?.tenDanhMuc || 'Không có'}</p>
+                                    <p><strong>Nhà cung cấp:</strong> ${product.nhaCungCap?.tenNCC || 'Không có'}</p>
+                                    <p><strong>Đơn vị tính:</strong> ${product.donViTinh || 'Không có'}</p>
+                                    <p><strong>Ngày nhập:</strong> ${formatDate(product.ngayNhap)}</p>
+                                    <p><strong>Ngày hết hạn:</strong> ${formatDate(product.ngayHetHan)}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Giá:</strong> ${formatCurrency(product.giaBan)}</p>
+                                    <p><strong>Số lượng tồn:</strong> ${product.soLuongTon}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <h4>Hình ảnh sản phẩm</h4>
+                            <div id="imageGallery" class="image-gallery">
+                                <!-- Hình ảnh sản phẩm sẽ được hiển thị ở đây -->
+                            </div>
+                        `;
+
+                        // Load hình ảnh
+                        loadImageGallery(productId);
+                    })
+                    .catch(error => {
+                        console.error('Lỗi tải thông tin sản phẩm:', error);
+                        $("#productDetails").html('<p class="text-danger">Không thể tải thông tin sản phẩm.</p>');
+                    });
+            } else {
+                $("#productDetails").html('<p class="text-danger">Không tìm thấy ID sản phẩm.</p>');
+            }
+
+            async function loadImageGallery(productId) {
+                try {
+                    const response = await fetch(`${hinhAnhApiUrl}/SanPham/${productId}`);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const hinhAnhs = await response.json();
+                    const imageGalleryDiv = $("#imageGallery");
+
+                    if (hinhAnhs && hinhAnhs.length > 0) {
+                        hinhAnhs.forEach(hinhAnh => {
+                            if (hinhAnh.url) {
+                                const imgElement = `<img src="${apiBaseUrl}${hinhAnh.url}" alt="Hình ảnh sản phẩm">`;
+                                imageGalleryDiv.append(imgElement);
+                            }
+                        });
+                    } else {
+                        imageGalleryDiv.html('<p>Không có hình ảnh.</p>');
+                    }
+                } catch (error) {
+                    console.error('Lỗi tải hình ảnh:', error);
+                    $("#imageGallery").html('<p class="text-danger">Không thể tải hình ảnh.</p>');
+                }
+            }
+
+            function formatDate(dateString) {
+                if (!dateString) return 'Không có';
+                const date = new Date(dateString);
+                return date.toLocaleDateString('vi-VN', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric'
+                });
+            }
+
+            function formatCurrency(number) {
+                return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(number);
+            }
+        });
+    </script>
+
+    <!-- Thêm các script JS cần thiết -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+</body>
+
+</html>

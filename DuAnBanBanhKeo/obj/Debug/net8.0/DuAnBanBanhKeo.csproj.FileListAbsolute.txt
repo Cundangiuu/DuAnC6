@@ -772,8 +772,6 @@ D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data
 D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
-D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
@@ -1136,3 +1134,12 @@ D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\Microsoft.IO.RecyclableMemoryStrea
 D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
 D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Win32.SystemEvents.dll
 D:\FPT\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\EPPlus.dll
+D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\EPPlus.Interfaces.dll
+D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\EPPlus.System.Drawing.dll
+D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Json.dll
+D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\Microsoft.IO.RecyclableMemoryStream.dll
+D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Win32.SystemEvents.dll
+D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll

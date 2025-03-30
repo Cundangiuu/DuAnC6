@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Quản lý Nhân Viên</title>
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../../assets/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="shortcut icon" href="../../assets/images/favicon.png" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+
+    <style>
+        .input-group-text {
+            cursor: pointer;
+        }
+
+        /* Ẩn cột thông tin tài khoản trong modal */
+        .tai-khoan-group {
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container-scroller" style="font-family: 'Times New Roman', Times, serif;">
+        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+            id="navbar-placeholder"></nav>
+        <div class="container-fluid page-body-wrapper">
+            <nav class="sidebar sidebar-offcanvas" id="sidebar"></nav>
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="page-header">
+                        <h3 class="page-title" style="font-family: 'Times New Roman', Times, serif;">Quản lý Nhân Viên
+                        </h3>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Nhân Viên</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Danh sách</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title" style="font-family: 'Times New Roman', Times, serif;">Danh
+                                        Sách Nhân Viên</h4>
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <button class="btn btn-primary" onclick="openAddModal()"
+                                            style="font-family: 'Times New Roman', Times, serif;"><i
+                                                class="mdi mdi-plus-circle-outline"></i> Thêm Nhân Viên</button>
+                                        <div class="d-flex">
+                                            <input type="text" class="form-control mr-2" id="searchInput"
+                                                placeholder="Tìm kiếm...">
+                                            <select class="form-control mr-2" id="statusFilter">
+                                                <option value="">Tất cả trạng thái</option>
+                                                <option value="true">Đang Làm</option>
+                                                <option value="false">Nghỉ Việc</option>
+                                            </select>
+                                            <select class="form-control mr-2" id="roleFilter">
+                                                <option value="">Tất cả vai trò</option>
+                                                <option value="Quản lý kho">Quản lý kho</option>
+                                                <option value="Nhân viên">Nhân viên</option>
+                                            </select>
+                                            <select class="form-control" id="sortOrder">
+                                                <option value="">Mã nhân viên (Mặc định)</option>
+                                                <option value="asc">Mã nhân viên (Tăng dần)</option>
+                                                <option value="desc">Mã nhân viên (Giảm dần)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Mã nhân
+                                                        viên</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Họ Tên
+                                                    </th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Vai Trò
+                                                    </th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Số Điện
+                                                        Thoại</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Email
+                                                    </th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Hình Ảnh
+                                                    </th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Trạng
+                                                        Thái</th>
+                                                    <th style="font-family: 'Times New Roman', Times, serif;">Hành Động
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="nhanVienTableBody">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mt-3">
+                                        <div id="paginationInfo"></div>
+                                        <nav aria-label="Page navigation">
+                                            <ul class="pagination" id="pagination">
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer" id="footer"></footer>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="nhanVienModal" tabindex="-1" role="dialog" aria-labelledby="nhanVienModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="nhanVienModalLabel">Thêm/Sửa Nhân Viên</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="nhanVienForm" enctype="multipart/form-data">
+                        <div class="form-group" style="display: none;">
+                            <label for="maNV">Mã NV</label>
+                            <input type="text" class="form-control" id="maNV" name="maNV" readonly required>
+                            <div class="invalid-feedback">Mã nhân viên là bắt buộc.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="hoTen">Họ Tên</label>
+                            <input type="text" class="form-control" id="hoTen" name="hoTen" required>
+                            <div class="invalid-feedback">Họ tên là bắt buộc.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="vaiTro">Vai Trò</label>
+                            <select class="form-control" id="vaiTro" name="vaiTro" required>
+                                <option value="">Chọn vai trò</option>
+                                <option value="Quản lý kho">Quản lý kho</option>
+                                <option value="Nhân viên">Nhân viên</option>
+                            </select>
+                            <div class="invalid-feedback">Vui lòng chọn vai trò.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="soDienThoai">Số Điện Thoại</label>
+                            <input type="text" class="form-control" id="soDienThoai" name="soDienThoai" required>
+                            <div class="invalid-feedback" id="soDienThoai-feedback">Số điện thoại là bắt buộc.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                            <div class="invalid-feedback" id="email-feedback">Email không hợp lệ.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="hinhAnhFile">Hình Ảnh</label>
+                            <input type="file" class="form-control" id="hinhAnhFile" name="hinhAnhFile"
+                                accept="image/*">
+                            <img id="previewHinhAnh" src="#" alt="Hình ảnh"
+                                style="max-width: 100px; margin-top: 5px; display: none;">
+                        </div>
+                        <div class="form-group">
+                            <label for="trangThai">Trạng Thái Nhân Viên</label>
+                            <select class="form-control" id="trangThai" name="trangThai">
+                                <option value="true">Đang Làm</option>
+                                <option value="false">Nghỉ Việc</option>
+                            </select>
+                        </div>
+
+                        <!-- Các trường thông tin tài khoản (ẩn khi sửa) -->
+                        <div class="tai-khoan-group form-group">
+                            <label for="tenDangNhap">Tên Đăng Nhập</label>
+                            <input type="text" class="form-control" id="tenDangNhap" name="tenDangNhap" required>
+                            <div class="invalid-feedback" id="tenDangNhap-feedback">Tên đăng nhập là bắt buộc.</div>
+                        </div>
+                        <div class="tai-khoan-group form-group">
+                            <label for="matKhau">Mật Khẩu</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="matKhau" name="matKhau" required>
+                                <div class="input-group-append">
+                                    <span class="input-group-text" onclick="togglePasswordVisibility()">
+                                        <i class="fa fa-eye" id="togglePassword"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="invalid-feedback" id="matKhau-feedback">Mật khẩu là bắt buộc.</div>
+                        </div>
+                        <div class="tai-khoan-group form-group">
+                            <label for="trangThaiTK">Trạng Thái Tài Khoản</label>
+                            <select class="form-control" id="trangThaiTK" name="trangThaiTK">
+                                <option value="true">Đang hoạt động</option>
+                                <option value="false">Ngừng hoạt động</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        style="font-family: 'Times New Roman', Times, serif;">Đóng</button>
+                    <button type="button" class="btn btn-primary" onclick="saveNhanVien()"
+                        style="font-family: 'Times New Roman', Times, serif;">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+
+    <script>
+        var $ = jQuery.noConflict();
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        const API_URL = "https://localhost:7203/api/NhanVien";
+        const IMAGE_PATH_1 = "/Admin/src/assets/images/nhanVien/";
+        const LOGIN_PAGE_URL = "login.html";
+
+        let navbarLoaded = false;
+        let sidebarLoaded = false;
+        let currentImagePath = IMAGE_PATH_1;
+        let currentNhanVien = null;
+        let allNhanVien = [];
+        let currentPage = 1;
+        const pageSize = 5;
+
+        function checkAllLoaded() {
+            if (navbarLoaded && sidebarLoaded) {
+                checkLoginStatus();
+                loadNhanVien();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch("../../partials/_navbar.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("navbar-placeholder").innerHTML = data;
+                    navbarLoaded = true;
+                    checkAllLoaded();
+                })
+                .catch(error => console.error("Lỗi khi tải navbar:", error));
+
+            fetch("../../partials/_sidebar.html")
+                .then(response => response.text())
+                .then(data => {
+                    const sidebarContent = data;
+                    document.getElementById("sidebar").innerHTML = sidebarContent;
+                    sidebarLoaded = true;
+                    checkAllLoaded();
+                })
+                .catch(error => console.error("Lỗi khi tải sidebar:", error));
+
+            fetch("../../partials/_footer.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("footer").innerHTML = data;
+                })
+                .catch(error => console.error("Lỗi khi tải navbar:", error));
+        });
+
+        function checkLoginStatus() {
+            const token = localStorage.getItem('token');
+            const hoTen = localStorage.getItem('hoTen');
+            const userRole = localStorage.getItem('userRole');
+            let hinhAnh = localStorage.getItem('hinhAnh');
+
+            const loginButton = document.getElementById('loginButton');
+            const profileDropdown = document.getElementById('profileDropdown');
+            const sidebar = document.getElementById('sidebar');
+
+            if (token) {
+                loginButton.style.display = 'none';
+                profileDropdown.style.display = 'block';
+
+                const navbarHoTen = document.querySelector('#profileDropdown .nav-profile-text p');
+                const navbarHinhAnh = document.querySelector('#profileDropdown .nav-profile-img img');
+
+                if (navbarHoTen) {
+                    navbarHoTen.textContent = hoTen;
+                }
+                if (navbarHinhAnh) {
+                    if (hinhAnh && !hinhAnh.startsWith('http')) {
+                        hinhAnh = `${IMAGE_PATH_1}${hinhAnh}`;
+                    }
+                    navbarHinhAnh.src = hinhAnh;
+                }
+
+                const sidebarHoTen = document.getElementById("sidebar-hoTen");
+                const sidebarVaiTro = document.getElementById("sidebar-vaiTro");
+                const sidebarHinhAnh = document.getElementById("sidebar-hinhAnh");
+
+                if (sidebarHoTen) {
+                    sidebarHoTen.textContent = hoTen;
+                }
+                if (sidebarVaiTro) {
+                    sidebarVaiTro.textContent = userRole;
+                }
+                if (sidebarHinhAnh) {
+                    sidebarHinhAnh.src = hinhAnh;
+                }
+
+                if (userRole === 'Nhân viên') {
+                    const quanLyNguoiDungLi = Array.from(sidebar.querySelectorAll('li a'))
+                        .find(a => a.textContent.trim() === 'Quản lý người dùng')
+                        ?.closest('li');
+
+                    if (quanLyNguoiDungLi) {
+                        const quanLyNhanVienLink = quanLyNguoiDungLi.querySelector('a[href*="quanlynhanvien"]');
+
+                        if (quanLyNhanVienLink) {
+                            quanLyNhanVienLink.closest('li').style.display = 'none';
+                        }
+                    }
+                } else if (userRole === 'Quản lý kho') {
+                    const quanLyNguoiDungLi = Array.from(sidebar.querySelectorAll('li a'))
+                        .find(a => a.textContent.trim() === 'Quản lý người dùng')
+                        ?.closest('li');
+
+                    if (quanLyNguoiDungLi) {
+                        const quanLyNhanVienLink = quanLyNguoiDungLi.querySelector('a[href*="quanlynhanvien"]');
+
+                        if (quanLyNhanVienLink) {
+                            quanLyNhanVienLink.closest('li').style.display = 'block';
+                        }
+                    }
+                }
+
+                document.getElementById('logoutButton').addEventListener('click', function () {
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('userRole');
+                    localStorage.removeItem('hoTen');
+                    localStorage.removeItem('hinhAnh');
+                    localStorage.removeItem('maNV');
+                    window.location.href = "/Admin/src/index.html";
+
+                });
+
+            } else {
+                window.location.href = LOGIN_PAGE_URL;
+            }
+        }
+
+        $(document).ready(function () {
+            $('#nhanVienModal').on('hidden.bs.modal', function (e) {
+                clearValidationErrors();
+                document.getElementById("tenDangNhap").readOnly = false;
+                $('#nhanVienForm').removeClass('was-validated');
+                // Ẩn lại các trường thông tin tài khoản khi đóng modal
+                $('.tai-khoan-group').hide();
+            });
+
+            $('#searchInput').on('input', function () {
+                currentPage = 1;
+                renderNhanVien();
+            });
+
+            $('#statusFilter').on('change', function () {
+                currentPage = 1;
+                renderNhanVien();
+            });
+
+            $('#roleFilter').on('change', function () {
+                currentPage = 1;
+                renderNhanVien();
+            });
+
+            $('#sortOrder').on('change', function () {
+                currentPage = 1;
+                renderNhanVien();
+            });
+
+            document.getElementById("hinhAnhFile").addEventListener("change", function () {
+                const preview = document.getElementById("previewHinhAnh");
+                const file = this.files[0];
+
+                if (file) {
+                    const reader = new FileReader();
+
+                    reader.addEventListener("load", function () {
+                        preview.src = reader.result;
+                        preview.style.display = "block";
+                    }, false);
+
+                    reader.readAsDataURL(file);
+                } else {
+                    preview.src = "#";
+                    preview.style.display = "none";
+                }
+            });
+        });
+
+        function loadNhanVien() {
+            fetch(API_URL)
+                .then(response => response.json())
+                .then(data => {
+                    allNhanVien = data.map(item => ({
+                        ...item,
+                        tenDangNhap: item.taiKhoan ? item.taiKhoan.tenDangNhap : null,
+                        matKhau: item.taiKhoan ? item.taiKhoan.matKhau : null,
+                        trangThaiTK: item.taiKhoan ? item.taiKhoan.trangThai : null,
+                        taiKhoan: item.taiKhoan
+                    }));
+                    console.log(allNhanVien);
+                    renderNhanVien();
+                })
+                .catch(error => {
+                    console.error("Lỗi khi tải danh sách nhân viên:", error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Lỗi!',
+                        text: 'Có lỗi xảy ra khi tải danh sách nhân viên.',
+                    });
+                });
+        }
+
+        function renderNhanVien() {
+            const tbody = document.getElementById("nhanVienTableBody");
+            tbody.innerHTML = "";
+
+            const searchText = document.getElementById("searchInput").value.toLowerCase();
+            const statusFilter = document.getElementById("statusFilter").value;
+            const roleFilter = document.getElementById("roleFilter").value;
+            const sortOrder = document.getElementById("sortOrder").value;
+
+            let filteredNhanVien = allNhanVien.filter(nv => {
+                const matchSearch =
+                    nv.maNV.toLowerCase().includes(searchText) ||
+                    nv.hoTen.toLowerCase().includes(searchText) ||
+                    nv.vaiTro.toLowerCase().includes(searchText) ||
+                    nv.soDienThoai.toLowerCase().includes(searchText) ||
+                    nv.email.toLowerCase().includes(searchText);
+
+                const matchStatus = statusFilter === "" || nv.trangThai.toString() === statusFilter;
+                const matchRole = roleFilter === "" || nv.vaiTro === roleFilter;
+
+                return matchSearch && matchStatus && matchRole;
+            });
+
+            // Sorting
+            if (sortOrder === "asc") {
+                filteredNhanVien.sort((a, b) => a.maNV.localeCompare(b.maNV));
+            } else if (sortOrder === "desc") {
+                filteredNhanVien.sort((a, b) => b.maNV.localeCompare(a.maNV));
+            }
+
+            const startIndex = (currentPage - 1) * pageSize;
+            const endIndex = startIndex + pageSize;
+            const pagedNhanVien = filteredNhanVien.slice(startIndex, endIndex);
+
+            pagedNhanVien.forEach(nv => {
+                const imageUrl = nv.hinhAnh
+                    ? `${currentImagePath}${nv.hinhAnh}`
+                    : '/Admin/src/assets/images/default-avatar.png';
+
+                tbody.innerHTML += `
+    <tr>
+        <td>${nv.maNV}</td>
+        <td>${nv.hoTen}</td>
+        <td>${nv.vaiTro}</td>
+        <td>${nv.soDienThoai}</td>
+        <td>${nv.email}</td>
+        <td>
+            ${nv.hinhAnh ? `<img src="${imageUrl}" alt="Hình ảnh" style="max-width: 50px; max-height: 50px;">` : 'Không có ảnh'}
+        </td>
+        <td>
+            <span class="badge ${nv.trangThai ? 'badge-success' : 'badge-danger'}">
+                ${nv.trangThai ? 'Đang Làm' : 'Nghỉ Việc'}
+            </span>
+        </td>
+        <td>
+            <button class="btn btn-sm btn-outline-primary mr-2 btn-sm" onclick="openEditModal('${nv.maNV}')" style="font-family: 'Times New Roman', Times, serif;"><i class="mdi mdi-pencil"></i></button>
+            <button class="btn btn-sm btn-outline-danger mr-2 btn-sm" style="font-family: 'Times New Roman', Times, serif;" onclick="toggleNhanVienStatus('${nv.maNV}')">${nv.trangThai ? 'Vô hiệu hóa' : 'Kích hoạt'}</button>
+        </td>
+    </tr>
+`;
+            });
+
+            renderPagination(filteredNhanVien.length);
+            updatePaginationInfo(filteredNhanVien.length);
+        }
+
+        function renderPagination(totalItems) {
+            const totalPages = Math.ceil(totalItems / pageSize);
+            const pagination = document.getElementById("pagination");
+            pagination.innerHTML = "";
+
+            let prevLi = document.createElement("li");
+            prevLi.classList.add("page-item");
+            if (currentPage === 1) {
+                prevLi.classList.add("disabled");
+            }
+            const prevLink = document.createElement("a");
+            prevLink.classList.add("page-link");
+            prevLink.href = "#";
+            prevLink.innerHTML = "«";
+            prevLink.addEventListener("click", () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderNhanVien();
+                }
+            });
+            prevLi.appendChild(prevLink);
+            pagination.appendChild(prevLi);
+
+            for (let i = 1; i <= totalPages; i++) {
+                const pageLi = document.createElement("li");
+                pageLi.classList.add("page-item");
+                if (i === currentPage) {
+                    pageLi.classList.add("active");
+                }
+                const pageLink = document.createElement("a");
+                pageLink.classList.add("page-link");
+                pageLink.href = "#";
+                pageLink.innerText = i;
+                pageLink.addEventListener("click", () => {
+                    currentPage = i;
+                    renderNhanVien();
+                });
+                pageLi.appendChild(pageLink);
+                pagination.appendChild(pageLi);
+            }
+
+            let nextLi = document.createElement("li");
+            nextLi.classList.add("page-item");
+            if (currentPage === totalPages || totalPages === 0) {
+                nextLi.classList.add("disabled");
+            }
+            const nextLink = document.createElement("a");
+            nextLink.classList.add("page-link");
+            nextLink.href = "#";
+            nextLink.innerHTML = "»";
+            nextLink.addEventListener("click", () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderNhanVien();
+                }
+            });
+            nextLi.appendChild(nextLink);
+            pagination.appendChild(nextLi);
+        }
+
+        function updatePaginationInfo(totalItems) {
+            const startIndex = (currentPage - 1) * pageSize + 1;
+            const endIndex = Math.min(currentPage * pageSize, totalItems);
+            const paginationInfo = document.getElementById("paginationInfo");
+        }
+
+        function openAddModal() {
+            currentNhanVien = null;
+            const form = document.getElementById("nhanVienForm");
+            form.reset();
+            $('#nhanVienForm').removeClass('was-validated');
+            clearValidationErrors();
+
+            const maNV = generateNextMaNV();
+            document.getElementById("maNV").value = maNV;
+            document.getElementById("previewHinhAnh").src = "#";
+            document.getElementById("previewHinhAnh").style.display = "none";
+            document.getElementById("tenDangNhap").readOnly = false;
+
+            // Hiện các trường thông tin tài khoản
+            $('.tai-khoan-group').show();
+
+            $('#nhanVienModal').modal('show');
+        }
+
+        function openEditModal(maNV) {
+            fetch(`${API_URL}/${maNV}`)
+                .then(response => response.json())
+                .then(nv => {
+                    currentNhanVien = nv;
+                    const form = document.getElementById("nhanVienForm");
+                    form.reset();
+                    $('#nhanVienForm').removeClass('was-validated');
+                    clearValidationErrors();
+
+                    console.log("Thông tin nhân viên từ API:", nv);
+
+                    document.getElementById("maNV").value = nv.maNV;
+                    document.getElementById("hoTen").value = nv.hoTen;
+                    document.getElementById("vaiTro").value = nv.vaiTro;
+                    document.getElementById("soDienThoai").value = nv.soDienThoai;
+                    document.getElementById("email").value = nv.email;
+                    document.getElementById("trangThai").value = nv.trangThai.toString();
+
+                    const preview = document.getElementById("previewHinhAnh");
+                    if (nv.hinhAnh) {
+                        preview.src = `${currentImagePath}${nv.hinhAnh}`;
+                        preview.style.display = "block";
+                    } else {
+                        preview.src = "#";
+                        preview.style.display = "none";
+                    }
+
+                    // Ẩn các trường thông tin tài khoản khi sửa
+                    $('.tai-khoan-group').hide();
+
+                    $('#nhanVienModal').modal('show');
+                })
+                .catch(error => {
+                    console.error("Lỗi khi tải thông tin nhân viên:", error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Lỗi!',
+                        text: 'Có lỗi xảy ra khi tải thông tin nhân viên.',
+                    });
+                });
+        }
+
+
+        function validateForm() {
+            let isValid = true;
+
+            const hoTen = document.getElementById("hoTen");
+            const vaiTro = document.getElementById("vaiTro");
+            const soDienThoai = document.getElementById("soDienThoai");
+            const email = document.getElementById("email");
+            const tenDangNhap = document.getElementById("tenDangNhap");
+            const matKhau = document.getElementById("matKhau");
+
+            // Reset validation messages
+            resetValidationMessage(hoTen);
+            resetValidationMessage(vaiTro);
+            resetValidationMessage(soDienThoai);
+            resetValidationMessage(email);
+            resetValidationMessage(tenDangNhap);
+            resetValidationMessage(matKhau);
+
+            if (!hoTen.value.trim()) {
+                showValidationMessage(hoTen, "Họ tên là bắt buộc.");
+                isValid = false;
+            }
+
+            if (!vaiTro.value) {
+                showValidationMessage(vaiTro, "Vui lòng chọn vai trò.");
+                isValid = false;
+            }
+
+            if (!soDienThoai.value.trim()) {
+                showValidationMessage(soDienThoai, "Số điện thoại là bắt buộc.");
+                isValid = false;
+            } else if (!/^\d{10}$/.test(soDienThoai.value.trim())) {
+                showValidationMessage(soDienThoai, "Số điện thoại không hợp lệ.");
+                isValid = false;
+            } else if (!currentNhanVien && isDuplicateSoDienThoai(soDienThoai.value.trim())) {
+                showValidationMessage(soDienThoai, "Số điện thoại đã tồn tại.");
+                isValid = false;
+            } else if (currentNhanVien && currentNhanVien.soDienThoai !== soDienThoai.value.trim() && isDuplicateSoDienThoai(soDienThoai.value.trim())) {
+                showValidationMessage(soDienThoai, "Số điện thoại đã tồn tại.");
+                isValid = false;
+            }
+
+            if (!email.value.trim()) {
+                showValidationMessage(email, "Email là bắt buộc.");
+                isValid = false;
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+                showValidationMessage(email, "Email không hợp lệ.");
+                isValid = false;
+            } else if (!currentNhanVien && isDuplicateEmail(email.value.trim())) {
+                showValidationMessage(email, "Email đã tồn tại.");
+                isValid = false;
+            } else if (currentNhanVien && currentNhanVien.email !== email.value.trim() && isDuplicateEmail(email.value.trim())) {
+                showValidationMessage(email, "Email đã tồn tại.");
+                isValid = false;
+            }
+
+            // Kiểm tra validation cho các trường tài khoản chỉ khi đang thêm mới
+            if (!currentNhanVien) {
+                if (!tenDangNhap.value.trim()) {
+                    showValidationMessage(tenDangNhap, "Tên đăng nhập là bắt buộc.");
+                    isValid = false;
+                } else if (isDuplicateTenDangNhap(tenDangNhap.value.trim())) {
+                    showValidationMessage(tenDangNhap, "Tên đăng nhập đã tồn tại.");
+                    isValid = false;
+                }
+
+                if (!matKhau.value.trim()) {
+                    showValidationMessage(matKhau, "Mật khẩu là bắt buộc.");
+                    isValid = false;
+                }
+            }
+
+            return isValid;
+        }
+
+        function isDuplicateSoDienThoai(soDienThoai) {
+            if (currentNhanVien && currentNhanVien.soDienThoai === soDienThoai) {
+                return false;
+            }
+            return allNhanVien.some(nv => nv.soDienThoai === soDienThoai);
+        }
+
+        function isDuplicateEmail(email) {
+            if (currentNhanVien && currentNhanVien.email === email) {
+                return false;
+            }
+            return allNhanVien.some(nv => nv.email === email);
+        }
+
+        function isDuplicateTenDangNhap(tenDangNhap) {
+            if (currentNhanVien && currentNhanVien.taiKhoan && currentNhanVien.taiKhoan.tenDangNhap === tenDangNhap) {
+                return false;
+            }
+            return allNhanVien.some(nv => nv.taiKhoan && nv.taiKhoan.tenDangNhap === tenDangNhap);
+        }
+
+
+        function showValidationMessage(inputElement, message) {
+            inputElement.classList.add("is-invalid");
+            let feedbackElement = document.getElementById(inputElement.id + "-feedback");
+            if (!feedbackElement) {
+                feedbackElement = document.createElement("div");
+                feedbackElement.className = "invalid-feedback";
+                feedbackElement.id = inputElement.id + "-feedback";
+                inputElement.parentNode.appendChild(feedbackElement);
+            }
+            feedbackElement.innerText = message;
+        }
+
+        function resetValidationMessage(inputElement) {
+            inputElement.classList.remove("is-invalid");
+            let feedbackElement = document.getElementById(inputElement.id + "-feedback");
+            if (feedbackElement) {
+                feedbackElement.parentNode.removeChild(feedbackElement);
+            }
+        }
+
+        async function saveNhanVien() {
+            if (!validateForm()) {
+                return;
+            }
+
+            const form = document.getElementById("nhanVienForm");
+            const formData = new FormData(form);
+
+            const maNV = document.getElementById("maNV").value;
+
+            const method = currentNhanVien ? 'PUT' : 'POST';
+            const url = currentNhanVien ? `${API_URL}/${maNV}` : API_URL;
+
+            if (currentNhanVien) {
+                formData.delete("tenDangNhap");
+                formData.delete("matKhau");
+                formData.delete("trangThaiTK");
+            }
+
+            try {
+                const response = await fetch(url, {
+                    method: method,
+                    body: formData
+                });
+
+                if (response.ok) {
+                    $('#nhanVienModal').modal('hide');
+
+                    loadNhanVien();
+                    // Hiển thị thông báo thành công dựa trên phản hồi từ backend
+                    let successMessage = currentNhanVien ? 'Cập nhật thông tin nhân viên thành công.' : 'Thêm nhân viên thành công!';
+                    try {
+                        const responseData = await response.json();
+                        if (responseData && responseData.message) {
+                            successMessage = responseData.message; // Sử dụng thông báo từ backend (nếu có)
+                        }
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Thành công!',
+                            text: successMessage,
+                            timer: 30000,
+                            showConfirmButton: true,
+                            confirmButtonText: 'OK'
+                        });
+                    } catch (e) {
+                        console.error("Lỗi khi phân tích phản hồi JSON thành công:", e);
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Thành công!',
+                            text: successMessage,
+                            timer: 30000, // Thời gian hiển thị (mili giây)
+                            showConfirmButton: true,
+                            confirmButtonText: 'OK' // Ẩn nút xác nhận
+                        });
+                    }
+
+                } else {
+                    let errorMessage = 'Có lỗi xảy ra khi lưu nhân viên. Vui lòng kiểm tra lại.';
+                    try {
+                        const errorText = await response.text(); // Lấy phản hồi dưới dạng văn bản
+                        const errorData = JSON.parse(errorText); // Cố gắng phân tích cú pháp JSON
+
+                        if (errorData && errorData.errors) {
+                            // Xử lý thông báo lỗi từ backend (có cấu trúc errors)
+                            errorMessage = Object.entries(errorData.errors)
+                                .map(([key, values]) => `${key}: ${values.join(', ')}`)
+                                .join('\n');
+                        } else if (errorData && errorData.message) {
+                            // Nếu backend trả về một thông báo lỗi duy nhất (có cấu trúc message)
+                            errorMessage = errorData.message;
+                        } else {
+                            // Nếu không có cấu trúc lỗi cụ thể, sử dụng toàn bộ phản hồi văn bản
+                            errorMessage = errorText;
+                        }
+                    } catch (e) {
+                        console.error("Lỗi khi phân tích lỗi từ server:", e);
+                        errorMessage = errorText; // Sử dụng phản hồi văn bản gốc
+                    }
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Thành công!',
+                        text: 'Thêm nhân viên thành công!',
+                        timer: 30000, // Thời gian hiển thị (mili giây)
+                        showConfirmButton: true,
+                        confirmButtonText: 'OK' // Ẩn nút xác nhận
+                    });
+                }
+            } catch (error) {
+                console.error("Lỗi khi lưu nhân viên:", error);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Thành công!',
+                    text: 'Thêm nhân viên thành công!',
+                    timer: 30000, // Thời gian hiển thị (mili giây)
+                    showConfirmButton: true,
+                    confirmButtonText: 'OK' // Ẩn nút xác nhận
+                });
+            }
+        }
+
+
+        function toggleNhanVienStatus(maNV) {
+            Swal.fire({
+                title: 'Bạn có chắc chắn muốn thay đổi trạng thái nhân viên này?',
+                text: 'Trạng thái sẽ được thay đổi.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Đúng, thay đổi!',
+                cancelButtonText: 'Hủy',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`${API_URL}/${maNV}`, {
+                        method: 'PATCH',
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                loadNhanVien();
+
+                                Swal.fire(
+                                    'Đã thay đổi!',
+                                    'Trạng thái nhân viên đã được thay đổi.',
+                                    'success'
+                                );
+                            } else {
+                                Swal.fire(
+                                    'Lỗi!',
+                                    'Có lỗi xảy ra khi thay đổi trạng thái nhân viên.',
+                                    'error'
+                                );
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Lỗi:', error);
+                            Swal.fire(
+                                'Lỗi!',
+                                'Có lỗi xảy ra. Vui lòng thử lại sau.',
+                                'error'
+                            );
+                        });
+                }
+            });
+        }
+
+        function generateNextMaNV() {
+            let maxMaNV = 0;
+            allNhanVien.forEach(nv => {
+                const number = parseInt(nv.maNV.slice(2));
+                if (!isNaN(number) && number > maxMaNV) {
+                    maxMaNV = number;
+                }
+            });
+
+            const nextNumber = maxMaNV + 1;
+            const nextMaNV = "NV" + String(nextNumber).padStart(3, '0');
+            return nextMaNV;
+        }
+
+
+        function clearValidationErrors() {
+            const formGroups = document.querySelectorAll(".form-group");
+            formGroups.forEach(group => {
+                const input = group.querySelector("input, select");
+                if (input) {
+                    input.classList.remove("is-invalid");
+                }
+                const errorDivs = group.querySelectorAll(".invalid-feedback");
+                errorDivs.forEach(div => div.remove());
+            });
+        }
+
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("matKhau");
+            var togglePassword = document.getElementById("togglePassword");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                togglePassword.classList.remove("fa-eye");
+                togglePassword.classList.add("fa-eye-slash");
+
+            } else {
+                passwordInput.type = "password";
+                togglePassword.classList.remove("fa-eye-slash");
+                togglePassword.classList.add("fa-eye");
+            }
+        }
+
+
+    </script>
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <script src="../../assets/js/settings.js"></script>
+    <script src="../../assets/js/todolist.js"></script>
+    <script src="../../assets/js/jquery.cookie.js"></script>
+</body>
+
+</html>

@@ -1248,8 +1248,7 @@
                 const qrCodeContainer = this.viewProductDetails.querySelector('#qrCodeContainer');
                 qrCodeContainer.innerHTML = ''; // Xóa mã QR cũ
 
-                const productUrl = `https://localhost:7203/api/sanpham/${product.maSP}`; // Thay đổi URL này
-                const qrcode = new QRCode(qrCodeContainer, {
+                const productUrl = `https://nhom-arise.netlify.app/admin/src/pages/quanlysanpham/chitietsanpham?id=${encodeURIComponent(product.maSP)}`;                const qrcode = new QRCode(qrCodeContainer, {
                     text: productUrl,
                     width: 128,
                     height: 128,

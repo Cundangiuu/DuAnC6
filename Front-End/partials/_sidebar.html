@@ -1,0 +1,107 @@
+<ul class="nav" style="font-family: 'Times New Roman', Times, serif;">
+  <li class="nav-item nav-profile">
+    <a href="#" class="nav-link">
+        <div class="nav-profile-image">
+            <img src="" alt="hồ sơ" class="img-sm rounded-circle" id="sidebar-hinhAnh" />
+            <span class="login-status online"></span>
+            <!--thay đổi thành ngoại tuyến hoặc bận nếu cần-->
+        </div>
+        <div class="nav-profile-text d-flex flex-column">
+            <span class="font-weight-bold mb-2" id="sidebar-hoTen"></span>
+            <span class="text-secondary text-small" id="sidebar-vaiTro"></span>
+        </div>
+        <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
+    </a>
+</li>
+  <li class="nav-item">
+      <a class="nav-link" href="/Admin/src/index.html">
+          <span class="menu-title">Trang chủ</span>
+          <i class="mdi mdi-home menu-icon"></i>
+      </a>
+  </li>
+  <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
+          aria-controls="ui-basic">
+          <span class="menu-title">Quản lý sản phẩm</span>
+          <i class="menu-arrow"></i>
+          <i class="fa fa-truck menu-icon"></i>
+      </a>
+      <div class="collapse" id="ui-basic">
+          <ul class="nav flex-column sub-menu">
+              <li class="nav-item">
+                  <a class="nav-link" href="/Admin/src/pages/quanlysanpham/sanpham.html">Sản phẩm</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/Admin/src/pages/quanlysanpham/danhmuc.html">Danh mục</a>
+            </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/Admin/src/pages/quanlysanpham/quanlynhacungcap.html">Nhà cung cấp</a>
+              </li>
+          </ul>
+      </div>
+  </li>
+  <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="#forms" aria-expanded="false" aria-controls="forms">
+          <span class="menu-title">Quản lý hóa đơn</span>
+          <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+      </a>
+      <div class="collapse" id="forms">
+          <ul class="nav flex-column sub-menu">
+              <li class="nav-item">
+                  <a class="nav-link" href="/Admin/src/pages/quanlyhoadon/quanlyhoadonnhap.html">Hóa đơn nhập</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/Admin/src/pages/quanlyhoadon/quanlyhoadonxuat.html">Hóa đơn xuất</a>
+              </li>
+          </ul>
+      </div>
+  </li>
+  <!-- <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false"
+          aria-controls="charts">
+          <span class="menu-title">Thống kê</span>
+          <i class="mdi mdi-chart-bar menu-icon"></i>
+      </a>
+      <div class="collapse" id="charts">
+          <ul class="nav flex-column sub-menu">
+              <li class="nav-item">
+                  <a class="nav-link" href="/Admin/src/pages/charts/chartjs.html">Thống kê</a>
+              </li>
+          </ul>
+      </div>
+  </li> -->
+  <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false"
+          aria-controls="tables">
+          <span class="menu-title">Quản lý người dùng</span>
+          <i class="mdi mdi-contacts menu-icon"></i>
+      </a>
+      <div class="collapse" id="tables">
+          <ul class="nav flex-column sub-menu">
+              <li class="nav-item">
+                  <a class="nav-link" href="/Admin/src/pages/quanlynguoidung/quanlytaikhoan.html">Tài Khoản</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/Admin/src/pages/quanlynguoidung/quanlynhanvien.html">Nhân viên</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/Admin/src/pages/quanlynguoidung/quanlykhachhang.html">Khách hàng</a>
+              </li>
+          </ul>
+      </div>
+  </li>
+  <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+          <span class="menu-title">Kiểm kê kho</span>
+          <i class="menu-arrow"></i>
+          <i class="mdi mdi-lock menu-icon"></i>
+      </a>
+      <div class="collapse" id="auth">
+          <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> 
+                  <a class="nav-link" href="/Admin/src/pages/kiemke/quanlykiemke.html">Kiểm kê</a>
+              </li>
+          </ul>
+      </div>
+  </li>
+</ul>
