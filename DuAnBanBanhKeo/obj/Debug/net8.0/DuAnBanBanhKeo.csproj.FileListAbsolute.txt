@@ -1143,3 +1143,7 @@ D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\Microsoft.IO.RecyclableMemoryStream.dl
 D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
 D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Win32.SystemEvents.dll
 D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\BCrypt.Net-Next.dll
+D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\MailKit.dll
+D:\DuAnC6\DuAnBanBanhKeo\bin\Debug\net8.0\MimeKit.dll

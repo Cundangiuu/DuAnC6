@@ -6,9 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Server.Kestrel.Core;
-using System.Security.Policy;
+using DuAnBanBanhKeo.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -73,6 +71,8 @@ builder.Services.AddAutoMapper(typeof(Program));
 
 // Swagger setup for API documentation
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSingleton<IEmailService, EmailService>();
+builder.Services.AddMemoryCache();
 builder.Services.AddSwaggerGen(option =>
 {
     option.SwaggerDoc("v1", new OpenApiInfo { Title = "DuAnBanBanhKeo API", Version = "v1" });
@@ -101,45 +101,28 @@ builder.Services.AddSwaggerGen(option =>
     });
 });
 
-// Configure Kestrel (Simplified for Development)
-builder.WebHost.ConfigureKestrel((context, options) =>
-{
-    options.ListenLocalhost(7203, listenOptions =>
-    {
-        listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
-        listenOptions.UseHttps(); // Use default HTTPS development certificate
-    });
-});
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage();
+    app.UseDeveloperExceptionPage(); // Hiển thị chi tiết lỗi trong môi trường phát triển
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "DuAnBanBanhKeo API V1");
     });
 }
-else
-{
-    app.UseHsts();
-}
 
 app.UseHttpsRedirection();
 
 // Sử dụng CORS trước Authentication và Authorization
-app.UseCors("AllowMyFrontend");
+app.UseCors("AllowMyFrontend"); // Sử dụng policy đã cấu hình
 
-app.UseStaticFiles();
+app.UseStaticFiles(); // Phục vụ file tĩnh (hình ảnh trong wwwroot)
 
 app.UseAuthentication();
 app.UseAuthorization();
-
-// Add a basic endpoint for the root path
-app.MapGet("/", () => "Hello from my API!");
 
 app.MapControllers();
 

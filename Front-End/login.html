@@ -16,7 +16,7 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- endinject -->
-    <link rel="shortcut icon" href="assets/images/logo1.png" />
+    <link rel="shortcut icon" href="assets/images/favicon.png" />
     <style>
         .auth-form-light {
             background: #fff;
@@ -39,56 +39,120 @@
     </style>
     <!-- SweetAlert2 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.min.css">
-
 </head>
 
 <body>
-    <div class="container-scroller">
+    <div class="container-scroller" style="font-family: 'Times New Roman', Times, serif;">
         <div class="container-fluid page-body-wrapper full-page-wrapper">
             <div class="content-wrapper d-flex align-items-center auth px-0">
                 <div class="row w-100 mx-0">
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5">
                             <div class="brand-logo">
-                                <img src="assets/images/logo1.png" alt="logo">
+                                <img src="assets/images/logo.svg" alt="logo">
                             </div>
-                            <h4 style="font-family: 'Times New Roman', Times, serif;
-                            font-size: 24px;
-                            color: #333;
-                            font-weight: bold;">Chào mừng!</h4>
+                            <h4 style="font-family: 'Times New Roman', Times, serif;">Chào mừng!</h4>
                             <h6 class="font-weight-light" style="font-family: 'Times New Roman', Times, serif;">Đăng nhập để tiếp tục.</h6>
                             <form class="pt-3" id="loginForm">
-                                <div class="form-group">
+                                <div class="form-group"style="font-family: 'Times New Roman', Times, serif;">
                                     <input type="text" class="form-control form-control-lg" id="username"
                                         placeholder="Tên đăng nhập" required>
                                 </div>
-                                <div class="form-group password-container">
+                                <div class="form-group password-container"style="font-family: 'Times New Roman', Times, serif;">
                                     <input type="password" class="form-control form-control-lg" id="password"
                                         placeholder="Mật khẩu" required>
                                     <i class="mdi mdi-eye toggle-password" id="togglePassword"></i>
                                 </div>
                                 <div class="form-check">
                                     <label class="form-check-label text-muted">
-                                        <input type="checkbox" class="form-check-input" id="rememberMe">
+                                        <input type="checkbox" class="form-check-input" id="rememberMe"style="font-family: 'Times New Roman', Times, serif;">
                                         Ghi nhớ mật khẩu
                                     </label>
                                 </div>
                                 <div class="mt-3">
                                     <button type="submit"
-                                        class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" style="font-family: 'Times New Roman', Times, serif;">ĐĂNG
+                                        class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"style="font-family: 'Times New Roman', Times, serif;">ĐĂNG
                                         NHẬP</button>
                                 </div>
                                 <div id="error-message" class="text-danger mt-3 text-center"></div>
                             </form>
+                            <div class="mt-3 text-center">
+                                <button class="btn btn-link" id="forgotPasswordBtn"style="font-family: 'Times New Roman', Times, serif;">Quên mật khẩu?</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- content-wrapper ends -->
         </div>
-        <!-- page-body-wrapper ends -->
     </div>
-    <!-- container-scroller -->
+
+    <!-- Modal for forgot password -->
+    <div class="modal fade" id="forgotPasswordModal" tabindex="-1" role="dialog"
+        aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document" style="font-family: 'Times New Roman', Times, serif;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="forgotPasswordModalLabel"style="font-family: 'Times New Roman', Times, serif;">Quên mật khẩu</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="forgotPasswordForm">
+                        <div class="form-group">
+                            <label for="email">Nhập email của bạn:</label>
+                            <input type="email" class="form-control" id="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="button" id="sendOtpBtn" class="btn btn-primary"style="font-family: 'Times New Roman', Times, serif;">Gửi mã OTP</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Đặt Lại Mật Khẩu -->
+    <div class="modal fade" id="resetPasswordModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="font-family: 'Times New Roman', Times, serif;">
+                <div class="modal-header">
+                    <h5 class="modal-title">Xác thực OTP & Đặt lại mật khẩu</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="resetPasswordForm">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" id="emailReset" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Mã OTP</label>
+                            <input type="text" class="form-control" id="otp" placeholder="Nhập mã OTP" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Mật khẩu mới</label>
+                            <input type="password" class="form-control" id="newPassword" placeholder="Nhập mật khẩu mới"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label>Nhập lại mật khẩu</label>
+                            <input type="password" class="form-control" id="confirmPassword"
+                                placeholder="Xác nhận mật khẩu mới" required>
+                        </div>
+                        <div class="text-center">
+                            <button type="button" id="resetPasswordBtn" class="btn btn-primary">Đặt lại mật
+                                khẩu</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- plugins:js -->
     <script src="assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
@@ -108,24 +172,20 @@
         const togglePassword = document.querySelector('#togglePassword');
         const password = document.querySelector('#password');
 
-        togglePassword.addEventListener('click', function(e) {
-            // toggle the type attribute
+        togglePassword.addEventListener('click', function (e) {
             const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
             password.setAttribute('type', type);
-            // toggle the eye slash icon
             this.classList.toggle('mdi-eye');
             this.classList.toggle('mdi-eye-off');
         });
 
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Ngăn chặn form submit mặc định
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault(); 
 
             const username = document.getElementById('username').value;
             const passwordValue = document.getElementById('password').value;
             const rememberMe = document.getElementById('rememberMe').checked;
             const errorMessage = document.getElementById('error-message');
-
-            // Lưu thông tin đăng nhập nếu "Ghi nhớ mật khẩu" được chọn
             if (rememberMe) {
                 localStorage.setItem('rememberedUsername', username);
                 localStorage.setItem('rememberedPassword', passwordValue);
@@ -134,17 +194,16 @@
                 localStorage.removeItem('rememberedPassword');
             }
 
-            // Gửi yêu cầu đăng nhập đến API
-            fetch('https://n8nhome.nhomarise.id.vn/api/Authorize/GenerateToken', { // Đảm bảo URL này đúng với API của bạn
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        tenDangNhap: username, // Đảm bảo tên thuộc tính khớp với API
-                        matKhau: passwordValue // Đảm bảo tên thuộc tính khớp với API
-                    })
+            fetch('https://n8nhome.nhomarise.id.vn/api/Authorize/GenerateToken', { 
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    tenDangNhap: username,
+                    matKhau: passwordValue 
                 })
+            })
                 .then(response => {
                     if (!response.ok) {
                         return response.json().then(errorData => {
@@ -154,24 +213,20 @@
                     return response.json();
                 })
                 .then(data => {
-                    // Kiểm tra xem JWT có hợp lệ hay không (ví dụ: có thể hết hạn)
                     if (!data.token) {
                         throw new Error("Đăng nhập không thành công. Vui lòng thử lại.");
                     }
 
-                    // Giải mã token để lấy thông tin
                     const decodedToken = parseJwt(data.token);
 
-                    // Kiểm tra xem token có chứa thông tin trạng thái tài khoản không
                     if (decodedToken.TrangThaiTK === 'False') {
                         throw new Error("Tài khoản tạm thời bị khóa.");
                     }
 
-                    //** THAY ĐỔI LỚN Ở ĐÂY: CHỈ CHUYỂN HƯỚNG NẾU TRẠNG THÁI TK LÀ TRUE **
-                   if (decodedToken.TrangThaiTK === 'True') {
+                    if (decodedToken.TrangThaiTK === 'True') {
                         const role = decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
                         const maNV = decodedToken["MaNV"];
-                        const hoTen = decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"]; // SỬA LẠI ĐÂY
+                        const hoTen = decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
                         const hinhAnh = decodedToken["HinhAnh"];
 
                         localStorage.setItem('token', data.token);
@@ -180,32 +235,138 @@
                         localStorage.setItem('hinhAnh', hinhAnh);
                         localStorage.setItem('maNV', maNV);
 
-                        // Hiển thị SweetAlert2 thông báo thành công
                         Swal.fire({
                             icon: 'success',
                             title: 'Đăng nhập thành công!',
                             text: 'Chào mừng ' + hoTen + '!',
                             confirmButtonText: 'OK'
                         }).then((result) => {
-                            // Sau khi người dùng nhấn OK, chuyển hướng
                             window.location.href = '/Admin/src/index.html';
                         });
-
-
                     } else {
-                        // Nếu trạng thái là false, hiển thị thông báo lỗi
                         errorMessage.textContent = "Tài khoản tạm thời bị khóa.";
                     }
-                    //** KẾT THÚC THAY ĐỔI LỚN **
                 })
                 .catch(error => {
                     console.error('Lỗi đăng nhập:', error);
-                    errorMessage.textContent = error.message; // Hiển thị thông báo lỗi từ API
+                    errorMessage.textContent = error.message;
                 });
         });
 
-        // Kiểm tra thông tin đăng nhập đã lưu khi trang tải
-        window.onload = function() {
+        document.getElementById('forgotPasswordBtn').addEventListener('click', function () {
+            $('#forgotPasswordModal').modal('show');
+        });
+
+        document.getElementById('sendOtpBtn').addEventListener('click', function () {
+            const email = document.getElementById('email').value;
+
+            if (!email) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Lỗi!',
+                    text: 'Vui lòng nhập email của bạn.',
+                });
+                return;
+            }
+
+            fetch('https://n8nhome.nhomarise.id.vn/api/Authorize/SendOtp', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email: email }),
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(errorData => {
+                            throw new Error(errorData.message || 'Có lỗi xảy ra khi gửi mã OTP.');
+                        });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Mã OTP đã được gửi!',
+                        text: 'Hãy kiểm tra email của bạn.',
+                    });
+
+                    $('#forgotPasswordModal').modal('hide');
+                    $('#resetPasswordModal').modal('show');
+                    document.getElementById('emailReset').value = email;
+                })
+                .catch(error => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Lỗi!',
+                        text: error.message,
+                    });
+                });
+        });
+
+        document.getElementById('resetPasswordBtn').addEventListener('click', function () {
+            const email = document.getElementById('emailReset').value;
+            const otp = document.getElementById('otp').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (!otp || !newPassword || !confirmPassword) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Lỗi!',
+                    text: 'Vui lòng nhập đầy đủ thông tin.',
+                });
+                return;
+            }
+
+            if (newPassword !== confirmPassword) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Lỗi!',
+                    text: 'Mật khẩu nhập lại không khớp.',
+                });
+                return;
+            }
+
+            fetch('https://n8nhome.nhomarise.id.vn/api/ForgotPassword/ResetPassword', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    Email: email,           
+                    Otp: otp,             
+                    NewPassword: newPassword 
+                })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(errorData => {
+                            throw new Error(errorData.message || 'Có lỗi xảy ra khi đặt lại mật khẩu.');
+                        });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Thành công!',
+                        text: 'Mật khẩu của bạn đã được cập nhật.',
+                    }).then(() => {
+                        window.location.href = 'login.html'; 
+                    });
+                })
+                .catch(error => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Lỗi!',
+                        text: error.message,
+                    });
+                });
+        });
+
+        
+        window.onload = function () {
             const rememberedUsername = localStorage.getItem('rememberedUsername');
             const rememberedPassword = localStorage.getItem('rememberedPassword');
 
@@ -219,13 +380,18 @@
         function parseJwt(token) {
             var base64Url = token.split('.')[1];
             var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-            var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+            var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
                 return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
             }).join(''));
 
             return JSON.parse(jsonPayload);
         }
     </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>
