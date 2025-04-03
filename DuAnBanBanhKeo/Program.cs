@@ -6,6 +6,9 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
+using System.Security.Policy;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,15 +22,16 @@ builder.Services.AddControllers()
 // Configure CORS
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowMyFrontend", builder =>
+    options.AddPolicy("AllowMyFrontend", policy =>
     {
-        builder.WithOrigins(
-            "http://127.0.0.1:5501", // Máy chủ ảo của bạn
-            "https://nhom-arise.netlify.app" // Trang web Netlify của bạn
+        policy.WithOrigins(
+            "https://nhom-arise.netlify.app",
+            "https://n8nhome.nhomarise.id.vn", // Thêm domain này
+            "http://127.0.0.1:5501" // Giữ lại nếu bạn vẫn dùng Live Server
         )
         .AllowAnyMethod()
-        .AllowAnyHeader()
-        .AllowCredentials();
+        .AllowAnyHeader();
+        //.AllowCredentials(); // Bỏ nếu không cần
     });
 });
 
@@ -97,28 +101,45 @@ builder.Services.AddSwaggerGen(option =>
     });
 });
 
+// Configure Kestrel (Simplified for Development)
+builder.WebHost.ConfigureKestrel((context, options) =>
+{
+    options.ListenLocalhost(7203, listenOptions =>
+    {
+        listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
+        listenOptions.UseHttps(); // Use default HTTPS development certificate
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage(); // Hiển thị chi tiết lỗi trong môi trường phát triển
+    app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "DuAnBanBanhKeo API V1");
     });
 }
+else
+{
+    app.UseHsts();
+}
 
 app.UseHttpsRedirection();
 
 // Sử dụng CORS trước Authentication và Authorization
-app.UseCors("AllowMyFrontend"); // Sử dụng policy đã cấu hình
+app.UseCors("AllowMyFrontend");
 
-app.UseStaticFiles(); // Phục vụ file tĩnh (hình ảnh trong wwwroot)
+app.UseStaticFiles();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+// Add a basic endpoint for the root path
+app.MapGet("/", () => "Hello from my API!");
 
 app.MapControllers();
 

@@ -435,7 +435,7 @@
             // Function to fetch and display HoaDonNhap data
             function loadHoaDonNhaps() {
                 $.ajax({
-                    url: 'https://localhost:7203/api/HoaDonNhap',
+                    url: 'https://n8nhome.nhomarise.id.vn/api/HoaDonNhap',
                     type: 'GET',
                     success: function (data) {
                         var tableBody = $('#hoaDonNhapTable tbody');
@@ -511,7 +511,7 @@
             function exportToWord(maHoaDonNhap) {
                 // Trigger the API call to generate the Word document
                 $.ajax({
-                    url: `https://localhost:7203/api/HoaDonNhap/ExportToWord/${maHoaDonNhap}`,
+                    url: `https://n8nhome.nhomarise.id.vn/api/HoaDonNhap/ExportToWord/${maHoaDonNhap}`,
                     type: 'GET',
                     xhrFields: {
                         responseType: 'blob' // Important: Expect a binary blob
@@ -545,7 +545,7 @@
             function showDetails(maHoaDonNhap) {
                 console.log("Hàm showDetails được gọi với maHoaDonNhap:", maHoaDonNhap); // Thêm dòng này
                 $.ajax({
-                    url: `https://localhost:7203/api/HoaDonNhap/${maHoaDonNhap}`,
+                    url: `https://n8nhome.nhomarise.id.vn/api/HoaDonNhap/${maHoaDonNhap}`,
                     type: 'GET',
                     success: function (hoaDonNhap) {
                         var detailsContent = `
@@ -597,7 +597,7 @@
             // Load list of product in the product selection table.
             function loadProductList(tableId) {
                 $.ajax({
-                    url: 'https://localhost:7203/api/HoaDonNhap/Products', // Lấy danh sách sản phẩm
+                    url: 'https://n8nhome.nhomarise.id.vn/api/HoaDonNhap/Products', // Lấy danh sách sản phẩm
                     type: 'GET',
                     success: function (data) {
                         var tableBody = $(tableId + ' tbody');
@@ -626,7 +626,7 @@
 
             function loadEditProductList(tableId, chiTietHoaDonNhaps) {
                 $.ajax({
-                    url: 'https://localhost:7203/api/HoaDonNhap/Products',
+                    url: 'https://n8nhome.nhomarise.id.vn/api/HoaDonNhap/Products',
                     type: 'GET',
                     success: function (data) {
                         var tableBody = $(tableId + ' tbody');
@@ -660,7 +660,7 @@
             function loadNhanViens() {
                 console.log("Hàm loadNhanViens đang được gọi...");
                 $.ajax({
-                    url: 'https://localhost:7203/api/NhanVien', // Thay đổi URL API nếu cần
+                    url: 'https://n8nhome.nhomarise.id.vn/api/NhanVien', // Thay đổi URL API nếu cần
                     type: 'GET',
                     success: function (data) {
                         var selectElement = $('#hoTen'); // Sử dụng ID hoTen
@@ -737,7 +737,7 @@
             // Hàm tải danh sách nhà cung cấp
             function loadSuppliers(selectElementId, selectedMaNCC) {
                 $.ajax({
-                    url: 'https://localhost:7203/api/HoaDonNhap/Suppliers', // Thay đổi URL API nếu cần
+                    url: 'https://n8nhome.nhomarise.id.vn/api/HoaDonNhap/Suppliers', // Thay đổi URL API nếu cần
                     type: 'GET',
                     success: function (data) {
                         var selectElement = $(selectElementId);
@@ -831,7 +831,7 @@
 
                 // GỌI API ĐỂ LƯU DỮ LIỆU
                 $.ajax({
-                    url: 'https://localhost:7203/api/HoaDonNhap',
+                    url: 'https://n8nhome.nhomarise.id.vn/api/HoaDonNhap',
                     type: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify(data),
@@ -925,7 +925,7 @@
                 console.log("Dữ liệu gửi đi khi cập nhật:", data);
 
                 $.ajax({
-                    url: `https://localhost:7203/api/HoaDonNhap/${maHoaDonNhap}`,
+                    url: `https://n8nhome.nhomarise.id.vn/api/HoaDonNhap/${maHoaDonNhap}`,
                     type: 'PUT',
                     contentType: 'application/json',
                     data: JSON.stringify(data),
@@ -1058,7 +1058,7 @@
                     "initComplete": function (settings, json) {
                         // Load data from API after DataTable is initialized
                         $.ajax({
-                            url: 'https://localhost:7203/api/HoaDonNhap',
+                            url: 'https://n8nhome.nhomarise.id.vn/api/HoaDonNhap',
                             type: 'GET',
                             headers: {
                                 'Authorization': 'Bearer ' + token, // Thêm token vào header
