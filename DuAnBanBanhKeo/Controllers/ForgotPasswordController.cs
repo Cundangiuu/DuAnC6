@@ -42,7 +42,7 @@ public class ForgotPasswordController : ControllerBase
                 return BadRequest(new { success = false, message = "Email không hợp lệ." });
             }
 
-            // *Kiểm tra Email tồn tại trong bảng NhanVien*
+            // **Kiểm tra Email tồn tại trong bảng NhanVien**
             var nhanVien = await _context.NhanViens.FirstOrDefaultAsync(n => n.Email == model.Email);
             if (nhanVien == null)
             {
@@ -94,58 +94,48 @@ public class ForgotPasswordController : ControllerBase
     [HttpPost("ResetPassword")]
     public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordRequest model)
     {
-
         if (string.IsNullOrEmpty(model.Email))
-        {
             return BadRequest(new { success = false, message = "Email không được để trống." });
-        }
 
         if (string.IsNullOrEmpty(model.Otp))
-        {
             return BadRequest(new { success = false, message = "Mã OTP không hợp lệ." });
-        }
 
         if (string.IsNullOrEmpty(model.NewPassword))
-        {
             return BadRequest(new { success = false, message = "Mật khẩu mới không hợp lệ." });
-        }
 
         _logger.LogInformation($"Kiểm tra email: {model.Email}");
 
         if (!_cache.TryGetValue(model.Email, out OtpModel otpModel))
-        {
             return BadRequest(new { success = false, message = "OTP đã hết hạn hoặc không tồn tại." });
-        }
 
         if (otpModel.OtpCode != model.Otp)
-        {
             return BadRequest(new { success = false, message = "Mã OTP không chính xác." });
-        }
 
-        _cache.Remove(model.Email);
+        _cache.Remove(model.Email); // Xoá OTP sau khi dùng
 
-        // *Lấy NhanVien bằng Email*
         var nhanVien = await _context.NhanViens.FirstOrDefaultAsync(n => n.Email == model.Email);
         if (nhanVien == null)
-        {
             return BadRequest(new { success = false, message = "Email không tồn tại trong hệ thống." });
-        }
 
-        // *Lấy TaiKhoan từ bảng TaiKhoan thông qua MaNV*
         var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.MaNV == nhanVien.MaNV);
         if (user == null)
-        {
             return BadRequest(new { success = false, message = "Không tìm thấy tài khoản liên kết với email này." });
+
+        if (user.MatKhau == model.NewPassword)
+        {
+            return BadRequest(new
+            {
+                success = false,
+                message = "Mật khẩu mới không được trùng với mật khẩu cũ."
+            });
         }
 
-        // Mã hóa mật khẩu mới trước khi lưu
-        string hashedPassword = BCrypt.Net.BCrypt.HashPassword(model.NewPassword);
-
-        user.MatKhau = model.NewPassword; // Lưu mật khẩu đã mã hóa 
+        user.MatKhau = model.NewPassword;
         await _context.SaveChangesAsync();
 
-        _logger.LogInformation($"Mật khẩu cho email {model.Email} đã được thay đổi thành công.");
+        _logger.LogInformation($"Mật khẩu cho email {model.Email} đã được cập nhật thành công.");
 
         return Ok(new { success = true, message = "Mật khẩu đã được cập nhật thành công." });
     }
+
 }

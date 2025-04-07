@@ -16,44 +16,34 @@
         .form-group label {
             font-weight: bold;
         }
-
-        /* CSS cho phân trang */
-        .pagination {
-            margin-top: 20px;
+        .pagination { margin-top: 20px; }
+        .pagination .page-item .page-link { cursor: pointer; }
+        .status-active { color: green; font-weight: bold;}
+        .status-inactive { color: red; font-weight: bold; }
+        /* Đảm bảo font Times New Roman được áp dụng rộng rãi */
+        body, .container-scroller, .main-panel, .content-wrapper, .page-header, .card, .table, .modal, .btn, input, select, th {
+             font-family: 'Times New Roman', Times, serif !important;
         }
-
-        .pagination .page-item .page-link {
-            cursor: pointer;
-        }
-
-        .status-active {
-            color: green;
-        }
-
-        .status-inactive {
-            color: red;
+        .page-title, .card-title {
+             font-family: 'Times New Roman', Times, serif !important;
         }
     </style>
 </head>
 
 <body>
-    <div class="container-scroller" style="font-family: 'Times New Roman', Times, serif;">
-        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
-            id="navbar-placeholder"></nav>
-        <div class="container-fluid page-body-wrapper" style="font-family: 'Times New Roman', Times, serif;">
+    <div class="container-scroller">
+        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row" id="navbar-placeholder"></nav>
+        <div class="container-fluid page-body-wrapper">
             <nav class="sidebar sidebar-offcanvas" id="sidebar"></nav>
-            <div class="main-panel" style="font-family: 'Times New Roman', Times, serif;">
-                <div class="content-wrapper" style="font-family: 'Times New Roman', Times, serif;">
-                    <div class="page-header" style="font-family: 'Times New Roman', Times, serif;">
-                        <h3 class="page-title" style="font-family: 'Times New Roman', Times, serif;">Quản lý Tài Khoản
-                        </h3>
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="page-header">
+                        <h3 class="page-title">Quản lý Tài Khoản</h3>
                     </div>
-                    <div class="mb-3" style="font-family: 'Times New Roman', Times, serif;">
-                        <input type="text" id="searchInput" class="form-control"
-                            placeholder="Tìm kiếm theo tên nhân viên">
+                    <div class="mb-3">
+                        <input type="text" id="searchInput" class="form-control" placeholder="Tìm kiếm theo tên nhân viên">
                     </div>
-
-                    <div class="mb-3" style="font-family: 'Times New Roman', Times, serif;">
+                    <div class="mb-3">
                         <label for="filterTrangThai">Lọc theo trạng thái:</label>
                         <select class="form-control" id="filterTrangThai">
                             <option value="">Tất cả</option>
@@ -65,45 +55,24 @@
                         <div class="col-lg-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title" style="font-family: 'Times New Roman', Times, serif;">Danh
-                                        sách Tài Khoản</h4>
-                                    <!-- <button type="button" class="btn btn-primary mb-3" data-toggle="modal"
-                                        data-target="#addTaiKhoanModal"
-                                        style="font-family: 'Times New Roman', Times, serif;">
-                                        <i class="mdi mdi-account-plus"></i> Thêm mới
-                                    </button> -->
-
-                                    <!-- Tìm kiếm -->
-
-
-                                    <div class="table-responsive" style="font-family: 'Times New Roman', Times, serif;">
-                                        <table class="table table-striped"
-                                            style="font-family: 'Times New Roman', Times, serif;">
+                                    <h4 class="card-title">Danh sách Tài Khoản</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Mã tài
-                                                        khoản</th>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Tên đăng
-                                                        nhập</th>
-
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Tên Nhân
-                                                        Viên</th>
-                                                    <!-- Thêm cột Trạng thái -->
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Trạng
-                                                        thái</th>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Vai Trò
-                                                        </th>
-                                                    <th style="font-family: 'Times New Roman', Times, serif;">Hành động
-                                                    </th>
+                                                    <th>Mã tài khoản</th>
+                                                    <th>Tên đăng nhập</th>
+                                                    <th>Tên Nhân Viên</th>
+                                                    <th>Trạng thái</th>
+                                                    <th>Vai Trò</th>
+                                                    <th>Hành động</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="taiKhoanTableBody">
-                                                <!-- Dữ liệu tài khoản sẽ được chèn vào đây bởi JavaScript -->
+                                                <!-- Dữ liệu động -->
                                             </tbody>
                                         </table>
                                     </div>
-
-                                    <!-- Phân trang -->
                                     <nav aria-label="Page navigation">
                                         <ul class="pagination justify-content-center">
                                             <li class="page-item disabled" id="previousPage">
@@ -124,17 +93,12 @@
                 </div>
 
                 <!-- Modal Thêm Tài Khoản -->
-                <div class="modal fade" id="addTaiKhoanModal" tabindex="-1" role="dialog"
-                    aria-labelledby="addTaiKhoanModalLabel" aria-hidden="true"
-                    style="font-family: 'Times New Roman', Times, serif;">
-                    <div class="modal-dialog" role="document">
+                <div class="modal fade" id="addTaiKhoanModal" tabindex="-1" aria-labelledby="addTaiKhoanModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="addTaiKhoanModalLabel"
-                                    style="font-family: 'Times New Roman', Times, serif;">Thêm Tài Khoản</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Đóng">
-                                    <span aria-hidden="true">×</span>
-                                </button>
+                                <h5 class="modal-title" id="addTaiKhoanModalLabel">Thêm Tài Khoản</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Đóng"><span aria-hidden="true">×</span></button>
                             </div>
                             <div class="modal-body">
                                 <form id="addTaiKhoanForm">
@@ -148,40 +112,31 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="maNV">Nhân viên <span class="text-danger">*</span></label>
-                                        <select class="form-control" id="maNV" required>
-                                            <!-- Danh sách nhân viên sẽ được thêm vào đây -->
-                                        </select>
+                                        <select class="form-control" id="maNV" required></select>
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                    style="font-family: 'Times New Roman', Times, serif;">Đóng</button>
-                                <button type="button" class="btn btn-primary" id="saveTaiKhoan"
-                                    style="font-family: 'Times New Roman', Times, serif;">Lưu</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                <button type="button" class="btn btn-primary" id="saveTaiKhoan">Lưu</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Modal Sửa Tài Khoản -->
-                <div class="modal fade" id="editTaiKhoanModal" tabindex="-1" role="dialog"
-                    aria-labelledby="editTaiKhoanModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
+                <div class="modal fade" id="editTaiKhoanModal" tabindex="-1" aria-labelledby="editTaiKhoanModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="editTaiKhoanModalLabel"
-                                    style="font-family: 'Times New Roman', Times, serif;">Sửa Tài Khoản</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Đóng">
-                                    <span aria-hidden="true">×</span>
-                                </button>
+                                <h5 class="modal-title" id="editTaiKhoanModalLabel">Sửa Tài Khoản</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Đóng"><span aria-hidden="true">×</span></button>
                             </div>
                             <div class="modal-body">
                                 <form id="editTaiKhoanForm">
                                     <input type="hidden" id="editMaTK">
                                     <div class="form-group">
-                                        <label for="editTenDangNhap">Tên đăng nhập <span
-                                                class="text-danger">*</span></label>
+                                        <label for="editTenDangNhap">Tên đăng nhập <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="editTenDangNhap" required>
                                     </div>
                                     <div class="form-group">
@@ -190,17 +145,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="editMaNV">Nhân viên <span class="text-danger">*</span></label>
-                                        <select class="form-control" id="editMaNV" required>
-                                            <!-- Danh sách nhân viên sẽ được thêm vào đây -->
-                                        </select>
+                                        <select class="form-control" id="editMaNV" required></select>
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                    style="font-family: 'Times New Roman', Times, serif;">Đóng</button>
-                                <button type="button" class="btn btn-primary" id="updateTaiKhoan"
-                                    style="font-family: 'Times New Roman', Times, serif;">Lưu</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                <button type="button" class="btn btn-primary" id="updateTaiKhoan">Lưu thay đổi</button>
                             </div>
                         </div>
                     </div>
@@ -210,483 +161,610 @@
             </div>
         </div>
     </div>
+
+    <!-- Scripts -->
     <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
     <script src="../../assets/js/off-canvas.js"></script>
     <script src="../../assets/js/misc.js"></script>
     <script src="../../assets/js/settings.js"></script>
     <script src="../../assets/js/todolist.js"></script>
     <script src="../../assets/js/jquery.cookie.js"></script>
+    <!-- jQuery (Ensure it's loaded before other scripts that depend on it) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS (Requires jQuery) -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- SweetAlert2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js"></script>
+
+    <!-- jQuery noConflict (Optional but good practice if other libraries might use $) -->
     <script>
         var $ = jQuery.noConflict();
     </script>
+
+    <!-- Your Custom JavaScript -->
     <script>
-        const API_URL = "https://n8nhome.nhomarise.id.vn/api/TaiKhoan";
-        const IMAGE_PATH_1 = "/Admin/src/assets/images/nhanVien/";
-        const LOGIN_PAGE_URL = "/Admin/src/login.html";
+        // Put all jQuery dependent code inside $(document).ready() or use self-executing function
+        (function($) { // Use $ safely inside this function
+            const API_URL = "https://n8nhome.nhomarise.id.vn/api/TaiKhoan";
+            const IMAGE_PATH_1 = "/Admin/src/assets/images/nhanVien/";
+            const LOGIN_PAGE_URL = "/Admin/src/login.html";
 
-        let navbarLoaded = false;
-        let sidebarLoaded = false;
+            let navbarLoaded = false;
+            let sidebarLoaded = false;
 
-        let allTaiKhoans = []; // Lưu trữ tất cả dữ liệu tài khoản
-        let filteredTaiKhoans = []; // Lưu trữ dữ liệu đã lọc/tìm kiếm
-        let currentPage = 1;
-        const pageSize = 5; // Số lượng tài khoản hiển thị trên mỗi trang
+            let allTaiKhoans = [];
+            let filteredTaiKhoans = [];
+            let currentPage = 1;
+            const pageSize = 5;
 
-        function checkAllLoaded() {
-            if (navbarLoaded && sidebarLoaded) {
-                checkLoginStatus();
-                loadTaiKhoanData();
+            function checkAllLoaded() {
+                if (navbarLoaded && sidebarLoaded) {
+                    checkLoginStatus(); // Check login first
+                    loadTaiKhoanData(); // Then load data
+                }
             }
-        }
 
-        document.addEventListener('DOMContentLoaded', function () {
+            // Load partials
             fetch("../../partials/_navbar.html")
-                .then(response => response.text())
+                .then(response => response.ok ? response.text() : Promise.reject('Navbar fetch failed'))
                 .then(data => {
-                    document.getElementById("navbar-placeholder").innerHTML = data;
+                    $("#navbar-placeholder").html(data); // Use jQuery to inject HTML
                     navbarLoaded = true;
                     checkAllLoaded();
                 })
                 .catch(error => console.error("Lỗi khi tải navbar:", error));
 
             fetch("../../partials/_sidebar.html")
-                .then(response => response.text())
+                .then(response => response.ok ? response.text() : Promise.reject('Sidebar fetch failed'))
                 .then(data => {
-                    const sidebarContent = data;
-                    document.getElementById("sidebar").innerHTML = sidebarContent;
+                    $("#sidebar").html(data); // Use jQuery
                     sidebarLoaded = true;
                     checkAllLoaded();
                 })
                 .catch(error => console.error("Lỗi khi tải sidebar:", error));
 
             fetch("../../partials/_footer.html")
-                .then(response => response.text())
+                .then(response => response.ok ? response.text() : Promise.reject('Footer fetch failed'))
                 .then(data => {
-                    document.getElementById("footer").innerHTML = data;
+                    $("#footer").html(data); // Use jQuery
                 })
-                .catch(error => console.error("Lỗi khi tải navbar:", error));
-        });
+                .catch(error => console.error("Lỗi khi tải footer:", error));
 
-        function checkLoginStatus() {
-            const token = localStorage.getItem('token');
-            const hoTen = localStorage.getItem('hoTen');
-            const userRole = localStorage.getItem('userRole');
-            let hinhAnh = localStorage.getItem('hinhAnh');
+            // --- Check Login Status ---
+            function checkLoginStatus() {
+                 const token = localStorage.getItem('token');
+                 const hoTen = localStorage.getItem('hoTen');
+                 const userRole = localStorage.getItem('userRole');
+                 let hinhAnh = localStorage.getItem('hinhAnh');
 
-            const loginButton = document.getElementById('loginButton');
-            const profileDropdown = document.getElementById('profileDropdown');
-            const sidebar = document.getElementById('sidebar');
+                 const loginButton = document.getElementById('loginButton'); // Use Vanilla JS here if elements are loaded async
+                 const profileDropdown = document.getElementById('profileDropdown');
+                 const sidebar = document.getElementById('sidebar');
 
-            if (token) {
-                loginButton.style.display = 'none';
-                profileDropdown.style.display = 'block';
+                 if (token && profileDropdown) { // Check if elements exist
+                     if (loginButton) loginButton.style.display = 'none';
+                     profileDropdown.style.display = 'block';
 
-                const navbarHoTen = document.querySelector('#profileDropdown .nav-profile-text p');
-                const navbarHinhAnh = document.querySelector('#profileDropdown .nav-profile-img img');
+                     const navbarHoTen = profileDropdown.querySelector('.nav-profile-text p');
+                     const navbarHinhAnh = profileDropdown.querySelector('.nav-profile-img img');
 
-                if (navbarHoTen) {
-                    navbarHoTen.textContent = hoTen;
-                }
-                if (navbarHinhAnh) {
-                    if (hinhAnh && !hinhAnh.startsWith('http')) {
-                        hinhAnh = `${IMAGE_PATH_1}${hinhAnh}`;
-                    }
-                    navbarHinhAnh.src = hinhAnh;
-                }
+                     if (navbarHoTen) navbarHoTen.textContent = hoTen || 'Người dùng';
+                     if (navbarHinhAnh) {
+                         if (hinhAnh && !hinhAnh.startsWith('http') && !hinhAnh.startsWith('/')) { // More robust path check
+                              hinhAnh = IMAGE_PATH_1 + hinhAnh;
+                          } else if (!hinhAnh) {
+                             hinhAnh = '../../assets/images/faces/face1.jpg'; // Default image
+                         }
+                         navbarHinhAnh.src = hinhAnh;
+                     }
 
-                const sidebarHoTen = document.getElementById("sidebar-hoTen");
-                const sidebarVaiTro = document.getElementById("sidebar-vaiTro");
-                const sidebarHinhAnh = document.getElementById("sidebar-hinhAnh");
+                     // Delay sidebar updates slightly if needed, or ensure elements exist
+                     setTimeout(() => {
+                        const sidebarHoTen = document.getElementById("sidebar-hoTen");
+                        const sidebarVaiTro = document.getElementById("sidebar-vaiTro");
+                        const sidebarHinhAnh = document.getElementById("sidebar-hinhAnh");
 
-                if (sidebarHoTen) {
-                    sidebarHoTen.textContent = hoTen;
-                }
-                if (sidebarVaiTro) {
-                    sidebarVaiTro.textContent = userRole;
-                }
-                if (sidebarHinhAnh) {
-                    sidebarHinhAnh.src = hinhAnh;
-                }
+                        if (sidebarHoTen) sidebarHoTen.textContent = hoTen || 'Người dùng';
+                        if (sidebarVaiTro) sidebarVaiTro.textContent = userRole || 'Vai trò';
+                        if (sidebarHinhAnh) sidebarHinhAnh.src = hinhAnh; // Use the potentially modified hinhAnh
 
-                if (userRole === 'Nhân viên') {
-                    const quanLyNguoiDungLi = Array.from(sidebar.querySelectorAll('li a'))
-                        .find(a => a.textContent.trim() === 'Quản lý người dùng')
-                        ?.closest('li');
+                        // Role-based sidebar item visibility
+                         if (sidebar && userRole) { // Ensure sidebar and userRole exist
+                             const quanLyNguoiDungLi = $(sidebar).find('li a:contains("Quản lý người dùng")').first().closest('li');
 
-                    if (quanLyNguoiDungLi) {
-                        const quanLyTaiKhoanLink = quanLyNguoiDungLi.querySelector('a[href*="quanlytaikhoan"]');
+                             if (quanLyNguoiDungLi.length > 0) {
+                                 const quanLyTaiKhoanLink = quanLyNguoiDungLi.find('a[href*="quanlytaikhoan"]').closest('li');
+                                 if (userRole === 'Nhân viên') {
+                                     quanLyTaiKhoanLink.hide();
+                                 } else { // Quản lý kho or Admin
+                                     quanLyTaiKhoanLink.show();
+                                 }
+                             }
+                         }
 
-                        if (quanLyTaiKhoanLink) {
-                            quanLyTaiKhoanLink.closest('li').style.display = 'none';
+                        // Logout button event (ensure it exists)
+                        const logoutButton = document.getElementById('logoutButton');
+                        if (logoutButton) {
+                            logoutButton.removeEventListener('click', handleLogout); // Remove previous listener if any
+                            logoutButton.addEventListener('click', handleLogout);
                         }
+
+                     }, 100); // Small delay to ensure sidebar elements are rendered
+
+
+                 } else {
+                     // Not logged in or core elements missing
+                     console.log("Token not found or profile dropdown missing, redirecting to login.");
+                     if (window.location.pathname !== LOGIN_PAGE_URL) { // Prevent redirect loop
+                         window.location.href = LOGIN_PAGE_URL;
+                     }
+                 }
+             }
+
+            function handleLogout() {
+                localStorage.removeItem('token');
+                localStorage.removeItem('userRole');
+                localStorage.removeItem('hoTen');
+                localStorage.removeItem('hinhAnh');
+                localStorage.removeItem('maNV');
+                 window.location.href = "/Admin/src/index.html"; // Redirect to index after logout
+             }
+
+
+            // --- Data Loading and Display ---
+            function loadTaiKhoanData() {
+                console.log("Bắt đầu tải dữ liệu tài khoản...");
+                $.ajax({
+                    url: API_URL,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log("Dữ liệu tài khoản tải thành công:", data);
+                        allTaiKhoans = data;
+                        applyFilters(); // Apply filters immediately after loading
+                        populateNhanVienDropdown(data); // Populate dropdowns for modals
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.error('Lỗi khi tải dữ liệu tài khoản:', textStatus, errorThrown, jqXHR);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Lỗi Tải Dữ Liệu!',
+                            text: 'Không thể tải danh sách tài khoản từ máy chủ. Vui lòng thử lại sau.',
+                        });
                     }
-                } else if (userRole === 'Quản lý kho') {
-                    const quanLyNguoiDungLi = Array.from(sidebar.querySelectorAll('li a'))
-                        .find(a => a.textContent.trim() === 'Quản lý người dùng')
-                        ?.closest('li');
+                });
+            }
 
-                    if (quanLyNguoiDungLi) {
-                        const quanLyTaiKhoanLink = quanLyNguoiDungLi.querySelector('a[href*="quanlytaikhoan"]');
+            function displayTaiKhoans() {
+                console.log(`Hiển thị trang ${currentPage}`);
+                const startIndex = (currentPage - 1) * pageSize;
+                const endIndex = startIndex + pageSize;
+                // IMPORTANT: Slice from filteredTaiKhoans, not allTaiKhoans
+                const taiKhoansToDisplay = filteredTaiKhoans.slice(startIndex, endIndex);
+                populateTaiKhoanTable(taiKhoansToDisplay);
+                updatePaginationUI(); // Update pagination buttons state
+            }
 
-                        if (quanLyTaiKhoanLink) {
-                            quanLyTaiKhoanLink.closest('li').style.display = 'block';
-                        }
+            function populateTaiKhoanTable(taiKhoans) {
+                const tableBody = $('#taiKhoanTableBody');
+                tableBody.empty(); // Clear previous rows
+
+                if (!taiKhoans || taiKhoans.length === 0) {
+                     tableBody.append('<tr><td colspan="6" class="text-center">Không có dữ liệu tài khoản nào.</td></tr>');
+                     return;
+                 }
+
+                $.each(taiKhoans, function (index, taiKhoan) {
+                    // Basic check for essential data
+                    const hoTenDisplay = taiKhoan.hoTen || 'N/A';
+                    const vaiTroDisplay = taiKhoan.vaiTro || 'N/A';
+                    const trangThaiBool = String(taiKhoan.trangThai).toLowerCase() === 'true'; // Ensure boolean
+
+                    const row = `
+                        <tr>
+                            <td>${taiKhoan.maTK || 'N/A'}</td>
+                            <td>${taiKhoan.tenDangNhap || 'N/A'}</td>
+                            <td>${hoTenDisplay}</td>
+                            <td>
+                                <span class="${trangThaiBool ? 'status-active' : 'status-inactive'}">
+                                    ${trangThaiBool ? 'Đang hoạt động' : 'Ngưng hoạt động'}
+                                </span>
+                            </td>
+                            <td>${vaiTroDisplay}</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-primary mr-2 edit-taiKhoan" data-maTK="${taiKhoan.maTK}">
+                                    <i class="mdi mdi-pencil"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger mr-2 change-status-taiKhoan"
+                                        data-maTK="${taiKhoan.maTK}"
+                                        data-trangThai="${trangThaiBool}"> <!-- Ensure boolean is in data attribute -->
+                                    ${trangThaiBool ? 'Ngưng kích hoạt' : 'Kích hoạt'}
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+                    tableBody.append(row);
+                });
+            }
+
+             // Populate dropdown for modals (only unique MaNV)
+            function populateNhanVienDropdown(allData) {
+                const addMaNVSelect = $('#maNV');
+                const editMaNVSelect = $('#editMaNV');
+                addMaNVSelect.empty();
+                editMaNVSelect.empty();
+
+                const uniqueNhanViens = [];
+                const maNVSet = new Set();
+
+                allData.forEach(tk => {
+                    if (tk.maNV && !maNVSet.has(tk.maNV)) {
+                        maNVSet.add(tk.maNV);
+                        uniqueNhanViens.push({ maNV: tk.maNV, hoTen: tk.hoTen || tk.maNV }); // Use MaNV if HoTen is missing
                     }
-                }
-
-                document.getElementById('logoutButton').addEventListener('click', function () {
-                    localStorage.removeItem('token');
-                    localStorage.removeItem('userRole');
-                    localStorage.removeItem('hoTen');
-                    localStorage.removeItem('hinhAnh');
-                    localStorage.removeItem('maNV');
-                    window.location.href = "/Admin/src/index.html";
-
                 });
 
-            } else {
-                window.location.href = LOGIN_PAGE_URL;
+                 // Sort by HoTen for better UX
+                 uniqueNhanViens.sort((a, b) => a.hoTen.localeCompare(b.hoTen));
+
+                if (uniqueNhanViens.length === 0) {
+                    const placeholderOption = '<option value="">-- Không có nhân viên --</option>';
+                     addMaNVSelect.append(placeholderOption);
+                     editMaNVSelect.append(placeholderOption);
+                 } else {
+                     addMaNVSelect.append('<option value="">-- Chọn nhân viên --</option>');
+                     editMaNVSelect.append('<option value="">-- Chọn nhân viên --</option>');
+                     uniqueNhanViens.forEach(nv => {
+                         const option = `<option value="${nv.maNV}">${nv.hoTen} (${nv.maNV})</option>`;
+                         addMaNVSelect.append(option);
+                         editMaNVSelect.append(option);
+                     });
+                 }
+             }
+
+            // --- Filtering and Searching ---
+            function applyFilters() {
+                const searchTerm = $('#searchInput').val().toLowerCase().trim();
+                const selectedTrangThai = $('#filterTrangThai').val(); // "true", "false", or ""
+
+                filteredTaiKhoans = allTaiKhoans.filter(taiKhoan => {
+                    const tenNhanVien = (taiKhoan.hoTen || '').toLowerCase();
+                    const trangThai = taiKhoan.trangThai; // Keep original type (likely boolean)
+
+                    const searchMatch = searchTerm === '' || tenNhanVien.includes(searchTerm);
+
+                    let statusMatch = true;
+                    if (selectedTrangThai !== "") {
+                        // Compare boolean with string representation
+                        statusMatch = String(trangThai) === selectedTrangThai;
+                    }
+
+                    return searchMatch && statusMatch;
+                });
+
+                currentPage = 1; // Reset to first page after filtering
+                displayTaiKhoans(); // Display the filtered results
             }
-        }
 
-        $(document).ready(function () {
-            loadTaiKhoanData();
+            // --- Pagination ---
+            function updatePaginationUI() {
+                if (!filteredTaiKhoans) return; // Guard against null/undefined
 
-            // Gắn sự kiện cho tìm kiếm
+                const totalItems = filteredTaiKhoans.length;
+                const totalPages = Math.ceil(totalItems / pageSize);
+
+                $('#currentPage a').text(currentPage);
+
+                // Previous button state
+                if (currentPage <= 1) {
+                    $('#previousPage').addClass('disabled');
+                } else {
+                    $('#previousPage').removeClass('disabled');
+                }
+
+                // Next button state
+                if (currentPage >= totalPages || totalPages === 0) {
+                    $('#nextPage').addClass('disabled');
+                } else {
+                    $('#nextPage').removeClass('disabled');
+                }
+
+                // Hide pagination if only one page or no results
+                 if (totalPages <= 1) {
+                     $('.pagination').hide();
+                 } else {
+                     $('.pagination').show();
+                 }
+            }
+
+
+            // --- Modals and CRUD Operations ---
+
+            // Open Edit Modal
+            function openEditTaiKhoanModal(maTK) {
+                console.log("Mở modal sửa cho maTK:", maTK);
+                // Find the data locally first for faster display
+                const taiKhoan = allTaiKhoans.find(tk => tk.maTK === maTK);
+                if (taiKhoan) {
+                    $('#editMaTK').val(taiKhoan.maTK);
+                    $('#editTenDangNhap').val(taiKhoan.tenDangNhap);
+                    $('#editMaNV').val(taiKhoan.maNV);
+                    $('#editMatKhau').val(''); // Clear password field
+                    $('#editTaiKhoanModal').modal('show');
+                } else {
+                    console.error("Không tìm thấy dữ liệu cục bộ cho maTK:", maTK, "sẽ thử gọi API.");
+                    // Fallback to API call if not found locally (less likely with current flow)
+                    $.ajax({
+                        url: `${API_URL}/${maTK}`,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
+                            $('#editMaTK').val(data.maTK);
+                            $('#editTenDangNhap').val(data.tenDangNhap);
+                            $('#editMaNV').val(data.maNV);
+                            $('#editMatKhau').val('');
+                            $('#editTaiKhoanModal').modal('show');
+                        },
+                        error: function (error) {
+                            console.error('Lỗi khi tải thông tin tài khoản để sửa:', error);
+                            Swal.fire('Lỗi!', 'Không thể tải thông tin chi tiết tài khoản.', 'error');
+                        }
+                    });
+                }
+            }
+
+            // **Change Status Function (Corrected Logic)**
+            function changeTaiKhoanStatus(maTK, currentTrangThai) {
+                // 1. Ensure boolean & Calculate NEW state
+                const booleanCurrentTrangThai = String(currentTrangThai).toLowerCase() === 'true';
+                const newTrangThai = !booleanCurrentTrangThai; // The state it WILL BECOME
+
+                // 2. Determine ACTION text based on CURRENT state
+                const actionText = booleanCurrentTrangThai ? 'ngưng kích hoạt' : 'kích hoạt';
+
+                console.log('changeTaiKhoanStatus - maTK:', maTK, 'current:', booleanCurrentTrangThai, 'new:', newTrangThai, 'action:', actionText);
+
+                // 3. Confirmation Dialog (using ACTION text)
+                Swal.fire({
+                    title: `Bạn có chắc chắn muốn ${actionText} tài khoản này?`,
+                    text: "Hành động này sẽ cập nhật trạng thái trên máy chủ.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: `Có, ${actionText}!`,
+                    cancelButtonText: 'Hủy'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        console.log('changeTaiKhoanStatus - User confirmed.');
+
+                        // 4. Find local data (needed for other fields in PUT)
+                        const taiKhoanToUpdate = allTaiKhoans.find(tk => tk.maTK === maTK);
+                        if (!taiKhoanToUpdate) {
+                            console.error("changeTaiKhoanStatus - Lỗi: Không tìm thấy dữ liệu cục bộ:", maTK);
+                            Swal.fire('Lỗi!', 'Lỗi dữ liệu cục bộ, không thể tiếp tục.', 'error');
+                            return;
+                        }
+
+                        // 5. Prepare data for PUT (sending NEW state)
+                        const updateData = {
+                            tenDangNhap: taiKhoanToUpdate.tenDangNhap,
+                            maNV: taiKhoanToUpdate.maNV,
+                            trangThai: newTrangThai, // Send the NEW state
+                            matKhau: null           // Don't change password here
+                        };
+                        console.log('changeTaiKhoanStatus - Dữ liệu gửi đi:', updateData);
+
+                        // 6. AJAX PUT Call
+                        $.ajax({
+                            url: `${API_URL}/${maTK}`,
+                            type: 'PUT',
+                            contentType: 'application/json',
+                            data: JSON.stringify(updateData),
+                            success: function () {
+                                console.log('changeTaiKhoanStatus - Cập nhật thành công trên server:', maTK);
+                                Swal.fire(
+                                    'Thành công!',
+                                    `Tài khoản đã được ${actionText}.`, // Success message uses ACTION text
+                                    'success'
+                                );
+
+                                // Update local data arrays
+                                const updateLocal = (tk) => { if (tk.maTK === maTK) tk.trangThai = newTrangThai; };
+                                allTaiKhoans.forEach(updateLocal);
+                                filteredTaiKhoans.forEach(updateLocal); // Ensure filtered data is also updated
+
+                                // Refresh UI
+                                displayTaiKhoans(); // Will redraw table based on updated filteredTaiKhoans
+                            },
+                            error: function (error) {
+                                console.error('changeTaiKhoanStatus - Lỗi AJAX PUT:', error);
+                                let errorMsg = `Lỗi khi ${actionText} tài khoản.`;
+                                if (error.responseJSON && error.responseJSON.title) {
+                                    errorMsg = error.responseJSON.title;
+                                } else if (error.status === 400 && error.responseJSON && error.responseJSON.errors) {
+                                     // Try to get specific validation errors
+                                     errorMsg = "Lỗi dữ liệu: ";
+                                     for (const key in error.responseJSON.errors) {
+                                         errorMsg += `${key}: ${error.responseJSON.errors[key].join(', ')} `;
+                                     }
+                                 } else if(error.statusText) {
+                                     errorMsg += ` (${error.statusText})`;
+                                 }
+
+                                Swal.fire('Lỗi!', errorMsg + ` (Mã: ${error.status})`, 'error');
+                            }
+                        });
+                    } else {
+                        console.log('changeTaiKhoanStatus - User cancelled.');
+                    }
+                });
+            }
+
+            // Save New Account
+             $('#saveTaiKhoan').click(function () {
+                 const tenDangNhap = $('#tenDangNhap').val().trim();
+                 const matKhau = $('#matKhau').val(); // No trim for password
+                 const maNV = $('#maNV').val();
+
+                 // Simple Validation
+                 if (!tenDangNhap || !matKhau || !maNV) {
+                     Swal.fire('Thiếu thông tin', 'Vui lòng điền đầy đủ Tên đăng nhập, Mật khẩu và chọn Nhân viên.', 'warning');
+                     return;
+                 }
+
+                 const taiKhoanData = {
+                     tenDangNhap: tenDangNhap,
+                     matKhau: matKhau,
+                     maNV: maNV
+                     // TrangThai defaults to true on backend
+                 };
+
+                 $.ajax({
+                     url: API_URL,
+                     type: 'POST',
+                     contentType: 'application/json',
+                     data: JSON.stringify(taiKhoanData),
+                     success: function (createdTaiKhoan) { // Get created data back if API returns it
+                         Swal.fire('Thành công!', 'Tài khoản đã được thêm.', 'success');
+                         $('#addTaiKhoanModal').modal('hide');
+                         $('#addTaiKhoanForm')[0].reset(); // Reset form fields
+                         // Add to local data and refresh instead of reloading page
+                         if(createdTaiKhoan && createdTaiKhoan.maTK) {
+                             // Need HoTen and VaiTro, might need another API call or make assumptions
+                             // For simplicity, just reload data for now
+                             loadTaiKhoanData();
+                         } else {
+                             loadTaiKhoanData(); // Reload if created data isn't returned properly
+                         }
+
+                         // window.location.reload(); // Less ideal
+                     },
+                     error: function (error) {
+                         console.error('Lỗi khi thêm tài khoản:', error);
+                         let errorMsg = 'Có lỗi xảy ra khi thêm tài khoản.';
+                          if (error.responseJSON && error.responseJSON.title) {
+                             errorMsg = error.responseJSON.title;
+                         } else if (error.status === 400) {
+                             errorMsg = 'Dữ liệu không hợp lệ. Tên đăng nhập có thể đã tồn tại hoặc Mã NV không đúng.';
+                         }
+                         Swal.fire('Lỗi!', errorMsg, 'error');
+                     }
+                 });
+             });
+
+
+             // Update Existing Account (from Edit Modal)
+             $('#updateTaiKhoan').click(function () {
+                 const maTK = $('#editMaTK').val();
+                 const tenDangNhap = $('#editTenDangNhap').val().trim();
+                 const matKhau = $('#editMatKhau').val(); // Don't trim password, send empty if not changed
+                 const maNV = $('#editMaNV').val();
+
+                 // Simple Validation
+                 if (!tenDangNhap || !maNV) {
+                     Swal.fire('Thiếu thông tin', 'Vui lòng điền Tên đăng nhập và chọn Nhân viên.', 'warning');
+                     return;
+                 }
+
+                 const taiKhoanData = {
+                     // maTK is in the URL, not usually in the body for PUT
+                     tenDangNhap: tenDangNhap,
+                     matKhau: matKhau || null, // Send null if empty, backend handles no-change logic
+                     maNV: maNV
+                     // TrangThai is updated via changeTaiKhoanStatus, not here
+                 };
+
+                 $.ajax({
+                     url: `${API_URL}/${maTK}`,
+                     type: 'PUT',
+                     contentType: 'application/json',
+                     data: JSON.stringify(taiKhoanData),
+                     success: function () {
+                         Swal.fire('Thành công!', 'Tài khoản đã được cập nhật.', 'success');
+                         $('#editTaiKhoanModal').modal('hide');
+                         // Update local data and refresh instead of reloading page
+                         loadTaiKhoanData(); // Simplest way to ensure all related data (HoTen, VaiTro) is fresh
+                         // window.location.reload(); // Less ideal
+                     },
+                     error: function (error) {
+                         console.error('Lỗi khi cập nhật tài khoản:', error);
+                         let errorMsg = 'Có lỗi xảy ra khi cập nhật tài khoản.';
+                         if (error.responseJSON && error.responseJSON.title) {
+                             errorMsg = error.responseJSON.title;
+                         } else if (error.status === 400) {
+                             errorMsg = 'Dữ liệu không hợp lệ. Mã NV có thể không đúng.';
+                         } else if (error.status === 404) {
+                             errorMsg = 'Không tìm thấy tài khoản để cập nhật.';
+                         }
+                         Swal.fire('Lỗi!', errorMsg, 'error');
+                     }
+                 });
+             });
+
+
+            // --- Event Listeners ---
             $('#searchInput').on('input', function () {
-                currentPage = 1; // Reset về trang đầu tiên khi tìm kiếm
                 applyFilters();
-                updatePagination();
             });
 
-            // Gắn sự kiện cho lọc theo trạng thái
             $('#filterTrangThai').change(function () {
-                currentPage = 1; // Reset về trang đầu tiên khi lọc
                 applyFilters();
-                updatePagination();
             });
 
-            // Gắn sự kiện cho phân trang
+            // Pagination Clicks
             $('#previousPage').click(function (e) {
                 e.preventDefault();
-                if (currentPage > 1) {
+                if (!$(this).hasClass('disabled') && currentPage > 1) {
                     currentPage--;
-                    updatePagination();
+                    displayTaiKhoans();
                 }
             });
 
             $('#nextPage').click(function (e) {
                 e.preventDefault();
-                const totalPages = Math.ceil(filteredTaiKhoans.length / pageSize);
-                if (currentPage < totalPages) {
-                    currentPage++;
-                    updatePagination();
+                if (!$(this).hasClass('disabled')) {
+                    const totalPages = Math.ceil(filteredTaiKhoans.length / pageSize);
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        displayTaiKhoans();
+                    }
                 }
             });
-        });
 
-        // Hàm tải dữ liệu từ API
-        function loadTaiKhoanData() {
-            $.ajax({
-                url: API_URL,
-                type: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    allTaiKhoans = data; // Lưu trữ tất cả dữ liệu
-                    filteredTaiKhoans = [...allTaiKhoans]; // Khởi tạo dữ liệu đã lọc bằng tất cả dữ liệu
+            // Event Delegation for dynamically added buttons
+             $('#taiKhoanTableBody').on('click', '.edit-taiKhoan', function () {
+                 const maTK = $(this).data('matk');
+                 if(maTK) {
+                     openEditTaiKhoanModal(maTK);
+                 } else {
+                     console.error("Missing data-maTK on edit button.");
+                 }
+             });
 
-                    populateNhanVienFilter(data); // Populate dropdown lọc
-                    populateNhanVienDropdown(data); // Populate dropdown cho modal
-                    updatePagination();
-                },
-                error: function (error) {
-                    console.error('Lỗi khi tải dữ liệu:', error);
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Lỗi!',
-                        text: 'Có lỗi xảy ra khi tải dữ liệu.',
-                    });
-                }
-            });
-        }
+             $('#taiKhoanTableBody').on('click', '.change-status-taiKhoan', function () {
+                 const maTK = $(this).data('matk');
+                 const trangThaiHienTai = $(this).data('trangthai'); // Note: jQuery converts data attributes to lowercase
 
-        // Hàm hiển thị tài khoản trên trang hiện tại
-        function displayTaiKhoans() {
-            const startIndex = (currentPage - 1) * pageSize;
-            const endIndex = startIndex + pageSize;
-            const taiKhoansToDisplay = filteredTaiKhoans.slice(startIndex, endIndex);
-            populateTaiKhoanTable(taiKhoansToDisplay);
-        }
+                 // *** DEBUGGING POINT ***
+                 console.log('------------------------------------');
+                 console.log('CLICK Handler - Nút được nhấn:', $(this).text().trim());
+                 console.log('CLICK Handler - Đọc data-trangthai:', trangThaiHienTai); // Attribute name is lowercase here
+                 console.log('CLICK Handler - Kiểu dữ liệu:', typeof trangThaiHienTai);
+                 console.log('------------------------------------');
+                 // *** END DEBUGGING ****
 
-        // Hàm hiển thị dữ liệu trong bảng
-        function populateTaiKhoanTable(taiKhoans) {
-            const tableBody = $('#taiKhoanTableBody');
-            tableBody.empty();
+                 // Check if data was read correctly
+                  if (maTK !== undefined && trangThaiHienTai !== undefined) {
+                     changeTaiKhoanStatus(maTK, trangThaiHienTai);
+                 } else {
+                      console.error("Missing data-maTK or data-trangThai on status button.");
+                      Swal.fire("Lỗi", "Không thể đọc thông tin trạng thái từ nút.", "error");
+                  }
+             });
 
-            $.each(taiKhoans, function (index, taiKhoan) {
-                const row = `
-                    <tr>
-                        <td>${taiKhoan.maTK}</td>
-                        <td>${taiKhoan.tenDangNhap}</td>
-                        <td>${taiKhoan.hoTen}</td>
-                        <td>
-                            <span class="${taiKhoan.trangThai ? 'status-active' : 'status-inactive'}">
-                                ${taiKhoan.trangThai ? 'Đang hoạt động' : 'Ngưng hoạt động'}
-                            </span>
-                        </td>
-                        <td>${taiKhoan.vaiTro}</td>
-                        <td>
-                            <button class="btn btn-sm btn-outline-primary mr-2 edit-taiKhoan" data-maTK="${taiKhoan.maTK}" style="font-family: 'Times New Roman', Times, serif;"><i class="mdi mdi-pencil"></i></button>
-                            <button class="btn btn-sm btn-outline-danger mr-2 change-status-taiKhoan" data-maTK="${taiKhoan.maTK}" data-trangThai="${taiKhoan.trangThai}" style="font-family: 'Times New Roman', Times, serif;">
-                                ${taiKhoan.trangThai ? 'Ngưng kích hoạt' : 'Kích hoạt'}
-                            </button>
-                        </td>
-                    </tr>
-                `;
-                tableBody.append(row);
-            });
-
-            $('.edit-taiKhoan').click(function () {
-                const maTK = $(this).data('matk');
-                openEditTaiKhoanModal(maTK);
-            });
-
-            $('.change-status-taiKhoan').click(function () {
-                const maTK = $(this).data('matk');
-                const trangThai = $(this).data('trangThai');
-                changeTaiKhoanStatus(maTK, trangThai);
-            });
-        }
-
-        // Hàm populate dropdown lọc nhân viên
-        function populateNhanVienFilter(taiKhoans) {
-            const filterNhanVienSelect = $('#filterNhanVien');
-            filterNhanVienSelect.empty(); // Xóa các option cũ
-            filterNhanVienSelect.append(`<option value="">Tất cả nhân viên</option>`); // Thêm option "Tất cả nhân viên"
-
-            const uniqueNhanViens = [...new Set(taiKhoans.map(item => item.hoTen))]; // Lấy danh sách tên nhân viên duy nhất
-            uniqueNhanViens.forEach(hoTen => {
-                const option = `<option value="${hoTen}">${hoTen}</option>`;
-                filterNhanVienSelect.append(option);
-            });
-        }
-
-        // Hàm populate dropdown nhân viên cho modal
-        function populateNhanVienDropdown(taiKhoans) {
-            const addMaNVSelect = $('#maNV');
-            const editMaNVSelect = $('#editMaNV');
-
-            addMaNVSelect.empty();
-            editMaNVSelect.empty();
-
-            // Sử dụng Set để lưu trữ mã nhân viên đã thêm
-            const addedMaNV = new Set();
-
-            taiKhoans.forEach(taiKhoan => {
-                if (!addedMaNV.has(taiKhoan.maNV)) {
-                    const option = `<option value="${taiKhoan.maNV}">${taiKhoan.hoTen}</option>`;
-                    addMaNVSelect.append(option);
-                    editMaNVSelect.append(option);
-                    addedMaNV.add(taiKhoan.maNV);
-                }
-            });
-        }
-
-
-        // Hàm mở modal sửa
-        function openEditTaiKhoanModal(maTK) {
-            $.ajax({
-                url: `${API_URL}/${maTK}`,
-                type: 'GET',
-                dataType: 'json',
-                success: function (taiKhoan) {
-                    $('#editMaTK').val(taiKhoan.maTK);
-                    $('#editTenDangNhap').val(taiKhoan.tenDangNhap);
-                    $('#editMaNV').val(taiKhoan.maNV);
-
-                    $('#editTaiKhoanModal').modal('show');
-                },
-                error: function (error) {
-                    console.error('Lỗi khi tải thông tin tài khoản:', error);
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Lỗi!',
-                        text: 'Có lỗi xảy ra khi tải thông tin tài khoản.',
-                    });
-                }
-            });
-        }
-
-        // Hàm thay đổi trạng thái tài khoản
-        function changeTaiKhoanStatus(maTK, trangThai) {
-            const newTrangThai = !trangThai; // Đảo ngược trạng thái
-
-            Swal.fire({
-                title: `Bạn có chắc chắn muốn ${newTrangThai ? 'kích hoạt' : 'ngưng kích hoạt'} tài khoản này?`,
-                text: "Hành động này sẽ thay đổi trạng thái của tài khoản.",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: `Có, ${newTrangThai ? 'kích hoạt' : 'ngưng kích hoạt'}!`,
-                cancelButtonText: 'Hủy'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Tìm tài khoản trong allTaiKhoans và filteredTaiKhoans để cập nhật trạng thái
-                    const updateTaiKhoanStatus = (taiKhoan) => {
-                        if (taiKhoan.maTK === maTK) {
-                            taiKhoan.trangThai = newTrangThai;
-                        }
-                    };
-
-                    allTaiKhoans.forEach(updateTaiKhoanStatus);
-                    filteredTaiKhoans.forEach(updateTaiKhoanStatus);
-
-                    // Cập nhật giao diện người dùng
-                    displayTaiKhoans();
-
-                    // Cập nhật phân trang nếu cần
-                    updatePagination();
-
-                    // Hiển thị thông báo thành công
-                    Swal.fire(
-                        'Thành công!',
-                        `Tài khoản đã được ${newTrangThai ? 'kích hoạt' : 'ngưng kích hoạt'}.`,
-                        'success'
-                    );
-                }
-            });
-        }
-
-
-        // Hàm thêm tài khoản
-        $('#saveTaiKhoan').click(function () {
-            const tenDangNhap = $('#tenDangNhap').val();
-            const matKhau = $('#matKhau').val();
-            const maNV = $('#maNV').val();
-
-            const taiKhoanData = {
-                tenDangNhap: tenDangNhap,
-                matKhau: matKhau,
-                maNV: maNV
-            };
-
-            $.ajax({
-                url: API_URL,
-                type: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify(taiKhoanData),
-                success: function () {
-                    Swal.fire(
-                        'Thành công!',
-                        'Tài khoản đã được thêm.',
-                        'success'
-                    ).then(() => {
-                        $('#addTaiKhoanModal').modal('hide');
-                        window.location.reload();
-                    });
-                },
-                error: function (error) {
-                    console.error('Lỗi khi thêm tài khoản:', error);
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Lỗi!',
-                        text: 'Có lỗi xảy ra khi thêm tài khoản.',
-                    });
-                }
-            });
-        });
-
-        // Hàm cập nhật tài khoản
-        $('#updateTaiKhoan').click(function () {
-            const maTK = $('#editMaTK').val();
-            const tenDangNhap = $('#editTenDangNhap').val();
-            const matKhau = $('#editMatKhau').val();
-            const maNV = $('#editMaNV').val();
-
-            const taiKhoanData = {
-                maTK: maTK,
-                tenDangNhap: tenDangNhap,
-                matKhau: matKhau,
-                maNV: maNV
-            };
-
-            $.ajax({
-                url: `${API_URL}/${maTK}`,
-                type: 'PUT',
-                contentType: 'application/json',
-                data: JSON.stringify(taiKhoanData),
-                success: function () {
-                    Swal.fire(
-                        'Thành công!',
-                        'Tài khoản đã được cập nhật.',
-                        'success'
-                    ).then(() => {
-                        $('#editTaiKhoanModal').modal('hide');
-                        window.location.reload();
-                    });
-                },
-                error: function (error) {
-                    console.error('Lỗi khi cập nhật tài khoản:', error);
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Lỗi!',
-                        text: 'Có lỗi xảy ra khi cập nhật tài khoản.',
-                    });
-                }
-            });
-        });
-
-        // Hàm áp dụng tìm kiếm và lọc
-        function applyFilters() {
-            const searchTerm = $('#searchInput').val().toLowerCase();
-            const selectedTrangThai = $('#filterTrangThai').val();
-
-            // Tạo một bản sao của mảng allTaiKhoans trước khi lọc
-            filteredTaiKhoans = [...allTaiKhoans];
-
-            filteredTaiKhoans = filteredTaiKhoans.filter(taiKhoan => {
-                // Tìm kiếm theo tên nhân viên (hoTen)
-                const tenNhanVienMatches = taiKhoan.hoTen.toLowerCase().includes(searchTerm);
-
-                // Lọc theo trạng thái
-                let trangThaiMatches = true;
-                if (selectedTrangThai !== "") {
-                    trangThaiMatches = taiKhoan.trangThai.toString() === selectedTrangThai;
-                }
-
-                return tenNhanVienMatches && trangThaiMatches;
-            });
-
-            updatePagination(); // Cập nhật lại phân trang sau khi lọc
-        }
-
-
-        // Hàm cập nhật phân trang
-        function updatePagination() {
-            const totalPages = Math.ceil(filteredTaiKhoans.length / pageSize);
-
-            $('#currentPage a').text(currentPage);
-            displayTaiKhoans(); // Hiển thị lại dữ liệu sau khi cập nhật trang
-
-            // Vô hiệu hóa nút "Trước" nếu đang ở trang đầu tiên
-            if (currentPage === 1) {
-                $('#previousPage').addClass('disabled');
-            } else {
-                $('#previousPage').removeClass('disabled');
-            }
-
-            // Vô hiệu hóa nút "Sau" nếu đang ở trang cuối cùng
-            if (currentPage === totalPages || totalPages === 0) {
-                $('#nextPage').addClass('disabled');
-            } else {
-                $('#nextPage').removeClass('disabled');
-            }
-        }
+        })(jQuery); // End of jQuery scope
     </script>
-</body>
 
+</body>
 </html>
