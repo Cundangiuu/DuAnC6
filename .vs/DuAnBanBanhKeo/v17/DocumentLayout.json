@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "D:\\FPT\\DuAnC6\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\fpt\\duanc6\\duanbanbanhkeo\\controllers\\nhacungcapcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\controllers\\nhacungcapcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\fpt\\duanc6\\duanbanbanhkeo\\controllers\\forgotpasswordcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\controllers\\forgotpasswordcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\fpt\\duanc6\\duanbanbanhkeo\\modal\\taikhoanupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\modal\\taikhoanupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\fpt\\duanc6\\duanbanbanhkeo\\controllers\\taikhoancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\controllers\\taikhoancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\fpt\\duanc6\\duanbanbanhkeo\\controllers\\nhacungcapcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\controllers\\nhacungcapcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\fpt\\duanc6\\duanbanbanhkeo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -71,10 +79,6 @@
       "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\modal\\taikhoandto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\fpt\\duanc6\\duanbanbanhkeo\\controllers\\taikhoancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\controllers\\taikhoancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|d:\\fpt\\duanc6\\duanbanbanhkeo\\data\\entities\\nhanvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{639D0646-C5C3-4C95-AEA9-54D06A50001E}|DuAnBanBanhKeo\\DuAnBanBanhKeo.csproj|solutionrelative:duanbanbanhkeo\\data\\entities\\nhanvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -94,7 +98,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 1689,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -102,32 +106,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "TaiKhoanUpdateDto.cs",
+              "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\TaiKhoanUpdateDto.cs",
+              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Modal\\TaiKhoanUpdateDto.cs",
+              "ToolTip": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\TaiKhoanUpdateDto.cs",
+              "RelativeToolTip": "DuAnBanBanhKeo\\Modal\\TaiKhoanUpdateDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T04:19:54.693Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "NhaCungCapController.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\NhaCungCapController.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Controllers\\NhaCungCapController.cs",
               "ToolTip": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\NhaCungCapController.cs",
               "RelativeToolTip": "DuAnBanBanhKeo\\Controllers\\NhaCungCapController.cs",
-              "ViewState": "AgIAALYAAAAAAAAAAAAAANMAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAALYAAAAAAAAAAAAAAMkAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-07T03:26:12.89Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "SendOtpRequest.cs",
-              "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\SendOtpRequest.cs",
-              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Modal\\SendOtpRequest.cs",
-              "ToolTip": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\SendOtpRequest.cs",
-              "RelativeToolTip": "DuAnBanBanhKeo\\Modal\\SendOtpRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-03T06:58:52.315Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "OtpModel.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\OtpModel.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Modal\\OtpModel.cs",
@@ -139,7 +144,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "ForgotPasswordRequest.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\ForgotPasswordRequest.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Modal\\ForgotPasswordRequest.cs",
@@ -151,7 +156,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "IEmailService.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Services\\IEmailService.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Services\\IEmailService.cs",
@@ -163,7 +168,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 0,
+              "Title": "ForgotPasswordController.cs",
+              "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\ForgotPasswordController.cs",
+              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Controllers\\ForgotPasswordController.cs",
+              "ToolTip": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\ForgotPasswordController.cs",
+              "RelativeToolTip": "DuAnBanBanhKeo\\Controllers\\ForgotPasswordController.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAmwGsAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T06:52:20.693Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "SendOtpRequest.cs",
+              "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\SendOtpRequest.cs",
+              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Modal\\SendOtpRequest.cs",
+              "ToolTip": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\SendOtpRequest.cs",
+              "RelativeToolTip": "DuAnBanBanhKeo\\Modal\\SendOtpRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T06:58:52.315Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "EmailService.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Services\\EmailService.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Services\\EmailService.cs",
@@ -175,20 +205,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ForgotPasswordController.cs",
-              "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\ForgotPasswordController.cs",
-              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Controllers\\ForgotPasswordController.cs",
-              "ToolTip": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\ForgotPasswordController.cs",
-              "RelativeToolTip": "DuAnBanBanhKeo\\Controllers\\ForgotPasswordController.cs",
-              "ViewState": "AgIAAIgAAAAAAAAAAAAkwI8AAABEAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "TaiKhoanController.cs",
+              "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\TaiKhoanController.cs",
+              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Controllers\\TaiKhoanController.cs",
+              "ToolTip": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\TaiKhoanController.cs",
+              "RelativeToolTip": "DuAnBanBanhKeo\\Controllers\\TaiKhoanController.cs",
+              "ViewState": "AgIAANoAAAAAAAAAAAAAwPMAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-03T06:52:20.693Z",
+              "WhenOpened": "2025-03-29T06:21:47.311Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "VerifyOtpRequest.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\VerifyOtpRequest.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Modal\\VerifyOtpRequest.cs",
@@ -200,7 +230,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "ResetPasswordRequest.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\ResetPasswordRequest.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Modal\\ResetPasswordRequest.cs",
@@ -212,7 +242,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "launchSettings.json",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Properties\\launchSettings.json",
@@ -224,7 +254,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "20250330051342_DLSS.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250330051342_DLSS.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Migrations\\20250330051342_DLSS.cs",
@@ -236,7 +266,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "20250330045321_DLSS.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250330045321_DLSS.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Migrations\\20250330045321_DLSS.cs",
@@ -247,19 +277,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "TaiKhoanController.cs",
-              "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\TaiKhoanController.cs",
-              "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Controllers\\TaiKhoanController.cs",
-              "ToolTip": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\TaiKhoanController.cs",
-              "RelativeToolTip": "DuAnBanBanhKeo\\Controllers\\TaiKhoanController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T06:21:47.311Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\ApplicationDbContext.cs",
@@ -271,7 +289,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "TaiKhoanDto.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Modal\\TaiKhoanDto.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Modal\\TaiKhoanDto.cs",
@@ -283,7 +301,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "TaiKhoan.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\TaiKhoan.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\TaiKhoan.cs",
@@ -295,7 +313,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\appsettings.json",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\appsettings.json",
@@ -307,7 +325,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "AuthorizeController.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Controllers\\AuthorizeController.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Controllers\\AuthorizeController.cs",
@@ -319,7 +337,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "NhanVien.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Data\\Entities\\NhanVien.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Data\\Entities\\NhanVien.cs",
@@ -331,7 +349,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "20250329055040_DLSS.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Migrations\\20250329055040_DLSS.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Migrations\\20250329055040_DLSS.cs",
@@ -342,7 +360,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\FPT\\DuAnC6\\DuAnBanBanhKeo\\Program.cs",
               "RelativeDocumentMoniker": "DuAnBanBanhKeo\\Program.cs",
